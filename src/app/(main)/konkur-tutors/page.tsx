@@ -61,7 +61,7 @@ export default function KonkurTutorsPage() {
       <PageHeader
         title="Top Konkur Tutors"
         description="Find verified and top-rated tutors for university entrance exams."
-        icon={BookMarked}
+        icon={UserCheck}
       />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
@@ -94,7 +94,8 @@ export default function KonkurTutorsPage() {
                 <h2 className="text-2xl font-bold mb-4">Specialized Language Konkur Tutors</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {languageTutors.map((tutor, index) => (
-                        <Card key={index} className="shadow-sm">
+                        <Card key
+={index} className="shadow-sm">
                             <CardHeader>
                                 <div className="flex justify-between items-start">
                                     <CardTitle>{tutor.name}</CardTitle>

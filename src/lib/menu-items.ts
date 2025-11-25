@@ -1,3 +1,4 @@
+
 import type { NavItem } from '@/lib/types';
 import {
   BookMarked,
@@ -22,6 +23,7 @@ import {
   School,
   Trophy,
   User,
+  UserCheck,
   Users,
 } from 'lucide-react';
 
@@ -41,7 +43,8 @@ export const menuItems: NavItem[] = [
   { href: '/community', label: 'Community', icon: Users },
   { href: '/ad-platform', label: 'Ad Platform', icon: Megaphone },
   { href: '/partners', label: 'Partners', icon: Handshake },
-  { href: '/konkur-tutors', label: 'Konkur Tutors', icon: BookMarked },
+  { href: '/konkur-tutors', label: 'Konkur Tutors', icon: UserCheck },
+  { href: '/live-classes', label: 'Live Classes', icon: School },
   { href: '/karaoke', label: 'Karaoke', icon: Music, premium: true },
   {
     href: '/ielts-toefl-prep',
