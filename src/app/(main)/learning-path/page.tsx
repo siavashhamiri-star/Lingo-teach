@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { BrainCircuit, Loader2, Sparkles, Wand2, BookOpen, FileText, Briefcase, Building, MessageSquareQuote, Stethoscope, Crown } from 'lucide-react';
+import { BrainCircuit, Loader2, Sparkles, Wand2, BookOpen, FileText, Briefcase, Building, MessageSquareQuote, Stethoscope, Crown, Scale } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -14,7 +14,7 @@ import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
-type TopicTemplate = 'business' | 'immigration' | 'slang' | 'medical';
+type TopicTemplate = 'business' | 'immigration' | 'slang' | 'medical' | 'legal';
 
 export default function LearningPathPage() {
   const [lessonRequirements, setLessonRequirements] = useState('');
@@ -38,6 +38,9 @@ export default function LearningPathPage() {
             break;
         case 'medical':
             template = "Create a comprehensive Medical English lesson suitable for doctors, medical students, radiologists, and lab scientists. The lesson should focus on terminology for patient consultations, understanding medical reports (radiology, lab results), and common clinical vocabulary. Include practical exercises."
+            break;
+        case 'legal':
+            template = "Create a lesson on Legal English. Focus on terminology related to housing contracts (purchase and lease), movable and immovable property, and the residency application process for the USA, UK, Canada, and Australia. The lesson should be practical and aimed at individuals needing to understand and navigate these legal situations."
             break;
     }
     setLessonRequirements(template);
@@ -113,7 +116,7 @@ export default function LearningPathPage() {
 
                <div className='space-y-3'>
                   <Label>Or, choose a topic template</Label>
-                  <div className='grid grid-cols-2 gap-2'>
+                  <div className='grid grid-cols-3 gap-2'>
                     <Button variant="outline" size="sm" onClick={() => setTemplate('business')} disabled={isLoading} className="flex-col h-16">
                         <Briefcase className="w-5 h-5 mb-1"/>
                         <span className="text-xs">Business</span>
@@ -130,6 +133,11 @@ export default function LearningPathPage() {
                         <Crown className="w-4 h-4 text-yellow-500 absolute top-1 right-1" />
                         <Stethoscope className="w-5 h-5 mb-1"/>
                         <span className="text-xs">Medical</span>
+                    </Button>
+                    <Button variant="outline" size="sm" onClick={() => setTemplate('legal')} disabled={isLoading} className="flex-col h-16 relative">
+                        <Crown className="w-4 h-4 text-yellow-500 absolute top-1 right-1" />
+                        <Scale className="w-5 h-5 mb-1"/>
+                        <span className="text-xs">Legal</span>
                     </Button>
                   </div>
               </div>

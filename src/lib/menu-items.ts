@@ -14,6 +14,7 @@ import {
   MicVocal,
   Music,
   Package,
+  Scale,
   Trophy,
   User,
   Users,
