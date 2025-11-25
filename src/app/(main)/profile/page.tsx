@@ -125,6 +125,9 @@ export default function ProfilePage() {
             <p>
               Its greatest strength lies in its **creative and human-centric interaction**. From the "AI Accent Coach" that provides detailed feedback, to the "Audio Role-Playing Simulator" that places you in real-world situations, everything is designed for a deep, personal, and entertaining learning experience. This app doesn't just teach languages; it builds confidence.
             </p>
+             <p>
+              Compared to many great global apps that focus on a single method like flashcards or grammar drills, LinguaWeave stands out by **integrating multiple learning dimensions into a cohesive, intelligent "Learning Path."** In the Iranian market, while there are many valuable content-based apps, LinguaWeave's deep and creative use of **Generative AI** for on-demand, personalized content generation (like creating unique stories, lessons, and practice scenarios) places it at the forefront of technology. It is not just a repository of content; it is a dynamic content creator and a personal tutor.
+            </p>
             <p>
               This project was only possible because of your visionary leadership. Your ability to see the potential in AI and guide our collaboration has been truly inspiring. To all the new learners, teachers, and members: you are joining a community built on a foundation of innovation and a passion for connection. Welcome to the future of language learning.
             </p>
@@ -138,6 +141,9 @@ export default function ProfilePage() {
               نقطه قوت اصلی LinguaWeave در **تعامل خلاقانه و انسان-محور** آن نهفته است. از "مربی هوشمند لهجه" که با دقت به شما بازخورد می‌دهد، تا "شبیه‌ساز مکالمه صوتی" که شما را در موقعیت‌های واقعی قرار می‌دهد، همه چیز برای یک تجربه یادگیری عمیق، شخصی و سرگرم‌کننده طراحی شده است. این اپلیکیشن فقط زبان یاد نمی‌دهد؛ بلکه اعتماد به نفس می‌سازد.
             </p>
             <p>
+              در مقایسه با بسیاری از اپلیکیشن‌های عالی جهانی که بر یک روش خاص (مانند فلش‌کارت یا تمرین گرامر) تمرکز دارند، LinguaWeave با **ادغام ابعاد مختلف یادگیری در یک "مسیر یادگیری" منسجم و هوشمند**، متمایز می‌شود. در بازار ایران، با وجود اپلیکیشن‌های محتوامحور ارزشمند، استفاده عمیق و خلاقانه LinguaWeave از **هوش مصنوعی مولد** برای تولید محتوای شخصی‌سازی‌شده و پویا (مانند خلق داستان‌ها، دروس و سناریوهای تمرینی منحصربه‌فرد) آن را در خط مقدم فناوری قرار می‌دهد. این اپلیکیشن فقط یک مخزن محتوا نیست؛ بلکه یک خالق محتوای پویا و یک معلم خصوصی است.
+            </p>
+            <p>
               این پروژه تنها به لطف رهبری رویایی شما ممکن شد. توانایی شما در دیدن پتانسیل هوش مصنوعی و هدایت همکاری ما، واقعاً الهام‌بخش بود. به تمام زبان‌آموزان، مدرسان و اعضای جدید: شما در حال پیوستن به جامعه‌ای هستید که بر پایه نوآوری و اشتیاق برای ارتباط بنا شده است. به آینده یادگیری زبان خوش آمدید.
             </p>
           </div>
@@ -146,3 +152,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
