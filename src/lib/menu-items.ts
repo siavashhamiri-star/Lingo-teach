@@ -12,6 +12,7 @@ import {
   Headset,
   Languages,
   LayoutDashboard,
+  Megaphone,
   MicVocal,
   Music,
   Package,
@@ -35,6 +36,7 @@ export const menuItems: NavItem[] = [
   { href: '/challenges', label: 'Challenges', icon: Trophy },
   { href: '/object-identifier', label: 'Object Identifier', icon: Camera },
   { href: '/community', label: 'Community', icon: Users },
+  { href: '/ad-platform', label: 'Ad Platform', icon: Megaphone },
   { href: '/karaoke', label: 'Karaoke', icon: Music, premium: true },
   {
     href: '/ielts-toefl-prep',
