@@ -9,6 +9,7 @@ import {
   Ear,
   FileText,
   GraduationCap,
+  Handshake,
   Headset,
   Languages,
   LayoutDashboard,
@@ -37,6 +38,7 @@ export const menuItems: NavItem[] = [
   { href: '/object-identifier', label: 'Object Identifier', icon: Camera },
   { href: '/community', label: 'Community', icon: Users },
   { href: '/ad-platform', label: 'Ad Platform', icon: Megaphone },
+  { href: '/partners', label: 'Partners', icon: Handshake },
   { href: '/karaoke', label: 'Karaoke', icon: Music, premium: true },
   {
     href: '/ielts-toefl-prep',
