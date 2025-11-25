@@ -2,7 +2,7 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { User, Gift, Copy, Crown, ShieldCheck, Bot, Trophy } from 'lucide-react';
+import { User, Gift, Copy, Crown, ShieldCheck, Bot, Trophy, Sparkles } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -86,6 +86,16 @@ export default function ProfilePage() {
                 </Button>
                 </div>
             </div>
+             <div className="grid grid-cols-2 gap-4 text-center">
+                <div>
+                    <h3 className="text-2xl font-bold">5</h3>
+                    <p className="text-muted-foreground">Friends Invited</p>
+                </div>
+                <div>
+                    <h3 className="text-2xl font-bold">5</h3>
+                    <p className="text-muted-foreground">Lottery Entries</p>
+                </div>
+            </div>
             <Separator />
              <div className="p-4 bg-muted/50 rounded-lg border text-sm">
                 <h4 className="font-semibold mb-2 flex items-center gap-2"><Trophy className="w-4 h-4 text-primary"/>Loyalty Rewards Program</h4>
@@ -97,17 +107,12 @@ export default function ProfilePage() {
                     <Link href="#">Learn more about rewards</Link>
                 </Button>
             </div>
-            <div className="grid grid-cols-2 gap-4 text-center">
-                <div>
-                    <h3 className="text-2xl font-bold">5</h3>
-                    <p className="text-muted-foreground">Friends Invited</p>
-                </div>
-                <div>
-                    <h3 className="text-2xl font-bold">5</h3>
-                    <p className="text-muted-foreground">Lottery Entries</p>
-                </div>
-            </div>
           </CardContent>
+           <CardFooter>
+              <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
+                 <Sparkles className="mr-2 h-4 w-4" /> Go Premium to Unlock More Rewards
+               </Button>
+            </CardFooter>
         </Card>
         <Card>
           <CardHeader>
