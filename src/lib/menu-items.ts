@@ -7,6 +7,7 @@ import {
   Camera,
   Ear,
   GraduationCap,
+  Headset,
   Languages,
   LayoutDashboard,
   MicVocal,
@@ -36,6 +37,13 @@ export const menuItems: NavItem[] = [
     label: 'IELTS/TOEFL Prep',
     icon: GraduationCap,
     premium: true,
+  },
+  {
+    href: '/simultaneous-interpretation',
+    label: 'Simultaneous Interpretation',
+    icon: Headset,
+    premium: true,
+    disabled: true,
   },
   { href: '/profile', label: 'Profile', icon: User },
 ];

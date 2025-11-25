@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { BrainCircuit, Loader2, Sparkles, Wand2, BookOpen, FileText, Briefcase, Building, MessageSquareQuote, Stethoscope } from 'lucide-react';
+import { BrainCircuit, Loader2, Sparkles, Wand2, BookOpen, FileText, Briefcase, Building, MessageSquareQuote, Stethoscope, Crown } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -126,7 +126,8 @@ export default function LearningPathPage() {
                         <MessageSquareQuote className="w-5 h-5 mb-1"/>
                         <span className="text-xs">Slang</span>
                     </Button>
-                    <Button variant="outline" size="sm" onClick={() => setTemplate('medical')} disabled={isLoading} className="flex-col h-16">
+                    <Button variant="outline" size="sm" onClick={() => setTemplate('medical')} disabled={isLoading} className="flex-col h-16 relative">
+                        <Crown className="w-4 h-4 text-yellow-500 absolute top-1 right-1" />
                         <Stethoscope className="w-5 h-5 mb-1"/>
                         <span className="text-xs">Medical</span>
                     </Button>
