@@ -42,6 +42,12 @@ const languageTutors = [
       description: 'MA in Translation Studies. Focus on reading comprehension and cloze tests for the language-specific exam.',
       isVerified: false
     },
+    {
+      name: 'Dr. Ahmad Alavi',
+      specialty: 'Arabic Language',
+      description: 'PhD in Arabic Literature. Specialized in translation techniques and grammar for the Konkur exam, with a track record of high-scoring students.',
+      isVerified: true
+    },
 ]
 
 
@@ -61,7 +67,7 @@ export default function KonkurTutorsPage() {
       <PageHeader
         title="Top Konkur Tutors"
         description="Find verified and top-rated tutors for university entrance exams."
-        icon={UserCheck}
+        icon={BookMarked}
       />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
