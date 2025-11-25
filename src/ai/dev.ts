@@ -8,3 +8,4 @@ import '@/ai/flows/weekly-listening-comprehension-article-selection.ts';
 import '@/ai/flows/personalized-lesson-generation.ts';
 import '@/ai/flows/daily-language-challenge-generation.ts';
 import '@/ai/flows/karaoke-song-generator.ts';
+import '@/ai/flows/object-identification.ts';
