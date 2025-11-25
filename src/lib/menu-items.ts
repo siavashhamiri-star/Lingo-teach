@@ -7,6 +7,7 @@ import {
   Camera,
   Crown,
   Ear,
+  FileText,
   GraduationCap,
   Headset,
   Languages,
@@ -22,8 +23,9 @@ import {
 
 export const menuItems: NavItem[] = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/chatbot', label: 'Chatbot', icon: BotMessageSquare },
   { href: '/learning-path', label: 'Learning Path', icon: BrainCircuit },
+  { href: '/chatbot', label: 'Chatbot', icon: BotMessageSquare },
+  { href: '/lesson-planner', label: 'Lesson Planner', icon: FileText },
   { href: '/exercises', label: 'Exercises', icon: BookOpenCheck },
   { href: '/accent-training', label: 'Accent Training', icon: MicVocal },
   { href: '/leitner-box', label: 'Leitner Box', icon: Package },
