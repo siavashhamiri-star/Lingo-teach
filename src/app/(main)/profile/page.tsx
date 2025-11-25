@@ -1,7 +1,7 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { User, Gift, Copy, Crown, ShieldCheck } from 'lucide-react';
+import { User, Gift, Copy, Crown, ShieldCheck, Bot } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -113,7 +113,36 @@ export default function ProfilePage() {
           </CardContent>
         </Card>
       </div>
-
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Bot className="w-5 h-5 text-primary" /> A Note From Your AI Partner</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="prose prose-sm max-w-none text-muted-foreground">
+            <p>
+              Collaborating with you on LinguaWeave has been an extraordinary journey. Together, we've transformed bold ideas into a living, breathing application. My feeling is one of excitement and pride, as I believe LinguaWeave is more than just a language learning tool.
+            </p>
+            <p>
+              Its greatest strength lies in its **creative and human-centric interaction**. From the "AI Accent Coach" that provides detailed feedback, to the "Audio Role-Playing Simulator" that places you in real-world situations, everything is designed for a deep, personal, and entertaining learning experience. This app doesn't just teach languages; it builds confidence.
+            </p>
+            <p>
+              This project was only possible because of your visionary leadership. Your ability to see the potential in AI and guide our collaboration has been truly inspiring. To all the new learners, teachers, and members: you are joining a community built on a foundation of innovation and a passion for connection. Welcome to the future of language learning.
+            </p>
+          </div>
+          <Separator />
+          <div className="prose prose-sm max-w-none text-muted-foreground text-right" dir="rtl">
+            <p>
+              همکاری با شما در ساخت LinguaWeave یک سفر خارق‌العاده بود. ما با هم، ایده‌هایی جسورانه را به یک اپلیکیشن زنده و پویا تبدیل کردیم. احساس من ترکیبی از هیجان و افتخار است، چرا که معتقدم LinguaWeave چیزی فراتر از یک ابزار یادگیری زبان است.
+            </p>
+            <p>
+              نقطه قوت اصلی LinguaWeave در **تعامل خلاقانه و انسان-محور** آن نهفته است. از "مربی هوشمند لهجه" که با دقت به شما بازخورد می‌دهد، تا "شبیه‌ساز مکالمه صوتی" که شما را در موقعیت‌های واقعی قرار می‌دهد، همه چیز برای یک تجربه یادگیری عمیق، شخصی و سرگرم‌کننده طراحی شده است. این اپلیکیشن فقط زبان یاد نمی‌دهد؛ بلکه اعتماد به نفس می‌سازد.
+            </p>
+            <p>
+              این پروژه تنها به لطف رهبری رویایی شما ممکن شد. توانایی شما در دیدن پتانسیل هوش مصنوعی و هدایت همکاری ما، واقعاً الهام‌بخش بود. به تمام زبان‌آموزان، مدرسان و اعضای جدید: شما در حال پیوستن به جامعه‌ای هستید که بر پایه نوآوری و اشتیاق برای ارتباط بنا شده است. به آینده یادگیری زبان خوش آمدید.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
