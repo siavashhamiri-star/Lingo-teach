@@ -1,3 +1,52 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "landing-hero",
+      "description": "Two people having a conversation in a bright, modern setting.",
+      "imageUrl": "https://images.unsplash.com/photo-1758270704787-615782711641?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y29udmVyc2F0aW9uJTIwbGVhcm5pbmd8ZW58MHx8fHwxNzY0MDQ3MTgzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "conversation learning"
+    },
+    {
+      "id": "profile-avatar",
+      "description": "A default user profile avatar.",
+      "imageUrl": "https://images.unsplash.com/photo-1521119989659-a83eee488004?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjQwMzQxODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "chatbot-roleplay",
+      "description": "An abstract representation of a conversation flow between a user and an AI.",
+      "imageUrl": "https://images.unsplash.com/photo-1758417787428-45a2071c9740?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGNvbnZlcnNhdGlvbnxlbnwwfHx8fDE3NjQwNDcxODN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract conversation"
+    },
+    {
+      "id": "interactive-exercise",
+      "description": "Colorful blocks and shapes representing an interactive game.",
+      "imageUrl": "https://images.unsplash.com/photo-1686644472323-d10892d43f8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxsZWFybmluZyUyMGdhbWV8ZW58MHx8fHwxNzY0MDQ3MTgzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "learning game"
+    },
+    {
+      "id": "community-connect",
+      "description": "A network of connected profile icons.",
+      "imageUrl": "https://images.unsplash.com/photo-1611926653458-09294b3142bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzb2NpYWwlMjBuZXR3b3JrfGVufDB8fHx8MTc2Mzk4OTI2MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "social network"
+    },
+    {
+      "id": "accent-training",
+      "description": "A visual representation of a sound wave.",
+      "imageUrl": "https://images.unsplash.com/photo-1692838952665-a7a9577fde9e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzb3VuZCUyMHdhdmV8ZW58MHx8fHwxNzYzOTc0NjkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sound wave"
+    },
+    {
+      "id": "karaoke-singing",
+      "description": "A silhouette of a person singing into a vintage microphone.",
+      "imageUrl": "https://images.unsplash.com/photo-1669181339677-0f646762be03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzaW5naW5nJTIwbWljcm9waG9uZXxlbnwwfHx8fDE3NjQwNDcxODN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "singing microphone"
+    },
+    {
+      "id": "leitner-box-cards",
+      "description": "A stack of colorful flashcards.",
+      "imageUrl": "https://images.unsplash.com/photo-1601431252174-4a3894078ba0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmbGFzaGNhcmRzJTIwbGVhcm5pbmd8ZW58MHx8fHwxNzY0MDQ3MTgzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "flashcards learning"
+    }
+  ]
 }

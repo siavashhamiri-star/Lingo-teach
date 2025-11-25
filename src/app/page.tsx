@@ -1,3 +1,115 @@
-export default function Home() {
-  return <></>;
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight, BotMessageSquare, BrainCircuit, Users } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+import Logo from '@/components/icons/logo';
+
+const featureCards = [
+  {
+    icon: <BotMessageSquare className="h-8 w-8 text-primary" />,
+    title: 'Bilingual Chatbot',
+    description: 'Converse with our AI in Persian and English, learning from real film and speech snippets.',
+    image: PlaceHolderImages.find((img) => img.id === 'chatbot-roleplay'),
+  },
+  {
+    icon: <BrainCircuit className="h-8 w-8 text-primary" />,
+    title: 'Personalized Learning',
+    description: 'AI-driven analysis of your skills to create tailored lessons and exercises just for you.',
+    image: PlaceHolderImages.find((img) => img.id === 'interactive-exercise'),
+  },
+  {
+    icon: <Users className="h-8 w-8 text-primary" />,
+    title: 'Vibrant Community',
+    description: 'Connect with fellow learners in language exchange rooms via text, voice, and video.',
+    image: PlaceHolderImages.find((img) => img.id === 'community-connect'),
+  },
+];
+
+export default function LandingPage() {
+  const heroImage = PlaceHolderImages.find((img) => img.id === 'landing-hero');
+
+  return (
+    <div className="flex min-h-screen flex-col">
+      <header className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2">
+          <Logo className="h-8 w-8 text-primary" />
+          <span className="text-2xl font-bold text-primary-dark font-headline">LinguaWeave</span>
+        </Link>
+        <Button asChild>
+          <Link href="/dashboard">
+            Get Started <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
+        </Button>
+      </header>
+
+      <main className="flex-grow">
+        <section className="relative w-full py-20 md:py-32 lg:py-40">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="max-w-3xl mx-auto">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight font-headline text-foreground">
+                Weaving Languages,
+                <br />
+                <span className="text-primary">Connecting Worlds.</span>
+              </h1>
+              <p className="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground">
+                Master Persian and English with AI-powered lessons, interactive exercises, and a vibrant community of learners.
+              </p>
+              <div className="mt-8 flex justify-center gap-4">
+                <Button size="lg" asChild>
+                  <Link href="/dashboard">Start Your Journey</Link>
+                </Button>
+                <Button size="lg" variant="outline">
+                  Learn More
+                </Button>
+              </div>
+            </div>
+          </div>
+          {heroImage && (
+            <div className="absolute inset-0 -z-10 h-full w-full">
+              <Image
+                src={heroImage.imageUrl}
+                alt={heroImage.description}
+                fill
+                className="object-cover opacity-10"
+                data-ai-hint={heroImage.imageHint}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+            </div>
+          )}
+        </section>
+
+        <section id="features" className="py-20 md:py-28 bg-secondary/50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto">
+              <h2 className="text-3xl sm:text-4xl font-bold font-headline">A Smarter Way to Learn</h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                LinguaWeave combines cutting-edge AI with proven learning methods to create an unparalleled language learning experience.
+              </p>
+            </div>
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featureCards.map((feature, index) => (
+                <Card key={index} className="bg-background/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                  <CardHeader className="items-center text-center">
+                    {feature.icon}
+                    <CardTitle className="mt-4 font-headline">{feature.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <p className="text-muted-foreground">{feature.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="py-8 bg-background border-t">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} LinguaWeave. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  );
 }
