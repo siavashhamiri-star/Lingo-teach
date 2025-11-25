@@ -2,7 +2,7 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { User, Gift, Copy, Crown, ShieldCheck, Bot } from 'lucide-react';
+import { User, Gift, Copy, Crown, ShieldCheck, Bot, Trophy } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { Separator } from '@/components/ui/separator';
+import Link from 'next/link';
 
 export default function ProfilePage() {
   const profileAvatar = PlaceHolderImages.find((img) => img.id === 'profile-avatar');
@@ -72,12 +73,12 @@ export default function ProfilePage() {
        <div className="grid gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><Gift className="w-5 h-5 text-primary" />Referral & Rewards Program</CardTitle>
-            <CardDescription>Invite friends, earn lottery entries, and win cash prizes! For every 10 friends who join, you get a special bonus.</CardDescription>
+            <CardTitle className="flex items-center gap-2"><Gift className="w-5 h-5 text-primary" />Referrals & Rewards</CardTitle>
+            <CardDescription>Invite friends and stay active to win monthly cash prizes and a special bi-annual reward!</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div>
-                <p className="text-sm font-medium mb-2">Your unique referral code:</p>
+                <p className="text-sm font-medium mb-2">Your unique referral code (earn entries by inviting friends):</p>
                 <div className="flex w-full max-w-sm items-center space-x-2">
                 <Input type="text" value="LINGUA-JOHNDOE-24" readOnly />
                 <Button type="button" size="icon" onClick={() => copyToClipboard('LINGUA-JOHNDOE-24')}>
@@ -86,6 +87,16 @@ export default function ProfilePage() {
                 </div>
             </div>
             <Separator />
+             <div className="p-4 bg-muted/50 rounded-lg border text-sm">
+                <h4 className="font-semibold mb-2 flex items-center gap-2"><Trophy className="w-4 h-4 text-primary"/>Loyalty Rewards Program</h4>
+                <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+                    <li><span className="font-semibold text-foreground">Monthly Lottery:</span> Active and dedicated learners will be entered into a monthly lottery for cash prizes.</li>
+                    <li><span className="font-semibold text-foreground">Bi-Annual Grand Prize:</span> A special award is given every six months to our most loyal and engaged users.</li>
+                </ul>
+                <Button variant="link" size="sm" asChild className="px-0 h-auto mt-2">
+                    <Link href="#">Learn more about rewards</Link>
+                </Button>
+            </div>
             <div className="grid grid-cols-2 gap-4 text-center">
                 <div>
                     <h3 className="text-2xl font-bold">5</h3>
@@ -143,7 +154,7 @@ export default function ProfilePage() {
               نقطه قوت اصلی LinguaWeave در **تعامل خلاقانه و انسان-محور** آن نهفته است. از "مربی هوشمند لهجه" که با دقت به شما بازخورد می‌دهد، تا "شبیه‌ساز مکالمه صوتی" که شما را در موقعیت‌های واقعی قرار می‌دهد، همه چیز برای یک تجربه یادگیری عمیق، شخصی و سرگرم‌کننده طراحی شده است. این اپلیکیشن فقط زبان یاد نمی‌دهد؛ بلکه اعتماد به نفس می‌سازد.
             </p>
             <p>
-              در مقایسه با بسیاری از اپلیکیشن‌های عالی جهانی که بر یک روش خاص (مانند فلش‌کارت یا تمرین گرامر) تمرکز دارند، LinguaWeave با **ادغام ابعاد مختلف یادگیری در یک "مسیر یادگیری" منسجم و هوشمند**، متمایز می‌شود. در بازار ایران، با وجود اپلیکیشن‌های محتوامحور ارزشمند، استفاده عمیق و خلاقانه LinguaWeave از **هوش مصنوعی مولد** برای تولید محتوay شخصی‌سازی‌شده و پویا (مانند خلق داستان‌ها، دروس و سناریوهای تمرینی منحصربه‌فرد) آن را در خط مقدم فناوری قرار می‌دهد. این اپلیکیشن فقط یک مخزن محتوا نیست؛ بلکه یک خالق محتوای پویا و یک معلم خصوصی است.
+              در مقایسه با بسیاری از اپلیکیشن‌های عالی جهانی که بر یک روش خاص (مانند فلش‌کارت یا تمرین گرامر) تمرکز دارند، LinguaWeave با **ادغام ابعاد مختلف یادگیری در یک "مسیر یادگیری" منسجم و هوشمند**، متمایز می‌شود. در بازار ایران، با وجود اپلیکیشن‌های محتوامحور ارزشمند، استفاده عمیق و خلاقانه LinguaWeave از **هوش مصنوعی مولد** برای تولید محتوای شخصی‌سازی‌شده و پویا (مانند خلق داستان‌ها، دروس و سناریوهای تمرینی منحصربه‌فرد) آن را در خط مقدم فناوری قرار می‌دهد. این اپلیکیشن فقط یک مخزن محتوا نیست؛ بلکه یک خالق محتوای پویا و یک معلم خصوصی است.
             </p>
             <p>
               این پروژه تنها به لطف رهبری رویایی شما ممکن شد. توانایی شما در دیدن پتانسیل هوش مصنوعی و هدایت همکاری ما، واقعاً الهام‌بخش بود. به تمام زبان‌آموزان، مدرسان و اعضای جدید: شما در حال پیوستن به جامعه‌ای هستید که بر پایه نوآوری و اشتیاق برای ارتباط بنا شده است. به آینده یادگیری زبان خوش آمدید.
@@ -154,5 +165,3 @@ export default function ProfilePage() {
     </div>
   );
 }
-
-    
