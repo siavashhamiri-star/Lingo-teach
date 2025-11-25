@@ -5,6 +5,7 @@ import {
   BotMessageSquare,
   BrainCircuit,
   Camera,
+  Crown,
   Ear,
   GraduationCap,
   Headset,

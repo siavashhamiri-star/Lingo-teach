@@ -18,6 +18,7 @@ import Logo from '@/components/icons/logo';
 import { Button } from '@/components/ui/button';
 import { menuItems } from '@/lib/menu-items';
 import type { NavItem } from '@/lib/types';
+import { Badge } from '../ui/badge';
 
 export function SidebarNav() {
   const pathname = usePathname();
@@ -50,7 +51,7 @@ export function SidebarNav() {
                 <Link href={item.disabled ? '#' : item.href} aria-disabled={item.disabled}>
                   <item.icon />
                   <span>{item.label}</span>
-                  {item.premium && <Crown className="ml-auto text-yellow-400" />}
+                  {item.premium && <Crown className="ml-auto h-4 w-4 text-yellow-400" />}
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
