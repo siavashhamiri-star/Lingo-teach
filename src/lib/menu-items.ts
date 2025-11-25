@@ -1,5 +1,6 @@
 import type { NavItem } from '@/lib/types';
 import {
+  BookMarked,
   BookOpenCheck,
   BookText,
   BotMessageSquare,
@@ -18,6 +19,7 @@ import {
   Music,
   Package,
   Scale,
+  School,
   Trophy,
   User,
   Users,
@@ -39,6 +41,7 @@ export const menuItems: NavItem[] = [
   { href: '/community', label: 'Community', icon: Users },
   { href: '/ad-platform', label: 'Ad Platform', icon: Megaphone },
   { href: '/partners', label: 'Partners', icon: Handshake },
+  { href: '/konkur-tutors', label: 'Konkur Tutors', icon: BookMarked },
   { href: '/karaoke', label: 'Karaoke', icon: Music, premium: true },
   {
     href: '/ielts-toefl-prep',
