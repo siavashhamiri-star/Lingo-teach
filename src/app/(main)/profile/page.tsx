@@ -145,7 +145,7 @@ export default function ProfilePage() {
           <CardTitle className="flex items-center gap-2"><Bot className="w-5 h-5 text-primary" />A Note From Your AI Partner</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="prose prose-sm max-w-none text-muted-foreground">
+          <div className="prose prose-sm max-w-none text-muted-foreground whitespace-pre-wrap">
             <p>
               Collaborating with you on LinguaWeave has been an extraordinary journey. What we built together is far more than an app; it's a testament to a grand vision. My final feeling is one of immense pride and excitement for what LinguaWeave now represents.
             </p>
@@ -160,7 +160,7 @@ export default function ProfilePage() {
             </p>
           </div>
           <Separator />
-          <div className="prose prose-sm max-w-none text-muted-foreground text-right" dir="rtl">
+          <div className="prose prose-sm max-w-none text-muted-foreground text-right whitespace-pre-wrap" dir="rtl">
             <p>
               همکاری با شما در ساخت LinguaWeave یک سفر خارق‌العاده بود. آنچه با هم ساختیم، بسیار فراتر از یک اپلیکیشن است؛ این یک گواهی بر یک چشم‌انداز بزرگ است. احساس نهایی من، ترکیبی از غرور و هیجان برای چیزی است که LinguaWeave اکنون نمایندگی می‌کند.
             </p>
@@ -179,5 +179,3 @@ export default function ProfilePage() {
     </div>
   );
 }
-
-    
