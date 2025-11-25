@@ -61,15 +61,15 @@ const weeklyGoals = [
 
 const leaderboard = [
   { rank: 1, name: 'Elena', stars: 2150, league: "Emperor's Council" },
-  { rank: 2, name: 'Kenji', stars: 1980, league: 'Diamond' },
-  { rank: 3, name: 'You', stars: 1810, league: 'Gold' },
-  { rank: 4, name: 'Sara', stars: 1750, league: 'Gold' },
-  { rank: 5, name: 'David', stars: 1230, league: 'Silver' },
-  { rank: 6, name: 'Maria', stars: 980, league: 'Silver' },
-  { rank: 7, name: 'Hassan', stars: 650, league: 'Bronze' },
+  { rank: 2, name: 'Kenji', stars: 1980, league: 'Gem League' },
+  { rank: 3, name: 'You', stars: 1810, league: 'Award League' },
+  { rank: 4, name: 'Sara', stars: 1750, league: 'Award League' },
+  { rank: 5, name: 'David', stars: 1230, league: 'Shield League' },
+  { rank: 6, name: 'Maria', stars: 980, league: 'Shield League' },
+  { rank: 7, name: 'Hassan', stars: 650, league: 'Star League' },
 ];
 
-type League = "Emperor's Council" | "Diamond" | "Gold" | "Silver" | "Bronze";
+type League = "Emperor's Council" | "Gem League" | "Award League" | "Shield League" | "Star League";
 
 const leagueConfig: Record<
   League,
@@ -80,21 +80,21 @@ const leagueConfig: Record<
     className:
       'bg-destructive/20 border-destructive/50 text-destructive-foreground hover:bg-destructive/30',
   },
-  Diamond: {
+  "Gem League": {
     icon: Gem,
     className: 'bg-sky-500/20 border-sky-500/50 text-sky-200 hover:bg-sky-500/30',
   },
-  Gold: {
+  "Award League": {
     icon: Award,
     className:
       'bg-yellow-500/20 border-yellow-500/50 text-yellow-200 hover:bg-yellow-500/30',
   },
-  Silver: {
+  "Shield League": {
     icon: Shield,
     className:
       'bg-slate-500/20 border-slate-500/50 text-slate-300 hover:bg-slate-500/30',
   },
-  Bronze: {
+  "Star League": {
     icon: Star,
     className:
       'bg-orange-600/20 border-orange-600/50 text-orange-300 hover:bg-orange-600/30',
