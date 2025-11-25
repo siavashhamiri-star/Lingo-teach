@@ -1,15 +1,27 @@
+'use client';
+
 import { PageHeader } from '@/components/shared/page-header';
-import { User, Gift, Linkedin } from 'lucide-react';
+import { User, Gift, Linkedin, Copy, Users } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Copy } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
+import { Separator } from '@/components/ui/separator';
 
 export default function ProfilePage() {
   const profileAvatar = PlaceHolderImages.find((img) => img.id === 'profile-avatar');
+  const { toast } = useToast();
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    toast({
+      title: 'Copied to Clipboard!',
+      description: 'Your referral code has been copied.',
+    });
+  };
 
   return (
     <div className="space-y-8">
@@ -56,31 +68,33 @@ export default function ProfilePage() {
         </Card>
       </div>
 
-       <div className="grid gap-6 md:grid-cols-2">
+       <div className="grid gap-6 md:grid-cols-1">
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><Gift className="w-5 h-5 text-primary" />Referral Program</CardTitle>
-            <CardDescription>Invite friends and get 1 month of Premium for free!</CardDescription>
+            <CardTitle className="flex items-center gap-2"><Gift className="w-5 h-5 text-primary" />Referral & Rewards Program</CardTitle>
+            <CardDescription>Invite friends, earn lottery entries, and win cash prizes! For every 10 friends who join, you get a special bonus.</CardDescription>
           </CardHeader>
-          <CardContent>
-            <p className="text-sm font-medium mb-2">Your referral code:</p>
-            <div className="flex w-full max-w-sm items-center space-x-2">
-              <Input type="text" value="LINGUA-JOHNDOE-24" readOnly />
-              <Button type="submit" size="icon">
-                <Copy className="h-4 w-4" />
-              </Button>
+          <CardContent className="space-y-6">
+            <div>
+                <p className="text-sm font-medium mb-2">Your unique referral code:</p>
+                <div className="flex w-full max-w-sm items-center space-x-2">
+                <Input type="text" value="LINGUA-JOHNDOE-24" readOnly />
+                <Button type="button" size="icon" onClick={() => copyToClipboard('LINGUA-JOHNDOE-24')}>
+                    <Copy className="h-4 w-4" />
+                </Button>
+                </div>
             </div>
-          </CardContent>
-        </Card>
-         <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2"><Linkedin className="w-5 h-5 text-blue-700" />LinkedIn Integration</CardTitle>
-            <CardDescription>Showcase your language achievements on your LinkedIn profile.</CardDescription>
-          </CardHeader>
-          <CardContent>
-             <Button>
-                <Linkedin className="mr-2 h-4 w-4"/> Connect to LinkedIn
-            </Button>
+            <Separator />
+            <div className="grid grid-cols-2 gap-4 text-center">
+                <div>
+                    <h3 className="text-2xl font-bold">5</h3>
+                    <p className="text-muted-foreground">Friends Invited</p>
+                </div>
+                <div>
+                    <h3 className="text-2xl font-bold">5</h3>
+                    <p className="text-muted-foreground">Lottery Entries</p>
+                </div>
+            </div>
           </CardContent>
         </Card>
       </div>
