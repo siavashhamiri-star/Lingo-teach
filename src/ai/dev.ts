@@ -10,3 +10,4 @@ import '@/ai/flows/daily-language-challenge-generation.ts';
 import '@/ai/flows/karaoke-song-generator.ts';
 import '@/ai/flows/object-identification.ts';
 import '@/ai/flows/chatbot-flow.ts';
+import '@/ai/flows/role-playing-flow.ts';

@@ -2,13 +2,14 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { BotMessageSquare, Loader2, Send, Sparkles, User } from 'lucide-react';
+import { BotMessageSquare, Loader2, Send, Sparkles, User, Drama } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { chat, type ChatMessage } from '@/ai/flows/chatbot-flow';
+import { generateRoleplayScene, type RoleplaySceneOutput } from '@/ai/flows/role-playing-flow';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
@@ -18,9 +19,15 @@ export default function ChatbotPage() {
     { role: 'model', content: 'Hello! How can I help you practice your English or Persian today?' },
   ]);
   const [input, setInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [isChatLoading, setIsChatLoading] = useState(false);
   const [targetLanguage, setTargetLanguage] = useState<'English' | 'Persian'>('English');
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+
+  // Roleplay state
+  const [scenario, setScenario] = useState('Ordering a coffee');
+  const [isRoleplayLoading, setIsRoleplayLoading] = useState(false);
+  const [roleplayScene, setRoleplayScene] = useState<RoleplaySceneOutput | null>(null);
+
   const { toast } = useToast();
 
   useEffect(() => {
@@ -35,12 +42,12 @@ export default function ChatbotPage() {
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim() || isLoading) return;
+    if (!input.trim() || isChatLoading) return;
 
     const newUserMessage: ChatMessage = { role: 'user', content: input };
     setMessages((prev) => [...prev, newUserMessage]);
     setInput('');
-    setIsLoading(true);
+    setIsChatLoading(true);
 
     try {
       const result = await chat({
@@ -60,7 +67,28 @@ export default function ChatbotPage() {
       // Optional: remove the user message if the API call fails
       setMessages(prev => prev.slice(0, -1));
     } finally {
-      setIsLoading(false);
+      setIsChatLoading(false);
+    }
+  };
+
+  const handleGenerateRoleplay = async () => {
+    setIsRoleplayLoading(true);
+    setRoleplayScene(null);
+    try {
+      const result = await generateRoleplayScene({
+        scenario,
+        targetLanguage,
+      });
+      setRoleplayScene(result);
+    } catch (error) {
+      console.error('Error generating roleplay scene:', error);
+      toast({
+        variant: 'destructive',
+        title: 'Error Generating Scene',
+        description: 'There was a problem creating your role-play scenario. The AI might be busy.',
+      });
+    } finally {
+      setIsRoleplayLoading(false);
     }
   };
 
@@ -74,18 +102,20 @@ export default function ChatbotPage() {
       <Tabs defaultValue="chat" className="flex-grow flex flex-col">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="chat">Chat</TabsTrigger>
-          <TabsTrigger value="roleplay">Roleplay</TabsTrigger>
+          <TabsTrigger value="roleplay">Role-Play <Sparkles className="w-4 h-4 ml-2 text-yellow-500" /></TabsTrigger>
         </TabsList>
+
+        {/* Chat Tab */}
         <TabsContent value="chat" className="flex-grow mt-4">
           <Card className="h-full flex flex-col">
             <div className="p-4 border-b space-y-2">
-              <Label htmlFor="target-language">I want to practice...</Label>
+              <Label htmlFor="target-language-chat">I want to practice...</Label>
               <Select
                 value={targetLanguage}
                 onValueChange={(value: 'English' | 'Persian') => setTargetLanguage(value)}
-                disabled={isLoading}
+                disabled={isChatLoading}
               >
-                <SelectTrigger id="target-language" className="w-[180px]">
+                <SelectTrigger id="target-language-chat" className="w-[180px]">
                   <SelectValue placeholder="Select language" />
                 </SelectTrigger>
                 <SelectContent>
@@ -125,7 +155,7 @@ export default function ChatbotPage() {
                       )}
                     </div>
                   ))}
-                  {isLoading && (
+                  {isChatLoading && (
                      <div className="flex items-start gap-3">
                        <div className="bg-primary/10 p-2 rounded-full">
                          <BotMessageSquare className="w-6 h-6 text-primary shrink-0" />
@@ -144,20 +174,110 @@ export default function ChatbotPage() {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your message..."
                 className="flex-grow"
-                disabled={isLoading}
+                disabled={isChatLoading}
               />
-              <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
-                {isLoading ? <Loader2 className="w-4 h-4 animate-spin"/> : <Send className="w-4 h-4" />}
+              <Button type="submit" size="icon" disabled={isChatLoading || !input.trim()}>
+                {isChatLoading ? <Loader2 className="w-4 h-4 animate-spin"/> : <Send className="w-4 h-4" />}
               </Button>
             </form>
           </Card>
         </TabsContent>
+        
+        {/* Roleplay Tab */}
         <TabsContent value="roleplay" className="flex-grow mt-4">
-          <Card className="h-full flex flex-col justify-center items-center text-center p-8 border-2 border-dashed">
-             <Sparkles className="w-12 h-12 text-muted-foreground mb-4"/>
-            <h2 className="text-xl font-semibold">Roleplay Mode</h2>
-            <p className="text-muted-foreground">This feature is under construction.</p>
-          </Card>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 h-full">
+            <div className="lg:col-span-1 space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Role-Play Scene</CardTitle>
+                  <CardDescription>Select a scenario to practice a real-life conversation.</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="target-language-roleplay">Practice Language</Label>
+                    <Select
+                      value={targetLanguage}
+                      onValueChange={(value: 'English' | 'Persian') => setTargetLanguage(value)}
+                      disabled={isRoleplayLoading}
+                    >
+                      <SelectTrigger id="target-language-roleplay">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="English">English</SelectItem>
+                        <SelectItem value="Persian">Persian (فارسی)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                   <div className="space-y-2">
+                    <Label htmlFor="scenario">Choose a Scenario</Label>
+                    <Select
+                      value={scenario}
+                      onValueChange={(value) => setScenario(value)}
+                      disabled={isRoleplayLoading}
+                    >
+                      <SelectTrigger id="scenario">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Ordering a coffee">Ordering a coffee</SelectItem>
+                        <SelectItem value="Asking for directions">Asking for directions</SelectItem>
+                        <SelectItem value="Job interview introduction">Job interview introduction</SelectItem>
+                        <SelectItem value="Buying a train ticket">Buying a train ticket</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button onClick={handleGenerateRoleplay} disabled={isRoleplayLoading} className="w-full">
+                    {isRoleplayLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Drama className="mr-2 h-4 w-4" />}
+                    Generate Scene
+                  </Button>
+                </CardFooter>
+              </Card>
+            </div>
+            <div className="lg:col-span-2">
+               {isRoleplayLoading && (
+                <div className="flex flex-col items-center justify-center h-full min-h-[400px] border-2 border-dashed rounded-lg p-8 text-center">
+                  <Loader2 className="w-12 h-12 animate-spin text-primary mb-4" />
+                  <h2 className="text-xl font-semibold">The AI is setting the stage...</h2>
+                  <p className="text-muted-foreground">Generating script and unique voices. This is an advanced feature and may take a moment.</p>
+                </div>
+              )}
+
+              {!isRoleplayLoading && !roleplayScene && (
+                 <div className="flex flex-col items-center justify-center h-full min-h-[400px] border-2 border-dashed rounded-lg p-8 text-center">
+                  <Drama className="w-12 h-12 text-muted-foreground mb-4" />
+                  <h2 className="text-xl font-semibold">Your Stage Awaits</h2>
+                  <p className="text-muted-foreground">Choose a scenario and click "Generate Scene" to start your audio role-play experience!</p>
+                </div>
+              )}
+
+              {roleplayScene && (
+                <Card className="h-full overflow-hidden">
+                  <CardHeader>
+                    <CardTitle>Scenario: {scenario}</CardTitle>
+                    <CardDescription>Listen to the multi-voice conversation below.</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <audio controls src={roleplayScene.audioDataUri} className="w-full" />
+                    <ScrollArea className="h-[280px] p-4 border rounded-md bg-muted/50">
+                        <div className="space-y-4">
+                            {roleplayScene.script.map((line, index) => (
+                                <div key={index} className="flex gap-3">
+                                    <p>
+                                        <span className="font-bold">{line.speaker}:</span>
+                                        <span className="text-muted-foreground" dir={targetLanguage === 'Persian' ? 'rtl' : 'ltr'}> {line.line}</span>
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </ScrollArea>
+                  </CardContent>
+                </Card>
+              )}
+            </div>
+          </div>
         </TabsContent>
       </Tabs>
     </div>
