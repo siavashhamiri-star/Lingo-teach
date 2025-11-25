@@ -138,7 +138,7 @@ export default function SimultaneousInterpretationPage() {
                     Generate a scenario to practice.
                   </CardDescription>
                 </div>
-                <Badge variant="destructive">Premium</Badge>
+                <Badge variant="destructive">Premium Feature</Badge>
               </div>
             </CardHeader>
             <CardContent className="space-y-6">

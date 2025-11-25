@@ -93,7 +93,7 @@ export default function IeltsToeflPrepPage() {
     }
   };
 
-  const isButtonDisabled = isLoading || (!IS_PREMIUM_USER && freeTrialUsed);
+  const isGenerateButtonDisabled = isLoading || (!IS_PREMIUM_USER && freeTrialUsed);
 
   return (
     <div>
@@ -113,7 +113,7 @@ export default function IeltsToeflPrepPage() {
                     Get a personalized AI-led workshop.
                   </CardDescription>
                 </div>
-                <Badge variant="destructive">Premium</Badge>
+                <Badge variant="destructive">Premium Feature</Badge>
               </div>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -164,7 +164,7 @@ export default function IeltsToeflPrepPage() {
             <CardFooter>
               <Button
                 onClick={handleStartWorkshop}
-                disabled={isButtonDisabled}
+                disabled={isGenerateButtonDisabled}
                 className="w-full"
               >
                 {isLoading ? (

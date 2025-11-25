@@ -174,12 +174,12 @@ export default function ChatbotPage() {
                      </div>
                   )}
                   {isChatLimitReached && (
-                     <Alert className="mt-4 border-accent text-accent-foreground">
+                     <Alert className="mt-4 border-accent text-accent-foreground bg-accent/10">
                         <Crown className="h-4 w-4 text-accent" />
                         <AlertTitle>Free Chat Limit Reached</AlertTitle>
                         <AlertDescription>
                             You've reached the message limit for the free plan. 
-                            <Button variant="link" className="p-0 h-auto ml-1 text-accent-foreground">Upgrade to Premium</Button> for unlimited conversations.
+                            <Button variant="link" className="p-0 h-auto ml-1 text-accent-foreground font-bold">Upgrade for unlimited conversations.</Button>
                         </AlertDescription>
                     </Alert>
                   )}

@@ -81,7 +81,7 @@ export default function KaraokePage() {
                   <CardTitle>Find a Song</CardTitle>
                   <CardDescription>Enter a song to get translated lyrics.</CardDescription>
                 </div>
-                <Badge variant="destructive">Premium</Badge>
+                <Badge variant="destructive">Premium Feature</Badge>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
