@@ -3,7 +3,7 @@
 
 import { PageHeader } from '@/components/shared/page-header';
 import { User, Gift, Copy, Crown, ShieldCheck, Bot, Trophy, Sparkles } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Progress } from '@/components/ui/progress';
@@ -170,3 +170,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
