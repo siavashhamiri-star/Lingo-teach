@@ -18,10 +18,10 @@ import {z} from 'genkit';
 const PersonalizedLessonInputSchema = z.object({
   userLanguage: z.string().describe('The language the user is learning.'),
   nativeLanguage: z.string().describe('The user\'s native language.'),
-  interviewTranscript: z
+  lessonRequirements: z
     .string()
     .describe(
-      'A transcript of the interview with the user, detailing their current language proficiency, learning goals, and preferences.'
+      'A description of the lesson requirements, including topic, goals, and target audience.'
     ),
 });
 export type PersonalizedLessonInput = z.infer<typeof PersonalizedLessonInputSchema>;
@@ -54,14 +54,14 @@ const personalizedLessonPrompt = ai.definePrompt({
   name: 'personalizedLessonPrompt',
   input: {schema: PersonalizedLessonInputSchema},
   output: {schema: PersonalizedLessonOutputSchema},
-  prompt: `You are an AI language tutor specializing in creating personalized lessons.
+  prompt: `You are an AI language tutor specializing in creating personalized lessons for content creators.
 
-  Based on the user's interview transcript, create a single tailored lesson with exercises that addresses their specific language learning needs. The target language the user is learning is: {{{userLanguage}}}. The user's native language is: {{{nativeLanguage}}}.
+  Based on the user's requirements, create a single tailored lesson with exercises. This lesson plan will be used by an advanced user to teach others. The target language for the lesson is: {{{userLanguage}}}. The creator's native language is: {{{nativeLanguage}}}.
 
-  Interview Transcript:
-  {{interviewTranscript}}
+  Lesson Requirements:
+  {{lessonRequirements}}
 
-  Create a lesson that is engaging, effective, and aligned with the user's learning style and goals.  The output should be structured to teach the user in small increments, with each section followed by an exercise to reinforce the concept taught.  Ensure that the exercise type matches the section of the lesson.
+  Create a lesson that is engaging, effective, and structured. The output should be a complete lesson plan that an instructor can use to teach others. Structure it with clear sections (e.g., Introduction, Grammar Point, Vocabulary, Practice). For each section, provide content and then create a relevant exercise to reinforce the concept.
   `,  
 });
 
