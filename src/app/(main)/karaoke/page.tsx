@@ -12,6 +12,11 @@ import { generateKaraokeTrack, type KaraokeTrackOutput } from '@/ai/flows/karaok
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+
+// --- Pricing Model Simulation ---
+const IS_PREMIUM_USER = false;
+// -----------------------------
 
 export default function KaraokePage() {
   const [songTitle, setSongTitle] = useState('');
@@ -27,6 +32,14 @@ export default function KaraokePage() {
         variant: 'destructive',
         title: 'Incomplete Information',
         description: 'Please enter both song title and artist.',
+      });
+      return;
+    }
+     if (!IS_PREMIUM_USER) {
+      toast({
+        variant: 'destructive',
+        title: 'Premium Feature',
+        description: 'Karaoke is a premium feature. Please upgrade your plan to generate a track.',
       });
       return;
     }
@@ -108,7 +121,7 @@ export default function KaraokePage() {
               </div>
             </CardContent>
             <CardFooter className="flex flex-col gap-4">
-              <Button onClick={handleGenerateTrack} disabled={isLoading} className="w-full">
+              <Button onClick={handleGenerateTrack} disabled={isLoading || !IS_PREMIUM_USER} className="w-full">
                 {isLoading ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 ) : (
@@ -134,17 +147,30 @@ export default function KaraokePage() {
 
           {!isLoading && !track && (
              <div className="flex flex-col items-center justify-center h-full min-h-[400px] border-2 border-dashed rounded-lg p-8 text-center">
-              <Music className="w-12 h-12 text-muted-foreground mb-4" />
-              <h2 className="text-xl font-semibold">Your Stage is Waiting</h2>
-              <p className="text-muted-foreground">Enter a song and artist to start your AI-powered karaoke session.</p>
+              {!IS_PREMIUM_USER ? (
+                 <Alert className="border-accent text-accent-foreground">
+                    <Crown className="h-4 w-4 text-accent" />
+                    <AlertTitle>This is a Premium Feature</AlertTitle>
+                    <AlertDescription>
+                        The Karaoke feature lets you learn your favorite songs in a new language. 
+                        <Button variant="link" className="p-0 h-auto ml-1 text-accent-foreground">Upgrade to Premium</Button> to unlock this and many other features.
+                    </AlertDescription>
+                </Alert>
+              ) : (
+                <>
+                  <Music className="w-12 h-12 text-muted-foreground mb-4" />
+                  <h2 className="text-xl font-semibold">Your Stage is Waiting</h2>
+                  <p className="text-muted-foreground">Enter a song and artist to start your AI-powered karaoke session.</p>
+                </>
+              )}
             </div>
           )}
 
           {track && (
             <Card>
               <CardHeader>
-                <CardTitle>{track.songTitle}</CardTitle>
-                <CardDescription>{track.artist}</CardDescription>
+                <CardTitle className={cn(targetLanguage === 'fa' && 'text-right')}>{track.songTitle}</CardTitle>
+                <CardDescription className={cn(targetLanguage === 'fa' && 'text-right')}>{track.artist}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-2 gap-6">

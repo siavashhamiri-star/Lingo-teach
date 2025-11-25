@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { Headset, Loader2, Mic, Play, Square, Wand2 } from 'lucide-react';
+import { Headset, Loader2, Mic, Play, Square, Wand2, Crown } from 'lucide-react';
 import {
   Card,
   CardContent,
@@ -25,6 +25,11 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+
+// --- Pricing Model Simulation ---
+const IS_PREMIUM_USER = false;
+// -----------------------------
 
 type InterpretationStatus = 'idle' | 'playing' | 'recording' | 'finished';
 
@@ -42,6 +47,14 @@ export default function SimultaneousInterpretationPage() {
   const userAudioChunksRef = useRef<Blob[]>([]);
 
   const handleGenerateScenario = async () => {
+    if (!IS_PREMIUM_USER) {
+      toast({
+        variant: 'destructive',
+        title: 'Premium Feature',
+        description: 'Simultaneous Interpretation is a premium feature. Please upgrade your plan to practice.',
+      });
+      return;
+    }
     setIsLoading(true);
     setGeneratedScenario(null);
     setStatus('idle');
@@ -157,7 +170,7 @@ export default function SimultaneousInterpretationPage() {
             <CardFooter>
               <Button
                 onClick={handleGenerateScenario}
-                disabled={isLoading || status !== 'idle'}
+                disabled={isLoading || status !== 'idle' || !IS_PREMIUM_USER}
                 className="w-full"
               >
                 {isLoading ? (
@@ -183,12 +196,25 @@ export default function SimultaneousInterpretationPage() {
           )}
 
           {!isLoading && !generatedScenario && (
-            <div className="flex flex-col items-center justify-center h-full min-h-[400px] border-2 border-dashed rounded-lg p-8 text-center">
-              <Headset className="w-12 h-12 text-muted-foreground mb-4" />
-              <h2 className="text-xl font-semibold">Ready to Interpret?</h2>
-              <p className="text-muted-foreground">
-                Choose your settings and generate a scenario to begin.
-              </p>
+             <div className="flex flex-col items-center justify-center h-full min-h-[400px] border-2 border-dashed rounded-lg p-8 text-center">
+              {!IS_PREMIUM_USER ? (
+                 <Alert className="border-accent text-accent-foreground">
+                    <Crown className="h-4 w-4 text-accent" />
+                    <AlertTitle>This is a Premium Feature</AlertTitle>
+                    <AlertDescription>
+                        Practice real-time interpretation like a pro.
+                        <Button variant="link" className="p-0 h-auto ml-1 text-accent-foreground">Upgrade to Premium</Button> to unlock this feature.
+                    </AlertDescription>
+                </Alert>
+              ) : (
+                <>
+                  <Headset className="w-12 h-12 text-muted-foreground mb-4" />
+                  <h2 className="text-xl font-semibold">Ready to Interpret?</h2>
+                  <p className="text-muted-foreground">
+                    Choose your settings and generate a scenario to begin.
+                  </p>
+                </>
+              )}
             </div>
           )}
 

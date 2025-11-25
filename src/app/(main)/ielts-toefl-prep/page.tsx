@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { GraduationCap, Loader2, Sparkles, Wand2, FileText, BookOpen } from 'lucide-react';
+import { GraduationCap, Loader2, Sparkles, Wand2, FileText, BookOpen, Crown } from 'lucide-react';
 import {
   Card,
   CardContent,
@@ -26,6 +26,9 @@ import { generatePersonalizedLesson, type PersonalizedLessonOutput } from '@/ai/
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 
+// --- Pricing Model Simulation ---
+const IS_PREMIUM_USER = false;
+// -----------------------------
 
 type ExamType = 'ielts' | 'toefl';
 type ExamSection = 'speaking' | 'writing';
@@ -38,6 +41,15 @@ export default function IeltsToeflPrepPage() {
   const { toast } = useToast();
 
   const handleStartWorkshop = async () => {
+    if (!IS_PREMIUM_USER) {
+      toast({
+        variant: 'destructive',
+        title: 'Premium Feature',
+        description: 'IELTS & TOEFL Prep is a premium feature. Please upgrade your plan to start a workshop.',
+      });
+      return;
+    }
+
     setIsLoading(true);
     setWorkshop(null);
     toast({
@@ -132,7 +144,7 @@ export default function IeltsToeflPrepPage() {
             <CardFooter>
               <Button
                 onClick={handleStartWorkshop}
-                disabled={isLoading}
+                disabled={isLoading || !IS_PREMIUM_USER}
                 className="w-full"
               >
                 {isLoading ? (
@@ -161,11 +173,24 @@ export default function IeltsToeflPrepPage() {
 
           {!isLoading && !workshop && (
             <div className="flex flex-col items-center justify-center h-full min-h-[400px] border-2 border-dashed rounded-lg p-8 text-center">
-              <GraduationCap className="w-12 h-12 text-muted-foreground mb-4" />
-              <h2 className="text-xl font-semibold">Ready to Master the Exam?</h2>
-              <p className="text-muted-foreground">
-                Select an exam and section to start a personalized workshop.
-              </p>
+               {!IS_PREMIUM_USER ? (
+                 <Alert className="border-accent text-accent-foreground">
+                    <Crown className="h-4 w-4 text-accent" />
+                    <AlertTitle>This is a Premium Feature</AlertTitle>
+                    <AlertDescription>
+                        Get AI-led workshops for IELTS and TOEFL. 
+                        <Button variant="link" className="p-0 h-auto ml-1 text-accent-foreground">Upgrade to Premium</Button> to unlock this feature.
+                    </AlertDescription>
+                </Alert>
+              ) : (
+                <>
+                  <GraduationCap className="w-12 h-12 text-muted-foreground mb-4" />
+                  <h2 className="text-xl font-semibold">Ready to Master the Exam?</h2>
+                  <p className="text-muted-foreground">
+                    Select an exam and section to start a personalized workshop.
+                  </p>
+                </>
+              )}
             </div>
           )}
 

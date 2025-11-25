@@ -14,6 +14,10 @@ import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
+// --- Pricing Model Simulation ---
+const IS_PREMIUM_USER = false;
+// -----------------------------
+
 type TopicTemplate = 'business' | 'immigration' | 'slang' | 'medical' | 'legal';
 
 export default function LessonPlannerPage() {
@@ -25,6 +29,15 @@ export default function LessonPlannerPage() {
   const { toast } = useToast();
   
   const setTemplate = (topic: TopicTemplate) => {
+    if (!IS_PREMIUM_USER && (topic === 'medical' || topic === 'legal')) {
+      toast({
+        variant: 'destructive',
+        title: 'Premium Feature',
+        description: `The ${topic} lesson template is a premium feature. Please upgrade your plan.`,
+      });
+      return;
+    }
+
     let template = '';
     switch(topic) {
         case 'business':
@@ -129,12 +142,12 @@ export default function LessonPlannerPage() {
                         <MessageSquareQuote className="w-5 h-5 mb-1"/>
                         <span className="text-xs">Slang</span>
                     </Button>
-                    <Button variant="outline" size="sm" onClick={() => setTemplate('medical')} disabled={isLoading} className="flex-col h-16 relative">
+                    <Button variant="outline" size="sm" onClick={() => setTemplate('medical')} disabled={isLoading || !IS_PREMIUM_USER} className="flex-col h-16 relative">
                         <Badge variant="destructive" className="absolute top-1 right-1 text-xs px-1.5 py-0.5">Premium</Badge>
                         <Stethoscope className="w-5 h-5 mb-1"/>
                         <span className="text-xs">Medical</span>
                     </Button>
-                    <Button variant="outline" size="sm" onClick={() => setTemplate('legal')} disabled={isLoading} className="flex-col h-16 relative">
+                    <Button variant="outline" size="sm" onClick={() => setTemplate('legal')} disabled={isLoading || !IS_PREMIUM_USER} className="flex-col h-16 relative">
                         <Badge variant="destructive" className="absolute top-1 right-1 text-xs px-1.5 py-0.5">Premium</Badge>
                         <Scale className="w-5 h-5 mb-1"/>
                         <span className="text-xs">Legal</span>

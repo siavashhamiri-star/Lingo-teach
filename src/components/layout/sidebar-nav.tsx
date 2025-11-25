@@ -44,14 +44,14 @@ export function SidebarNav() {
                 isActive={isActive(item.href)}
                 tooltip={{ children: item.label, className: 'bg-primary text-primary-foreground' }}
                 className={cn(
-                  item.premium && 'text-yellow-400 hover:text-yellow-300',
+                  item.premium && 'text-sidebar-foreground',
                   isActive(item.href) && item.premium && 'bg-accent/20 text-yellow-300 hover:bg-accent/30'
                 )}
               >
                 <Link href={item.disabled ? '#' : item.href} aria-disabled={item.disabled}>
                   <item.icon />
                   <span>{item.label}</span>
-                  {item.premium && <Crown className="ml-auto h-4 w-4 text-yellow-400" />}
+                  {item.premium && <Badge variant="destructive" className="ml-auto group-data-[collapsible=icon]:hidden">Premium</Badge>}
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>

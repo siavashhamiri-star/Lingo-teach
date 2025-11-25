@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { BotMessageSquare, Loader2, Send, Sparkles, User, Drama } from 'lucide-react';
+import { BotMessageSquare, Loader2, Send, Sparkles, User, Drama, Crown } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -13,6 +13,12 @@ import { generateRoleplayScene, type RoleplaySceneOutput } from '@/ai/flows/role
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+
+// --- Pricing Model Simulation ---
+const IS_PREMIUM_USER = false;
+const FREE_CHAT_MESSAGE_LIMIT = 6; // Includes the initial message from the bot
+// -----------------------------
 
 export default function ChatbotPage() {
   const [messages, setMessages] = useState<ChatMessage[]>([
@@ -30,6 +36,8 @@ export default function ChatbotPage() {
 
   const { toast } = useToast();
 
+  const isChatLimitReached = !IS_PREMIUM_USER && messages.length >= FREE_CHAT_MESSAGE_LIMIT;
+
   useEffect(() => {
     // Scroll to the bottom when new messages are added
     if (scrollAreaRef.current) {
@@ -42,7 +50,7 @@ export default function ChatbotPage() {
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim() || isChatLoading) return;
+    if (!input.trim() || isChatLoading || isChatLimitReached) return;
 
     const newUserMessage: ChatMessage = { role: 'user', content: input };
     setMessages((prev) => [...prev, newUserMessage]);
@@ -165,6 +173,16 @@ export default function ChatbotPage() {
                        </div>
                      </div>
                   )}
+                  {isChatLimitReached && (
+                     <Alert className="mt-4 border-accent text-accent-foreground">
+                        <Crown className="h-4 w-4 text-accent" />
+                        <AlertTitle>Free Chat Limit Reached</AlertTitle>
+                        <AlertDescription>
+                            You've reached the message limit for the free plan. 
+                            <Button variant="link" className="p-0 h-auto ml-1 text-accent-foreground">Upgrade to Premium</Button> for unlimited conversations.
+                        </AlertDescription>
+                    </Alert>
+                  )}
                 </div>
               </ScrollArea>
             </CardContent>
@@ -172,11 +190,11 @@ export default function ChatbotPage() {
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Type your message..."
+                placeholder={isChatLimitReached ? 'Upgrade to send more messages' : 'Type your message...'}
                 className="flex-grow"
-                disabled={isChatLoading}
+                disabled={isChatLoading || isChatLimitReached}
               />
-              <Button type="submit" size="icon" disabled={isChatLoading || !input.trim()}>
+              <Button type="submit" size="icon" disabled={isChatLoading || !input.trim() || isChatLimitReached}>
                 {isChatLoading ? <Loader2 className="w-4 h-4 animate-spin"/> : <Send className="w-4 h-4" />}
               </Button>
             </form>
