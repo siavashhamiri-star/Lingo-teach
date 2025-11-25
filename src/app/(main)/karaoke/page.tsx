@@ -11,6 +11,7 @@ import { useToast } from '@/hooks/use-toast';
 import { generateKaraokeTrack, type KaraokeTrackOutput } from '@/ai/flows/karaoke-song-generator';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
+import { cn } from '@/lib/utils';
 
 export default function KaraokePage() {
   const [songTitle, setSongTitle] = useState('');
@@ -149,11 +150,11 @@ export default function KaraokePage() {
                 <div className="grid grid-cols-2 gap-6">
                   <div>
                     <h3 className="font-bold text-lg mb-2">Original Lyrics</h3>
-                    <pre className="text-muted-foreground whitespace-pre-wrap leading-relaxed font-body">{track.originalLyrics}</pre>
+                    <pre className="text-muted-foreground whitespace-pre-wrap leading-relaxed font-sans">{track.originalLyrics}</pre>
                   </div>
-                   <div className={cn("text-right", targetLanguage === 'fa' && 'rtl')}>
+                   <div className={cn(targetLanguage === 'fa' ? 'text-right' : '')}>
                      <h3 className="font-bold text-lg mb-2">Translated Lyrics</h3>
-                     <pre className="text-muted-foreground whitespace-pre-wrap leading-relaxed font-body" dir={targetLanguage === 'fa' ? 'rtl' : 'ltr'}>{track.translatedLyrics}</pre>
+                     <pre className="text-muted-foreground whitespace-pre-wrap leading-relaxed font-sans" dir={targetLanguage === 'fa' ? 'rtl' : 'ltr'}>{track.translatedLyrics}</pre>
                   </div>
                 </div>
               </CardContent>
