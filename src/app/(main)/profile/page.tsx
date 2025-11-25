@@ -1,7 +1,7 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { User, Gift, Linkedin, Copy, Users } from 'lucide-react';
+import { User, Gift, Copy, Crown, ShieldCheck } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -68,7 +68,7 @@ export default function ProfilePage() {
         </Card>
       </div>
 
-       <div className="grid gap-6 md:grid-cols-1">
+       <div className="grid gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2"><Gift className="w-5 h-5 text-primary" />Referral & Rewards Program</CardTitle>
@@ -95,6 +95,21 @@ export default function ProfilePage() {
                     <p className="text-muted-foreground">Lottery Entries</p>
                 </div>
             </div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2"><ShieldCheck className="w-5 h-5 text-primary" />Learners' Honorary Board</CardTitle>
+            <CardDescription>Top learners get a say in our future and a share of our success.</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4 text-sm text-muted-foreground">
+              <p>
+                Users who reach an advanced proficiency level will be invited to become honorary members of our board.
+              </p>
+              <ul className="list-disc pl-5 space-y-2">
+                <li><span className="font-semibold text-foreground">Influence policy</span> and have voting rights on future app features.</li>
+                <li><span className="font-semibold text-foreground">Share in our success:</span> 10% of app revenue is shared among board members, based on their promotional activities and user referrals.</li>
+              </ul>
           </CardContent>
         </Card>
       </div>
