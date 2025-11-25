@@ -9,6 +9,7 @@ import {
   Gem,
   Star,
   Crown,
+  Swords,
 } from 'lucide-react';
 import {
   Card,
@@ -61,15 +62,15 @@ const weeklyGoals = [
 
 const leaderboard = [
   { rank: 1, name: 'Elena', stars: 2150, league: "Emperor's Council" },
-  { rank: 2, name: 'Kenji', stars: 1980, league: 'Gem League' },
-  { rank: 3, name: 'You', stars: 1810, league: 'Award League' },
+  { rank: 2, name: 'Kenji', stars: 1980, league: 'Champion of Champions' },
+  { rank: 3, name: 'You', stars: 1810, league: 'Champion of Champions' },
   { rank: 4, name: 'Sara', stars: 1750, league: 'Award League' },
   { rank: 5, name: 'David', stars: 1230, league: 'Shield League' },
   { rank: 6, name: 'Maria', stars: 980, league: 'Shield League' },
   { rank: 7, name: 'Hassan', stars: 650, league: 'Star League' },
 ];
 
-type League = "Emperor's Council" | "Gem League" | "Award League" | "Shield League" | "Star League";
+type League = "Emperor's Council" | "Champion of Champions" | "Award League" | "Shield League" | "Star League";
 
 const leagueConfig: Record<
   League,
@@ -80,8 +81,8 @@ const leagueConfig: Record<
     className:
       'bg-destructive/20 border-destructive/50 text-destructive-foreground hover:bg-destructive/30',
   },
-  "Gem League": {
-    icon: Gem,
+  "Champion of Champions": {
+    icon: Swords,
     className: 'bg-sky-500/20 border-sky-500/50 text-sky-200 hover:bg-sky-500/30',
   },
   "Award League": {
