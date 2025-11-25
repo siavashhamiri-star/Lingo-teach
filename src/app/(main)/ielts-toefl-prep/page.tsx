@@ -38,14 +38,15 @@ export default function IeltsToeflPrepPage() {
   const [examSection, setExamSection] = useState<ExamSection>('speaking');
   const [workshop, setWorkshop] = useState<PersonalizedLessonOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [freeTrialUsed, setFreeTrialUsed] = useState(false);
   const { toast } = useToast();
 
   const handleStartWorkshop = async () => {
-    if (!IS_PREMIUM_USER) {
+    if (!IS_PREMIUM_USER && freeTrialUsed) {
       toast({
         variant: 'destructive',
-        title: 'Premium Feature',
-        description: 'IELTS & TOEFL Prep is a premium feature. Please upgrade your plan to start a workshop.',
+        title: 'Free Trial Used',
+        description: 'You have already used your free workshop. Please upgrade to premium for unlimited access.',
       });
       return;
     }
@@ -73,6 +74,9 @@ export default function IeltsToeflPrepPage() {
         lessonRequirements,
       });
       setWorkshop(result);
+      if (!IS_PREMIUM_USER) {
+        setFreeTrialUsed(true);
+      }
        toast({
         title: 'Workshop Ready!',
         description: 'Your AI-powered exam prep lesson is here.',
@@ -88,6 +92,8 @@ export default function IeltsToeflPrepPage() {
       setIsLoading(false);
     }
   };
+
+  const isButtonDisabled = isLoading || (!IS_PREMIUM_USER && freeTrialUsed);
 
   return (
     <div>
@@ -140,11 +146,20 @@ export default function IeltsToeflPrepPage() {
                   </SelectContent>
                 </Select>
               </div>
+               {!IS_PREMIUM_USER && (
+                <Alert variant="default" className="border-primary/20 bg-primary/5">
+                  <Crown className="h-4 w-4 text-primary" />
+                  <AlertTitle>Free Trial</AlertTitle>
+                  <AlertDescription>
+                    You can generate one premium workshop for free. Upgrade for unlimited access.
+                  </AlertDescription>
+                </Alert>
+              )}
             </CardContent>
             <CardFooter>
               <Button
                 onClick={handleStartWorkshop}
-                disabled={isLoading || !IS_PREMIUM_USER}
+                disabled={isButtonDisabled}
                 className="w-full"
               >
                 {isLoading ? (
@@ -173,13 +188,13 @@ export default function IeltsToeflPrepPage() {
 
           {!isLoading && !workshop && (
             <div className="flex flex-col items-center justify-center h-full min-h-[400px] border-2 border-dashed rounded-lg p-8 text-center">
-               {!IS_PREMIUM_USER ? (
+               {freeTrialUsed && !IS_PREMIUM_USER ? (
                  <Alert className="border-accent text-accent-foreground">
                     <Crown className="h-4 w-4 text-accent" />
-                    <AlertTitle>This is a Premium Feature</AlertTitle>
+                    <AlertTitle>Free Trial Used</AlertTitle>
                     <AlertDescription>
-                        Get AI-led workshops for IELTS and TOEFL. 
-                        <Button variant="link" className="p-0 h-auto ml-1 text-accent-foreground">Upgrade to Premium</Button> to unlock this feature.
+                        You have used your free workshop.
+                        <Button variant="link" className="p-0 h-auto ml-1 text-accent-foreground">Upgrade to Premium</Button> to generate more.
                     </AlertDescription>
                 </Alert>
               ) : (

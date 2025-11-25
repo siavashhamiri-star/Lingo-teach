@@ -40,6 +40,7 @@ export default function SimultaneousInterpretationPage() {
     useState<InterpretationScenarioOutput | null>(null);
   const [status, setStatus] = useState<InterpretationStatus>('idle');
   const [isLoading, setIsLoading] = useState(false);
+  const [freeTrialUsed, setFreeTrialUsed] = useState(false);
   const { toast } = useToast();
 
   const sourceAudioRef = useRef<HTMLAudioElement>(null);
@@ -47,11 +48,11 @@ export default function SimultaneousInterpretationPage() {
   const userAudioChunksRef = useRef<Blob[]>([]);
 
   const handleGenerateScenario = async () => {
-    if (!IS_PREMIUM_USER) {
+    if (!IS_PREMIUM_USER && freeTrialUsed) {
       toast({
         variant: 'destructive',
-        title: 'Premium Feature',
-        description: 'Simultaneous Interpretation is a premium feature. Please upgrade your plan to practice.',
+        title: 'Free Trial Used',
+        description: 'You have already used your free scenario. Please upgrade to premium for unlimited practice.',
       });
       return;
     }
@@ -64,6 +65,9 @@ export default function SimultaneousInterpretationPage() {
         language: sourceLanguage,
       });
       setGeneratedScenario(result);
+      if (!IS_PREMIUM_USER) {
+        setFreeTrialUsed(true);
+      }
     } catch (error) {
       console.error('Error generating scenario:', error);
       toast({
@@ -112,6 +116,8 @@ export default function SimultaneousInterpretationPage() {
       toast({ title: 'Practice Complete!', description: "You can now review your recording."});
     };
   };
+
+  const isGenerateButtonDisabled = isLoading || status !== 'idle' || (!IS_PREMIUM_USER && freeTrialUsed);
 
   return (
     <div>
@@ -166,11 +172,20 @@ export default function SimultaneousInterpretationPage() {
                   </SelectContent>
                 </Select>
               </div>
+              {!IS_PREMIUM_USER && (
+                <Alert variant="default" className="border-primary/20 bg-primary/5">
+                  <Crown className="h-4 w-4 text-primary" />
+                  <AlertTitle>Free Trial</AlertTitle>
+                  <AlertDescription>
+                    You can generate one premium scenario for free. Upgrade for unlimited practice.
+                  </AlertDescription>
+                </Alert>
+              )}
             </CardContent>
             <CardFooter>
               <Button
                 onClick={handleGenerateScenario}
-                disabled={isLoading || status !== 'idle' || !IS_PREMIUM_USER}
+                disabled={isGenerateButtonDisabled}
                 className="w-full"
               >
                 {isLoading ? (
@@ -197,13 +212,13 @@ export default function SimultaneousInterpretationPage() {
 
           {!isLoading && !generatedScenario && (
              <div className="flex flex-col items-center justify-center h-full min-h-[400px] border-2 border-dashed rounded-lg p-8 text-center">
-              {!IS_PREMIUM_USER ? (
+              {freeTrialUsed && !IS_PREMIUM_USER ? (
                  <Alert className="border-accent text-accent-foreground">
                     <Crown className="h-4 w-4 text-accent" />
-                    <AlertTitle>This is a Premium Feature</AlertTitle>
+                    <AlertTitle>Free Trial Used</AlertTitle>
                     <AlertDescription>
-                        Practice real-time interpretation like a pro.
-                        <Button variant="link" className="p-0 h-auto ml-1 text-accent-foreground">Upgrade to Premium</Button> to unlock this feature.
+                        You have used your free scenario.
+                        <Button variant="link" className="p-0 h-auto ml-1 text-accent-foreground">Upgrade to Premium</Button> to practice more.
                     </AlertDescription>
                 </Alert>
               ) : (
