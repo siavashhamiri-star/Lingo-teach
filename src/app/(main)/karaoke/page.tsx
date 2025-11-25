@@ -152,8 +152,8 @@ export default function KaraokePage() {
                     <h3 className="font-bold text-lg mb-2">Original Lyrics</h3>
                     <pre className="text-muted-foreground whitespace-pre-wrap leading-relaxed font-sans">{track.originalLyrics}</pre>
                   </div>
-                   <div className={cn(targetLanguage === 'fa' ? 'text-right' : '')}>
-                     <h3 className="font-bold text-lg mb-2">Translated Lyrics</h3>
+                   <div>
+                     <h3 className={cn("font-bold text-lg mb-2", targetLanguage === 'fa' && 'text-right')}>Translated Lyrics</h3>
                      <pre className="text-muted-foreground whitespace-pre-wrap leading-relaxed font-sans" dir={targetLanguage === 'fa' ? 'rtl' : 'ltr'}>{track.translatedLyrics}</pre>
                   </div>
                 </div>
