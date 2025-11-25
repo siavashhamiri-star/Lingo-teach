@@ -76,11 +76,13 @@ export default function KaraokePage() {
         <div className="lg:col-span-1 space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Wand2 className="w-5 h-5 text-primary" />
-                Find a Song
-              </CardTitle>
-              <CardDescription>Enter a song and artist to get started. This feature is part of our Premium offering.</CardDescription>
+              <div className="flex justify-between items-start">
+                <div>
+                  <CardTitle>Find a Song</CardTitle>
+                  <CardDescription>Enter a song to get translated lyrics.</CardDescription>
+                </div>
+                <Badge variant="destructive">Premium</Badge>
+              </div>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
@@ -90,7 +92,7 @@ export default function KaraokePage() {
                   placeholder="e.g., 'Bohemian Rhapsody'"
                   value={songTitle}
                   onChange={(e) => setSongTitle(e.target.value)}
-                  disabled={isLoading}
+                  disabled={isLoading || !IS_PREMIUM_USER}
                 />
               </div>
               <div className="space-y-2">
@@ -100,7 +102,7 @@ export default function KaraokePage() {
                   placeholder="e.g., 'Queen'"
                   value={artist}
                   onChange={(e) => setArtist(e.target.value)}
-                  disabled={isLoading}
+                  disabled={isLoading || !IS_PREMIUM_USER}
                 />
               </div>
               <div className="space-y-2">
@@ -108,7 +110,7 @@ export default function KaraokePage() {
                  <Select
                   value={targetLanguage}
                   onValueChange={(value: 'en' | 'fa') => setTargetLanguage(value)}
-                  disabled={isLoading}
+                  disabled={isLoading || !IS_PREMIUM_USER}
                 >
                   <SelectTrigger id="target-language">
                     <SelectValue placeholder="Select language" />
@@ -120,7 +122,7 @@ export default function KaraokePage() {
                 </Select>
               </div>
             </CardContent>
-            <CardFooter className="flex flex-col gap-4">
+            <CardFooter>
               <Button onClick={handleGenerateTrack} disabled={isLoading || !IS_PREMIUM_USER} className="w-full">
                 {isLoading ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -129,9 +131,6 @@ export default function KaraokePage() {
                 )}
                 Generate Karaoke Track
               </Button>
-               <Button variant="outline" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-                 <Sparkles className="mr-2 h-4 w-4" /> Go Premium for More Features
-               </Button>
             </CardFooter>
           </Card>
         </div>
@@ -148,14 +147,23 @@ export default function KaraokePage() {
           {!isLoading && !track && (
              <div className="flex flex-col items-center justify-center h-full min-h-[400px] border-2 border-dashed rounded-lg p-8 text-center">
               {!IS_PREMIUM_USER ? (
-                 <Alert className="border-accent text-accent-foreground">
-                    <Crown className="h-4 w-4 text-accent" />
-                    <AlertTitle>This is a Premium Feature</AlertTitle>
-                    <AlertDescription>
-                        The Karaoke feature lets you learn your favorite songs in a new language. 
-                        <Button variant="link" className="p-0 h-auto ml-1 text-accent-foreground">Upgrade to Premium</Button> to unlock this and many other features.
-                    </AlertDescription>
-                </Alert>
+                 <Card className="w-full max-w-md text-center shadow-lg">
+                    <CardHeader>
+                        <CardTitle className="flex items-center justify-center gap-2 text-2xl">
+                           <Crown className="w-6 h-6 text-yellow-500" />
+                           Unlock the Stage!
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                       <p className="text-muted-foreground">The Karaoke feature is your chance to learn languages through music, with translated lyrics for your favorite songs. This is an exclusive premium feature.</p>
+                    </CardContent>
+                    <CardFooter>
+                       <Button size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
+                         <Sparkles className="mr-2 h-4 w-4" />
+                         Upgrade to Start Singing
+                       </Button>
+                    </CardFooter>
+                 </Card>
               ) : (
                 <>
                   <Music className="w-12 h-12 text-muted-foreground mb-4" />

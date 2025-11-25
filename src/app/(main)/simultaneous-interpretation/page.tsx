@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { Headset, Loader2, Mic, Play, Square, Wand2, Crown } from 'lucide-react';
+import { Headset, Loader2, Mic, Play, Square, Wand2, Crown, Sparkles } from 'lucide-react';
 import {
   Card,
   CardContent,
@@ -26,6 +26,7 @@ import {
 } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Badge } from '@/components/ui/badge';
 
 // --- Pricing Model Simulation ---
 const IS_PREMIUM_USER = false;
@@ -52,7 +53,7 @@ export default function SimultaneousInterpretationPage() {
       toast({
         variant: 'destructive',
         title: 'Free Trial Used',
-        description: 'You have already used your free scenario. Please upgrade to premium for unlimited practice.',
+        description: 'Please upgrade to premium for unlimited practice scenarios.',
       });
       return;
     }
@@ -130,10 +131,15 @@ export default function SimultaneousInterpretationPage() {
         <div className="lg:col-span-1 space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Scenario Setup</CardTitle>
-              <CardDescription>
-                Generate a scenario to start your practice.
-              </CardDescription>
+              <div className="flex justify-between items-start">
+                <div>
+                  <CardTitle>Scenario Setup</CardTitle>
+                  <CardDescription>
+                    Generate a scenario to practice.
+                  </CardDescription>
+                </div>
+                <Badge variant="destructive">Premium</Badge>
+              </div>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-2">
@@ -143,7 +149,7 @@ export default function SimultaneousInterpretationPage() {
                   onValueChange={(value: 'English' | 'Persian') =>
                     setSourceLanguage(value)
                   }
-                  disabled={isLoading || status !== 'idle'}
+                  disabled={isGenerateButtonDisabled}
                 >
                   <SelectTrigger id="source-language">
                     <SelectValue />
@@ -159,7 +165,7 @@ export default function SimultaneousInterpretationPage() {
                 <Select
                   value={scenario}
                   onValueChange={setScenario}
-                  disabled={isLoading || status !== 'idle'}
+                  disabled={isGenerateButtonDisabled}
                 >
                   <SelectTrigger id="scenario">
                     <SelectValue />
@@ -172,12 +178,12 @@ export default function SimultaneousInterpretationPage() {
                   </SelectContent>
                 </Select>
               </div>
-              {!IS_PREMIUM_USER && (
+              {!IS_PREMIUM_USER && !freeTrialUsed && (
                 <Alert variant="default" className="border-primary/20 bg-primary/5">
                   <Crown className="h-4 w-4 text-primary" />
-                  <AlertTitle>Free Trial</AlertTitle>
+                  <AlertTitle>Try it for Free!</AlertTitle>
                   <AlertDescription>
-                    You can generate one premium scenario for free. Upgrade for unlimited practice.
+                    Your first interpretation scenario is on us. Experience professional-level practice for free.
                   </AlertDescription>
                 </Alert>
               )}
@@ -213,14 +219,14 @@ export default function SimultaneousInterpretationPage() {
           {!isLoading && !generatedScenario && (
              <div className="flex flex-col items-center justify-center h-full min-h-[400px] border-2 border-dashed rounded-lg p-8 text-center">
               {freeTrialUsed && !IS_PREMIUM_USER ? (
-                 <Alert className="border-accent text-accent-foreground">
-                    <Crown className="h-4 w-4 text-accent" />
-                    <AlertTitle>Free Trial Used</AlertTitle>
-                    <AlertDescription>
-                        You have used your free scenario.
-                        <Button variant="link" className="p-0 h-auto ml-1 text-accent-foreground">Upgrade to Premium</Button> to practice more.
-                    </AlertDescription>
-                </Alert>
+                 <div className="text-center space-y-4">
+                    <h2 className="text-2xl font-bold">Ready for the next level?</h2>
+                    <p className="text-muted-foreground max-w-md">You've had a taste of professional interpretation practice. Upgrade to get unlimited scenarios and master your skills.</p>
+                    <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                      <Sparkles className="mr-2 h-4 w-4" />
+                      Unlock Unlimited Practice
+                    </Button>
+                 </div>
               ) : (
                 <>
                   <Headset className="w-12 h-12 text-muted-foreground mb-4" />

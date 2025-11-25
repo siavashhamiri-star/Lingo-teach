@@ -46,7 +46,7 @@ export default function IeltsToeflPrepPage() {
       toast({
         variant: 'destructive',
         title: 'Free Trial Used',
-        description: 'You have already used your free workshop. Please upgrade to premium for unlimited access.',
+        description: 'Please upgrade to premium for unlimited access to workshops.',
       });
       return;
     }
@@ -106,10 +106,15 @@ export default function IeltsToeflPrepPage() {
         <div className="lg:col-span-1 space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>AI Exam Tutor</CardTitle>
-              <CardDescription>
-                Choose an exam to get a personalized AI-led workshop.
-              </CardDescription>
+              <div className="flex justify-between items-start">
+                <div>
+                  <CardTitle>AI Exam Tutor</CardTitle>
+                  <CardDescription>
+                    Get a personalized AI-led workshop.
+                  </CardDescription>
+                </div>
+                <Badge variant="destructive">Premium</Badge>
+              </div>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-2">
@@ -146,12 +151,12 @@ export default function IeltsToeflPrepPage() {
                   </SelectContent>
                 </Select>
               </div>
-               {!IS_PREMIUM_USER && (
+               {!IS_PREMIUM_USER && !freeTrialUsed && (
                 <Alert variant="default" className="border-primary/20 bg-primary/5">
                   <Crown className="h-4 w-4 text-primary" />
-                  <AlertTitle>Free Trial</AlertTitle>
+                  <AlertTitle>Try it for Free!</AlertTitle>
                   <AlertDescription>
-                    You can generate one premium workshop for free. Upgrade for unlimited access.
+                    Your first AI workshop is on us. Generate one premium lesson for free to see the magic.
                   </AlertDescription>
                 </Alert>
               )}
@@ -189,14 +194,14 @@ export default function IeltsToeflPrepPage() {
           {!isLoading && !workshop && (
             <div className="flex flex-col items-center justify-center h-full min-h-[400px] border-2 border-dashed rounded-lg p-8 text-center">
                {freeTrialUsed && !IS_PREMIUM_USER ? (
-                 <Alert className="border-accent text-accent-foreground">
-                    <Crown className="h-4 w-4 text-accent" />
-                    <AlertTitle>Free Trial Used</AlertTitle>
-                    <AlertDescription>
-                        You have used your free workshop.
-                        <Button variant="link" className="p-0 h-auto ml-1 text-accent-foreground">Upgrade to Premium</Button> to generate more.
-                    </AlertDescription>
-                </Alert>
+                 <div className="text-center space-y-4">
+                    <h2 className="text-2xl font-bold">You've experienced the power.</h2>
+                    <p className="text-muted-foreground max-w-md">Your first workshop was just a preview. Unlock your full potential and get unlimited, personalized exam prep by upgrading.</p>
+                    <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                      <Sparkles className="mr-2 h-4 w-4" />
+                      Unlock Unlimited Prep
+                    </Button>
+                 </div>
               ) : (
                 <>
                   <GraduationCap className="w-12 h-12 text-muted-foreground mb-4" />
