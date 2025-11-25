@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { BrainCircuit, Loader2, Sparkles, Wand2, BookOpen, FileText } from 'lucide-react';
+import { BrainCircuit, Loader2, Sparkles, Wand2, BookOpen, FileText, Briefcase, Building, MessageSquareQuote } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -14,6 +14,8 @@ import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
+type TopicTemplate = 'business' | 'immigration' | 'slang';
+
 export default function LearningPathPage() {
   const [lessonRequirements, setLessonRequirements] = useState('');
   const [userLanguage, setUserLanguage] = useState<'English' | 'Persian'>('English');
@@ -21,6 +23,22 @@ export default function LearningPathPage() {
   const [lesson, setLesson] = useState<PersonalizedLessonOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  
+  const setTemplate = (topic: TopicTemplate) => {
+    let template = '';
+    switch(topic) {
+        case 'business':
+            template = "Create a Business English lesson. Focus on vocabulary for meetings, negotiations, and writing professional emails. Include an exercise on common business idioms and formal communication etiquette.";
+            break;
+        case 'immigration':
+            template = "Create a lesson for English for immigration purposes. The lesson should cover essential vocabulary and phrases for interacting with officials, filling out forms, and understanding legal documents. Include a role-playing exercise for a border interview.";
+            break;
+        case 'slang':
+            template = "Create a lesson on modern colloquial English and slang. Explain the meaning and usage of 5-7 popular slang terms or phrases. Provide examples of how they are used in natural conversation and include an exercise to test understanding.";
+            break;
+    }
+    setLessonRequirements(template);
+  }
 
   const handleGenerateLesson = async () => {
     if (!lessonRequirements) {
@@ -82,13 +100,33 @@ export default function LearningPathPage() {
                 <Label htmlFor="lesson-requirements">Lesson Description</Label>
                 <Textarea
                   id="lesson-requirements"
-                  placeholder="e.g., 'An introductory lesson on Persian greetings for beginner English speakers. Focus on formal and informal situations.'"
+                  placeholder="e.g., 'An introductory lesson on Persian greetings for beginner English speakers...'"
                   value={lessonRequirements}
                   onChange={(e) => setLessonRequirements(e.target.value)}
                   disabled={isLoading}
                   rows={5}
                 />
               </div>
+
+               <div className='space-y-3'>
+                  <Label>Or, choose a topic template</Label>
+                  <div className='grid grid-cols-3 gap-2'>
+                    <Button variant="outline" size="sm" onClick={() => setTemplate('business')} disabled={isLoading} className="flex-col h-16">
+                        <Briefcase className="w-5 h-5 mb-1"/>
+                        <span className="text-xs">Business</span>
+                    </Button>
+                     <Button variant="outline" size="sm" onClick={() => setTemplate('immigration')} disabled={isLoading} className="flex-col h-16">
+                        <Building className="w-5 h-5 mb-1"/>
+                        <span className="text-xs">Immigration</span>
+                    </Button>
+                     <Button variant="outline" size="sm" onClick={() => setTemplate('slang')} disabled={isLoading} className="flex-col h-16">
+                        <MessageSquareQuote className="w-5 h-5 mb-1"/>
+                        <span className="text-xs">Slang</span>
+                    </Button>
+                  </div>
+              </div>
+
+
                <div className="space-y-2">
                 <Label htmlFor="target-language">Lesson Language (Teaching)</Label>
                  <Select
