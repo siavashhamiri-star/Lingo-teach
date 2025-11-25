@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { BrainCircuit, Loader2, Sparkles, Wand2, BookOpen, FileText, Briefcase, Building, MessageSquareQuote } from 'lucide-react';
+import { BrainCircuit, Loader2, Sparkles, Wand2, BookOpen, FileText, Briefcase, Building, MessageSquareQuote, Stethoscope } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -14,7 +14,7 @@ import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
-type TopicTemplate = 'business' | 'immigration' | 'slang';
+type TopicTemplate = 'business' | 'immigration' | 'slang' | 'medical';
 
 export default function LearningPathPage() {
   const [lessonRequirements, setLessonRequirements] = useState('');
@@ -35,6 +35,9 @@ export default function LearningPathPage() {
             break;
         case 'slang':
             template = "Create a lesson on modern colloquial English and slang. Explain the meaning and usage of 5-7 popular slang terms or phrases. Provide examples of how they are used in natural conversation and include an exercise to test understanding.";
+            break;
+        case 'medical':
+            template = "Create a comprehensive Medical English lesson suitable for doctors, medical students, radiologists, and lab scientists. The lesson should focus on terminology for patient consultations, understanding medical reports (radiology, lab results), and common clinical vocabulary. Include practical exercises."
             break;
     }
     setLessonRequirements(template);
@@ -110,7 +113,7 @@ export default function LearningPathPage() {
 
                <div className='space-y-3'>
                   <Label>Or, choose a topic template</Label>
-                  <div className='grid grid-cols-3 gap-2'>
+                  <div className='grid grid-cols-2 gap-2'>
                     <Button variant="outline" size="sm" onClick={() => setTemplate('business')} disabled={isLoading} className="flex-col h-16">
                         <Briefcase className="w-5 h-5 mb-1"/>
                         <span className="text-xs">Business</span>
@@ -122,6 +125,10 @@ export default function LearningPathPage() {
                      <Button variant="outline" size="sm" onClick={() => setTemplate('slang')} disabled={isLoading} className="flex-col h-16">
                         <MessageSquareQuote className="w-5 h-5 mb-1"/>
                         <span className="text-xs">Slang</span>
+                    </Button>
+                    <Button variant="outline" size="sm" onClick={() => setTemplate('medical')} disabled={isLoading} className="flex-col h-16">
+                        <Stethoscope className="w-5 h-5 mb-1"/>
+                        <span className="text-xs">Medical</span>
                     </Button>
                   </div>
               </div>
