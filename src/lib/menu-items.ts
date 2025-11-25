@@ -6,6 +6,7 @@ import {
   BrainCircuit,
   Camera,
   Ear,
+  GraduationCap,
   Languages,
   LayoutDashboard,
   MicVocal,
@@ -30,5 +31,11 @@ export const menuItems: NavItem[] = [
   { href: '/object-identifier', label: 'Object Identifier', icon: Camera },
   { href: '/community', label: 'Community', icon: Users },
   { href: '/karaoke', label: 'Karaoke', icon: Music, premium: true },
+  {
+    href: '/ielts-toefl-prep',
+    label: 'IELTS/TOEFL Prep',
+    icon: GraduationCap,
+    premium: true,
+  },
   { href: '/profile', label: 'Profile', icon: User },
 ];
