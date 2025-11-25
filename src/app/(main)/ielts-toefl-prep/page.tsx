@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { GraduationCap, Loader2, Sparkles, Wand2 } from 'lucide-react';
+import { GraduationCap, Loader2, Sparkles, Wand2, FileText, BookOpen } from 'lucide-react';
 import {
   Card,
   CardContent,
@@ -22,77 +22,75 @@ import {
 } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Progress } from '@/components/ui/progress';
+import { generatePersonalizedLesson, type PersonalizedLessonOutput } from '@/ai/flows/personalized-lesson-generation';
+import { Separator } from '@/components/ui/separator';
+import { Badge } from '@/components/ui/badge';
+
 
 type ExamType = 'ielts' | 'toefl';
-type ExamSection = 'speaking' | 'writing' | 'reading' | 'listening';
-
-interface SimulationResult {
-  score: number;
-  feedback: string;
-  question: string;
-}
+type ExamSection = 'speaking' | 'writing';
 
 export default function IeltsToeflPrepPage() {
   const [examType, setExamType] = useState<ExamType>('ielts');
   const [examSection, setExamSection] = useState<ExamSection>('speaking');
-  const [result, setResult] = useState<SimulationResult | null>(null);
+  const [workshop, setWorkshop] = useState<PersonalizedLessonOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const handleStartSimulation = async () => {
+  const handleStartWorkshop = async () => {
     setIsLoading(true);
-    setResult(null);
+    setWorkshop(null);
     toast({
-      title: 'Starting Simulation...',
-      description: `Generating a ${examType.toUpperCase()} ${examSection} task.`,
+      title: 'Generating Your Workshop...',
+      description: `The AI is creating a custom ${examType.toUpperCase()} ${examSection} lesson for you.`,
     });
 
-    // In a real app, this would be a call to an AI flow.
-    // We are simulating the AI response here.
-    setTimeout(() => {
-      const sampleQuestion =
-        examType === 'ielts' && examSection === 'speaking'
-          ? "Describe a time when you received good advice from someone. You should say: who gave you the advice, what the advice was, and explain why you think it was good advice."
-          : 'Summarize the points made in the lecture, being sure to explain how they cast doubt on the specific points made in the reading passage.';
+    const lessonRequirements = `Create a detailed workshop for the ${examSection} section of the ${examType.toUpperCase()} exam.
+    It should include:
+    1. A realistic sample question for this section.
+    2. Key strategies and tips for answering this type of question.
+    3. A high-scoring model answer.
+    4. A few vocabulary or grammar exercises related to the topic.
+    The lesson should be structured to teach a user how to master this task.
+    `;
 
-      const sampleScore = Math.random() * (9 - 6) + 6; // Random score between 6.0 and 9.0 for IELTS
-      const sampleFeedback =
-        'Your response was well-structured and you used a good range of vocabulary. To improve, try to use more complex sentence structures and vary your intonation to show more expression. Your pronunciation of "specific" could be clearer.';
-
-      setResult({
-        score: parseFloat(sampleScore.toFixed(1)),
-        feedback: sampleFeedback,
-        question: sampleQuestion,
+    try {
+      const result = await generatePersonalizedLesson({
+        userLanguage: 'English',
+        nativeLanguage: 'Any', // The lesson is in English, so native lang is less relevant here
+        lessonRequirements,
       });
+      setWorkshop(result);
+       toast({
+        title: 'Workshop Ready!',
+        description: 'Your AI-powered exam prep lesson is here.',
+      });
+    } catch (error) {
+       console.error('Error generating workshop:', error);
+       toast({
+        variant: 'destructive',
+        title: 'Error Generating Workshop',
+        description: 'There was a problem creating your lesson. The AI model might be unavailable.',
+      });
+    } finally {
       setIsLoading(false);
-      toast({
-        title: 'Simulation Complete!',
-        description: 'Your AI-powered feedback is ready.',
-      });
-    }, 2500);
-  };
-
-  const getScoreDisplay = () => {
-    if (!result) return 'N/A';
-    if (examType === 'ielts') return `${result.score.toFixed(1)} / 9.0`;
-    return `${Math.round((result.score / 9) * 30)} / 30`;
+    }
   };
 
   return (
     <div>
       <PageHeader
         title="IELTS & TOEFL Prep"
-        description="Simulate exam sections and get AI-powered scoring and feedback."
+        description="Simulate exam sections and get AI-powered teaching and feedback."
         icon={GraduationCap}
       />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-1 space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Exam Simulation</CardTitle>
+              <CardTitle>AI Exam Tutor</CardTitle>
               <CardDescription>
-                Choose your exam and get a sample task.
+                Choose an exam to get a personalized AI-led workshop.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -133,7 +131,7 @@ export default function IeltsToeflPrepPage() {
             </CardContent>
             <CardFooter>
               <Button
-                onClick={handleStartSimulation}
+                onClick={handleStartWorkshop}
                 disabled={isLoading}
                 className="w-full"
               >
@@ -142,7 +140,7 @@ export default function IeltsToeflPrepPage() {
                 ) : (
                   <Wand2 className="mr-2 h-4 w-4" />
                 )}
-                Start Simulation
+                Generate Workshop
               </Button>
             </CardFooter>
           </Card>
@@ -153,57 +151,57 @@ export default function IeltsToeflPrepPage() {
             <div className="flex flex-col items-center justify-center h-full min-h-[400px] border-2 border-dashed rounded-lg p-8 text-center">
               <Loader2 className="w-12 h-12 animate-spin text-primary mb-4" />
               <h2 className="text-xl font-semibold">
-                Simulating Exam Conditions...
+                Your AI Tutor is Preparing...
               </h2>
               <p className="text-muted-foreground">
-                Generating a unique task and preparing your AI examiner.
+                Crafting a unique workshop with strategies and examples just for you.
               </p>
             </div>
           )}
 
-          {!isLoading && !result && (
+          {!isLoading && !workshop && (
             <div className="flex flex-col items-center justify-center h-full min-h-[400px] border-2 border-dashed rounded-lg p-8 text-center">
               <GraduationCap className="w-12 h-12 text-muted-foreground mb-4" />
-              <h2 className="text-xl font-semibold">Ready to Test Your Skills?</h2>
+              <h2 className="text-xl font-semibold">Ready to Master the Exam?</h2>
               <p className="text-muted-foreground">
-                Select an exam and section to start a simulation.
+                Select an exam and section to start a personalized workshop.
               </p>
             </div>
           )}
 
-          {result && (
+          {workshop && (
             <Card>
               <CardHeader>
-                <CardTitle>Simulation Results</CardTitle>
+                <CardTitle>{workshop.lessonTitle}</CardTitle>
                 <CardDescription>
-                  Here is your sample task and AI-generated feedback.
+                  An AI-generated workshop for the {examType.toUpperCase()} {examSection} section.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div>
-                  <Label className="font-bold">Generated Task</Label>
-                  <p className="text-muted-foreground p-4 bg-muted rounded-md mt-2">
-                    {result.question}
-                  </p>
+                 <div>
+                    <h3 className="font-bold text-lg mb-2 flex items-center gap-2"><FileText className="w-5 h-5 text-primary"/> Lesson & Strategies</h3>
+                    <div className="prose prose-sm max-w-none text-muted-foreground whitespace-pre-wrap rounded-md border p-4">
+                      {workshop.lessonContent}
+                    </div>
                 </div>
-                <Alert>
-                  <Sparkles className="h-4 w-4" />
-                  <AlertTitle className="font-bold">AI Feedback</AlertTitle>
-                  <AlertDescription>{result.feedback}</AlertDescription>
-                </Alert>
+                <Separator />
                 <div>
-                  <div className="flex justify-between items-end mb-1">
-                    <span className="font-medium text-lg">Estimated Score</span>
-                    <span className="text-2xl font-bold text-primary">
-                      {getScoreDisplay()}
-                    </span>
-                  </div>
-                  <Progress value={(result.score / (examType === 'ielts' ? 9 : 30) * 100)} />
+                    <h3 className="font-bold text-lg mb-4 flex items-center gap-2"><BookOpen className="w-5 h-5 text-primary"/> Exercises</h3>
+                    <div className="space-y-4">
+                        {workshop.exercises.map((exercise, index) => (
+                            <div key={index} className="p-4 bg-muted/50 rounded-lg border">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <Badge variant="secondary">{exercise.exerciseType}</Badge>
+                                </div>
+                                <p className="text-muted-foreground">{exercise.exerciseDescription}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
               </CardContent>
                <CardFooter>
                 <p className="text-xs text-muted-foreground">
-                  Note: This is a symbolic score generated for demonstration purposes. The real exam simulation will involve you recording or writing a response.
+                  This content is generated by AI. To practice, try answering the sample question before reading the model answer.
                 </p>
               </CardFooter>
             </Card>
