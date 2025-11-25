@@ -43,7 +43,6 @@ export const menuItems: NavItem[] = [
     label: 'Simultaneous Interpretation',
     icon: Headset,
     premium: true,
-    disabled: true,
   },
   { href: '/profile', label: 'Profile', icon: User },
 ];
