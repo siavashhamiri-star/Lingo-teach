@@ -10,10 +10,14 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { LogOut, Settings, User } from 'lucide-react';
+import { Crown, LogOut, Settings, User } from 'lucide-react';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import Link from 'next/link';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+
+// --- Pricing Model Simulation ---
+const IS_PREMIUM_USER = true; 
+// -----------------------------
 
 export function Header() {
   const profileAvatar = PlaceHolderImages.find((img) => img.id === 'profile-avatar');
@@ -29,6 +33,9 @@ export function Header() {
                 {profileAvatar && <AvatarImage src={profileAvatar.imageUrl} alt="User Avatar" />}
                 <AvatarFallback>U</AvatarFallback>
               </Avatar>
+               {IS_PREMIUM_USER && (
+                <Crown className="absolute -top-1 -right-1 w-5 h-5 text-yellow-500 fill-yellow-500 transform rotate-12" />
+              )}
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="end" forceMount>
