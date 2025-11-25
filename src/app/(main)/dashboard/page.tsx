@@ -4,8 +4,19 @@ import {
   BookOpenCheck,
   BotMessageSquare,
   Trophy,
+  Award,
+  Shield,
+  Gem,
+  Star,
+  Crown,
 } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import {
@@ -19,6 +30,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { PageHeader } from '@/components/shared/page-header';
 import { LayoutDashboard } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const quickLinks = [
   {
@@ -48,11 +60,47 @@ const weeklyGoals = [
 ];
 
 const leaderboard = [
-  { rank: 1, name: 'Elena', stars: 125, league: 'Premier' },
-  { rank: 2, name: 'You', stars: 110, league: 'Gold' },
-  { rank: 3, name: 'David', stars: 98, league: 'Gold' },
-  { rank: 4, name: 'Sara', stars: 95, league: 'Gold' },
+  { rank: 1, name: 'Elena', stars: 2150, league: "Emperor's Council" },
+  { rank: 2, name: 'Kenji', stars: 1980, league: 'Diamond' },
+  { rank: 3, name: 'You', stars: 1810, league: 'Gold' },
+  { rank: 4, name: 'Sara', stars: 1750, league: 'Gold' },
+  { rank: 5, name: 'David', stars: 1230, league: 'Silver' },
+  { rank: 6, name: 'Maria', stars: 980, league: 'Silver' },
+  { rank: 7, name: 'Hassan', stars: 650, league: 'Bronze' },
 ];
+
+type League = "Emperor's Council" | "Diamond" | "Gold" | "Silver" | "Bronze";
+
+const leagueConfig: Record<
+  League,
+  { icon: React.ElementType; className: string }
+> = {
+  "Emperor's Council": {
+    icon: Crown,
+    className:
+      'bg-destructive/20 border-destructive/50 text-destructive-foreground hover:bg-destructive/30',
+  },
+  Diamond: {
+    icon: Gem,
+    className: 'bg-sky-500/20 border-sky-500/50 text-sky-200 hover:bg-sky-500/30',
+  },
+  Gold: {
+    icon: Award,
+    className:
+      'bg-yellow-500/20 border-yellow-500/50 text-yellow-200 hover:bg-yellow-500/30',
+  },
+  Silver: {
+    icon: Shield,
+    className:
+      'bg-slate-500/20 border-slate-500/50 text-slate-300 hover:bg-slate-500/30',
+  },
+  Bronze: {
+    icon: Star,
+    className:
+      'bg-orange-600/20 border-orange-600/50 text-orange-300 hover:bg-orange-600/30',
+  },
+};
+
 
 export default function DashboardPage() {
   return (
@@ -103,7 +151,8 @@ export default function DashboardPage() {
 
         <Card className="lg:col-span-2 shadow-md">
           <CardHeader>
-            <CardTitle>Leaderboard</CardTitle>
+            <CardTitle>Weekly Leaderboard</CardTitle>
+            <CardDescription>Top learners climb to a higher league each week based on XP.</CardDescription>
           </CardHeader>
           <CardContent>
             <Table>
@@ -111,22 +160,28 @@ export default function DashboardPage() {
                 <TableRow>
                   <TableHead className="w-[50px]">Rank</TableHead>
                   <TableHead>User</TableHead>
-                  <TableHead className="text-right">Stars</TableHead>
+                  <TableHead>League</TableHead>
+                  <TableHead className="text-right">XP</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {leaderboard.map((user) => (
-                  <TableRow key={user.rank} className={user.name === 'You' ? 'bg-primary/10' : ''}>
-                    <TableCell className="font-medium">{user.rank}</TableCell>
-                    <TableCell>
-                      {user.name}
-                      {user.league === 'Premier' && (
-                        <Badge variant="destructive" className="ml-2">Premier</Badge>
-                      )}
-                    </TableCell>
-                    <TableCell className="text-right">{user.stars}</TableCell>
-                  </TableRow>
-                ))}
+                {leaderboard.map((user) => {
+                  const leagueInfo = leagueConfig[user.league as League];
+                  const LeagueIcon = leagueInfo.icon;
+                  return (
+                    <TableRow key={user.rank} className={cn(user.name === 'You' ? 'bg-primary/10' : '')}>
+                      <TableCell className="font-medium">{user.rank}</TableCell>
+                      <TableCell>{user.name}</TableCell>
+                      <TableCell>
+                        <Badge variant="outline" className={cn("gap-1.5", leagueInfo.className)}>
+                          <LeagueIcon className="h-3 w-3" />
+                          {user.league}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-right font-semibold">{user.stars}</TableCell>
+                    </TableRow>
+                  );
+                })}
               </TableBody>
             </Table>
           </CardContent>

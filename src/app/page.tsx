@@ -35,7 +35,7 @@ export default function LandingPage() {
       <header className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Logo className="h-8 w-8 text-primary" />
-          <span className="text-2xl font-bold text-primary-dark font-headline">LinguaWeave</span>
+          <span className="text-2xl font-bold">LinguaWeave</span>
         </Link>
         <Button asChild>
           <Link href="/dashboard">

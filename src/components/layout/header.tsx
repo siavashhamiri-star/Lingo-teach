@@ -34,7 +34,7 @@ export function Header() {
                 <AvatarFallback>U</AvatarFallback>
               </Avatar>
                {IS_PREMIUM_USER && (
-                <Crown className="absolute -top-1 -right-1 w-5 h-5 text-yellow-500 fill-yellow-500 transform rotate-12" />
+                <Crown className="absolute -top-1.5 -right-1.5 w-6 h-6 text-yellow-500 fill-yellow-500 transform rotate-12" />
               )}
             </Button>
           </DropdownMenuTrigger>
