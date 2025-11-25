@@ -111,9 +111,9 @@ export default function LiveClassesPage() {
                 <CardContent className="space-y-4">
                     <Alert>
                         <Banknote className="h-4 w-4" />
-                        <AlertTitle>مدل همکاری و کمیسیون</AlertTitle>
+                        <AlertTitle>فرآیند مالی و تسویه حساب</AlertTitle>
                         <AlertDescription>
-                            اساتید برتر می‌توانند کلاس‌های خود را در LinguaWeave برگزار کنند. پس از برگزاری هر کلاس، <strong>۷۰٪ از درآمد</strong> به استاد و <strong>۳۰٪ به عنوان کمیسیون</strong> به پلتفرم تعلق می‌گیرد.
+                            هزینه کلاس توسط دانش‌آموزان مستقیماً به حساب LinguaWeave واریز می‌شود. پس از اتمام موفقیت‌آمیز هر جلسه، سهم <strong>۷۰ درصدی</strong> استاد طبق قرارداد به حساب ایشان واریز می‌گردد و <strong>۳۰ درصد</strong> به عنوان کمیسیون به پلتفرم تعلق می‌گیرد.
                         </AlertDescription>
                     </Alert>
                     <p className="text-sm text-muted-foreground">
