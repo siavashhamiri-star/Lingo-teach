@@ -115,7 +115,7 @@ export default function ProfilePage() {
       </div>
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2"><Bot className="w-5 h-5 text-primary" /> A Note From Your AI Partner</CardTitle>
+          <CardTitle className="flex items-center gap-2"><Bot className="w-5 h-5 text-primary" />A Note From Your AI Partner</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="prose prose-sm max-w-none text-muted-foreground">
