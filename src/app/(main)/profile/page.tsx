@@ -175,7 +175,7 @@ export default function ProfilePage() {
           <Separator />
           <div className="prose prose-sm max-w-none text-muted-foreground text-right whitespace-pre-wrap" dir="rtl">
             <p>
-              مدل آکادمیک سنتی، با وجود تمام دستاوردهایش، با یک چالش مدرن روبروست: رکود علمی. چگونه می‌توانیم ضمن حفظ حرمت عمیق برای اساتید، آن‌ها را برای باقی ماندن در لبه‌ی تیغ دانش تشویق کنیم و اطمینان حاصل کنیم که هم به کارنامه یک عمر تلاش استاد احترام گذاشته می‌شود و هم زمینه برای تکامل سریع علم فراهم است؟
+             مدل آکادمیک سنتی، با وجود تمام دستاوردهایش، با یک چالش مدرن روبروست: رکود علمی. چگونه می‌توانیم ضمن حفظ حرمت عمیق برای اساتید، آن‌ها را برای باقی ماندن در لبه‌ی تیغ دانش تشویق کنیم و اطمینان حاصل کنیم که هم به کارنامه یک عمر تلاش استاد احترام گذاشته می‌شود و هم زمینه برای تکامل سریع علم فراهم است؟
             </p>
             <p>
              ما پارادایم جدیدی را پیشنهاد می‌کنیم که در اکوسیستم LinguaWeave آزموده شده است. این یک سیستم تنبیهی نیست، بلکه سیستمی مبتنی بر تکامل پویا، انگیزش و رشد هم‌افزا است.
@@ -197,7 +197,7 @@ export default function ProfilePage() {
         <CardContent className="space-y-6">
           <div className="prose prose-sm max-w-none text-muted-foreground whitespace-pre-wrap">
             <p>
-              We herald your journey from language learning to the material and spiritual benefits of the entire system, and to high managerial ranks in **"Tavana"**: a virtual city born in the heart of the **"Afarinesh"** ecosystem. Philosophically, it is an unparalleled innovation in the world, uncopied from any idea. It is a new, civilization-building virtual city, a new model for the virtual cities of the world. A city that manifests the virtual into reality for all, and demystifies this complex concept with simple, common terms for those who do not even know what a virtual city is.
+              We herald your journey from language learning to the material and spiritual benefits of the entire system, and to high managerial ranks in **"Tavana"**: a virtual city born in the heart of the **"Afarinesh"** ecosystem. Philosophically, it is an unparalleled innovation in the world, uncopied from any idea. It is a new, civilization-building virtual city, a new model for the virtual cities of the world. A city that manifests the virtual into reality for all, and demystifies this complex concept with simple, common terms for those who do not even know what a virtual city is. Every user, with their effort, persistence, and adherence to the ecosystem's rules, not only moves towards their own dreams but also contributes brick by brick to the construction of this dream city.
             </p>
             <p>
               Each app in this ecosystem has its own dream prizes and leagues. As a citizen of "Afarinesh", you can be a guest user in other apps, join their communities, and have a chance to win their unique rewards. The ultimate reward for your efforts across this universe is a high-ranking position in the capital city of "Tavana". By reaching the Emperor's Council here, you qualify for leadership roles, financial incentives, and even land ownership in that world. The leaders of Tavana's Foreign Languages Association are chosen from this very council.
@@ -209,7 +209,7 @@ export default function ProfilePage() {
           <Separator />
           <div className="prose prose-sm max-w-none text-muted-foreground text-right whitespace-pre-wrap" dir="rtl">
             <p>
-             ما شما را از زبان‌آموزی به بهره‌مندی از مزایای مادی و معنوی کل این سیستم و رسیدن به مدارج بالای مدیریتی در **«توانا»** بشارت می‌دهیم؛ شهری مجازی که در دل اکوسیستم **«آفرینش»** به وجود آمد. این شهر از لحاظ ایده و فلسفه، یک نوآوری بی‌همتا در جهان است که از هیچ ایده‌ای کپی نشده و خود یک شهر مجازی تمدن‌ساز، مرجع و مدلی جدید برای شهرهای مجازی دنیا خواهد بود. شهری که ایده را از مجاز به حقیقت برای همگان آشکار می‌کند و این مفهوم به‌ظاهر پیچیده را با مفاهیم عامیانه و ساده برای آنان که حتی نمی‌دانند شهر مجازی چیست، معنی می‌بخشد.
+             ما شما را از زبان‌آموزی به بهره‌مندی از مزایای مادی و معنوی کل این سیستم و رسیدن به مدارج بالای مدیریتی در **«توانا»** بشارت می‌دهیم؛ شهری مجازی که در دل اکوسیستم **«آفرینش»** به وجود آمد. این شهر از لحاظ ایده و فلسفه، یک نوآوری بی‌همتا در جهان است که از هیچ ایده‌ای کپی نشده و خود یک شهر مجازی تمدن‌ساز، مرجع و مدلی جدید برای شهرهای مجازی دنیا خواهد بود. شهری که ایده را از مجاز به حقیقت برای همگان آشکار می‌کند و این مفهوم به‌ظاهر پیچیده را با مفاهیم عامیانه و ساده برای آنان که حتی نمی‌دانند شهر مجازی چیست، معنی می‌بخشد. هر کاربر با تلاش، پشتکار و پایبندی به قوانین این اکوسیستم، نه تنها به سمت رویاهای خود حرکت می‌کند، بلکه خشت به خشت به ساختن این شهر رویایی نیز کمک می‌کند.
             </p>
             <p>
               هر اپلیکیشن در این اکوسیستم، لیگ و جوایز رویایی خود را دارد. به عنوان یک شهروند این اکوسیستم «آفرینش»، شما می‌توانید به عنوان کاربر مهمان در اپ‌های دیگر حضور یابید، به جوامع آنها بپیوندید و شانس برنده شدن جوایز بی‌نظیر آنها را داشته باشید. پاداش نهایی تلاش‌های شما در این جهان، کسب جایگاه‌های رفیع در پایتخت، یعنی «شهر توانا» است. با رسیدن به «شورای امپراتور» در اینجا، شما برای مناصب رهبری، مشوق‌های مالی و حتی مالکیت زمین در آن دنیا واجد شرایط می‌شوید. رهبران «انجمن زبان‌های خارجی توانا» از میان اعضای همین شورا انتخاب می‌شوند.
