@@ -1,6 +1,6 @@
 'use server';
 /**
- * @fileOverview Generates a bilingual short story in Persian and English, read aloud in both languages.
+ * @fileOverview Generates a bilingual short story in Persian and English, with sentence-by-sentence audio.
  *
  * - generateBilingualShortStory - A function that generates and reads aloud a bilingual short story.
  * - BilingualShortStoryInput - The input type for the generateBilingualShortStory function.
@@ -17,17 +17,22 @@ const BilingualShortStoryInputSchema = z.object({
     .describe(
       'The user language level, a number between 1 and 160, where 1 is beginner and 160 is advanced.'
     ),
-  userTargetLanguage: z
-    .enum(['en', 'fa'])
-    .describe('The target language of the user, either English (en) or Persian (fa).'),
 });
 export type BilingualShortStoryInput = z.infer<typeof BilingualShortStoryInputSchema>;
 
+const SentencePairSchema = z.object({
+    englishSentence: z.string().describe("A single sentence from the story in English."),
+    persianSentence: z.string().describe("The direct translation of that sentence in Persian."),
+});
+
 const BilingualShortStoryOutputSchema = z.object({
-  englishStory: z.string().describe('The short story in English.'),
-  persianStory: z.string().describe('The short story in Persian.'),
-  englishAudio: z.string().describe('The base64 encoded audio of the story read in English.'),
-  persianAudio: z.string().describe('The base64 encoded audio of the story read in Persian.'),
+  title: z.string().describe("The title of the story in English."),
+  story: z.array(z.object({
+      englishSentence: z.string(),
+      persianSentence: z.string(),
+      englishAudio: z.string().describe("The base64 encoded WAV audio of the English sentence."),
+      persianAudio: z.string().describe("The base64 encoded WAV audio of the Persian sentence."),
+  })).describe("An array of sentence pairs, each containing the English and Persian sentence and their corresponding audio.")
 });
 export type BilingualShortStoryOutput = z.infer<typeof BilingualShortStoryOutputSchema>;
 
@@ -42,22 +47,23 @@ const bilingualShortStoryPrompt = ai.definePrompt({
   input: {schema: BilingualShortStoryInputSchema},
   output: {
     schema: z.object({
-      englishStory: z.string(),
-      persianStory: z.string(),
+      title: z.string(),
+      story: z.array(SentencePairSchema),
     }),
   },
   prompt: `You are a bilingual storyteller fluent in English and Persian.
 
-  Generate a short story, appropriate for language level {{{userLanguageLevel}}}, in both English and Persian.
-
-  English Story:
-  {{englishStory}}
-
-  Persian Story:
-  {{persianStory}}`,
+  Generate a short story with a title, appropriate for language level {{{userLanguageLevel}}}.
+  The story should be broken down into individual sentences. For each English sentence, provide a corresponding Persian translation.
+  The output should be a JSON object with a 'title' and a 'story' array, where each element in the array is an object with 'englishSentence' and 'persianSentence'.
+  The story should be between 5 to 8 sentences long.`,
 });
 
 async function textToSpeech(text: string, voiceName: string): Promise<string> {
+  // Return empty string if text is empty to avoid API errors.
+  if (!text.trim()) {
+    return '';
+  }
   const {media} = await ai.generate({
     model: 'googleai/gemini-2.5-flash-preview-tts',
     config: {
@@ -71,7 +77,9 @@ async function textToSpeech(text: string, voiceName: string): Promise<string> {
     prompt: text,
   });
   if (!media) {
-    throw new Error('no media returned');
+    // Instead of throwing an error, we can return an empty string or handle it gracefully.
+    console.warn(`TTS failed for text: "${text}"`);
+    return '';
   }
   const audioBuffer = Buffer.from(
     media.url.substring(media.url.indexOf(',') + 1),
@@ -116,21 +124,27 @@ const bilingualShortStoryFlow = ai.defineFlow(
   async input => {
     const {output} = await bilingualShortStoryPrompt(input);
 
-    if (!output) {
-      throw new Error('Failed to generate bilingual short story.');
+    if (!output?.story) {
+      throw new Error('Failed to generate bilingual short story text.');
     }
 
-    // Generate audio for English story
-    const englishAudio = await textToSpeech(output.englishStory, 'Alfred');
-
-    // Generate audio for Persian story
-    const persianAudio = await textToSpeech(output.persianStory, 'Leyla');
+    const processedStory = await Promise.all(
+        output.story.map(async (sentencePair) => {
+            const [englishAudio, persianAudio] = await Promise.all([
+                textToSpeech(sentencePair.englishSentence, 'Alfred'),
+                textToSpeech(sentencePair.persianSentence, 'Leyla'),
+            ]);
+            return {
+                ...sentencePair,
+                englishAudio,
+                persianAudio,
+            };
+        })
+    );
 
     return {
-      englishStory: output.englishStory,
-      persianStory: output.persianStory,
-      englishAudio: englishAudio,
-      persianAudio: persianAudio,
+      title: output.title,
+      story: processedStory,
     };
   }
 );

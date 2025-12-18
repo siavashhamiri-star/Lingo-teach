@@ -2,19 +2,17 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { BookText, Loader2, Wand2 } from 'lucide-react';
+import { BookText, Loader2, Wand2, Volume2 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { generateBilingualShortStory, type BilingualShortStoryOutput } from '@/ai/flows/bilingual-short-story-generation';
 import { Separator } from '@/components/ui/separator';
 
 export default function StoriesPage() {
   const [languageLevel, setLanguageLevel] = useState(80);
-  const [targetLanguage, setTargetLanguage] = useState<'en' | 'fa'>('en');
   const [story, setStory] = useState<BilingualShortStoryOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
@@ -25,7 +23,6 @@ export default function StoriesPage() {
     try {
       const result = await generateBilingualShortStory({
         userLanguageLevel: languageLevel,
-        userTargetLanguage: targetLanguage,
       });
       setStory(result);
     } catch (error) {
@@ -39,12 +36,19 @@ export default function StoriesPage() {
       setIsLoading(false);
     }
   };
+  
+  const playAudio = (audioDataUri: string) => {
+    if (!audioDataUri) return;
+    const audio = new Audio(audioDataUri);
+    audio.play();
+  };
+
 
   return (
     <div>
       <PageHeader
         title="Bilingual Short Stories"
-        description="Enjoy a new story each week, read aloud in both English and Persian."
+        description="Enjoy a new story each week, read aloud sentence by sentence."
         icon={BookText}
       />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -66,22 +70,6 @@ export default function StoriesPage() {
                   onValueChange={(value) => setLanguageLevel(value[0])}
                   disabled={isLoading}
                 />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="target-language">I want to learn...</Label>
-                <Select
-                  value={targetLanguage}
-                  onValueChange={(value: 'en' | 'fa') => setTargetLanguage(value)}
-                  disabled={isLoading}
-                >
-                  <SelectTrigger id="target-language">
-                    <SelectValue placeholder="Select language" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="en">English</SelectItem>
-                    <SelectItem value="fa">Persian (فارسی)</SelectItem>
-                  </SelectContent>
-                </Select>
               </div>
             </CardContent>
             <CardFooter>
@@ -117,20 +105,27 @@ export default function StoriesPage() {
           {story && (
             <Card>
               <CardHeader>
-                <CardTitle>Your Bilingual Story</CardTitle>
+                <CardTitle>{story.title}</CardTitle>
+                <CardDescription>Listen to each sentence in both languages to improve your comprehension.</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <h3 className="font-bold text-lg mb-2">English</h3>
-                  <audio controls src={story.englishAudio} className="w-full mb-4" />
-                  <p className="text-muted-foreground leading-relaxed">{story.englishStory}</p>
-                </div>
-                <Separator />
-                <div>
-                   <h3 className="font-bold text-lg mb-2 text-right">فارسی</h3>
-                  <audio controls src={story.persianAudio} className="w-full mb-4" />
-                  <p className="text-muted-foreground leading-relaxed text-right" dir="rtl">{story.persianStory}</p>
-                </div>
+              <CardContent className="space-y-4">
+                {story.story.map((sentencePair, index) => (
+                    <div key={index} className="p-4 border rounded-lg bg-muted/50 space-y-3">
+                        <div className="flex items-start justify-between gap-2">
+                           <p className="text-base text-foreground flex-1">{sentencePair.englishSentence}</p>
+                           <Button size="icon" variant="ghost" onClick={() => playAudio(sentencePair.englishAudio)} disabled={!sentencePair.englishAudio}>
+                               <Volume2 className="w-5 h-5"/>
+                           </Button>
+                        </div>
+                        <Separator />
+                         <div className="flex items-start justify-between gap-2" dir="rtl">
+                           <p className="text-base text-foreground flex-1">{sentencePair.persianSentence}</p>
+                            <Button size="icon" variant="ghost" onClick={() => playAudio(sentencePair.persianAudio)} disabled={!sentencePair.persianAudio}>
+                               <Volume2 className="w-5 h-5"/>
+                           </Button>
+                        </div>
+                    </div>
+                ))}
               </CardContent>
             </Card>
           )}
