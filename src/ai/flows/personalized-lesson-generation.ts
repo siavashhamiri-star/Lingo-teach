@@ -78,7 +78,7 @@ Now, generate a comprehensive lesson plan that empowers the user to teach effect
 
 The plan must include:
 1.  **A clear, engaging title.**
-2.  **The main lesson content:** This should be a script for the user to teach from, including simple explanations, clear examples, and most importantly, **tips for the user on *how* to explain these concepts effectively.**
+2.  **The main lesson content:** This should be a script for the user to teach from, including simple explanations, clear examples, and most importantly, **tips for the user on *how* to explain these concepts effectively.** If the lesson is for children, suggest games, songs, or visual activities.
 3.  **A set of practical exercises:** Create a few exercises that directly relate to the lesson content to help the *student* practice. The complexity of these exercises should also be based on your analysis of the user.
 
 The output must be a complete, stress-free, and empowering lesson plan, ready for the user to teach.
@@ -97,5 +97,3 @@ const personalizedLessonFlow = ai.defineFlow(
     return output!;
   }
 );
-
-    
