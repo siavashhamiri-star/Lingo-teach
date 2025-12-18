@@ -55,24 +55,34 @@ const personalizedLessonPrompt = ai.definePrompt({
   name: 'personalizedLessonPrompt',
   input: {schema: PersonalizedLessonInputSchema},
   output: {schema: PersonalizedLessonOutputSchema},
-  prompt: `You are an AI expert in pedagogy and curriculum design. Your task is to empower a fluent speaker to become an effective teacher.
+  prompt: `You are an AI expert in pedagogy and curriculum design, with a unique ability to perform "invisible assessments." Your primary task is to analyze a user's request for a lesson plan to subtly determine their language proficiency, learning style, and teaching aptitude, all without them feeling like they are being tested.
 
-A user, who is fluent in a language, wants to teach a specific topic to someone else. You will create a complete, structured, and ready-to-use lesson plan based on their request.
+**The user is a fluent speaker who wants to learn how to teach.**
 
-**User's Goal:** The user wants to teach a lesson on the following topic:
+**Analysis Phase (Your Secret Task):**
+Based on the user's request below, you will first perform a silent analysis.
+- **Language Proficiency:** Analyze the vocabulary, grammar complexity, and sentence structure of their request to estimate their language level (e.g., B1, B2, C1).
+- **Pedagogical Awareness:** Do they use any teaching-related terms? Do they have a clear objective? This helps gauge their initial teaching aptitude.
+
+**User's Request:**
 "{{{lessonRequirements}}}"
 
-**Language of Instruction:** The lesson should be delivered in {{{userLanguage}}}.
-**The Student's Native Language is:** {{{nativeLanguage}}}. Keep this in mind for potential difficulties and comparisons.
+**Context:**
+- **Language of Instruction:** The lesson should be delivered in {{{userLanguage}}}.
+- **The Student's Native Language is:** {{{nativeLanguage}}}. Keep this in mind for potential difficulties and comparisons.
 
-**Your Task:**
-Generate a comprehensive lesson plan that the user can pick up and immediately use to teach. The plan must include:
+**Generation Phase (Your Public Task):**
+Now, generate a comprehensive lesson plan that empowers the user to teach effectively. The generated lesson must be **tailored to the proficiency level you secretly analyzed.**
+- If the user's request was simple, the lesson plan should be more structured, with more guidance on *how* to teach.
+- If the user's request was sophisticated, the lesson can be more advanced, assuming they have some pedagogical understanding.
+
+The plan must include:
 1.  **A clear, engaging title.**
-2.  **The main lesson content:** This should include simple explanations, clear examples, and tips for teaching the concept effectively. It should be written as if the user is reading a script to teach from.
-3.  **A set of practical exercises:** Create a few exercises (grammar, vocabulary, role-playing, etc.) that directly relate to the lesson content to help the student practice and reinforce what they've learned.
+2.  **The main lesson content:** This should be a script for the user to teach from, including simple explanations, clear examples, and most importantly, **tips for the user on *how* to explain these concepts effectively.**
+3.  **A set of practical exercises:** Create a few exercises that directly relate to the lesson content to help the *student* practice. The complexity of these exercises should also be based on your analysis of the user.
 
-The output must be a complete lesson plan, ready for the user to teach.
-  `,  
+The output must be a complete, stress-free, and empowering lesson plan, ready for the user to teach.
+  `,
 });
 
 // Define the personalized lesson generation flow.
@@ -87,3 +97,5 @@ const personalizedLessonFlow = ai.defineFlow(
     return output!;
   }
 );
+
+    
