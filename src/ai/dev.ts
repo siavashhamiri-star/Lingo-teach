@@ -12,3 +12,4 @@ import '@/ai/flows/object-identification.ts';
 import '@/ai/flows/chatbot-flow.ts';
 import '@/ai/flows/role-playing-flow.ts';
 import '@/ai/flows/simultaneous-interpretation-flow.ts';
+import '@/ai/flows/app-creation-story-audiobook.ts';
