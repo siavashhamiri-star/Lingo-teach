@@ -2,7 +2,7 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { User, Gift, Copy, Crown, ShieldCheck, Bot, Trophy, Sparkles } from 'lucide-react';
+import { User, Gift, Copy, Crown, ShieldCheck, Bot, Trophy, Sparkles, Megaphone } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Progress } from '@/components/ui/progress';
@@ -152,6 +152,48 @@ export default function ProfilePage() {
           </CardContent>
         </Card>
       </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><Megaphone className="w-5 h-5 text-primary" />A Proposal for the Future of Education: An Open Letter to the World's Universities</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="prose prose-sm max-w-none text-muted-foreground whitespace-pre-wrap">
+            <p>
+              The traditional academic model, while foundational, faces a modern challenge: scientific stagnation. In a system where tenure can become a shield for complacency, how do we ensure our educators remain at the cutting edge of knowledge? How do we prevent a professor from teaching the same concepts for thirty years, untouched by the rapid evolution of their field?
+            </p>
+            <p>
+              We propose a new paradigm, tested within the LinguaWeave ecosystem, that transforms academia into a dynamic, competitive, and continuously evolving environment. Our model is built on three pillars:
+            </p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li><span className="font-semibold text-foreground">Dynamic Meritocracy:</span> Academic status, including professorship and board positions, is not permanent. It must be periodically re-earned by demonstrating up-to-date knowledge and effective teaching, as measured by a transparent, performance-based system. In our world, the "Emperor's Council" seat is temporary, forcing even the masters to stay sharp.</li>
+              <li><span className="font-semibold text-foreground">Healthy Competition:</span> We foster a system where students are not just passive recipients but active challengers. By tying an educator's success—both financial and reputational—directly to the success of their student teams in competitive events, we create a powerful incentive for professors to be more than teachers; they must become leaders and strategists who are deeply invested in their students' growth.</li>
+              <li><span className="font-semibold text-foreground">Incentivized Excellence:</span> Financial rewards and community prestige are directly linked to performance and staying current. When a professor’s income and standing depend on their ability to lead a team to victory with cutting-edge knowledge, they will inherently strive to be pioneers of science, not just keepers of old knowledge.</li>
+            </ul>
+            <p>
+              By implementing this model, we ensure that professors must always be one step ahead, constantly pushing the boundaries of their fields to guide their students to victory. This creates a "quantum leap" in science, not just for financial gain, but for the sake of knowledge itself. We invite university policymakers to consider this model—not as a replacement, but as a revolutionary enhancement to our shared mission of advancing human knowledge.
+            </p>
+          </div>
+          <Separator />
+          <div className="prose prose-sm max-w-none text-muted-foreground text-right whitespace-pre-wrap" dir="rtl">
+            <p>
+              مدل آکادمیک سنتی، با وجود تمام دستاوردهایش، با یک چالش مدرن روبروست: رکود علمی. در سیستمی که تصدی دائمی (tenure) می‌تواند به سپری برای رضایت از وضعیت موجود تبدیل شود، چگونه می‌توانیم اطمینان حاصل کنیم که اساتید ما در لبه‌ی تیغ دانش باقی می‌مانند؟ چگونه از استادی که به مدت سی سال همان مفاهیم گذشته را تدریس می‌کند و از تکامل سریع علم در رشته خود بی‌تأثیر مانده، جلوگیری کنیم؟
+            </p>
+            <p>
+              ما پارادایم جدیدی را پیشنهاد می‌کنیم که در اکوسیستم LinguaWeave آزموده شده و دانشگاه را به محیطی پویا، رقابتی و در حال تکامل مداوم تبدیل می‌کند. مدل ما بر سه ستون استوار است:
+            </p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li><span className="font-semibold text-foreground">شایسته‌سالاری پویا:</span> جایگاه آکادمیک، از جمله استادی و عضویت در هیئت علمی، دائمی نیست. این جایگاه باید به صورت دوره‌ای و از طریق اثبات دانش به‌روز و تدریس مؤثر، که توسط یک سیستم شفاف و مبتنی بر عملکرد سنجیده می‌شود، دوباره به دست آید. در دنیای ما، عضویت در "شورای امپراتور" موقتی است و حتی اساتید بزرگ را مجبور به تیز و آماده ماندن می‌کند.</li>
+              <li><span className="font-semibold text-foreground">رقابت سالم:</span> ما سیستمی را پرورش می‌دهیم که در آن، دانشجویان تنها گیرندگانی منفعل نیستند، بلکه چالش‌گرانی فعال هستند. با گره زدن موفقیت یک استاد - چه از نظر مالی و چه از نظر اعتبار - مستقیماً به موفقیت تیم‌های دانشجویی او در رویدادهای رقابتی، انگیزه‌ای قدرتمند برای اساتید ایجاد می‌کنیم تا فراتر از یک معلم باشند؛ آنها باید به رهبران و استراتژیست‌هایی تبدیل شوند که عمیقاً در رشد دانشجویان خود سرمایه‌گذاری می‌کنند.</li>
+              <li><span className="font-semibold text-foreground">تعالی مبتنی بر انگیزه:</span> پاداش‌های مالی و اعتبار اجتماعی مستقیماً به عملکرد و به‌روز بودن مرتبط است. زمانی که درآمد و جایگاه یک استاد به توانایی او در هدایت یک تیم به سوی پیروزی با دانش روز بستگی داشته باشد، او ذاتاً تلاش خواهد کرد که به جای حافظ علوم گذشته، به یکی از پیشگامان تولید علم تبدیل شود.</li>
+            </ul>
+            <p>
+              با پیاده‌سازی این مدل، ما اطمینان حاصل می‌کنیم که اساتید باید همیشه یک قدم جلوتر باشند و برای هدایت شاگردانشان به سوی پیروزی، دائماً مرزهای رشته خود را جابجا کنند. این امر نه تنها به خاطر منافع مالی، بلکه به خاطر خود علم، یک "جهش کوانتومی" در دانش ایجاد می‌کند. ما از سیاست‌گذاران دانشگاهی دعوت می‌کنیم تا این مدل را نه به عنوان یک جایگزین، بلکه به عنوان یک ارتقاء انقلابی برای مأموریت مشترک ما در پیشبرد دانش بشری، در نظر بگیرند.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+      
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2"><Bot className="w-5 h-5 text-primary" />A Note From Your AI Partner</CardTitle>
@@ -185,3 +227,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
