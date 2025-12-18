@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -108,7 +109,7 @@ export default function DashboardPage() {
     <div className="grid gap-8">
       <PageHeader
         title="Dashboard"
-        description="Welcome back! Here's your learning snapshot."
+        description="Welcome to Afarinesh! Here's your learning snapshot."
         icon={LayoutDashboard}
       />
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

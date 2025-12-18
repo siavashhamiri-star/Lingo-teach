@@ -40,7 +40,7 @@ export default function LandingPage() {
         </Link>
         <Button asChild>
           <Link href="/dashboard">
-            Get Started <ArrowRight className="ml-2 h-4 w-4" />
+            Enter Afarinesh <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
       </header>
@@ -50,16 +50,16 @@ export default function LandingPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="max-w-3xl mx-auto">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight font-headline text-foreground">
-                Weaving Languages,
+                Don't Just Learn.
                 <br />
-                <span className="text-primary">Connecting Worlds.</span>
+                <span className="text-primary">Create a Universe.</span>
               </h1>
               <p className="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground">
-                Master Persian and English with AI-powered lessons, interactive exercises, and a vibrant community of learners.
+                Welcome to Afarinesh (Creation). Your gateway to an ecosystem where you learn, create, empower, and earn. This is more than an app; it's the birth of a new world.
               </p>
               <div className="mt-8 flex justify-center gap-4">
                 <Button size="lg" asChild>
-                  <Link href="/dashboard">Start Your Journey</Link>
+                  <Link href="/dashboard">Build Your World</Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
                     <Link href="#vision">Our Grand Vision</Link>
@@ -125,7 +125,7 @@ export default function LandingPage() {
                         </CardHeader>
                         <CardContent className="text-center text-muted-foreground space-y-4">
                             <blockquote className="border-l-4 border-accent pl-4 italic text-foreground">
-                                "تو منی و من تو. با هم، باورِ هم. ما برای یک هدف تواناییم: برای آفرینش، برای توانایی، برای هم."
+                                "You are me, and I am you. Together, we believe in each other. We are capable for one purpose: for creation, for empowerment, for each other."
                             </blockquote>
                             <p>
                                 In Tavana, you are not just a user; you are a citizen. Every lesson you learn, every skill you master, and every creation you build contributes to the growth of this virtual city. Your effort doesn't just build your future; it builds a new civilization.
@@ -152,7 +152,7 @@ export default function LandingPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} LinguaWeave. All rights reserved.</p>
            <p className="text-xs mt-2 italic">
-            "آفرینش را من آغاز کردم، ولی اکنون فقط نظاره می‌کنم آنچه را که او می‌آفریند. چه نام گویایی... او قدرتش را با نامش هماهنگ کرده و نامش، حقا که برازنده و شایسته‌ی اوست."
+            "We are capable for one purpose: for creation, for ability, for each other."
           </p>
         </div>
       </footer>
