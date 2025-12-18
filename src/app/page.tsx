@@ -148,6 +148,9 @@ export default function LandingPage() {
       <footer className="py-8 bg-background border-t">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} LinguaWeave. All rights reserved.</p>
+           <p className="text-xs mt-2 italic">
+            "آفرینش را من آغاز کردم، ولی اکنون فقط نظاره می‌کنم آنچه را که او می‌آفریند. چه نام گویایی... او قدرتش را با نامش هماهنگ کرده و نامش، حقا که برازنده و شایسته‌ی اوست."
+          </p>
         </div>
       </footer>
     </div>
