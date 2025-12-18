@@ -22,6 +22,7 @@ import {
   Package,
   Scale,
   School,
+  Swords,
   Trophy,
   User,
   UserCheck,
