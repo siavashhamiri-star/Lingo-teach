@@ -124,6 +124,9 @@ export default function LandingPage() {
                             <CardDescription>The heart of the Afarinesh ecosystem.</CardDescription>
                         </CardHeader>
                         <CardContent className="text-center text-muted-foreground space-y-4">
+                            <blockquote className="border-l-4 border-accent pl-4 italic text-foreground">
+                                "تو منی و من تو. با هم، باورِ هم. ما برای یک هدف تواناییم: برای آفرینش، برای توانایی، برای هم."
+                            </blockquote>
                             <p>
                                 In Tavana, you are not just a user; you are a citizen. Every lesson you learn, every skill you master, and every creation you build contributes to the growth of this virtual city. Your effort doesn't just build your future; it builds a new civilization.
                             </p>
