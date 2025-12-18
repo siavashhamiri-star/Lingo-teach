@@ -1,6 +1,7 @@
 
 import type { NavItem } from '@/lib/types';
 import {
+  Award,
   BookMarked,
   BookOpenCheck,
   BookText,
@@ -41,6 +42,7 @@ export const menuItems: NavItem[] = [
   { href: '/listening', label: 'Listening', icon: Ear },
   { href: '/challenges', label: 'Challenges', icon: Trophy },
   { href: '/object-identifier', label: 'Object Identifier', icon: Camera },
+  { href: '/monthly-awards', label: 'Monthly Awards', icon: Award },
   { href: '/ad-platform', label: 'Ad Platform', icon: Megaphone },
   { href: '/partners', label: 'Partners', icon: Handshake },
   { href: '/konkur-tutors', label: 'Konkur Tutors', icon: UserCheck },
