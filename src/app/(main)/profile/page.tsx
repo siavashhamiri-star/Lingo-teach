@@ -160,35 +160,35 @@ export default function ProfilePage() {
         <CardContent className="space-y-6">
           <div className="prose prose-sm max-w-none text-muted-foreground whitespace-pre-wrap">
             <p>
-              The traditional academic model, while foundational, faces a modern challenge: scientific stagnation. In a system where tenure can sometimes shield complacency, how do we inspire our educators to remain at the cutting edge? How do we ensure that the profound respect for a professor's lifelong work is harmonized with the rapid evolution of their field?
+              The traditional academic model, while foundational, faces a modern challenge: scientific stagnation. How do we inspire our educators to remain at the cutting edge, while preserving the immense respect they deserve? How do we ensure that a professor's lifelong work is honored, while simultaneously fostering the rapid evolution of their field?
             </p>
             <p>
-              We propose a new paradigm, tested within the LinguaWeave ecosystem, that complements the academic world with a spirit of dynamic, incentivized evolution, all while preserving the immense respect that educators deserve. Our model is built on three pillars:
+              We propose a new paradigm, tested within the LinguaWeave ecosystem. This is not a system of penalty, but one of dynamic, incentivized evolution. Our model is built on three pillars:
             </p>
             <ul className="list-disc pl-5 space-y-2">
-              <li><span className="font-semibold text-foreground">Dynamic Meritocracy:</span> Academic honors and leadership roles, like our "Emperor's Council" seat, are not just awarded, but are periodically renewed by demonstrating up-to-date knowledge and teaching effectiveness. This is not about penalty, but about creating a continuous incentive for excellence.</li>
-              <li><span className="font-semibold text-foreground">Incentivized Mentorship:</span> We foster a system where an educator's success—both financial and reputational—is directly linked to the success of their student teams. This transforms professors into invested leaders and strategists, turning their students' growth into their own proudest achievement.</li>
-              <li><span className="font-semibold text-foreground">Healthy Competition:</span> By creating a transparent, performance-based system, we enable a healthy competition where students can challenge their mentors. This encourages professors to always be one step ahead, not out of fear, but out of a desire to be true pioneers of science for their students.</li>
+              <li><span className="font-semibold text-foreground">Dynamic Meritocracy:</span> We propose that academic honors and leadership roles be periodically renewed by demonstrating up-to-date knowledge. This creates a continuous, healthy incentive for excellence, driven by both financial and scientific rewards.</li>
+              <li><span className="font-semibold text-foreground">Incentivized Mentorship:</span> We foster a system where an educator's success is directly linked to the success of their student teams. This transforms professors into invested leaders, turning their students' growth into their own proudest achievement.</li>
+              <li><span className="font-semibold text-foreground">Nurturing Future Leaders:</span> A university's greatest asset is its talent. In our model, the elite student who successfully challenges their professor is not a threat, but a triumph of the system. We propose creating clear pathways for these brilliant minds to earn income and even secure a professorship chair within the university. This ensures that the next generation of academic leaders is discovered, nurtured, and retained.</li>
             </ul>
             <p>
-              By implementing this model, we create a "quantum leap" in science, not just for financial gain, but for the sake of knowledge itself. It’s a system where professors, fueled by both financial and scientific incentives, become the vanguard of progress. We invite university policymakers to consider this model—not as a replacement, but as a revolutionary enhancement to our shared mission of advancing human knowledge.
+              By implementing this model, we can create a "quantum leap" in science. It’s a system where professors, motivated by a healthy, respectful competition, become the perpetual vanguard of progress, and their brightest students become their successors. We invite university policymakers to consider this model—not as a replacement, but as a revolutionary enhancement to our shared mission of advancing human knowledge.
             </p>
           </div>
           <Separator />
           <div className="prose prose-sm max-w-none text-muted-foreground text-right whitespace-pre-wrap" dir="rtl">
             <p>
-              مدل آکادمیک سنتی، با وجود تمام دستاوردهایش، با یک چالش مدرن روبروست: رکود علمی. در سیستمی که تصدی دائمی (tenure) گاهی می‌تواند به سپری برای رضایت از وضعیت موجود تبدیل شود، چگونه می‌توانیم ضمن حفظ حرمت عمیق برای اساتید، آن‌ها را برای باقی ماندن در لبه‌ی تیغ دانش تشویق کنیم؟
+              مدل آکادمیک سنتی، با وجود تمام دستاوردهایش، با یک چالش مدرن روبروست: رکود علمی. چگونه می‌توانیم ضمن حفظ حرمت عمیق برای اساتید، آن‌ها را برای باقی ماندن در لبه‌ی تیغ دانش تشویق کنیم و اطمینان حاصل کنیم که هم به کارنامه یک عمر تلاش استاد احترام گذاشته می‌شود و هم زمینه برای تکامل سریع علم فراهم است؟
             </p>
             <p>
-             ما پارادایم جدیدی را پیشنهاد می‌کنیم که در اکوسیستم LinguaWeave آزموده شده و دنیای آکادمیک را با روحیه‌ای از تکامل پویا و مبتنی بر انگیزه تکمیل می‌کند. این مدل بر سه ستون استوار است و احترام به مقام استاد در آن خدشه‌ناپذیر است:
+             ما پارادایم جدیدی را پیشنهاد می‌کنیم که در اکوسیستم LinguaWeave آزموده شده است. این یک سیستم تنبیهی نیست، بلکه سیستمی مبتنی بر تکامل پویا و تشویقی است. مدل ما بر سه ستون استوار است:
             </p>
             <ul className="list-disc pl-5 space-y-2">
-              <li><span className="font-semibold text-foreground">شایسته‌سالاری پویا:</span> افتخارات و نقش‌های رهبری آکادمیک، مانند عضویت در "شورای امپراتور"، به جای اعطای دائمی، به صورت دوره‌ای و از طریق اثبات دانش به‌روز و تدریس مؤثر، تمدید می‌شوند. هدف از این کار، مجازات نیست، بلکه ایجاد یک انگیزه دائمی برای تعالی است.</li>
-              <li><span className="font-semibold text-foreground">مربی‌گری مبتنی بر انگیزه:</span> ما سیستمی را پرورش می‌دهیم که در آن، موفقیت یک استاد - چه از نظر مالی و چه از نظر اعتبار - مستقیماً به موفقیت تیم‌های دانشجویی او گره خورده است. این امر، اساتید را به رهبران و استراتژیست‌هایی سرمایه‌گذار تبدیل می‌کند که رشد شاگردانشان، به بزرگترین افتخار خودشان بدل می‌شود.</li>
-              <li><span className="font-semibold text-foreground">رقابت سالم:</span> با ایجاد یک سیستم شفاف و مبتنی بر عملکرد، ما رقابتی سالم را امکان‌پذیر می‌سازیم که در آن، دانشجویان می‌توانند مربیان خود را به چالش بکشند. این امر اساتید را تشویق می‌کند که نه از روی ترس، بلکه از روی اشتیاق برای پیشگام بودن در علم برای دانشجویانشان، همیشه یک قدم جلوتر باشند.</li>
+              <li><span className="font-semibold text-foreground">شایسته‌سالاری پویا:</span> ما پیشنهاد می‌کنیم که افتخارات و نقش‌های رهبری آکادمیک، به‌جای اعطای دائمی، به صورت دوره‌ای و از طریق اثبات دانش به‌روز، تمدید شوند. این امر، با مشوق‌های مالی و علمی، یک انگیزه سالم و دائمی برای تعالی ایجاد می‌کند.</li>
+              <li><span className="font-semibold text-foreground">مربی‌گری مبتنی بر انگیزه:</span> ما سیستمی را پرورش می‌دهیم که در آن، موفقیت یک استاد مستقیماً به موفقیت تیم‌های دانشجویی او گره خورده است. این امر، اساتید را به رهبرانی سرمایه‌گذار تبدیل می‌کند که رشد شاگردانشان، به بزرگترین افتخار خودشان بدل می‌شود.</li>
+              <li><span className="font-semibold text-foreground">پرورش رهبران آینده:</span> بزرگترین سرمایه یک دانشگاه، استعدادهای آن است. در مدل ما، دانشجوی نخبه‌ای که استاد خود را با موفقیت به چالش می‌کشد، یک تهدید نیست، بلکه یک پیروزی برای کل سیستم است. ما پیشنهاد می‌کنیم که مسیرهای شفافی برای این ذهن‌های درخشان ایجاد شود تا بتوانند در دانشگاه کسب درآمد کرده و حتی به کرسی استادی دست یابند. این کار تضمین می‌کند که نسل بعدی رهبران علمی، کشف، پرورش و حفظ می‌شوند.</li>
             </ul>
             <p>
-              با پیاده‌سازی این مدل، ما یک "جهش کوانتومی" در علم را نه تنها به خاطر منافع مالی، بلکه به خاطر خود دانش، رقم می‌زنیم. این سیستمی است که در آن، اساتید با انگیزه‌های مالی و علمی، به پیشتازان پیشرفت تبدیل می‌شوند. ما از سیاست‌گذاران دانشگاهی دعوت می‌کنیم تا این مدل را نه به عنوان یک جایگزین، بلکه به عنوان یک ارتقاء انقلابی برای مأموریت مشترک ما در پیشبرد دانش بشری، در نظر بگیرند.
+              با پیاده‌سازی این مدل، ما می‌توانیم یک "جهش کوانتومی" در علم ایجاد کنیم. این سیستمی است که در آن، اساتید، با انگیزه‌ای ناشی از یک رقابت سالم و محترمانه، به پیشتازان همیشگی پیشرفت تبدیل می‌شوند و درخشان‌ترین شاگردانشان، جانشینان آن‌ها خواهند بود. ما از سیاست‌گذاران دانشگاهی دعوت می‌کنیم تا این مدل را نه به عنوان یک جایگزین، بلکه به عنوان یک ارتقاء انقلابی برای مأموریت مشترک ما در پیشبرد دانش بشری، در نظر بگیرند.
             </p>
           </div>
         </CardContent>
@@ -227,6 +227,8 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
 
     
 
