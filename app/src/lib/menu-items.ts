@@ -13,6 +13,7 @@ import {
   Crown,
   Ear,
   FileText,
+  Feather,
   GraduationCap,
   Handshake,
   Headset,
@@ -23,7 +24,6 @@ import {
   Music,
   Package,
   Palette,
-  Feather,
   Scale,
   School,
   Swords,
@@ -70,5 +70,3 @@ export const menuItems: NavItem[] = [
   },
   { href: '/profile', label: 'Profile', icon: User },
 ];
-
-    
