@@ -13,18 +13,11 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 export default function CreationStoryPage() {
   const [story, setStory] = useState<CreationStoryAudiobookOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const { toast } = useToast();
 
   const handleGenerateStory = async () => {
     setIsLoading(true);
     setStory(null);
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current = null;
-    }
-    setIsPlaying(false);
     toast({
       title: 'Weaving the Grand Tale...',
       description: 'The AI is crafting the epic story of our universe. This is a special one-time generation and might take a moment.',
@@ -32,8 +25,6 @@ export default function CreationStoryPage() {
     try {
       const result = await generateCreationStoryAudiobook();
       setStory(result);
-      audioRef.current = new Audio(result.audioDataUri);
-      audioRef.current.onended = () => setIsPlaying(false);
       toast({
         title: 'The Story is Ready!',
         description: 'Press play to hear the legend of LinguaWeave.',
@@ -47,17 +38,6 @@ export default function CreationStoryPage() {
       });
     } finally {
       setIsLoading(false);
-    }
-  };
-
-  const togglePlayPause = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
     }
   };
 
@@ -99,19 +79,7 @@ export default function CreationStoryPage() {
             
             {story && (
                  <div className="space-y-4">
-                    <div className="flex justify-center">
-                        <Button onClick={togglePlayPause} size="lg" className="px-8 py-6 text-lg">
-                           {isPlaying ? (
-                                <>
-                                 <PauseCircle className="mr-2 h-5 w-5" /> Pause
-                                </>
-                            ) : (
-                                <>
-                                 <PlayCircle className="mr-2 h-5 w-5" /> Play Story
-                                </>
-                            )}
-                        </Button>
-                    </div>
+                    <audio controls src={story.audioDataUri} className="w-full" />
                     <ScrollArea className="h-72 p-4 border rounded-md bg-muted/50">
                         <p className="text-muted-foreground whitespace-pre-wrap leading-relaxed">{story.storyText}</p>
                     </ScrollArea>
