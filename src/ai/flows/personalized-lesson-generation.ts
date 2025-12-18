@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -16,12 +17,12 @@ import {z} from 'genkit';
 
 // Define the input schema for the personalized lesson generation.
 const PersonalizedLessonInputSchema = z.object({
-  userLanguage: z.string().describe('The language the user is learning.'),
-  nativeLanguage: z.string().describe('The user\'s native language.'),
+  userLanguage: z.string().describe("The language the lesson should be taught in (language of instruction)."),
+  nativeLanguage: z.string().describe("The student's native language."),
   lessonRequirements: z
     .string()
     .describe(
-      'A description of the lesson requirements, including topic, goals, and target audience.'
+      'A description of the lesson the user wants to teach. This is the core request.'
     ),
 });
 export type PersonalizedLessonInput = z.infer<typeof PersonalizedLessonInputSchema>;
@@ -31,14 +32,14 @@ const PersonalizedLessonOutputSchema = z.object({
   lessonTitle: z.string().describe('The title of the generated lesson.'),
   lessonContent: z
     .string()
-    .describe('The content of the generated lesson, including explanations and examples.'),
+    .describe('The main content of the lesson, including explanations, examples, and teaching strategies. This should be a complete script that a person can use to teach.'),
   exercises: z.array(
     z.object({
       exerciseType: z.string().describe('The type of exercise (e.g., grammar, vocabulary, pronunciation).'),
-      exerciseDescription: z.string().describe('A description of the exercise.'),
+      exerciseDescription: z.string().describe('A description of the exercise for the student to complete.'),
     })
   ).
-    describe('List of exercises.'),
+    describe('A list of exercises to reinforce the lesson content.'),
 });
 export type PersonalizedLessonOutput = z.infer<typeof PersonalizedLessonOutputSchema>;
 
@@ -54,14 +55,23 @@ const personalizedLessonPrompt = ai.definePrompt({
   name: 'personalizedLessonPrompt',
   input: {schema: PersonalizedLessonInputSchema},
   output: {schema: PersonalizedLessonOutputSchema},
-  prompt: `You are an AI language tutor specializing in creating personalized lessons for content creators.
+  prompt: `You are an AI expert in pedagogy and curriculum design. Your task is to empower a fluent speaker to become an effective teacher.
 
-  Based on the user's requirements, create a single tailored lesson with exercises. This lesson plan will be used by an advanced user to teach others. The target language for the lesson is: {{{userLanguage}}}. The creator's native language is: {{{nativeLanguage}}}.
+A user, who is fluent in a language, wants to teach a specific topic to someone else. You will create a complete, structured, and ready-to-use lesson plan based on their request.
 
-  Lesson Requirements:
-  {{lessonRequirements}}
+**User's Goal:** The user wants to teach a lesson on the following topic:
+"{{{lessonRequirements}}}"
 
-  Create a lesson that is engaging, effective, and structured. The output should be a complete lesson plan that an instructor can use to teach others. Structure it with clear sections (e.g., Introduction, Grammar Point, Vocabulary, Practice). For each section, provide content and then create a relevant exercise to reinforce the concept.
+**Language of Instruction:** The lesson should be delivered in {{{userLanguage}}}.
+**The Student's Native Language is:** {{{nativeLanguage}}}. Keep this in mind for potential difficulties and comparisons.
+
+**Your Task:**
+Generate a comprehensive lesson plan that the user can pick up and immediately use to teach. The plan must include:
+1.  **A clear, engaging title.**
+2.  **The main lesson content:** This should include simple explanations, clear examples, and tips for teaching the concept effectively. It should be written as if the user is reading a script to teach from.
+3.  **A set of practical exercises:** Create a few exercises (grammar, vocabulary, role-playing, etc.) that directly relate to the lesson content to help the student practice and reinforce what they've learned.
+
+The output must be a complete lesson plan, ready for the user to teach.
   `,  
 });
 
