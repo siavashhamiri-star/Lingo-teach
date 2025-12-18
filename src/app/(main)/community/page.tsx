@@ -1,7 +1,8 @@
+
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { Users, GraduationCap, School, MessageSquare, ArrowRight, UserCheck } from 'lucide-react';
+import { Users, GraduationCap, School, MessageSquare, ArrowRight, UserCheck, Laugh } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -13,6 +14,13 @@ const communityRooms = [
     icon: MessageSquare,
     onlineCount: 128,
     tags: ['All Levels', 'Conversation', 'Practice'],
+  },
+  {
+    title: 'Kids\' Corner (Ages 7-12)',
+    description: 'A fun and safe space for young learners to practice with games, stories, and friends.',
+    icon: Laugh,
+    onlineCount: 56,
+    tags: ['Kids', 'Games', 'Fun'],
   },
   {
     title: "Teachers' Lounge",
