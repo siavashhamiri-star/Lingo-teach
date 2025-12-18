@@ -135,9 +135,9 @@ export default function ProfilePage() {
             </div>
           </CardContent>
            <CardFooter>
-              <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-                 <Sparkles className="mr-2 h-4 w-4" /> Go Premium to Unlock More Rewards
-               </Button>
+              <p className="text-xs text-muted-foreground">
+                Premium users unlock enhanced rewards and prizes in the referral league.
+              </p>
             </CardFooter>
         </Card>
         <Card>
@@ -190,3 +190,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
