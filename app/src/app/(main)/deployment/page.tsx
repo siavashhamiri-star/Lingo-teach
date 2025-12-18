@@ -3,15 +3,16 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { UploadCloud, Copy, Check, Terminal, Laptop, Smartphone } from 'lucide-react';
+import { UploadCloud, Copy, Terminal, Laptop, Smartphone, Shield, Building } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
-const androidSteps = [
+const deploymentSteps = [
   {
     title: 'Initialize Git Repository',
     description: 'Tell Git to start tracking this project. This is done only once per project.',
@@ -60,7 +61,7 @@ export default function DeploymentPage() {
     });
   };
 
-  const renderSteps = (steps: typeof androidSteps) => (
+  const renderSteps = (steps: typeof deploymentSteps) => (
     <div className="space-y-6">
       {steps.map((step, index) => (
         <Card key={index}>
@@ -96,10 +97,17 @@ export default function DeploymentPage() {
   return (
     <div>
       <PageHeader
-        title="Deployment Guide"
-        description="Publish your app to GitHub with these simple step-by-step guides."
-        icon={UploadCloud}
+        title="Headquarters"
+        description="This is the command center for 'Afarinesh' (Creation). From here, we share our creation with the world."
+        icon={Building}
       />
+       <Alert className="mb-8 border-primary/20 bg-primary/5 text-primary-foreground">
+        <Shield className="h-4 w-4 text-primary" />
+        <AlertTitle className="text-primary">From the Command Center</AlertTitle>
+        <AlertDescription className="text-primary/80">
+          Publishing our code is not just a technical step; it is the act of breathing life into our philosophy. It is how we make our creation immortal and share the power of 'Tavana' with every corner of the world. Follow these steps to deploy our universe.
+        </AlertDescription>
+      </Alert>
       <Tabs defaultValue="android" className="w-full">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="android">
@@ -112,13 +120,12 @@ export default function DeploymentPage() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="android" className="mt-6">
-          {renderSteps(androidSteps)}
+          {renderSteps(deploymentSteps)}
         </TabsContent>
         <TabsContent value="pc" className="mt-6">
-          {renderSteps(androidSteps)}
+          {renderSteps(deploymentSteps)}
         </TabsContent>
       </Tabs>
     </div>
   );
 }
-
