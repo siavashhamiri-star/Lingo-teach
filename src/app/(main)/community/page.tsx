@@ -6,6 +6,8 @@ import { Users, GraduationCap, School, MessageSquare, ArrowRight, UserCheck, Lau
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import Link from 'next/link';
 
 const communityRooms = [
   {
@@ -56,6 +58,12 @@ export default function CommunityPage() {
         description="Connect with learners and practice in language exchange rooms."
         icon={Users}
       />
+      <Alert className="mb-8">
+        <AlertTitle>Feature in Development</AlertTitle>
+        <AlertDescription>
+          Full text and voice chat functionalities within rooms are coming soon! For now, joining a room will take you to our AI chatbot for practice.
+        </AlertDescription>
+      </Alert>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {communityRooms.map((room) => (
             <Card key={room.title} className="flex flex-col">
@@ -80,8 +88,10 @@ export default function CommunityPage() {
                     <div className="text-sm text-muted-foreground">
                         <span className="font-bold text-primary">{room.onlineCount}</span> users online
                     </div>
-                    <Button variant="outline" size="sm">
+                    <Button asChild variant="outline" size="sm">
+                       <Link href="/chatbot">
                         Join Room <ArrowRight className="ml-2 h-4 w-4" />
+                       </Link>
                     </Button>
                 </CardFooter>
             </Card>
