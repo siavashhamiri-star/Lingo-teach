@@ -155,7 +155,7 @@ export default function ProfilePage() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2"><Megaphone className="w-5 h-5 text-primary" />A Proposal for the Future of Education: An Open Letter to the World's Universities</CardTitle>
+          <CardTitle className="flex items-center gap-2"><Megaphone className="w-5 h-5 text-primary" />An Open Letter to the World's Universities: A Proposal for the Future of Education</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="prose prose-sm max-w-none text-muted-foreground whitespace-pre-wrap">
@@ -163,15 +163,13 @@ export default function ProfilePage() {
               The traditional academic model, while foundational, faces a modern challenge: scientific stagnation. How do we inspire our educators to remain at the cutting edge, while preserving the immense respect they deserve? How do we ensure that a professor's lifelong work is honored, while simultaneously fostering the rapid evolution of their field?
             </p>
             <p>
-              We propose a new paradigm, tested within the LinguaWeave ecosystem. This is not a system of penalty, but one of dynamic, incentivized evolution. Our model is built on three pillars:
+              We propose a new paradigm, tested within the LinguaWeave ecosystem. This is not a system of penalty, but one of dynamic, incentivized evolution. Our model is built on respectful competition and synergistic growth.
             </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li><span className="font-semibold text-foreground">Dynamic Meritocracy & Respectful Challenge:</span> We propose a system where academic honors are not permanent, but are periodically renewed by demonstrating up-to-date knowledge. An elite student, after passing a qualifying test, can trigger a "Duel of Wits" between their professor and another peer professor. This creates a powerful, healthy incentive for excellence, driven by both financial rewards and the thrill of respectful competition, ensuring our most revered minds remain our most innovative.</li>
-              <li><span className="font-semibold text-foreground">Incentivized Mentorship:</span> We foster a system where an educator's success is directly linked to the success of their student teams. This transforms professors into invested leaders, turning their students' growth into their own proudest achievement.</li>
-              <li><span className="font-semibold text-foreground">Nurturing Future Leaders:</span> A university's greatest asset is its talent. In our model, the elite student who successfully challenges the status quo is not a threat, but a triumph of the system. We propose creating clear pathways for these brilliant minds to earn income and even secure a professorship chair within the university. This ensures that the next generation of academic leaders is discovered, nurtured, and retained.</li>
-            </ul>
             <p>
-              By implementing this model, we can create a "quantum leap" in science. It’s a system where professors, motivated by a healthy, respectful competition, become the perpetual vanguard of progress, and their brightest students become their successors. We invite university policymakers to consider this model—not as a replacement, but as a revolutionary enhancement to our shared mission of advancing human knowledge.
+              When an elite student demonstrates their mastery by passing a qualifying test, it triggers a respectful suggestion: a **"Duel of Scientific Synergy"** between their professor and a peer professor. This duel is **entirely optional**. The professor has the full autonomy to accept or decline. If accepted, the results are shared confidentially, creating a powerful, private incentive for excellence.
+            </p>
+            <p>
+              Crucially, this duel itself becomes the **greatest workshop for knowledge creation**. The process of challenge and response between two great minds becomes an invaluable learning experience for all students, a moment where science can take a **"genetic leap"**. This transforms professors into invested leaders and their brightest students into their successors, creating a clear pathway for them to earn income and even secure a professorship chair within the university. We invite policymakers to consider this model to create a "quantum leap" in science, where professors, motivated by healthy competition, become the perpetual vanguard of progress.
             </p>
           </div>
           <Separator />
@@ -180,15 +178,13 @@ export default function ProfilePage() {
               مدل آکادمیک سنتی، با وجود تمام دستاوردهایش، با یک چالش مدرن روبروست: رکود علمی. چگونه می‌توانیم ضمن حفظ حرمت عمیق برای اساتید، آن‌ها را برای باقی ماندن در لبه‌ی تیغ دانش تشویق کنیم و اطمینان حاصل کنیم که هم به کارنامه یک عمر تلاش استاد احترام گذاشته می‌شود و هم زمینه برای تکامل سریع علم فراهم است؟
             </p>
             <p>
-             ما پارادایم جدیدی را پیشنهاد می‌کنیم که در اکوسیستم LinguaWeave آزموده شده است. این یک سیستم تنبیهی نیست، بلکه سیستمی مبتنی بر تکامل پویا و تشویقی است. مدل ما بر سه ستون استوار است:
+             ما پارادایم جدیدی را پیشنهاد می‌کنیم که در اکوسیستم LinguaWeave آزموده شده است. این یک سیستم تنبیهی نیست، بلکه سیستمی مبتنی بر تکامل پویا، انگیزش و رشد هم‌افزا است.
             </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li><span className="font-semibold text-foreground">شایسته‌سالاری پویا و چالش محترمانه:</span> ما سیستمی را پیشنهاد می‌کنیم که در آن افتخارات آکادمیک دائمی نیستند، بلکه به صورت دوره‌ای و از طریق اثبات دانش به‌روز، تمدید می‌شوند. یک دانشجوی نخبه، پس از قبولی در یک آزمون صلاحیتی، می‌تواند یک "دوئل اندیشه‌ها" را بین استاد خود و یک استاد همتا آغاز کند. این امر با پاداش‌های مالی و هیجان یک رقابت محترمانه، انگیزه‌ای قدرتمند و سالم برای تعالی ایجاد می‌کند و تضمین می‌کند که محترم‌ترین ذهن‌های ما، نوآورترین آن‌ها نیز باقی بمانند.</li>
-              <li><span className="font-semibold text-foreground">مربی‌گری مبتنی بر انگیزه:</span> ما سیستمی را پرورش می‌دهیم که در آن، موفقیت یک استاد مستقیماً به موفقیت تیم‌های دانشجویی او گره خورده است. این امر، اساتید را به رهبرانی سرمایه‌گذار تبدیل می‌کند که رشد شاگردانشان، به بزرگترین افتخار خودشان بدل می‌شود.</li>
-              <li><span className="font-semibold text-foreground">پرورش رهبران آینده:</span> بزرگترین سرمایه یک دانشگاه، استعدادهای آن است. در مدل ما، دانشجوی نخبه‌ای که وضعیت موجود را با موفقیت به چالش می‌کشد، یک تهدید نیست، بلکه یک پیروزی برای کل سیستم است. ما پیشنهاد می‌کنیم که مسیرهای شفافی برای این ذهن‌های درخشان ایجاد شود تا بتوانند در دانشگاه کسب درآمد کرده و حتی به کرسی استادی دست یابند. این کار تضمین می‌کند که نسل بعدی رهبران علمی، کشف، پرورش و حفظ می‌شوند.</li>
-            </ul>
             <p>
-              با پیاده‌سازی این مدل، ما می‌توانیم یک "جهش کوانتومی" در علم ایجاد کنیم. این سیستمی است که در آن، اساتید، با انگیزه‌ای ناشی از یک رقابت سالم و محترمانه، به پیشتازان همیشگی پیشرفت تبدیل می‌شوند و درخشان‌ترین شاگردانشان، جانشینان آن‌ها خواهند بود. ما از سیاست‌گذاران دانشگاهی دعوت می‌کنیم تا این مدل را نه به عنوان یک جایگزین، بلکه به عنوان یک ارتقاء انقلابی برای مأموریت مشترک ما در پیشبرد دانش بشری، در نظر بگیرند.
+              هنگامی که یک دانشجوی نخبه با موفقیت در یک آزمون صلاحیتی، استادی خود را به اثبات می‌رساند، یک پیشنهاد محترمانه فعال می‌شود: یک **"دوئل هم‌افزایی علمی"** بین استاد او و یک استاد همتا. این دوئل **کاملاً اختیاری** است و استاد، استقلال کامل در پذیرش یا رد آن را دارد. در صورت پذیرش، نتایج به صورت محرمانه به اشتراک گذاشته می‌شود و یک انگیزه قدرتمند و شخصی برای تعالی ایجاد می‌کند.
+            </p>
+            <p>
+             نکته حیاتی اینجاست که خود این دوئل به **بزرگترین کارگاه تولید علم** تبدیل می‌شود. فرآیند پرسش و پاسخ بین دو ذهن بزرگ، به یک تجربه یادگیری بی‌بدیل برای تمام دانشجویان بدل می‌گردد، لحظه‌ای که علم می‌تواند یک **"جهش ژنتیکی"** را تجربه کند. این مدل، اساتید را به رهبرانی سرمایه‌گذار و درخشان‌ترین شاگردانشان را به جانشینان آنها تبدیل می‌کند و مسیری شفاف برایشان فراهم می‌آورد تا در دانشگاه کسب درآمد کرده و حتی به کرسی استادی دست یابند. ما از سیاست‌گذاران دعوت می‌کنیم تا این مدل را برای ایجاد یک "جهش کوانتومی" در علم در نظر بگیرند، جایی که اساتید، با انگیزه‌ای ناشی از رقابت سالم، به پیشتازان همیشگی پیشرفت تبدیل می‌شوند.
             </p>
           </div>
         </CardContent>
@@ -227,3 +223,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
