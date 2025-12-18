@@ -48,7 +48,7 @@ export default function LessonPlannerPage() {
             template = "Create a lesson for English for immigration purposes. The lesson should cover essential vocabulary and phrases for interacting with officials, filling out forms, and understanding legal documents. Include a role-playing exercise for a border interview.";
             break;
         case 'slang':
-            template = "Create a lesson on modern colloquial English and slang. Explain the meaning and usage of 5-7 popular slang terms or phrases. Provide examples of how they are used in natural conversation and include an exercise to test understanding.";
+            template = "Create a lesson on modern, real-life English slang and idioms. Explain the meaning and usage of 5-7 popular slang terms. Include natural, emotional expressions people use when they are stressed or thinking out loud. For example: phrases like 'I've got to get my act together', 'My palms are sweaty', or 'I should have done this differently'. Provide examples of how these are used in natural conversation and include an exercise to test understanding.";
             break;
         case 'medical':
             template = "Create a comprehensive Medical English lesson suitable for doctors, medical students, radiologists, and lab scientists. The lesson should focus on terminology for patient consultations, understanding medical reports (radiology, lab results), and common clinical vocabulary. Include practical exercises."
@@ -255,5 +255,3 @@ export default function LessonPlannerPage() {
     </div>
   );
 }
-
-    
