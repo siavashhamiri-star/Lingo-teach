@@ -2,12 +2,13 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { Users, GraduationCap, School, MessageSquare, ArrowRight, UserCheck, Laugh } from 'lucide-react';
+import { Users, GraduationCap, School, MessageSquare, ArrowRight, UserCheck, Laugh, Handshake, Sparkles, UserPlus } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import Link from 'next/link';
+import { useToast } from '@/hooks/use-toast';
 
 const communityRooms = [
   {
@@ -51,13 +52,43 @@ const communityRooms = [
 
 
 export default function CommunityPage() {
+    const { toast } = useToast();
+
+    const handleFindPartner = () => {
+        toast({
+            title: "We're looking for your partner!",
+            description: "Based on your progress and goals, we'll suggest a compatible language partner for you soon.",
+        });
+    }
+
   return (
     <div>
       <PageHeader
         title="Community Hub"
-        description="Connect with learners and practice in language exchange rooms."
+        description="Connect with learners, find a partner, and practice in exchange rooms."
         icon={Users}
       />
+
+      <Card className="mb-8 bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
+          <CardHeader>
+              <CardTitle className="flex items-center gap-3 text-2xl">
+                  <Handshake className="w-8 h-8 text-primary" />
+                  Find Your Language Partner
+              </CardTitle>
+              <CardDescription>
+                  Learning is a journey best shared. We'll help you find a consistent partner to practice with, stay motivated, and grow together.
+              </CardDescription>
+          </CardHeader>
+          <CardContent>
+              <p className="text-muted-foreground mb-4">Based on your language level, activity, and learning goals, our AI will suggest a compatible partner. Having a regular partner is one of the best ways to accelerate your fluency.</p>
+              <Button onClick={handleFindPartner}>
+                  <Sparkles className="mr-2 h-4 w-4" />
+                  Find My Partner Now
+              </Button>
+          </CardContent>
+      </Card>
+
+      <h2 className="text-2xl font-bold mb-4">Language Exchange Rooms</h2>
       <Alert className="mb-8">
         <AlertTitle>Feature in Development</AlertTitle>
         <AlertDescription>
