@@ -22,6 +22,8 @@ import {
   MicVocal,
   Music,
   Package,
+  Palette,
+  Feather,
   Scale,
   School,
   Swords,
