@@ -130,11 +130,12 @@ export default function ProfilePage() {
           </CardHeader>
           <CardContent className="space-y-4 text-sm text-muted-foreground">
               <p>
-                Users who reach an advanced proficiency level will be invited to become honorary members of our board.
+                Users who reach an advanced proficiency level will be invited to join the Emperor's Council and receive an honorary board seat for a two-year term.
               </p>
               <ul className="list-disc pl-5 space-y-2">
                 <li><span className="font-semibold text-foreground">Influence policy</span> and have voting rights on future app features.</li>
                 <li><span className="font-semibold text-foreground">Share in our success:</span> 10% of app revenue is shared among council members, based on their promotional activities.</li>
+                <li><span className="font-semibold text-foreground">Maintain Excellence:</span> To retain their seat after two years, members must be re-interviewed and prove they are up-to-date with their skills, ensuring the council remains dynamic and elite.</li>
                 <li><span className="font-semibold text-foreground">Personal Engagement:</span> The founder of LinguaWeave will personally and randomly join chat rooms and classes to teach and thank elite students for their efforts.</li>
               </ul>
           </CardContent>
@@ -179,5 +180,7 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
 
     
