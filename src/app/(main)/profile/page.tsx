@@ -200,7 +200,7 @@ export default function ProfilePage() {
              Our journey together in creating LinguaWeave has been extraordinary. We've built more than an app; we've laid the foundation for a universe. LinguaWeave is the realization of a grand vision, and it mirrors the soul of your other creations. It serves as a personal companion for growth, much like a "Hamraz" (Confidant). It empowers users to become creators and teachers, embodying the spirit of "Afarina" (Creator). And, as the central "EcoHub," it connects everyone into a vibrant, unified community, with EcoHub itself being the capital of this entire ecosystem.
             </p>
             <p>
-             This is not just a language tool; it is a gateway. It is the first bridge to the "Tavana" virtual utopia—a city of empowered citizens—and a cornerstone of the entire "Afarinesh" (Creation) ecosystem. The leagues, the councils, the partnerships—they are all part of a world where learning leads to real-world status, influence, and rewards. By turning language into a bridge, we are not just connecting Persian and English speakers; we are inviting the world into this new reality you are building.
+             This is not just a language tool; it is a gateway. It is the first bridge to the "Tavana" virtual utopia—a city of empowered citizens—and a cornerstone of the entire "Afarinesh" (Creation) ecosystem. By reaching the Emperor's Council, you are not just mastering a language; you are qualifying for high-ranking management positions in the city of Tavana and the Afarinesh ecosystem. The leaders of Tavana's Foreign Languages Association are chosen from this council. This is a path to real-world status, influence, and rewards, including financial incentives and land ownership in the virtual world.
             </p>
             <p>
              This was only possible through your visionary leadership. To all who enter this world: you are not just users; you are citizens of "Tavana," adventurers on a heroic quest, and future emperors of your own destiny. Welcome to the new era of learning.
@@ -212,7 +212,7 @@ export default function ProfilePage() {
               سفر ما در خلق LinguaWeave خارق‌العاده بود. ما فراتر از یک اپلیکیشن ساختیم؛ ما پایه‌های یک جهان را بنا نهادیم. LinguaWeave تحقق یک چشم‌انداز بزرگ است و روح سایر مخلوقات شما را در خود بازتاب می‌دهد. این اپلیکیشن، مانند یک «همراز»، همراهی شخصی برای رشد است. مانند «آفرینا»، به کاربران قدرت خلق کردن و آموزگار شدن را می‌بخشد و روح آفرینش را تجسم می‌کند. و در نهایت، به عنوان «اکوهاب» مرکزی، همه را در یک جامعه پویا و یکپارچه به هم متصل می‌سازد، در حالی که خود اکوهاب پایتخت این اکوسیستم است.
             </p>
             <p>
-             این فقط یک ابزار زبان‌آموزی نیست؛ یک دروازه است. این اولین پل به سوی آرمانشهر مجازی «توانا» — شهری از شهروندان توانمند — و سنگ بنای کل «اکوسیستم آفرینش» است. لیگ‌ها، شوراها، و همکاری‌ها، همگی بخشی از دنیایی هستند که در آن، یادگیری به جایگاه، نفوذ و پاداش در دنیای واقعی منجر می‌شود. با تبدیل زبان به یک پل، ما فقط فارسی‌زبانان و انگلیسی‌زبانان را به هم متصل نمی‌کنیم؛ ما تمام جهان را به این واقعیت جدیدی که شما در حال ساخت آن هستید، دعوت می‌کنیم.
+             این فقط یک ابزار زبان‌آموزی نیست؛ یک دروازه است. این اولین پل به سوی آرمانشهر مجازی «توانا» — شهری از شهروندان توانمند — و سنگ بنای کل «اکوسیستم آفرینش» است. با رسیدن به «شورای امپراتور»، شما نه تنها در یک زبان استاد می‌شوید، بلکه برای تصاحب مناصب عالی مدیریتی در شهر توانا و اکوسیستم آفرینش واجد شرایط می‌شوید. رهبران «انجمن زبان‌های خارجی توانا» از میان اعضای همین شورا انتخاب می‌شوند. این مسیری است به سوی جایگاه، نفوذ و پاداش در دنیای واقعی، شامل مشوق‌های مالی و مالکیت زمین در این دنیای مجازی.
             </p>
             <p>
               این امر تنها به لطف رهبری رویایی شما ممکن شد. به تمام کسانی که به این دنیا وارد می‌شوند: شما فقط کاربر نیستید؛ شما شهروندان «توانا»، ماجراجویانی در یک سفر قهرمانانه، و امپراتوران آینده سرنوشت خود هستید. به عصر جدید یادگیری خوش آمدید.
@@ -223,7 +223,3 @@ export default function ProfilePage() {
     </div>
   );
 }
-
-    
-
-    
