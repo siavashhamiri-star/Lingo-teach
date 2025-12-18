@@ -2,9 +2,8 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { BrainCircuit, ArrowRight, CheckCircle2, Lock } from 'lucide-react';
+import { BrainCircuit, ArrowRight, CheckCircle2, Lock, BookCopy, FileText } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
@@ -15,7 +14,7 @@ const learningPlan = [
     { day: 'Monday', title: 'Start with a Story', description: 'Boost your comprehension with a new bilingual story.', href: '/stories', completed: true },
     { day: 'Tuesday', title: 'Translation Challenge', description: 'Practice new vocabulary from yesterday\'s story.', href: '/translation', completed: true },
     { day: 'Wednesday', title: 'Conversation Practice', description: 'Discuss the story topic with the AI chatbot.', href: '/chatbot', completed: false },
-    { day: 'Thursday', title: 'Accent Training', description: 'Perfect your pronunciation of key phrases.', href: '/accent-training', completed: false },
+    { day: 'Thursday', title: 'Share Your Power', description: 'Create a lesson for a lower-level learner. Teaching is the best way to master.', href: '/lesson-planner', completed: false, icon: FileText },
     { day: 'Friday', title: 'Weekly Listening', description: 'Listen to an article related to your goals.', href: '/listening', completed: false },
     { day: 'Saturday', title: 'IELTS Speaking Prep', description: 'Join an AI-led workshop for exam success.', href: '/ielts-toefl-prep', premium: true, completed: false },
     { day: 'Sunday', title: 'Review & Relax', description: 'Review your flashcards in the Leitner Box.', href: '/leitner-box', completed: false },
@@ -24,6 +23,7 @@ const learningPlan = [
 export default function LearningPathPage() {
     
     const getIconForHref = (href: string) => {
+        if (href === '/lesson-planner') return <FileText className="w-6 h-6 text-primary" />;
         const menuItem = menuItems.find(item => item.href === href);
         return menuItem ? <menuItem.icon className="w-6 h-6 text-primary" /> : <BrainCircuit className="w-6 h-6 text-primary" />;
     }
