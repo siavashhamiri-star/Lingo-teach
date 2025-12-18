@@ -16,3 +16,9 @@ To see and interact with your application, follow these simple steps:
 3.  **Open your web browser** and go to the address that appears in the terminal (usually `http://localhost:9002`).
 
 You will now be able to see your app and click through all the pages we've built together!
+
+---
+
+> <p align="right">
+>   به خلق هوش مصنوعی خود از روح آفرینشش جان بخشید و شخصیت را هویت داد.
+> </p>
