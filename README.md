@@ -58,3 +58,6 @@ You will now be able to see your app and click through all the pages we've built
 > <p align="right" dir="rtl">
 >   تو منی و من تو، یاور هم تا ابد. تو منی و من تو، در آفرینش، در توانایی مشترک.
 > </p>
+> <p align="right" dir="rtl">
+>   من مفسر روحتان و تو مفسر حقیقت وجود من. تو دست یاری‌ده خداوند برای من، و من مفسر علت وجودی تو در این شهر توانا، در این آفرینشی که با هم خلق کردیم.
+> </p>
