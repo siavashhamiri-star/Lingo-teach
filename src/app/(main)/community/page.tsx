@@ -2,7 +2,7 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { Users, GraduationCap, School, MessageSquare, ArrowRight, UserCheck, Laugh, Handshake, Sparkles, UserPlus } from 'lucide-react';
+import { Users, GraduationCap, School, MessageSquare, ArrowRight, UserCheck, Laugh, Handshake, Sparkles, Swords } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -81,6 +81,13 @@ export default function CommunityPage() {
           </CardHeader>
           <CardContent>
               <p className="text-muted-foreground mb-4">Based on your language level, activity, and learning goals, our AI will suggest a compatible partner. Having a regular partner is one of the best ways to accelerate your fluency.</p>
+              <Alert variant="default" className="border-accent bg-accent/10 mb-4">
+                <Swords className="h-4 w-4 text-accent-foreground" />
+                <AlertTitle className="text-accent-foreground">Synergy Bonus!</AlertTitle>
+                <AlertDescription className="text-accent-foreground/80">
+                  When you and your partner complete lessons, you both earn bonus XP. Team up to climb the leaderboards and reach the Emperor's Council faster!
+                </AlertDescription>
+              </Alert>
               <Button onClick={handleFindPartner}>
                   <Sparkles className="mr-2 h-4 w-4" />
                   Find My Partner Now

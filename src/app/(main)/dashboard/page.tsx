@@ -62,8 +62,8 @@ const weeklyGoals = [
 
 const leaderboard = [
   { rank: 1, name: 'Elena', stars: 2150, league: "Emperor's Council" },
-  { rank: 2, name: 'Kenji', stars: 1980, league: 'Champion of Champions' },
-  { rank: 3, name: 'You', stars: 1810, league: 'Champion of Champions' },
+  { rank: 2, name: 'Kenji', stars: 1980, league: 'Champion of Champions', partner: 'You' },
+  { rank: 3, name: 'You', stars: 1810, league: 'Champion of Champions', partner: 'Kenji' },
   { rank: 4, name: 'Sara', stars: 1750, league: 'Award League' },
   { rank: 5, name: 'David', stars: 1230, league: 'Shield League' },
   { rank: 6, name: 'Maria', stars: 980, league: 'Shield League' },
@@ -172,7 +172,15 @@ export default function DashboardPage() {
                   return (
                     <TableRow key={user.rank} className={cn(user.name === 'You' ? 'bg-primary/10' : '')}>
                       <TableCell className="font-medium">{user.rank}</TableCell>
-                      <TableCell>{user.name}</TableCell>
+                      <TableCell className="flex items-center gap-2">
+                        {user.name}
+                        {user.partner && (
+                           <Badge variant="outline" className="gap-1.5 border-accent text-accent-foreground">
+                             <Swords className="h-3 w-3" />
+                             Synergy
+                           </Badge>
+                        )}
+                        </TableCell>
                       <TableCell>
                         <Badge variant="outline" className={cn("gap-1.5", leagueInfo.className)}>
                           <LeagueIcon className="h-3 w-3" />
