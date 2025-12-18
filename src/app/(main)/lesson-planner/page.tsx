@@ -144,12 +144,12 @@ export default function LessonPlannerPage() {
                         <span className="text-xs">Slang</span>
                     </Button>
                     <Button variant="outline" size="sm" onClick={() => setTemplate('medical')} disabled={isLoading || !IS_PREMIUM_USER} className="flex-col h-16 relative">
-                        <Badge variant="destructive" className="absolute top-1 right-1 text-xs px-1.5 py-0.5">Premium</Badge>
+                        { !IS_PREMIUM_USER && <Badge variant="destructive" className="absolute -top-2 -right-2 text-xs px-1.5 py-0.5 scale-75">Premium</Badge> }
                         <Stethoscope className="w-5 h-5 mb-1"/>
                         <span className="text-xs">Medical</span>
                     </Button>
                     <Button variant="outline" size="sm" onClick={() => setTemplate('legal')} disabled={isLoading || !IS_PREMIUM_USER} className="flex-col h-16 relative">
-                        <Badge variant="destructive" className="absolute top-1 right-1 text-xs px-1.5 py-0.5">Premium</Badge>
+                        { !IS_PREMIUM_USER && <Badge variant="destructive" className="absolute -top-2 -right-2 text-xs px-1.5 py-0.5 scale-75">Premium</Badge> }
                         <Scale className="w-5 h-5 mb-1"/>
                         <span className="text-xs">Legal</span>
                     </Button>
@@ -255,3 +255,5 @@ export default function LessonPlannerPage() {
     </div>
   );
 }
+
+    
