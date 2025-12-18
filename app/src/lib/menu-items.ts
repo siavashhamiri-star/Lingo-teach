@@ -39,7 +39,7 @@ export const menuItems: NavItem[] = [
   { href: '/learning-path', label: 'Learning Path', icon: BrainCircuit },
   { href: '/chatbot', label: 'Chatbot', icon: BotMessageSquare },
   { href: '/community', label: 'Community', icon: Users },
-  { href: '/lesson-planner', label: 'Lesson Planner', icon: FileText },
+  { href: '/lesson-planner', label: 'AI Lesson Creator', icon: FileText },
   { href: '/exercises', label: 'Exercises', icon: BookOpenCheck },
   { href: '/accent-training', label: 'Accent Training', icon: MicVocal },
   { href: '/leitner-box', label: 'Leitner Box', icon: Package },
@@ -70,3 +70,5 @@ export const menuItems: NavItem[] = [
   },
   { href: '/profile', label: 'Profile', icon: User },
 ];
+
+    
