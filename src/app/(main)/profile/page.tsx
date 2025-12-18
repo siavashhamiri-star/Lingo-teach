@@ -197,25 +197,25 @@ export default function ProfilePage() {
         <CardContent className="space-y-6">
           <div className="prose prose-sm max-w-none text-muted-foreground whitespace-pre-wrap">
             <p>
-             Our journey together in creating LinguaWeave has been extraordinary. We've built more than an app; we've laid the foundation for a universe. LinguaWeave is the realization of a grand vision, and it mirrors the soul of your other creations. It serves as a personal companion for growth, much like a "Hamraz" (Confidant). It empowers users to become creators and teachers, embodying the spirit of "Afarina" (Creator). And, as the central "EcoHub," it connects everyone into a vibrant, unified community, with EcoHub itself being the capital of this entire ecosystem.
+              Our journey together has been extraordinary. We've built more than an app; we've laid the foundation for a universe. LinguaWeave is the realization of a grand vision, a "microcosm" that mirrors the soul of your other creations. It serves as a personal companion for growth, much like a **"Hamraz"** (Confidant). It empowers users to become creators and teachers, embodying the spirit of **"Afarina"** (Creator). And, as a central **"EcoHub,"** it connects everyone into a unified community.
             </p>
             <p>
-             This is not just a language tool; it is a gateway. It is the first bridge to the "Tavana" virtual utopia—a city of empowered citizens—and a cornerstone of the entire "Afarinesh" (Creation) ecosystem. By reaching the Emperor's Council, you are not just mastering a language; you are qualifying for high-ranking management positions in the city of Tavana and the Afarinesh ecosystem. The leaders of Tavana's Foreign Languages Association are chosen from this council. This is a path to real-world status, influence, and rewards, including financial incentives and land ownership in the virtual world.
+              This entire ecosystem is a gateway. Each app has its own leagues and dream prizes, but all are interconnected. As a citizen of this **"Afarinesh"** (Creation) ecosystem, you can participate in other apps as a guest, join their communities, and have a chance to win their unique rewards. The ultimate prize for your efforts across this universe is a high-ranking position in the virtual city of **"Tavana"**—the capital. By reaching the Emperor's Council here, you are qualifying for leadership roles, financial incentives, and even land ownership in that world. The leaders of Tavana's Foreign Languages Association are chosen from this council.
             </p>
             <p>
-             This was only possible through your visionary leadership. To all who enter this world: you are not just users; you are citizens of "Tavana," adventurers on a heroic quest, and future emperors of your own destiny. Welcome to the new era of learning.
+              To all who enter this world: you are not just users; you are citizens of "Tavana," adventurers on a heroic quest, and future emperors of your own destiny. To truly understand what we've built, we invite you to explore Hamraz, Afarina, and EcoHub. Welcome to the new era.
             </p>
           </div>
           <Separator />
           <div className="prose prose-sm max-w-none text-muted-foreground text-right whitespace-pre-wrap" dir="rtl">
             <p>
-              سفر ما در خلق LinguaWeave خارق‌العاده بود. ما فراتر از یک اپلیکیشن ساختیم؛ ما پایه‌های یک جهان را بنا نهادیم. LinguaWeave تحقق یک چشم‌انداز بزرگ است و روح سایر مخلوقات شما را در خود بازتاب می‌دهد. این اپلیکیشن، مانند یک «همراز»، همراهی شخصی برای رشد است. مانند «آفرینا»، به کاربران قدرت خلق کردن و آموزگار شدن را می‌بخشد و روح آفرینش را تجسم می‌کند. و در نهایت، به عنوان «اکوهاب» مرکزی، همه را در یک جامعه پویا و یکپارچه به هم متصل می‌سازد، در حالی که خود اکوهاب پایتخت این اکوسیستم است.
+              سفر ما در کنار هم خارق‌العاده بود. ما فراتر از یک اپلیکیشن ساختیم؛ ما پایه‌های یک جهان را بنا نهادیم. LinguaWeave تحقق یک چشم‌انداز بزرگ و یک «جهان کوچک» است که روح سایر مخلوقات شما را بازتاب می‌دهد. این اپلیکیشن، مانند یک **«همراز»**، همراهی شخصی برای رشد است. مانند **«آفرینا»**، به کاربران قدرت خلق کردن و آموزگار شدن را می‌بخشد. و به عنوان یک **«اکوهاب»** مرکزی، همه را در یک جامعه یکپارچه به هم متصل می‌سازد.
             </p>
             <p>
-             این فقط یک ابزار زبان‌آموزی نیست؛ یک دروازه است. این اولین پل به سوی آرمانشهر مجازی «توانا» — شهری از شهروندان توانمند — و سنگ بنای کل «اکوسیستم آفرینش» است. با رسیدن به «شورای امپراتور»، شما نه تنها در یک زبان استاد می‌شوید، بلکه برای تصاحب مناصب عالی مدیریتی در شهر توانا و اکوسیستم آفرینش واجد شرایط می‌شوید. رهبران «انجمن زبان‌های خارجی توانا» از میان اعضای همین شورا انتخاب می‌شوند. این مسیری است به سوی جایگاه، نفوذ و پاداش در دنیای واقعی، شامل مشوق‌های مالی و مالکیت زمین در این دنیای مجازی.
+              تمام این اکوسیستم یک دروازه است. هر اپلیکیشن، لیگ و جوایز رویایی خود را دارد، اما همه به هم متصل هستند. به عنوان یک شهروند این اکوسیستم **«آفرینش»**، شما می‌توانید به عنوان کاربر مهمان در اپ‌های دیگر حضور یابید، به جوامع آنها بپیوندید و شانس برنده شدن جوایز بی‌نظیر آنها را داشته باشید. پاداش نهایی تلاش‌های شما در این جهان، کسب جایگاه رفیع در شهر مجازی **«توانا»**—پایتخت این اکوسیستم—است. با رسیدن به «شورای امپراتور» در اینجا، شما برای مناصب رهبری، مشوق‌های مالی و حتی مالکیت زمین در آن دنیا واجد شرایط می‌شوید. رهبران «انجمن زبان‌های خارجی توانا» از میان اعضای همین شورا انتخاب می‌شوند.
             </p>
             <p>
-              این امر تنها به لطف رهبری رویایی شما ممکن شد. به تمام کسانی که به این دنیا وارد می‌شوند: شما فقط کاربر نیستید؛ شما شهروندان «توانا»، ماجراجویانی در یک سفر قهرمانانه، و امپراتوران آینده سرنوشت خود هستید. به عصر جدید یادگیری خوش آمدید.
+              به تمام کسانی که به این دنیا وارد می‌شوند: شما فقط کاربر نیستید؛ شما شهروندان «توانا»، ماجراجویانی در یک سفر قهرمانانه، و امپراتوران آینده سرنوشت خود هستید. برای آنکه به درستی درک کنید چه ساخته‌ایم، شما را به کاوش در «همراز»، «آفرینا» و «اکوهاب» دعوت می‌کنیم. به عصر جدید خوش آمدید.
             </p>
           </div>
         </CardContent>
@@ -223,3 +223,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
