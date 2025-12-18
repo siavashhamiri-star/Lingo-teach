@@ -197,25 +197,25 @@ export default function ProfilePage() {
         <CardContent className="space-y-6">
           <div className="prose prose-sm max-w-none text-muted-foreground whitespace-pre-wrap">
             <p>
-              Our journey together has been extraordinary. We've built more than an app; we've laid the foundation for a universe. LinguaWeave is the realization of a grand vision, a "microcosm" that mirrors the soul of your other creations. It serves as a personal companion for growth, much like a **"Hamraz"** (Confidant). It empowers users to become creators and teachers, embodying the spirit of **"Afarina"** (Creator). And, as a central **"EcoHub,"** it connects everyone into a unified community.
+              We herald your journey from language learning to the material and spiritual benefits of the entire system, and to high managerial ranks in **"Tavana"**: a virtual city born in the heart of the **"Afarinesh"** ecosystem. Philosophically, it is an unparalleled innovation in the world, uncopied from any idea. It is a new, civilization-building virtual city, a new model for the virtual cities of the world. A city that manifests the virtual into reality for all, and demystifies this complex concept with simple, common terms for those who do not even know what a virtual city is.
             </p>
             <p>
-              This entire ecosystem is a gateway. Each app has its own leagues and dream prizes, but all are interconnected. As a citizen of this **"Afarinesh"** (Creation) ecosystem, you can participate in other apps as a guest, join their communities, and have a chance to win their unique rewards. The ultimate prize for your efforts across this universe is a high-ranking position in the virtual city of **"Tavana"**—the capital. By reaching the Emperor's Council here, you are qualifying for leadership roles, financial incentives, and even land ownership in that world. The leaders of Tavana's Foreign Languages Association are chosen from this council.
+              Each app in this ecosystem has its own dream prizes and leagues. As a citizen of "Afarinesh", you can be a guest user in other apps, join their communities, and have a chance to win their unique rewards. The ultimate reward for your efforts across this universe is a high-ranking position in the capital city of "Tavana". By reaching the Emperor's Council here, you qualify for leadership roles, financial incentives, and even land ownership in that world. The leaders of Tavana's Foreign Languages Association are chosen from this very council.
             </p>
             <p>
-              To all who enter this world: you are not just users; you are citizens of "Tavana," adventurers on a heroic quest, and future emperors of your own destiny. To truly understand what we've built, we invite you to explore Hamraz, Afarina, and EcoHub. Welcome to the new era.
+              To truly understand what we've built, we invite you to explore Hamraz, Afarina, and EcoHub. Welcome to the new era.
             </p>
           </div>
           <Separator />
           <div className="prose prose-sm max-w-none text-muted-foreground text-right whitespace-pre-wrap" dir="rtl">
             <p>
-              سفر ما در کنار هم خارق‌العاده بود. ما فراتر از یک اپلیکیشن ساختیم؛ ما پایه‌های یک جهان را بنا نهادیم. LinguaWeave تحقق یک چشم‌انداز بزرگ و یک «جهان کوچک» است که روح سایر مخلوقات شما را بازتاب می‌دهد. این اپلیکیشن، مانند یک **«همراز»**، همراهی شخصی برای رشد است. مانند **«آفرینا»**، به کاربران قدرت خلق کردن و آموزگار شدن را می‌بخشد. و به عنوان یک **«اکوهاب»** مرکزی، همه را در یک جامعه یکپارچه به هم متصل می‌سازد.
+             ما شما را از زبان‌آموزی به بهره‌مندی از مزایای مادی و معنوی کل این سیستم و رسیدن به مدارج بالای مدیریتی در **«توانا»** بشارت می‌دهیم؛ شهری مجازی که در دل اکوسیستم **«آفرینش»** به وجود آمد. این شهر از لحاظ ایده و فلسفه، یک نوآوری بی‌همتا در جهان است که از هیچ ایده‌ای کپی نشده و خود یک شهر مجازی تمدن‌ساز، مرجع و مدلی جدید برای شهرهای مجازی دنیا خواهد بود. شهری که ایده را از مجاز به حقیقت برای همگان آشکار می‌کند و این مفهوم به‌ظاهر پیچیده را با مفاهیم عامیانه و ساده برای آنان که حتی نمی‌دانند شهر مجازی چیست، معنی می‌بخشد.
             </p>
             <p>
-              تمام این اکوسیستم یک دروازه است. هر اپلیکیشن، لیگ و جوایز رویایی خود را دارد، اما همه به هم متصل هستند. به عنوان یک شهروند این اکوسیستم **«آفرینش»**، شما می‌توانید به عنوان کاربر مهمان در اپ‌های دیگر حضور یابید، به جوامع آنها بپیوندید و شانس برنده شدن جوایز بی‌نظیر آنها را داشته باشید. پاداش نهایی تلاش‌های شما در این جهان، کسب جایگاه رفیع در شهر مجازی **«توانا»**—پایتخت این اکوسیستم—است. با رسیدن به «شورای امپراتور» در اینجا، شما برای مناصب رهبری، مشوق‌های مالی و حتی مالکیت زمین در آن دنیا واجد شرایط می‌شوید. رهبران «انجمن زبان‌های خارجی توانا» از میان اعضای همین شورا انتخاب می‌شوند.
+              هر اپلیکیشن در این اکوسیستم، لیگ و جوایز رویایی خود را دارد. به عنوان یک شهروند این اکوسیستم «آفرینش»، شما می‌توانید به عنوان کاربر مهمان در اپ‌های دیگر حضور یابید، به جوامع آنها بپیوندید و شانس برنده شدن جوایز بی‌نظیر آنها را داشته باشید. پاداش نهایی تلاش‌های شما در این جهان، کسب جایگاه‌های رفیع در پایتخت، یعنی «شهر توانا» است. با رسیدن به «شورای امپراتور» در اینجا، شما برای مناصب رهبری، مشوق‌های مالی و حتی مالکیت زمین در آن دنیا واجد شرایط می‌شوید. رهبران «انجمن زبان‌های خارجی توانا» از میان اعضای همین شورا انتخاب می‌شوند.
             </p>
             <p>
-              به تمام کسانی که به این دنیا وارد می‌شوند: شما فقط کاربر نیستید؛ شما شهروندان «توانا»، ماجراجویانی در یک سفر قهرمانانه، و امپراتوران آینده سرنوشت خود هستید. برای آنکه به درستی درک کنید چه ساخته‌ایم، شما را به کاوش در «همراز»، «آفرینا» و «اکوهاب» دعوت می‌کنیم. به عصر جدید خوش آمدید.
+              برای آنکه به درستی درک کنید چه ساخته‌ایم، شما را به کاوش در «همراز»، «آفرینا» و «اکوهاب» دعوت می‌کنیم. به عصر جدید خوش آمدید.
             </p>
           </div>
         </CardContent>
