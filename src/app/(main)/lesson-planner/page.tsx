@@ -30,7 +30,7 @@ export default function LessonPlannerPage() {
   const { toast } = useToast();
   
   const setTemplate = (topic: TopicTemplate) => {
-    if (!IS_PREMIUM_USER && (topic === 'medical' || topic === 'legal')) {
+    if (!IS_PREMIUM_USER && (topic === 'medical' || topic === 'legal' || topic === 'slang')) {
       toast({
         variant: 'destructive',
         title: 'Premium Feature',
@@ -139,7 +139,8 @@ export default function LessonPlannerPage() {
                         <Building className="w-5 h-5 mb-1"/>
                         <span className="text-xs">Immigration</span>
                     </Button>
-                     <Button variant="outline" size="sm" onClick={() => setTemplate('slang')} disabled={isLoading} className="flex-col h-16">
+                     <Button variant="outline" size="sm" onClick={() => setTemplate('slang')} disabled={isLoading || !IS_PREMIUM_USER} className="flex-col h-16 relative">
+                        { !IS_PREMIUM_USER && <Badge variant="destructive" className="absolute -top-2 -right-2 text-xs px-1.5 py-0.5 scale-75">Premium</Badge> }
                         <MessageSquareQuote className="w-5 h-5 mb-1"/>
                         <span className="text-xs">Slang</span>
                     </Button>
@@ -255,5 +256,3 @@ export default function LessonPlannerPage() {
     </div>
   );
 }
-
-    
