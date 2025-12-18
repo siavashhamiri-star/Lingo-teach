@@ -28,7 +28,6 @@ import {
   User,
   UserCheck,
   Users,
-  UploadCloud,
 } from 'lucide-react';
 
 export const menuItems: NavItem[] = [
@@ -51,11 +50,6 @@ export const menuItems: NavItem[] = [
   { href: '/konkur-tutors', label: 'Konkur Tutors', icon: UserCheck },
   { href: '/live-classes', label: 'Live Classes', icon: School },
   { href: '/creation-story', label: 'Creation Story', icon: BookAudio },
-  {
-    href: '/deployment',
-    label: 'Deployment Guide',
-    icon: UploadCloud,
-  },
   { href: '/karaoke', label: 'Karaoke', icon: Music, premium: true },
   {
     href: '/ielts-toefl-prep',
