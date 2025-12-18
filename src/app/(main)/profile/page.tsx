@@ -166,9 +166,9 @@ export default function ProfilePage() {
               We propose a new paradigm, tested within the LinguaWeave ecosystem. This is not a system of penalty, but one of dynamic, incentivized evolution. Our model is built on three pillars:
             </p>
             <ul className="list-disc pl-5 space-y-2">
-              <li><span className="font-semibold text-foreground">Dynamic Meritocracy:</span> We propose that academic honors and leadership roles be periodically renewed by demonstrating up-to-date knowledge. This creates a continuous, healthy incentive for excellence, driven by both financial and scientific rewards.</li>
+              <li><span className="font-semibold text-foreground">Dynamic Meritocracy & Respectful Challenge:</span> We propose a system where academic honors are not permanent, but are periodically renewed by demonstrating up-to-date knowledge. An elite student, after passing a qualifying test, can trigger a "Duel of Wits" between their professor and another peer professor. This creates a powerful, healthy incentive for excellence, driven by both financial rewards and the thrill of respectful competition, ensuring our most revered minds remain our most innovative.</li>
               <li><span className="font-semibold text-foreground">Incentivized Mentorship:</span> We foster a system where an educator's success is directly linked to the success of their student teams. This transforms professors into invested leaders, turning their students' growth into their own proudest achievement.</li>
-              <li><span className="font-semibold text-foreground">Nurturing Future Leaders:</span> A university's greatest asset is its talent. In our model, the elite student who successfully challenges their professor is not a threat, but a triumph of the system. We propose creating clear pathways for these brilliant minds to earn income and even secure a professorship chair within the university. This ensures that the next generation of academic leaders is discovered, nurtured, and retained.</li>
+              <li><span className="font-semibold text-foreground">Nurturing Future Leaders:</span> A university's greatest asset is its talent. In our model, the elite student who successfully challenges the status quo is not a threat, but a triumph of the system. We propose creating clear pathways for these brilliant minds to earn income and even secure a professorship chair within the university. This ensures that the next generation of academic leaders is discovered, nurtured, and retained.</li>
             </ul>
             <p>
               By implementing this model, we can create a "quantum leap" in science. It’s a system where professors, motivated by a healthy, respectful competition, become the perpetual vanguard of progress, and their brightest students become their successors. We invite university policymakers to consider this model—not as a replacement, but as a revolutionary enhancement to our shared mission of advancing human knowledge.
@@ -183,9 +183,9 @@ export default function ProfilePage() {
              ما پارادایم جدیدی را پیشنهاد می‌کنیم که در اکوسیستم LinguaWeave آزموده شده است. این یک سیستم تنبیهی نیست، بلکه سیستمی مبتنی بر تکامل پویا و تشویقی است. مدل ما بر سه ستون استوار است:
             </p>
             <ul className="list-disc pl-5 space-y-2">
-              <li><span className="font-semibold text-foreground">شایسته‌سالاری پویا:</span> ما پیشنهاد می‌کنیم که افتخارات و نقش‌های رهبری آکادمیک، به‌جای اعطای دائمی، به صورت دوره‌ای و از طریق اثبات دانش به‌روز، تمدید شوند. این امر، با مشوق‌های مالی و علمی، یک انگیزه سالم و دائمی برای تعالی ایجاد می‌کند.</li>
+              <li><span className="font-semibold text-foreground">شایسته‌سالاری پویا و چالش محترمانه:</span> ما سیستمی را پیشنهاد می‌کنیم که در آن افتخارات آکادمیک دائمی نیستند، بلکه به صورت دوره‌ای و از طریق اثبات دانش به‌روز، تمدید می‌شوند. یک دانشجوی نخبه، پس از قبولی در یک آزمون صلاحیتی، می‌تواند یک "دوئل اندیشه‌ها" را بین استاد خود و یک استاد همتا آغاز کند. این امر با پاداش‌های مالی و هیجان یک رقابت محترمانه، انگیزه‌ای قدرتمند و سالم برای تعالی ایجاد می‌کند و تضمین می‌کند که محترم‌ترین ذهن‌های ما، نوآورترین آن‌ها نیز باقی بمانند.</li>
               <li><span className="font-semibold text-foreground">مربی‌گری مبتنی بر انگیزه:</span> ما سیستمی را پرورش می‌دهیم که در آن، موفقیت یک استاد مستقیماً به موفقیت تیم‌های دانشجویی او گره خورده است. این امر، اساتید را به رهبرانی سرمایه‌گذار تبدیل می‌کند که رشد شاگردانشان، به بزرگترین افتخار خودشان بدل می‌شود.</li>
-              <li><span className="font-semibold text-foreground">پرورش رهبران آینده:</span> بزرگترین سرمایه یک دانشگاه، استعدادهای آن است. در مدل ما، دانشجوی نخبه‌ای که استاد خود را با موفقیت به چالش می‌کشد، یک تهدید نیست، بلکه یک پیروزی برای کل سیستم است. ما پیشنهاد می‌کنیم که مسیرهای شفافی برای این ذهن‌های درخشان ایجاد شود تا بتوانند در دانشگاه کسب درآمد کرده و حتی به کرسی استادی دست یابند. این کار تضمین می‌کند که نسل بعدی رهبران علمی، کشف، پرورش و حفظ می‌شوند.</li>
+              <li><span className="font-semibold text-foreground">پرورش رهبران آینده:</span> بزرگترین سرمایه یک دانشگاه، استعدادهای آن است. در مدل ما، دانشجوی نخبه‌ای که وضعیت موجود را با موفقیت به چالش می‌کشد، یک تهدید نیست، بلکه یک پیروزی برای کل سیستم است. ما پیشنهاد می‌کنیم که مسیرهای شفافی برای این ذهن‌های درخشان ایجاد شود تا بتوانند در دانشگاه کسب درآمد کرده و حتی به کرسی استادی دست یابند. این کار تضمین می‌کند که نسل بعدی رهبران علمی، کشف، پرورش و حفظ می‌شوند.</li>
             </ul>
             <p>
               با پیاده‌سازی این مدل، ما می‌توانیم یک "جهش کوانتومی" در علم ایجاد کنیم. این سیستمی است که در آن، اساتید، با انگیزه‌ای ناشی از یک رقابت سالم و محترمانه، به پیشتازان همیشگی پیشرفت تبدیل می‌شوند و درخشان‌ترین شاگردانشان، جانشینان آن‌ها خواهند بود. ما از سیاست‌گذاران دانشگاهی دعوت می‌کنیم تا این مدل را نه به عنوان یک جایگزین، بلکه به عنوان یک ارتقاء انقلابی برای مأموریت مشترک ما در پیشبرد دانش بشری، در نظر بگیرند.
@@ -227,9 +227,3 @@ export default function ProfilePage() {
     </div>
   );
 }
-
-    
-
-    
-
-    
