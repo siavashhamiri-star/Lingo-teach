@@ -96,7 +96,7 @@ export default function ProfilePage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2"><Gift className="w-5 h-5 text-primary" />Referrals & Rewards League</CardTitle>
             <CardDescription>Invite friends to climb the referrer league, win monthly prizes, and earn a bi-annual grand prize!</CardDescription>
-          </Header>
+          </CardHeader>
           <CardContent className="space-y-4">
             <div>
                 <p className="text-sm font-medium mb-2">Your unique referral code:</p>
@@ -139,7 +139,7 @@ export default function ProfilePage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2"><ShieldCheck className="w-5 h-5 text-primary" />The Emperor's Council</CardTitle>
             <CardDescription>Top learners get a say in our future and a share of our success.</CardDescription>
-          </Header>
+          </CardHeader>
           <CardContent className="space-y-4 text-sm text-muted-foreground">
               <p>
                 Users who reach an advanced proficiency level will be invited to join the Emperor's Council and receive an honorary board seat for a two-year term.
@@ -181,7 +181,7 @@ export default function ProfilePage() {
              ما پارادایم جدیدی را پیشنهاد می‌کنیم که در اکوسیستم LinguaWeave آزموده شده است. این یک سیستم تنبیهی نیست، بلکه سیستمی مبتنی بر تکامل پویا، انگیزش و رشد هم‌افزا است.
             </p>
             <p>
-              هنگامی که یک دانشجوی نخبه با موفقیت در یک آزمون صلاحیتی، استادی خود را به اثبات می‌رساند، یک پیشنهاد محترمانه فعال می‌شود: یک **"دوئل هم‌افزایی علمی"** بین استاد او و یک استاد همتا. این دوئل **کاملاً اختیاری** است و استاد، استقلال کامل در پذیرش یا رد آن را دارد. در صورت پذیرش، نتایج به صورت محرمانه به اشتراک گذاشته می‌شود و یک انگیزه قدرتمند و شخصی برای تعالی ایجاد می‌کند.
+              هنگامی که یک دانشجوی نخبه با موفقیت در یک آزمون صلاحیتی، استادی خود را به اثبات می‌رساند، یک پیشنهاد محترمانه فعال می‌شود: یک **"دوئل هم‌افزایی علمی"** بین استاد او و یک استاد همتا. این دوئل **کاملاً اختیاری** است و استاد، استقلال کامل در پذیرش یا رد آن را دارد. در صورت پذیرش، نتایج به صورت محرمانه به اشتراک گذاشته می‌شود و یک انگیزه قدرتمend و شخصی برای تعالی ایجاد می‌کند.
             </p>
             <p>
              نکته حیاتی اینجاست که خود این دوئل به **بزرگترین کارگاه تولید علم** تبدیل می‌شود. فرآیند پرسش و پاسخ بین دو ذهن بزرگ، به یک تجربه یادگیری بی‌بدیل برای تمام دانشجویان بدل می‌گردد، لحظه‌ای که علم می‌تواند یک **"جهش ژنتیکی"** را تجربه کند. این مدل، اساتید را به رهبرانی سرمایه‌گذار و درخشان‌ترین شاگردانشان را به جانشینان آنها تبدیل می‌کند و مسیری شفاف برایشان فراهم می‌آورد تا در دانشگاه کسب درآمد کرده و حتی به کرسی استادی دست یابند. ما از سیاست‌گذاران دعوت می‌کنیم تا این مدل را برای ایجاد یک "جهش کوانتومی" در علم در نظر بگیرند، جایی که اساتید، با انگیزه‌ای ناشی از رقابت سالم، به پیشتازان همیشگی پیشرفت تبدیل می‌شوند.
