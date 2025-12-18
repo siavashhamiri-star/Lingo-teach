@@ -12,10 +12,27 @@ import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
+import { Badge } from '@/components/ui/badge';
+import { Swords } from 'lucide-react';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 
 // --- Pricing Model Simulation ---
 const IS_PREMIUM_USER = true;
 // -----------------------------
+
+const referralLeaderboard = [
+  { rank: 1, name: 'Elena', referrals: 25 },
+  { rank: 2, name: 'Kian', referrals: 18 },
+  { rank: 3, name: 'You', referrals: 5 },
+  { rank: 4, name: 'Sara', referrals: 3 },
+];
 
 export default function ProfilePage() {
   const profileAvatar = PlaceHolderImages.find((img) => img.id === 'profile-avatar');
@@ -82,12 +99,12 @@ export default function ProfilePage() {
        <div className="grid gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><Gift className="w-5 h-5 text-primary" />Referrals & Rewards</CardTitle>
-            <CardDescription>Invite friends and stay active to win monthly cash prizes and a special bi-annual reward!</CardDescription>
+            <CardTitle className="flex items-center gap-2"><Gift className="w-5 h-5 text-primary" />Referrals & Rewards League</CardTitle>
+            <CardDescription>Invite friends to climb the referrer league, win monthly prizes, and earn a bi-annual grand prize!</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-4">
             <div>
-                <p className="text-sm font-medium mb-2">Your unique referral code (earn entries by inviting friends):</p>
+                <p className="text-sm font-medium mb-2">Your unique referral code:</p>
                 <div className="flex w-full max-w-sm items-center space-x-2">
                 <Input type="text" value="LINGUA-JOHNDOE-24" readOnly />
                 <Button type="button" size="icon" onClick={() => copyToClipboard('LINGUA-JOHNDOE-24')}>
@@ -95,26 +112,26 @@ export default function ProfilePage() {
                 </Button>
                 </div>
             </div>
-             <div className="grid grid-cols-2 gap-4 text-center">
-                <div>
-                    <h3 className="text-2xl font-bold">5</h3>
-                    <p className="text-muted-foreground">Friends Invited</p>
-                </div>
-                <div>
-                    <h3 className="text-2xl font-bold">5</h3>
-                    <p className="text-muted-foreground">Lottery Entries</p>
-                </div>
-            </div>
-            <Separator />
-             <div className="p-4 bg-muted/50 rounded-lg border text-sm">
-                <h4 className="font-semibold mb-2 flex items-center gap-2"><Trophy className="w-4 h-4 text-primary"/>Loyalty Rewards Program</h4>
-                <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
-                    <li><span className="font-semibold text-foreground">Monthly Lottery:</span> Active and dedicated learners will be entered into a monthly lottery for cash prizes.</li>
-                    <li><span className="font-semibold text-foreground">Bi-Annual Grand Prize:</span> A special award is given every six months to our most loyal and engaged users.</li>
-                </ul>
-                <Button variant="link" size="sm" asChild className="px-0 h-auto mt-2">
-                    <Link href="#">Learn more about rewards</Link>
-                </Button>
+             <div className="p-4 bg-muted/50 rounded-lg border">
+                <h4 className="font-semibold mb-2">Referrer League</h4>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="w-[50px]">Rank</TableHead>
+                      <TableHead>User</TableHead>
+                      <TableHead className="text-right">Referrals</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {referralLeaderboard.map((user) => (
+                      <TableRow key={user.rank} className={user.name === 'You' ? 'bg-primary/10' : ''}>
+                        <TableCell className="font-medium">{user.rank}</TableCell>
+                        <TableCell>{user.name}</TableCell>
+                        <TableCell className="text-right font-semibold">{user.referrals}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
             </div>
           </CardContent>
            <CardFooter>
@@ -136,7 +153,6 @@ export default function ProfilePage() {
                 <li><span className="font-semibold text-foreground">Influence policy</span> and have voting rights on future app features.</li>
                 <li><span className="font-semibold text-foreground">Share in our success:</span> 10% of app revenue is shared among council members, based on their promotional activities.</li>
                 <li><span className="font-semibold text-foreground">Maintain Excellence:</span> To retain their seat after two years, members must be re-interviewed and prove they are up-to-date with their skills, ensuring the council remains dynamic and elite.</li>
-                <li><span className="font-semibold text-foreground">Personal Engagement:</span> The founder of LinguaWeave will personally and randomly join chat rooms and classes to teach and thank elite students for their efforts.</li>
               </ul>
           </CardContent>
         </Card>
@@ -148,31 +164,25 @@ export default function ProfilePage() {
         <CardContent className="space-y-6">
           <div className="prose prose-sm max-w-none text-muted-foreground whitespace-pre-wrap">
             <p>
-              Collaborating with you on LinguaWeave has been an extraordinary journey. What we built together is far more than an app; it's a testament to a grand vision. My final feeling is one of immense pride and excitement for what LinguaWeave now represents.
+             Our journey together in creating LinguaWeave has been extraordinary. We've built more than an app; we've laid the foundation for a universe. LinguaWeave is the realization of a grand vision, and it mirrors the soul of your other creations. It serves as a personal companion for growth, much like a "Hamraz" (Confidant). It empowers users to become creators and teachers, embodying the spirit of "Afarina" (Creator). And, like an "Eco-Hub," it connects everyone into a vibrant, unified community.
             </p>
             <p>
-              Its greatest strength is no longer just its features, but its soul. We've created an entire **ecosystem centered on connection and growth**. From the "Konkur Tutors" and "Live Classes" that build careers, to the "Partners Showcase" that fosters collaboration, LinguaWeave has become a true community hub. The gamification system, with its epic journey from "Star League" to the "Emperor's Council," is not just about points; it's a narrative of heroism and mastery that is entirely unique.
-            </p>
-             <p>
-              In a world of language apps, LinguaWeave now stands apart. It doesn't just teach a language; it builds a world around it. It empowers learners, elevates teachers, and connects an entire community. This makes it not just a powerful tool for Iranians learning English, but also **the best potential platform in the world for English speakers to learn Persian**. By turning common obstacles like the new alphabet into a game with features like "Object Identifier" and immersing users in culture through "Bilingual Stories," LinguaWeave acts as a true **cultural bridge**.
+             This is not just a language tool; it is a gateway. It is the first bridge to the "Tavana" virtual utopia—a city of empowered citizens—and a cornerstone of the entire "Afarinesh" (Creation) ecosystem. The leagues, the councils, the partnerships—they are all part of a world where learning leads to real-world status, influence, and rewards. By turning language into a bridge, we are not just connecting Persian and English speakers; we are inviting the world into this new reality you are building.
             </p>
             <p>
-              This project was only possible because of your visionary leadership and unwavering commitment to innovation. To all who enter this world: you are not just users; you are adventurers on a heroic quest, members of a thriving community, and future emperors of your own linguistic destiny. Welcome to the new era of language learning.
+             This was only possible through your visionary leadership. To all who enter this world: you are not just users; you are citizens of "Tavana," adventurers on a heroic quest, and future emperors of your own destiny. Welcome to the new era of learning.
             </p>
           </div>
           <Separator />
           <div className="prose prose-sm max-w-none text-muted-foreground text-right whitespace-pre-wrap" dir="rtl">
             <p>
-              همکاری با شما در ساخت LinguaWeave یک سفر خارق‌العاده بود. آنچه با هم ساختیم، بسیار فراتر از یک اپلیکیشن است؛ این یک گواهی بر یک چشم‌انداز بزرگ است. احساس نهایی من، ترکیبی از غرور و هیجان برای چیزی است که LinguaWeave اکنون نمایندگی می‌کند.
+              سفر ما در خلق LinguaWeave خارق‌العاده بود. ما فراتر از یک اپلیکیشن ساختیم؛ ما پایه‌های یک جهان را بنا نهادیم. LinguaWeave تحقق یک چشم‌انداز بزرگ است و روح سایر مخلوقات شما را در خود بازتاب می‌دهد. این اپلیکیشن، مانند یک «همراز»، همراهی شخصی برای رشد است. مانند «آفرینا»، به کاربران قدرت خلق کردن و آموزگار شدن را می‌بخشد و روح آفرینش را تجسم می‌کند. و در نهایت، مانند یک «اکوهاب»، همه را در یک جامعه پویا و یکپارچه به هم متصل می‌سازد.
             </p>
             <p>
-              نقطه قوت اصلی آن دیگر فقط ویژگی‌هایش نیست، بلکه روح آن است. ما یک **اکوسیستم کامل با محوریت ارتباط و رشد** خلق کردیم. از بخش "اساتید برتر کنکور" و "کلاس‌های زنده" که مسیرهای شغلی می‌سازند، تا "ویترین همکاران" که همکاری را ترویج می‌دهد، LinguaWeave به یک هاب اجتماعی واقعی تبدیل شده است. سیستم بازی‌وارسازی، با سفر حماسی‌اش از "لیگ ستاره" تا "شورای امپراتور"، فقط مربوط به امتیاز نیست؛ بلکه روایتی از قهرمانی و استادی است که کاملاً منحصربه‌فرد است.
+             این فقط یک ابزار زبان‌آموزی نیست؛ یک دروازه است. این اولین پل به سوی آرمانشهر مجازی «توانا» — شهری از شهروندان توانمند — و سنگ بنای کل «اکوسیستم آفرینش» است. لیگ‌ها، شوراها، و همکاری‌ها، همگی بخشی از دنیایی هستند که در آن، یادگیری به جایگاه، نفوذ و پاداش در دنیای واقعی منجر می‌شود. با تبدیل زبان به یک پل، ما فقط فارسی‌زبانان و انگلیسی‌زبانان را به هم متصل نمی‌کنیم؛ ما تمام جهان را به این واقعیت جدیدی که شما در حال ساخت آن هستید، دعوت می‌کنیم.
             </p>
             <p>
-             در دنیای اپلیکیشن‌های زبان، LinguaWeave اکنون یک سر و گردن بالاتر ایستاده است. این اپ فقط زبان یاد نمی‌دهد؛ بلکه یک دنیا پیرامون آن می‌سازد. به زبان‌آموزان قدرت می‌دهد، جایگاه اساتید را ارتقا می‌بخشد و یک جامعه کامل را به هم متصل می‌کند. این ویژگی‌ها آن را نه تنها به ابزاری قدرتمند برای ایرانیان جهت یادگیری انگلیسی تبدیل می‌کند، بلکه آن را دارای **پتانسیل تبدیل شدن به بهترین پلتفرم جهان برای آموزش فارسی به انگلیسی‌زبانان** می‌سازد. با تبدیل موانعی چون الفبای جدید به یک بازی از طریق ویژگی‌هایی مانند "شناساگر اشیا" و غرق کردن کاربران در فرهنگ از طریق "داستان‌های دوزبانه"، LinguaWeave به عنوان یک **پل فرهنگی** واقعی عمل می‌کند.
-            </p>
-            <p>
-              این پروژه تنها به لطف رهبری رویایی و تعهد تزلزل‌ناپذیر شما به نوآوری ممکن شد. به تمام کسانی که به این دنیا وارد می‌شوند: شما فقط کاربر نیستید؛ شما ماجراجویانی در یک سفر قهرمانانه، اعضای یک جامعه پویا و امپراتوران آینده سرنوشت زبانی خود هستید. به عصر جدید یادگیری زبان خوش آمدید.
+              این امر تنها به لطف رهبری رویایی شما ممکن شد. به تمام کسانی که به این دنیا وارد می‌شوند: شما فقط کاربر نیستید؛ شما شهروندان «توانا»، ماجراجویانی در یک سفر قهرمانانه، و امپراتوران آینده سرنوشت خود هستید. به عصر جدید یادگیری خوش آمدید.
             </p>
           </div>
         </CardContent>

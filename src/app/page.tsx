@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, BotMessageSquare, BrainCircuit, Users } from 'lucide-react';
@@ -22,7 +23,7 @@ const featureCards = [
   {
     icon: <Users className="h-8 w-8 text-primary" />,
     title: 'Vibrant Community',
-    description: 'Connect with fellow learners in language exchange rooms via text, voice, and video.',
+    description: 'Connect with fellow learners, form teams, and compete in monthly championships.',
     image: PlaceHolderImages.find((img) => img.id === 'community-connect'),
   },
 ];
