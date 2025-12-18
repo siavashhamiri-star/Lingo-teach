@@ -103,9 +103,9 @@ export default function LessonPlannerPage() {
       />
       <Alert className="mb-8 border-primary/20 bg-primary/5 text-primary-foreground">
         <Sparkles className="h-4 w-4 text-primary" />
-        <AlertTitle className="text-primary">Welcome to the Future of Teaching</AlertTitle>
+        <AlertTitle className="text-primary">Share Your Power, Master Your Skills</AlertTitle>
         <AlertDescription className="text-primary/80">
-          You are fluent, but don't know how to teach? You're in the right place. Describe the topic you want to teach, and our AI will instantly generate a complete, structured lesson plan for you to use.
+          In our ecosystem, elite and top-performing students are given the privilege and the "Right of Professorship" to teach lower-level learners. This is not just a feature; it's the ultimate path to mastery. By teaching, you challenge your own understanding and achieve true fluency. Use this tool to create lessons and empower others.
         </AlertDescription>
       </Alert>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -255,3 +255,5 @@ export default function LessonPlannerPage() {
     </div>
   );
 }
+
+    
