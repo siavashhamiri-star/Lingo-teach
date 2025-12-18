@@ -1,9 +1,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, BotMessageSquare, BrainCircuit, Users } from 'lucide-react';
+import { ArrowRight, BotMessageSquare, BrainCircuit, Users, Building, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Logo from '@/components/icons/logo';
 
@@ -61,8 +61,8 @@ export default function LandingPage() {
                 <Button size="lg" asChild>
                   <Link href="/dashboard">Start Your Journey</Link>
                 </Button>
-                <Button size="lg" variant="outline">
-                  Learn More
+                <Button size="lg" variant="outline" asChild>
+                    <Link href="#vision">Our Grand Vision</Link>
                 </Button>
               </div>
             </div>
@@ -104,6 +104,45 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
+        
+        <section id="vision" className="py-20 md:py-28">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                 <div className="text-center max-w-3xl mx-auto">
+                    <h2 className="text-3xl sm:text-4xl font-bold font-headline flex items-center justify-center gap-3">
+                        <Sparkles className="w-8 h-8 text-accent" />
+                        More Than an App, A New World
+                    </h2>
+                    <p className="mt-4 text-lg text-muted-foreground">
+                        LinguaWeave is your gateway into <span className="font-bold text-primary">"Afarinesh"</span> (Creation), a revolutionary ecosystem where learning leads to creation, and creation leads to empowerment.
+                    </p>
+                </div>
+                <div className="mt-16 max-w-4xl mx-auto">
+                    <Card className="bg-gradient-to-br from-primary/5 via-background to-accent/5 shadow-xl">
+                        <CardHeader className="text-center">
+                            <Building className="w-12 h-12 mx-auto text-primary mb-4" />
+                            <CardTitle className="text-2xl">Welcome to "Tavana" (The Empowered City)</CardTitle>
+                            <CardDescription>The heart of the Afarinesh ecosystem.</CardDescription>
+                        </CardHeader>
+                        <CardContent className="text-center text-muted-foreground space-y-4">
+                            <p>
+                                In Tavana, you are not just a user; you are a citizen. Every lesson you learn, every skill you master, and every creation you build contributes to the growth of this virtual city. Your effort doesn't just build your future; it builds a new civilization.
+                            </p>
+                            <p className="font-semibold text-foreground">
+                                Here, learning is the currency, creativity is the industry, and community is the foundation. Join us, and build your dreams while building the city of dreams.
+                            </p>
+                             <div className="pt-4">
+                                <Button asChild>
+                                  <Link href="/profile">
+                                    Read the Full Philosophy <ArrowRight className="ml-2 h-4 w-4" />
+                                  </Link>
+                                </Button>
+                            </div>
+                        </CardContent>
+                    </Card>
+                </div>
+            </div>
+        </section>
+
       </main>
 
       <footer className="py-8 bg-background border-t">
