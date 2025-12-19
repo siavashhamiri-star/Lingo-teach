@@ -3,22 +3,13 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { UploadCloud, Copy, Terminal, Laptop, Shield, Building, Bot, CheckCircle, Settings, HeartPulse, Zap, Trash2, PlusCircle } from 'lucide-react';
+import { UploadCloud, Copy, Terminal, Laptop, Shield, Building } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Badge } from '@/components/ui/badge';
-import { menuItems } from '@/lib/menu-items';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 
 const deploymentSteps = [
   {
@@ -54,8 +45,6 @@ const deploymentSteps = [
   },
 ];
 
-const ecosystemModules = menuItems.filter(item => !['/deployment', '/profile', '/creation-story'].includes(item.href)).slice(0, 5);
-
 
 export default function DeploymentPage() {
   const { toast } = useToast();
@@ -67,30 +56,6 @@ export default function DeploymentPage() {
     toast({
       title: 'Copied to Clipboard!',
       description: `The command "${commandToCopy}" has been copied.`,
-    });
-  };
-  
-   const handleAIAction = (moduleName: string, action: string) => {
-    let description = '';
-    switch(action) {
-      case 'Health Check':
-        description = `The AI is performing a health check on the "${moduleName}" module.`;
-        break;
-      case 'Optimize':
-        description = `The AI is optimizing performance for the "${moduleName}" module.`;
-        break;
-      case 'Decommission':
-        description = `The AI is initiating the decommissioning process for the "${moduleName}" module.`;
-        break;
-      case 'Deploy New Module':
-        description = `The AI is preparing the environment for a new module deployment.`;
-        break;
-      default:
-        description = `The AI is performing an action on the "${moduleName}" module.`;
-    }
-    toast({
-      title: `AI Command: ${action}`,
-      description: description,
     });
   };
 
@@ -142,7 +107,7 @@ export default function DeploymentPage() {
         </AlertDescription>
       </Alert>
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="max-w-4xl mx-auto">
         <Card>
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -154,66 +119,8 @@ export default function DeploymentPage() {
             <CardContent>
                 {renderSteps(deploymentSteps)}
             </CardContent>
-        </Card>
-         <Card>
-            <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                     <Bot className="w-5 h-5 text-accent"/>
-                     Ecosystem Control Panel
-                </CardTitle>
-                <CardDescription>AI-powered lifecycle management for all core modules of the Afarinesh ecosystem.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-                {ecosystemModules.map((module) => (
-                    <div key={module.href} className="p-3 border rounded-lg flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                             <module.icon className="w-6 h-6 text-muted-foreground" />
-                            <div>
-                                <p className="font-semibold">{module.label}</p>
-                                <Badge variant="outline" className="text-green-400 border-green-400/50">
-                                    <CheckCircle className="w-3 h-3 mr-1" />
-                                    Operational
-                                </Badge>
-                            </div>
-                        </div>
-                         <div className="flex items-center gap-2">
-                             <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                  <Button size="sm" variant="ghost">
-                                    <Settings className="w-4 h-4 mr-2"/>
-                                    Manage
-                                  </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent align="end">
-                                  <DropdownMenuItem onClick={() => handleAIAction(module.label, 'Health Check')}>
-                                    <HeartPulse className="w-4 h-4 mr-2" />
-                                    Health Check
-                                  </DropdownMenuItem>
-                                  <DropdownMenuItem onClick={() => handleAIAction(module.label, 'Optimize')}>
-                                    <Zap className="w-4 h-4 mr-2" />
-                                    Optimize
-                                  </DropdownMenuItem>
-                                   <DropdownMenuItem disabled>
-                                    <Settings className="w-4 h-4 mr-2" />
-                                    Edit Module
-                                  </DropdownMenuItem>
-                                  <DropdownMenuSeparator />
-                                  <DropdownMenuItem className="text-destructive focus:bg-destructive/10 focus:text-destructive" onClick={() => handleAIAction(module.label, 'Decommission')}>
-                                    <Trash2 className="w-4 h-4 mr-2" />
-                                    Decommission
-                                  </DropdownMenuItem>
-                                </DropdownMenuContent>
-                              </DropdownMenu>
-                         </div>
-                    </div>
-                ))}
-                 <Button variant="outline" className="w-full mt-4" onClick={() => handleAIAction('', 'Deploy New Module')}>
-                    <PlusCircle className="w-4 h-4 mr-2"/>
-                    Deploy New Module
-                </Button>
-            </CardContent>
              <CardFooter>
-                 <p className="text-xs text-muted-foreground">This panel represents the AI's autonomous capability to manage the ecosystem's lifecycle.</p>
+                 <p className="text-xs text-muted-foreground">After pushing to GitHub, follow the `FIREBASE-HOSTING-GUIDE.md` to enable automated deployment.</p>
              </CardFooter>
         </Card>
       </div>
@@ -221,5 +128,3 @@ export default function DeploymentPage() {
     </div>
   );
 }
-
-    
