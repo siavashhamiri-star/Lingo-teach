@@ -7,8 +7,8 @@ import { Loader2, Sparkles, Trophy, Wand2, Star, Brain, Languages } from 'lucide
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { generateDailyChallenge, type DailyChallengeOutput } from '@/ai/flows/daily-language-challenge-generation';
-import { generateGeneralKnowledgeChallenge } from '@/ai/flows/general-knowledge-challenge-generation';
+import { generateDailyChallenge } from '@/ai/flows/daily-language-challenge-generation';
+import { generateGeneralKnowledgeChallenge, type GeneralKnowledgeChallengeOutput } from '@/ai/flows/general-knowledge-challenge-generation';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
@@ -34,14 +34,16 @@ export default function ChallengesPage() {
     try {
       let result: ChallengeOutput;
       if (challengeType === 'language') {
-        result = await generateDailyChallenge({
+        const langResult = await generateDailyChallenge({
           languageLevel,
           targetLanguage,
         });
+        result = langResult;
       } else {
-        result = await generateGeneralKnowledgeChallenge({
+        const gkResult = await generateGeneralKnowledgeChallenge({
           difficulty,
         });
+        result = gkResult;
       }
       setChallenge(result);
        toast({
