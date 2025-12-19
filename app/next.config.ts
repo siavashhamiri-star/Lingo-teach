@@ -33,7 +33,7 @@ const nextConfig: NextConfig = {
     ],
   },
   experimental: {
-    // Increase the default timeout for server actions to 120 seconds for long-running tasks like video generation.
+    // Increase the default timeout for server actions for long-running tasks like video generation.
     serverActions: {
       bodySizeLimit: '10mb', // Increase body size limit for large payloads like video
     },
