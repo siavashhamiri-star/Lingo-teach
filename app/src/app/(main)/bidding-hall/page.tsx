@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { Gavel, Languages, BookText, FileText, PlusCircle, Hammer, Info } from 'lucide-react';
+import { Gavel, Languages, BookText, FileText, PlusCircle, Info } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -87,7 +87,7 @@ export default function BiddingHallPage() {
                     </CardHeader>
                     <CardFooter>
                         <Button onClick={() => handlePlaceBid(project.id)}>
-                            <Hammer className="mr-2 h-4 w-4" />
+                            <Gavel className="mr-2 h-4 w-4" />
                             Place a Bid
                         </Button>
                     </CardFooter>
