@@ -2,7 +2,7 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { Users, GraduationCap, School, MessageSquare, ArrowRight, UserCheck, Laugh, Handshake, Sparkles, Swords, ShieldCheck } from 'lucide-react';
+import { Users, GraduationCap, School, MessageSquare, ArrowRight, UserCheck, Laugh, Handshake, Sparkles, Swords, ShieldCheck, ShieldAlert } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -68,6 +68,40 @@ export default function CommunityPage() {
         description="Connect with learners, find a partner, and practice in exchange rooms."
         icon={Users}
       />
+
+      <Card className="mb-8 bg-gradient-to-tr from-accent/20 via-background to-background border-accent/30 shadow-lg">
+        <CardHeader>
+            <CardTitle className="flex items-center gap-3 text-2xl">
+                <ShieldAlert className="w-8 h-8 text-accent" />
+                Survival Arena: The Last One Standing
+            </CardTitle>
+            <CardDescription>
+                A high-stakes language game where only the sharpest minds survive.
+            </CardDescription>
+        </CardHeader>
+        <CardContent>
+            <Alert variant="default" className="border-accent bg-accent/10 mb-4">
+                <AlertTitle className="text-accent-foreground">Game Rules</AlertTitle>
+                <AlertDescription className="text-accent-foreground/80">
+                    <ul className="list-disc pl-5 mt-2 space-y-1">
+                        <li>Enter the arena with up to 19 other players.</li>
+                        <li>The system will ask rapid-fire language questions.</li>
+                        <li>You start with 3 lives. Each wrong answer costs a life.</li>
+                        <li>Lose all your lives, and you're out!</li>
+                        <li>The last three players standing win huge XP and exclusive badges.</li>
+                    </ul>
+                </AlertDescription>
+            </Alert>
+            <p className="text-sm text-muted-foreground mb-4">
+                This is the ultimate test of your knowledge and speed. Do you have what it takes to be the champion?
+            </p>
+            <Button variant="default" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                <Sparkles className="mr-2 h-4 w-4" />
+                Join the Next Arena (Coming Soon!)
+            </Button>
+        </CardContent>
+      </Card>
+
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <Card className="bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
