@@ -154,7 +154,7 @@ export default function DuelArenaPage() {
                                             {duel.result}
                                         </Badge>
                                     </TableCell>
-                                    <TableCell className={`text-right font-semibold ${duel.result === 'Win' ? 'text-green-500' : 'text-red-500'}`}>{duel.xp}</TableCell>
+                                    <TableCell className={cn('text-right font-semibold', duel.result === 'Win' ? 'text-primary' : 'text-destructive')}>{duel.xp}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
