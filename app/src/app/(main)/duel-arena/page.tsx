@@ -2,7 +2,7 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { Swords, User, Shield, Star, Crown, ShieldCheck } from 'lucide-react';
+import { Swords, User, Shield, Star, Crown, ShieldCheck, Award } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -10,12 +10,45 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useToast } from '@/hooks/use-toast';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { cn } from '@/lib/utils';
+
+type League = "Emperor's Council" | "Champion of Champions" | "Award League" | "Shield League" | "Star League";
+
+const leagueConfig: Record<
+  League,
+  { icon: React.ElementType; className: string }
+> = {
+  "Emperor's Council": {
+    icon: Crown,
+    className:
+      'bg-destructive/20 border-destructive/50 text-destructive-foreground hover:bg-destructive/30',
+  },
+  "Champion of Champions": {
+    icon: Swords,
+    className: 'bg-sky-500/20 border-sky-500/50 text-sky-200 hover:bg-sky-500/30',
+  },
+  "Award League": {
+    icon: Award,
+    className:
+      'bg-yellow-500/20 border-yellow-500/50 text-yellow-200 hover:bg-yellow-500/30',
+  },
+  "Shield League": {
+    icon: Shield,
+    className:
+      'bg-slate-500/20 border-slate-500/50 text-slate-300 hover:bg-slate-500/30',
+  },
+  "Star League": {
+    icon: Star,
+    className:
+      'bg-orange-600/20 border-orange-600/50 text-orange-300 hover:bg-orange-600/30',
+  },
+};
 
 const opponents = [
-  { rank: 1, name: 'Elena', avatar: 'https://picsum.photos/seed/student1/100/100', league: "Emperor's Council" },
-  { rank: 2, name: 'Kenji', avatar: 'https://picsum.photos/seed/student2/100/100', league: "Champion of Champions" },
-  { rank: 4, name: 'Sara', avatar: 'https://picsum.photos/seed/student3/100/100', league: 'Award League' },
-  { rank: 5, name: 'David', avatar: 'https://picsum.photos/seed/student4/100/100', league: 'Shield League' },
+  { rank: 1, name: 'Elena', avatar: 'https://picsum.photos/seed/student1/100/100', league: "Emperor's Council" as League },
+  { rank: 2, name: 'Kenji', avatar: 'https://picsum.photos/seed/student2/100/100', league: "Champion of Champions" as League },
+  { rank: 4, name: 'Sara', avatar: 'https://picsum.photos/seed/student3/100/100', league: 'Award League' as League },
+  { rank: 5, name: 'David', avatar: 'https://picsum.photos/seed/student4/100/100', league: 'Shield League' as League },
 ];
 
 const duelHistory = [
@@ -66,7 +99,10 @@ export default function DuelArenaPage() {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {opponents.map((opponent) => (
+                            {opponents.map((opponent) => {
+                                const leagueInfo = leagueConfig[opponent.league];
+                                const LeagueIcon = leagueInfo.icon;
+                                return (
                                 <TableRow key={opponent.rank}>
                                     <TableCell className="flex items-center gap-4">
                                         <Avatar className="h-10 w-10 border">
@@ -76,7 +112,10 @@ export default function DuelArenaPage() {
                                         <div className="font-medium">{opponent.name}</div>
                                     </TableCell>
                                     <TableCell>
-                                        <Badge variant="outline">{opponent.league}</Badge>
+                                        <Badge variant="outline" className={cn("gap-1.5", leagueInfo.className)}>
+                                          <LeagueIcon className="h-3 w-3" />
+                                          {opponent.league}
+                                        </Badge>
                                     </TableCell>
                                     <TableCell className="text-right">
                                         <Button size="sm" onClick={() => handleChallenge(opponent.name)}>
@@ -85,7 +124,7 @@ export default function DuelArenaPage() {
                                         </Button>
                                     </TableCell>
                                 </TableRow>
-                            ))}
+                            )})}
                         </TableBody>
                     </Table>
                 </CardContent>
@@ -133,3 +172,5 @@ export default function DuelArenaPage() {
     </div>
   );
 }
+
+    
