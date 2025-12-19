@@ -11,6 +11,8 @@ import { useToast } from '@/hooks/use-toast';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { cn } from '@/lib/utils';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+
 
 type League = "Emperor's Council" | "Champion of Champions" | "Award League" | "Shield League" | "Star League";
 
@@ -45,10 +47,10 @@ const leagueConfig: Record<
 };
 
 const opponents = [
-  { rank: 1, name: 'Elena', avatar: 'https://picsum.photos/seed/student1/100/100', league: "Emperor's Council" as League },
-  { rank: 2, name: 'Kenji', avatar: 'https://picsum.photos/seed/student2/100/100', league: "Champion of Champions" as League },
-  { rank: 4, name: 'Sara', avatar: 'https://picsum.photos/seed/student3/100/100', league: 'Award League' as League },
-  { rank: 5, name: 'David', avatar: 'https://picsum.photos/seed/student4/100/100', league: 'Shield League' as League },
+  { rank: 1, name: 'Elena', avatarId: 'duel-opponent-1', league: "Emperor's Council" as League },
+  { rank: 2, name: 'Kenji', avatarId: 'duel-opponent-2', league: "Champion of Champions" as League },
+  { rank: 4, name: 'Sara', avatarId: 'duel-opponent-3', league: 'Award League' as League },
+  { rank: 5, name: 'David', avatarId: 'duel-opponent-4', league: 'Shield League' as League },
 ];
 
 const duelHistory = [
@@ -102,11 +104,12 @@ export default function DuelArenaPage() {
                             {opponents.map((opponent) => {
                                 const leagueInfo = leagueConfig[opponent.league];
                                 const LeagueIcon = leagueInfo.icon;
+                                const avatar = PlaceHolderImages.find(p => p.id === opponent.avatarId);
                                 return (
                                 <TableRow key={opponent.rank}>
                                     <TableCell className="flex items-center gap-4">
                                         <Avatar className="h-10 w-10 border">
-                                            <AvatarImage src={opponent.avatar} alt={opponent.name} data-ai-hint="person portrait"/>
+                                            {avatar && <AvatarImage src={avatar.imageUrl} alt={opponent.name} data-ai-hint={avatar.imageHint}/>}
                                             <AvatarFallback>{opponent.name.substring(0,2)}</AvatarFallback>
                                         </Avatar>
                                         <div className="font-medium">{opponent.name}</div>

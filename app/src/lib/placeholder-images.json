@@ -54,6 +54,30 @@
       "description": "Two abstract glowing swords crossing each other on a dark background.",
       "imageUrl": "https://picsum.photos/seed/duelbg/1200/800",
       "imageHint": "swords clash"
+    },
+    {
+      "id": "duel-opponent-1",
+      "description": "Portrait of a confident woman.",
+      "imageUrl": "https://picsum.photos/seed/student1/100/100",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "duel-opponent-2",
+      "description": "Portrait of a man.",
+      "imageUrl": "https://picsum.photos/seed/student2/100/100",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "duel-opponent-3",
+      "description": "Portrait of a person.",
+      "imageUrl": "https://picsum.photos/seed/student3/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "duel-opponent-4",
+      "description": "Portrait of a smiling person.",
+      "imageUrl": "https://picsum.photos/seed/student4/100/100",
+      "imageHint": "smiling person"
     }
   ]
 }
