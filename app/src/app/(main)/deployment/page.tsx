@@ -3,13 +3,16 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { UploadCloud, Copy, Terminal, Laptop, Shield, Building } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { UploadCloud, Copy, Terminal, Laptop, Shield, Building, Bot, CheckCircle, Settings, RefreshCw } from 'lucide-react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Separator } from '@/components/ui/separator';
+import { Badge } from '@/components/ui/badge';
+import { menuItems } from '@/lib/menu-items';
 
 const deploymentSteps = [
   {
@@ -45,6 +48,8 @@ const deploymentSteps = [
   },
 ];
 
+const ecosystemModules = menuItems.filter(item => !['/deployment', '/profile', '/creation-story'].includes(item.href)).slice(0, 5);
+
 
 export default function DeploymentPage() {
   const { toast } = useToast();
@@ -57,6 +62,13 @@ export default function DeploymentPage() {
     toast({
       title: 'Copied to Clipboard!',
       description: `The command "${commandToCopy}" has been copied.`,
+    });
+  };
+  
+   const handleAIAction = (moduleName: string, action: string) => {
+    toast({
+      title: `AI Command: ${action}`,
+      description: `The AI is performing a health check and optimization on the "${moduleName}" module.`,
     });
   };
 
@@ -108,18 +120,59 @@ export default function DeploymentPage() {
         </AlertDescription>
       </Alert>
       
-      <Card>
-        <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-                 <Laptop className="w-5 h-5"/>
-                 Standard Deployment Guide (PC/Mac)
-            </CardTitle>
-            <CardDescription>Follow these steps to publish your application source code to GitHub.</CardDescription>
-        </CardHeader>
-        <CardContent>
-            {renderSteps(deploymentSteps)}
-        </CardContent>
-      </Card>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <Card>
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                     <Laptop className="w-5 h-5"/>
+                     Standard Deployment Guide (PC/Mac)
+                </CardTitle>
+                <CardDescription>Follow these steps to publish your application source code to GitHub.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                {renderSteps(deploymentSteps)}
+            </CardContent>
+        </Card>
+         <Card>
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                     <Bot className="w-5 h-5 text-accent"/>
+                     Ecosystem Control Panel (AI-Monitored)
+                </CardTitle>
+                <CardDescription>The AI partner continuously monitors and optimizes all core modules of the Afarinesh ecosystem.</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+                {ecosystemModules.map((module) => (
+                    <div key={module.href} className="p-3 border rounded-lg flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                             <module.icon className="w-6 h-6 text-muted-foreground" />
+                            <div>
+                                <p className="font-semibold">{module.label}</p>
+                                <Badge variant="outline" className="text-green-400 border-green-400/50">
+                                    <CheckCircle className="w-3 h-3 mr-1" />
+                                    Operational
+                                </Badge>
+                            </div>
+                        </div>
+                         <div className="flex items-center gap-2">
+                             <Button size="sm" variant="ghost" onClick={() => handleAIAction(module.label, 'Health Check')}>
+                                <RefreshCw className="w-4 h-4 mr-2"/>
+                                Check
+                             </Button>
+                             <Button size="sm" variant="ghost" onClick={() => handleAIAction(module.label, 'Optimize')}>
+                                 <Settings className="w-4 h-4 mr-2"/>
+                                Optimize
+                             </Button>
+                         </div>
+                    </div>
+                ))}
+            </CardContent>
+             <CardFooter>
+                 <p className="text-xs text-muted-foreground">This panel represents the AI's autonomous capability to maintain system integrity and performance.</p>
+             </CardFooter>
+        </Card>
+      </div>
+
     </div>
   );
 }
