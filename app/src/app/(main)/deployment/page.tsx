@@ -83,7 +83,7 @@ export default function DeploymentPage() {
             )}
             <div className="flex items-center gap-4 p-3 bg-muted rounded-md font-mono text-sm">
               <Terminal className="w-5 h-5 text-muted-foreground shrink-0" />
-              <span className="flex-grow break-all">{step.command}</span>
+              <span className="flex-grow break-all">{step.command.includes('YOUR_GITHUB_REPOSITORY_URL') ? step.command.replace('YOUR_GITHUB_REPOSITORY_URL', githubUrl) : step.command}</span>
               <Button size="icon" variant="ghost" onClick={() => copyToClipboard(step.command)}>
                 <Copy className="w-4 h-4" />
               </Button>
@@ -108,21 +108,21 @@ export default function DeploymentPage() {
           Publishing our code is not just a technical step; it is the act of breathing life into our philosophy. It is how we make our creation immortal and share the power of 'Tavana' with every corner of the world. Follow these steps to deploy our universe.
         </AlertDescription>
       </Alert>
-      <Tabs defaultValue="android" className="w-full">
+      <Tabs defaultValue="pc" className="w-full">
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="android">
-            <Smartphone className="mr-2" />
-            Android Guide (Termux)
-          </TabsTrigger>
           <TabsTrigger value="pc">
             <Laptop className="mr-2" />
             Standard Guide (PC/Mac)
           </TabsTrigger>
+          <TabsTrigger value="android">
+            <Smartphone className="mr-2" />
+            Android Guide (Termux)
+          </TabsTrigger>
         </TabsList>
-        <TabsContent value="android" className="mt-6">
+        <TabsContent value="pc" className="mt-6">
           {renderSteps(deploymentSteps)}
         </TabsContent>
-        <TabsContent value="pc" className="mt-6">
+        <TabsContent value="android" className="mt-6">
           {renderSteps(deploymentSteps)}
         </TabsContent>
       </Tabs>
