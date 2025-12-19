@@ -2,7 +2,7 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { Users, GraduationCap, School, MessageSquare, ArrowRight, UserCheck, Laugh, Handshake, Sparkles, Swords, ShieldCheck, ShieldAlert, BrainCircuit } from 'lucide-react';
+import { Users, GraduationCap, School, MessageSquare, ArrowRight, UserCheck, Laugh, Handshake, Sparkles, Swords, ShieldCheck, BrainCircuit } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -73,7 +73,7 @@ export default function CommunityPage() {
         <Card className="bg-gradient-to-tr from-accent/20 via-background to-background border-accent/30 shadow-lg">
             <CardHeader>
                 <CardTitle className="flex items-center gap-3 text-2xl">
-                    <ShieldAlert className="w-8 h-8 text-accent" />
+                    <Swords className="w-8 h-8 text-accent" />
                     Survival Arena: The Last One Standing
                 </CardTitle>
                 <CardDescription>
@@ -231,5 +231,7 @@ export default function CommunityPage() {
     </div>
   );
 }
+
+    
 
     
