@@ -13,7 +13,6 @@ import {
   Crown,
   Ear,
   FileText,
-  Feather,
   Gavel,
   GraduationCap,
   Handshake,
@@ -24,15 +23,11 @@ import {
   MicVocal,
   Music,
   Package,
-  Palette,
-  Scale,
   School,
-  Swords,
   Trophy,
   User,
   UserCheck,
   Users,
-  UploadCloud,
 } from 'lucide-react';
 
 export const menuItems: NavItem[] = [
