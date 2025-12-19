@@ -1,14 +1,15 @@
 
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { BookAudio, Loader2, PlayCircle, Sparkles, Volume2, PauseCircle } from 'lucide-react';
+import { BookAudio, Loader2, Sparkles } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { generateCreationStoryAudiobook, type CreationStoryAudiobookOutput } from '@/ai/flows/app-creation-story-audiobook';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function CreationStoryPage() {
   const [story, setStory] = useState<CreationStoryAudiobookOutput | null>(null);
@@ -20,14 +21,14 @@ export default function CreationStoryPage() {
     setStory(null);
     toast({
       title: 'Weaving the Grand Tale...',
-      description: 'The AI is crafting the epic story of our universe. This is a special one-time generation and might take a moment.',
+      description: 'The AI is crafting the epic story of our universe in both English and Persian. This may take a moment.',
     });
     try {
       const result = await generateCreationStoryAudiobook();
       setStory(result);
       toast({
         title: 'The Story is Ready!',
-        description: 'Press play to hear the legend of LinguaWeave.',
+        description: 'Listen to the legend of Afarinesh in English and Persian.',
       });
     } catch (error) {
       console.error('Error generating story:', error);
@@ -49,7 +50,7 @@ export default function CreationStoryPage() {
         icon={BookAudio}
       />
       <div className="flex justify-center">
-        <Card className="w-full max-w-3xl">
+        <Card className="w-full max-w-4xl">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl">The Audiobook of Afarinesh</CardTitle>
             <CardDescription>
@@ -58,15 +59,15 @@ export default function CreationStoryPage() {
           </CardHeader>
           <CardContent className="space-y-6">
             {isLoading && (
-              <div className="flex flex-col items-center justify-center h-full min-h-[300px] p-8 text-center">
+              <div className="flex flex-col items-center justify-center h-full min-h-[400px] p-8 text-center">
                 <Loader2 className="w-12 h-12 animate-spin text-primary mb-4" />
                 <h2 className="text-xl font-semibold">The AI is composing the epic...</h2>
-                <p className="text-muted-foreground">Gathering philosophies and weaving narratives.</p>
+                <p className="text-muted-foreground">Gathering philosophies and weaving bilingual narratives.</p>
               </div>
             )}
 
             {!isLoading && !story && (
-              <div className="flex flex-col items-center justify-center h-full min-h-[300px] p-8 text-center">
+              <div className="flex flex-col items-center justify-center h-full min-h-[400px] p-8 text-center">
                 <BookAudio className="w-12 h-12 text-muted-foreground mb-4" />
                 <h2 className="text-xl font-semibold">The Tale Awaits</h2>
                 <p className="text-muted-foreground mb-6">Press the button below to generate and hear the creation story of our world.</p>
@@ -78,16 +79,32 @@ export default function CreationStoryPage() {
             )}
             
             {story && (
-                 <div className="space-y-4">
-                    <audio controls src={story.audioDataUri} className="w-full" />
-                    <ScrollArea className="h-72 p-4 border rounded-md bg-muted/50">
-                        <p className="text-muted-foreground whitespace-pre-wrap leading-relaxed">{story.storyText}</p>
-                    </ScrollArea>
-                 </div>
+                <Tabs defaultValue="english" className="w-full">
+                  <TabsList className="grid w-full grid-cols-2">
+                    <TabsTrigger value="english">English</TabsTrigger>
+                    <TabsTrigger value="persian">فارسی (Persian)</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="english">
+                    <div className="space-y-4 pt-4">
+                        <audio controls src={story.englishAudioDataUri} className="w-full" />
+                        <ScrollArea className="h-80 p-4 border rounded-md bg-muted/50">
+                            <p className="text-muted-foreground whitespace-pre-wrap leading-relaxed">{story.englishStory}</p>
+                        </ScrollArea>
+                    </div>
+                  </TabsContent>
+                  <TabsContent value="persian">
+                     <div className="space-y-4 pt-4 text-right" dir="rtl">
+                        <audio controls src={story.persianAudioDataUri} className="w-full" />
+                        <ScrollArea className="h-80 p-4 border rounded-md bg-muted/50">
+                            <p className="text-muted-foreground whitespace-pre-wrap leading-relaxed">{story.persianStory}</p>
+                        </ScrollArea>
+                    </div>
+                  </TabsContent>
+                </Tabs>
             )}
           </CardContent>
           <CardFooter>
-            <p className="text-xs text-muted-foreground mx-auto">This audiobook was generated by AI based on the core philosophy of the Afarinesh ecosystem.</p>
+            <p className="text-xs text-muted-foreground mx-auto">This bilingual audiobook was generated by AI based on the core philosophy of the Afarinesh ecosystem.</p>
           </CardFooter>
         </Card>
       </div>
