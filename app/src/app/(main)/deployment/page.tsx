@@ -3,16 +3,22 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { UploadCloud, Copy, Terminal, Laptop, Shield, Building, Bot, CheckCircle, Settings, RefreshCw } from 'lucide-react';
+import { UploadCloud, Copy, Terminal, Laptop, Shield, Building, Bot, CheckCircle, Settings, HeartPulse, Zap, Trash2, PlusCircle } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { menuItems } from '@/lib/menu-items';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 const deploymentSteps = [
   {
@@ -56,7 +62,6 @@ export default function DeploymentPage() {
   const [githubUrl, setGithubUrl] = useState('https://github.com/YourUsername/YourRepo.git');
 
   const copyToClipboard = (text: string) => {
-    // Replace placeholder for the command with the actual URL
     const commandToCopy = text.includes('YOUR_GITHUB_REPOSITORY_URL') ? text.replace('YOUR_GITHUB_REPOSITORY_URL', githubUrl) : text;
     navigator.clipboard.writeText(commandToCopy);
     toast({
@@ -66,9 +71,26 @@ export default function DeploymentPage() {
   };
   
    const handleAIAction = (moduleName: string, action: string) => {
+    let description = '';
+    switch(action) {
+      case 'Health Check':
+        description = `The AI is performing a health check on the "${moduleName}" module.`;
+        break;
+      case 'Optimize':
+        description = `The AI is optimizing performance for the "${moduleName}" module.`;
+        break;
+      case 'Decommission':
+        description = `The AI is initiating the decommissioning process for the "${moduleName}" module.`;
+        break;
+      case 'Deploy New Module':
+        description = `The AI is preparing the environment for a new module deployment.`;
+        break;
+      default:
+        description = `The AI is performing an action on the "${moduleName}" module.`;
+    }
     toast({
       title: `AI Command: ${action}`,
-      description: `The AI is performing a health check and optimization on the "${moduleName}" module.`,
+      description: description,
     });
   };
 
@@ -125,7 +147,7 @@ export default function DeploymentPage() {
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                      <Laptop className="w-5 h-5"/>
-                     Standard Deployment Guide (PC/Mac)
+                     Standard Deployment Guide
                 </CardTitle>
                 <CardDescription>Follow these steps to publish your application source code to GitHub.</CardDescription>
             </CardHeader>
@@ -137,9 +159,9 @@ export default function DeploymentPage() {
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                      <Bot className="w-5 h-5 text-accent"/>
-                     Ecosystem Control Panel (AI-Monitored)
+                     Ecosystem Control Panel
                 </CardTitle>
-                <CardDescription>The AI partner continuously monitors and optimizes all core modules of the Afarinesh ecosystem.</CardDescription>
+                <CardDescription>AI-powered lifecycle management for all core modules of the Afarinesh ecosystem.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
                 {ecosystemModules.map((module) => (
@@ -155,20 +177,43 @@ export default function DeploymentPage() {
                             </div>
                         </div>
                          <div className="flex items-center gap-2">
-                             <Button size="sm" variant="ghost" onClick={() => handleAIAction(module.label, 'Health Check')}>
-                                <RefreshCw className="w-4 h-4 mr-2"/>
-                                Check
-                             </Button>
-                             <Button size="sm" variant="ghost" onClick={() => handleAIAction(module.label, 'Optimize')}>
-                                 <Settings className="w-4 h-4 mr-2"/>
-                                Optimize
-                             </Button>
+                             <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                  <Button size="sm" variant="ghost">
+                                    <Settings className="w-4 h-4 mr-2"/>
+                                    Manage
+                                  </Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="end">
+                                  <DropdownMenuItem onClick={() => handleAIAction(module.label, 'Health Check')}>
+                                    <HeartPulse className="w-4 h-4 mr-2" />
+                                    Health Check
+                                  </DropdownMenuItem>
+                                  <DropdownMenuItem onClick={() => handleAIAction(module.label, 'Optimize')}>
+                                    <Zap className="w-4 h-4 mr-2" />
+                                    Optimize
+                                  </DropdownMenuItem>
+                                   <DropdownMenuItem disabled>
+                                    <Settings className="w-4 h-4 mr-2" />
+                                    Edit Module
+                                  </DropdownMenuItem>
+                                  <DropdownMenuSeparator />
+                                  <DropdownMenuItem className="text-destructive focus:bg-destructive/10 focus:text-destructive" onClick={() => handleAIAction(module.label, 'Decommission')}>
+                                    <Trash2 className="w-4 h-4 mr-2" />
+                                    Decommission
+                                  </DropdownMenuItem>
+                                </DropdownMenuContent>
+                              </DropdownMenu>
                          </div>
                     </div>
                 ))}
+                 <Button variant="outline" className="w-full mt-4" onClick={() => handleAIAction('', 'Deploy New Module')}>
+                    <PlusCircle className="w-4 h-4 mr-2"/>
+                    Deploy New Module
+                </Button>
             </CardContent>
              <CardFooter>
-                 <p className="text-xs text-muted-foreground">This panel represents the AI's autonomous capability to maintain system integrity and performance.</p>
+                 <p className="text-xs text-muted-foreground">This panel represents the AI's autonomous capability to manage the ecosystem's lifecycle.</p>
              </CardFooter>
         </Card>
       </div>
