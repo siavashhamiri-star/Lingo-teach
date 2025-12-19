@@ -2,7 +2,7 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { Users, GraduationCap, School, MessageSquare, ArrowRight, UserCheck, Laugh, Handshake, Sparkles, Swords, ShieldCheck, Palette, Scale, Feather } from 'lucide-react';
+import { Users, GraduationCap, School, MessageSquare, ArrowRight, UserCheck, Laugh, Handshake, Sparkles, Swords, ShieldCheck } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -19,13 +19,6 @@ const communityRooms = [
     tags: ['All Levels', 'Conversation', 'Practice'],
   },
   {
-    title: 'Advanced Discussion',
-    description: 'Engage in deep conversations on complex topics with fluent and advanced speakers.',
-    icon: UserCheck,
-    onlineCount: 31,
-    tags: ['Advanced', 'Debate', 'Fluency'],
-  },
-  {
     title: 'Kids\' Corner (Ages 7-12)',
     description: 'A fun and safe space for young learners to practice with games, stories, and friends.',
     icon: Laugh,
@@ -33,27 +26,27 @@ const communityRooms = [
     tags: ['Kids', 'Games', 'Fun'],
   },
   {
-    title: 'Philosophy Hall of Afarinesh',
-    description: 'A space for deep discussions on the philosophy behind the ecosystem, science, and creation.',
-    icon: Feather,
-    onlineCount: 15,
-    tags: ['Philosophy', 'Vision', 'Afarinesh'],
+    title: "Teachers' Lounge",
+    description: 'A dedicated space for language teachers to share resources, methods, and insights.',
+    icon: School,
+    onlineCount: 23,
+    tags: ['Educators', 'Methodology', 'Networking'],
     isExclusive: true,
   },
   {
-    title: 'Tavana Art Gallery',
-    description: 'Share and discuss digital art, poetry, and creative works within the community.',
-    icon: Palette,
-    onlineCount: 28,
-    tags: ['Art', 'Creativity', 'Culture'],
+    title: 'Exam Experts Corner',
+    description: 'Connect with users who hold IELTS, TOEFL, or Duolingo certificates for tips and advice.',
+    icon: GraduationCap,
+    onlineCount: 42,
+    tags: ['IELTS', 'TOEFL', 'Exam Prep'],
+    isExclusive: true,
   },
   {
-    title: 'Court of Virtual Justice',
-    description: 'A unique room for role-playing legal scenarios and learning about justice systems.',
-    icon: Scale,
-    onlineCount: 19,
-    tags: ['Legal', 'Role-play', 'Ethics'],
-    isExclusive: true,
+    title: 'Advanced Discussion',
+    description: 'Engage in deep conversations on complex topics with fluent and advanced speakers.',
+    icon: UserCheck,
+    onlineCount: 31,
+    tags: ['Advanced', 'Debate', 'Fluency'],
   },
 ];
 
@@ -127,7 +120,7 @@ export default function CommunityPage() {
         </Card>
       </div>
 
-      <h2 className="text-2xl font-bold mb-4">Language & Culture Rooms</h2>
+      <h2 className="text-2xl font-bold mb-4">Language Exchange Rooms</h2>
       <Alert className="mb-8">
         <AlertTitle>Feature in Development</AlertTitle>
         <AlertDescription>
