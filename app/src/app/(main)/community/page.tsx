@@ -2,7 +2,7 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { Users, GraduationCap, School, MessageSquare, ArrowRight, UserCheck, Laugh, Handshake, Sparkles, Swords, ShieldCheck, ShieldAlert } from 'lucide-react';
+import { Users, GraduationCap, School, MessageSquare, ArrowRight, UserCheck, Laugh, Handshake, Sparkles, Swords, ShieldCheck, ShieldAlert, BrainCircuit } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -69,38 +69,72 @@ export default function CommunityPage() {
         icon={Users}
       />
 
-      <Card className="mb-8 bg-gradient-to-tr from-accent/20 via-background to-background border-accent/30 shadow-lg">
-        <CardHeader>
-            <CardTitle className="flex items-center gap-3 text-2xl">
-                <ShieldAlert className="w-8 h-8 text-accent" />
-                Survival Arena: The Last One Standing
-            </CardTitle>
-            <CardDescription>
-                A high-stakes language game where only the sharpest minds survive.
-            </CardDescription>
-        </CardHeader>
-        <CardContent>
-            <Alert variant="default" className="border-accent bg-accent/10 mb-4">
-                <AlertTitle className="text-accent-foreground">Game Rules</AlertTitle>
-                <AlertDescription className="text-accent-foreground/80">
-                    <ul className="list-disc pl-5 mt-2 space-y-1">
-                        <li>Enter the arena with up to 19 other players.</li>
-                        <li>The system will ask rapid-fire language questions.</li>
-                        <li>You start with 3 lives. Each wrong answer costs a life.</li>
-                        <li>Lose all your lives, and you're out!</li>
-                        <li>The last three players standing win huge XP and exclusive badges.</li>
-                    </ul>
-                </AlertDescription>
-            </Alert>
-            <p className="text-sm text-muted-foreground mb-4">
-                This is the ultimate test of your knowledge and speed. Do you have what it takes to be the champion?
-            </p>
-            <Button variant="default" className="bg-accent text-accent-foreground hover:bg-accent/90">
-                <Sparkles className="mr-2 h-4 w-4" />
-                Join the Next Arena (Coming Soon!)
-            </Button>
-        </CardContent>
-      </Card>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <Card className="bg-gradient-to-tr from-accent/20 via-background to-background border-accent/30 shadow-lg">
+            <CardHeader>
+                <CardTitle className="flex items-center gap-3 text-2xl">
+                    <ShieldAlert className="w-8 h-8 text-accent" />
+                    Survival Arena: The Last One Standing
+                </CardTitle>
+                <CardDescription>
+                    A high-stakes language game where only the sharpest minds survive. Up to 25 players can join.
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <Alert variant="default" className="border-accent bg-accent/10 mb-4">
+                    <AlertTitle className="text-accent-foreground">Game Rules</AlertTitle>
+                    <AlertDescription className="text-accent-foreground/80">
+                        <ul className="list-disc pl-5 mt-2 space-y-1">
+                            <li>Enter the arena with up to 24 other players.</li>
+                            <li>The system will ask rapid-fire language questions.</li>
+                            <li>You start with 3 lives. Each wrong answer costs a life.</li>
+                            <li>Lose all your lives, and you're out!</li>
+                            <li>The last three players standing win huge XP and exclusive badges.</li>
+                        </ul>
+                    </AlertDescription>
+                </Alert>
+                <p className="text-sm text-muted-foreground mb-4">
+                    This is the ultimate test of your knowledge and speed. Do you have what it takes to be the champion?
+                </p>
+                <Button variant="default" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                    <Sparkles className="mr-2 h-4 w-4" />
+                    Join the Next Arena (Coming Soon!)
+                </Button>
+            </CardContent>
+        </Card>
+        <Card className="bg-gradient-to-tr from-primary/20 via-background to-background border-primary/30 shadow-lg">
+            <CardHeader>
+                <CardTitle className="flex items-center gap-3 text-2xl">
+                    <BrainCircuit className="w-8 h-8 text-primary" />
+                    Duel of Scientific Synergy
+                </CardTitle>
+                <CardDescription>
+                    A team-based battle of wits where knowledge creation is the ultimate prize. Up to 20 can observe.
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <Alert variant="default" className="border-primary/30 bg-primary/10 mb-4">
+                    <AlertTitle className="text-primary-foreground">Event Rules</AlertTitle>
+                    <AlertDescription className="text-primary-foreground/80">
+                        <ul className="list-disc pl-5 mt-2 space-y-1">
+                            <li>Two teams, led by peer professors or top students, enter the duel.</li>
+                            <li>The duel consists of complex challenges and case studies.</li>
+                            <li>A panel of "Emperor's Council" members judges the outcome.</li>
+                            <li>The entire duel is recorded and becomes a masterclass for all students.</li>
+                            <li>Winning teams earn prestige, massive XP, and a share of the "knowledge bounty".</li>
+                        </ul>
+                    </AlertDescription>
+                </Alert>
+                <p className="text-sm text-muted-foreground mb-4">
+                   This is where science takes a genetic leap. Witness the creation of knowledge in real-time.
+                </p>
+                <Button variant="default">
+                    <Sparkles className="mr-2 h-4 w-4" />
+                    Watch the Next Duel (Coming Soon!)
+                </Button>
+            </CardContent>
+        </Card>
+      </div>
 
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -197,3 +231,5 @@ export default function CommunityPage() {
     </div>
   );
 }
+
+    
