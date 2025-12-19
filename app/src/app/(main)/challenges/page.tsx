@@ -3,20 +3,26 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { Loader2, Sparkles, Trophy, Wand2, Star } from 'lucide-react';
+import { Loader2, Sparkles, Trophy, Wand2, Star, Brain, Languages } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { generateDailyChallenge, type DailyChallengeOutput } from '@/ai/flows/daily-language-challenge-generation';
+import { generateGeneralKnowledgeChallenge } from '@/ai/flows/general-knowledge-challenge-generation';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
+type ChallengeType = 'language' | 'general';
+type ChallengeOutput = { question: string; answer: string; };
+
 export default function ChallengesPage() {
+  const [challengeType, setChallengeType] = useState<ChallengeType>('language');
   const [languageLevel, setLanguageLevel] = useState(80);
+  const [difficulty, setDifficulty] = useState(5);
   const [targetLanguage, setTargetLanguage] = useState<'English' | 'Persian'>('English');
-  const [challenge, setChallenge] = useState<DailyChallengeOutput | null>(null);
+  const [challenge, setChallenge] = useState<ChallengeOutput | null>(null);
   const [showAnswer, setShowAnswer] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
@@ -26,10 +32,17 @@ export default function ChallengesPage() {
     setChallenge(null);
     setShowAnswer(false);
     try {
-      const result = await generateDailyChallenge({
-        languageLevel,
-        targetLanguage,
-      });
+      let result: ChallengeOutput;
+      if (challengeType === 'language') {
+        result = await generateDailyChallenge({
+          languageLevel,
+          targetLanguage,
+        });
+      } else {
+        result = await generateGeneralKnowledgeChallenge({
+          difficulty,
+        });
+      }
       setChallenge(result);
        toast({
         title: "Today's Challenge is Here!",
@@ -69,34 +82,70 @@ export default function ChallengesPage() {
                   Successfully completing the daily challenge earns you XP and helps you climb the leaderboard.
                 </AlertDescription>
               </Alert>
-              <div className="space-y-3">
-                <Label htmlFor="language-level">Your Language Level: {languageLevel}</Label>
-                <Slider
-                  id="language-level"
-                  min={1}
-                  max={160}
-                  step={1}
-                  value={[languageLevel]}
-                  onValueChange={(value) => setLanguageLevel(value[0])}
-                  disabled={isLoading}
-                />
-              </div>
+
               <div className="space-y-2">
-                <Label htmlFor="target-language">Challenge Language</Label>
+                <Label htmlFor="challenge-type">Challenge Type</Label>
                 <Select
-                  value={targetLanguage}
-                  onValueChange={(value: 'English' | 'Persian') => setTargetLanguage(value)}
+                  value={challengeType}
+                  onValueChange={(value: ChallengeType) => setChallengeType(value)}
                   disabled={isLoading}
                 >
-                  <SelectTrigger id="target-language">
-                    <SelectValue placeholder="Select language" />
+                  <SelectTrigger id="challenge-type">
+                    <SelectValue placeholder="Select type" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="English">English</SelectItem>
-                    <SelectItem value="Persian">Persian (فارسی)</SelectItem>
+                    <SelectItem value="language"><div className="flex items-center gap-2"><Languages /> Language</div></SelectItem>
+                    <SelectItem value="general"><div className="flex items-center gap-2"><Brain /> General Knowledge</div></SelectItem>
                   </SelectContent>
                 </Select>
               </div>
+
+              {challengeType === 'language' ? (
+                <>
+                  <div className="space-y-3">
+                    <Label htmlFor="language-level">Your Language Level: {languageLevel}</Label>
+                    <Slider
+                      id="language-level"
+                      min={1}
+                      max={160}
+                      step={1}
+                      value={[languageLevel]}
+                      onValueChange={(value) => setLanguageLevel(value[0])}
+                      disabled={isLoading}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="target-language">Challenge Language</Label>
+                    <Select
+                      value={targetLanguage}
+                      onValueChange={(value: 'English' | 'Persian') => setTargetLanguage(value)}
+                      disabled={isLoading}
+                    >
+                      <SelectTrigger id="target-language">
+                        <SelectValue placeholder="Select language" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="English">English</SelectItem>
+                        <SelectItem value="Persian">Persian (فارسی)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </>
+              ) : (
+                 <div className="space-y-3">
+                    <Label htmlFor="difficulty-level">Difficulty Level: {difficulty}</Label>
+                    <Slider
+                      id="difficulty-level"
+                      min={1}
+                      max={10}
+                      step={1}
+                      value={[difficulty]}
+                      onValueChange={(value) => setDifficulty(value[0])}
+                      disabled={isLoading}
+                    />
+                  </div>
+              )}
+
             </CardContent>
             <CardFooter>
               <Button onClick={handleGenerateChallenge} disabled={isLoading} className="w-full">
