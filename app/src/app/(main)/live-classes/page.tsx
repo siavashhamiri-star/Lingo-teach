@@ -11,6 +11,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useToast } from '@/hooks/use-toast';
 import { Tag } from 'lucide-react';
+import Link from 'next/link';
 
 const upcomingClasses = [
     {
@@ -75,7 +76,7 @@ export default function LiveClassesPage() {
                         </div>
                         <div className="flex items-center gap-2 pt-2">
                              <Avatar className="w-8 h-8 border">
-                                <AvatarImage src={cls.tutorAvatar} alt={cls.tutor} />
+                                <AvatarImage src={cls.tutorAvatar} data-ai-hint="person portrait" />
                                 <AvatarFallback>{cls.tutor.substring(0,2)}</AvatarFallback>
                             </Avatar>
                             <CardDescription>توسط {cls.tutor}</CardDescription>
@@ -122,9 +123,11 @@ export default function LiveClassesPage() {
                     </p>
                 </CardContent>
                 <CardFooter>
-                    <Button type="button" className="w-full" variant="outline">
+                    <Button asChild type="button" className="w-full" variant="outline">
+                      <Link href="/konkur-tutors">
                         <PlusCircle className="mr-2 h-4 w-4" />
                         شروع فرآیند همکاری
+                      </Link>
                     </Button>
                 </CardFooter>
             </Card>
