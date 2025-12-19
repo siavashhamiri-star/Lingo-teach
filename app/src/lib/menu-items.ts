@@ -13,6 +13,7 @@ import {
   Crown,
   Ear,
   FileText,
+  Film,
   Gavel,
   GraduationCap,
   Handshake,
@@ -54,6 +55,7 @@ export const menuItems: NavItem[] = [
   { href: '/live-classes', label: 'Live Classes', icon: School },
   { href: '/creation-story', label: 'Creation Story', icon: BookAudio },
   { href: '/deployment', label: 'Headquarters', icon: Building },
+  { href: '/genesis-movie', label: 'Genesis Movie', icon: Film, premium: true },
   { href: '/karaoke', label: 'Karaoke', icon: Music, premium: true },
   {
     href: '/ielts-toefl-prep',

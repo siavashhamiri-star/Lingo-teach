@@ -15,3 +15,4 @@ import '@/ai/flows/role-playing-flow.ts';
 import '@/ai/flows/simultaneous-interpretation-flow.ts';
 import '@/ai/flows/app-creation-story-audiobook.ts';
 import '@/ai/flows/general-knowledge-challenge-generation.ts';
+import '@/ai/flows/genesis-movie-generation.ts';
