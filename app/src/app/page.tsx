@@ -11,7 +11,7 @@ const featureCards = [
   {
     icon: <BotMessageSquare className="h-8 w-8 text-primary" />,
     title: 'Bilingual Chatbot',
-    description: 'Converse with our AI in Persian and English, learning from real film and speech snippets.',
+    description: 'Practice Persian-to-English or English-to-Persian. Converse with our AI, learning from real film and speech snippets.',
     image: PlaceHolderImages.find((img) => img.id === 'chatbot-roleplay'),
   },
   {
