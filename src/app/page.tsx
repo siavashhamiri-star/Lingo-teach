@@ -1,7 +1,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, BotMessageSquare, BrainCircuit, Users, Building, Sparkles } from 'lucide-react';
+import { ArrowRight, BotMessageSquare, BrainCircuit, Users, Building, Sparkles, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -50,16 +50,16 @@ export default function LandingPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="max-w-3xl mx-auto">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight font-headline text-foreground">
-                Don't Just Learn.
+                The Art of Persian,
                 <br />
-                <span className="text-primary">Create a Universe.</span>
+                <span className="text-primary">Mastered with AI.</span>
               </h1>
               <p className="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground">
-                Welcome to Afarinesh (Creation). Your gateway to an ecosystem where you learn, create, empower, and earn. This is more than an app; it's the birth of a new world.
+                Welcome to Afarinesh (Creation). Our primary mission is to teach the rich and beautiful Persian language to English speakers through an innovative, AI-powered ecosystem.
               </p>
               <div className="mt-8 flex justify-center gap-4">
                 <Button size="lg" asChild>
-                  <Link href="/dashboard">Build Your World</Link>
+                  <Link href="/dashboard">Start Your Journey</Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
                     <Link href="#vision">Our Grand Vision</Link>
@@ -144,6 +144,42 @@ export default function LandingPage() {
                     </Card>
                 </div>
             </div>
+        </section>
+
+        <section id="global-vision" className="py-20 md:py-28 bg-secondary/50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto">
+              <h2 className="text-3xl sm:text-4xl font-bold font-headline flex items-center justify-center gap-3">
+                <Globe className="w-8 h-8 text-primary" />
+                Our Global Vision
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                Our journey begins with a clear mission, but our ambition knows no borders.
+              </p>
+            </div>
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <Card className="bg-background/80">
+                <CardHeader>
+                  <CardTitle>A Universal Model</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Should this innovative language learning methodology be embraced by enthusiasts, we are committed to adapting it for other major world languages. Our vision is to build a global infrastructure for a new era of language education, inspired by this foundational model.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className="bg-background/80">
+                <CardHeader>
+                  <CardTitle>An Invitation to Learn Persian</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    We extend a warm invitation to all English speakers who are passionate about learning the rich Persian language. Join our community and become part of this creative and empowering journey.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         </section>
 
       </main>
