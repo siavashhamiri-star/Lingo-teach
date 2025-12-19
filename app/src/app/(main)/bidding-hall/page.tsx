@@ -120,9 +120,9 @@ export default function BiddingHallPage() {
                                     <SelectValue placeholder="Select a project type" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="translation">Translation</SelectItem>
-                                    <SelectItem value="content-creation">Content Creation (Stories, etc.)</SelectItem>
-                                    <SelectItem value="technical-writing">Technical/Academic Writing</SelectItem>
+                                    <SelectItem value="translation"><div className="flex items-center gap-2"><Languages/> Translation</div></SelectItem>
+                                    <SelectItem value="content-creation"><div className="flex items-center gap-2"><BookText/> Content Creation</div></SelectItem>
+                                    <SelectItem value="technical-writing"><div className="flex items-center gap-2"><FileText/> Technical Writing</div></SelectItem>
                                     <SelectItem value="other">Other</SelectItem>
                                 </SelectContent>
                              </Select>
