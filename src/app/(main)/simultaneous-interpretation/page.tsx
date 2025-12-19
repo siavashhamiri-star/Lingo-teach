@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useRef } from 'react';
@@ -222,7 +223,7 @@ export default function SimultaneousInterpretationPage() {
                  <div className="text-center space-y-4">
                     <h2 className="text-2xl font-bold">Ready for the next level?</h2>
                     <p className="text-muted-foreground max-w-md">You've had a taste of professional interpretation practice. Upgrade to get unlimited scenarios and master your skills.</p>
-                    <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                    <Button size="lg" className="w-full max-w-xs bg-accent text-accent-foreground hover:bg-accent/90">
                       <Sparkles className="mr-2 h-4 w-4" />
                       Unlock Unlimited Practice
                     </Button>
