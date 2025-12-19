@@ -5,3 +5,8 @@ runConfig:
   # Increase this value if you'd like to automatically spin up
   # more instances in response to increased traffic.
   maxInstances: 1
+  # Set the CPU and memory resources for your backend.
+  # "cpu" is a floating point number >= 0.25
+  # "memoryMiB" is an integer between 512 and 16384
+  cpu: 1
+  memoryMiB: 512
