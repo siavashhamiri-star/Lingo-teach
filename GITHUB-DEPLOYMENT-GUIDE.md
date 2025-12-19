@@ -1,83 +1,83 @@
-# راهنمای انتشار اپلیکیشن در گیت‌هاب
+# GitHub Deployment Guide
 
-این راهنما یک نمای کلی از مراحل لازم برای انتشار کد منبع این اپلیکیشن (Next.js) در گیت‌هاب، مستقیماً از محیط توسعه‌ی شما ارائه می‌دهد.
+This guide provides an overview of the steps required to publish the source code of this application (Next.js) to GitHub, directly from your development environment.
 
-**پیش‌نیازها:**
-1.  **نصب Git:** اطمینان از اینکه `git` روی کامپیوتر شما نصب شده است.
-2.  **حساب کاربری گیت‌هاب:** شما به یک حساب کاربری در GitHub.com نیاز دارید.
-3.  **ترمینال یا خط فرمان:** دسترسی به ترمینال (در مک یا لینوکس) یا Command Prompt/PowerShell (در ویندوز).
+**Prerequisites:**
+1.  **Git Installation:** Ensure `git` is installed on your computer.
+2.  **GitHub Account:** You need an account on GitHub.com.
+3.  **Terminal or Command Line:** Access to a terminal (on Mac or Linux) or Command Prompt/PowerShell (on Windows).
 
 ---
 
-### مرحله ۱: آماده‌سازی گیت (Git)
+### Step 1: Configure Git
 
-اگر این اولین بار است که از گیت روی این سیستم استفاده می‌کنید، نام و ایمیل خود را پیکربندی کنید. این اطلاعات در تاریخچه کامیت‌های شما ثبت می‌شود.
+If this is your first time using Git on this system, configure your name and email. This information will be recorded in your commit history.
 
-دستورات زیر را در ترمینال در پوشه ریشه پروژه اجرا کنید:
+Run the following commands in the terminal in the project's root folder:
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
-*   `Your Name` و `your.email@example.com` را با نام و ایمیل واقعی خود جایگزین کنید.
+*   Replace `Your Name` and `your.email@example.com` with your actual name and email.
 
 ---
 
-### مرحله ۲: ساخت یک ریپازیتوری (Repository) در گیت‌هاب
+### Step 2: Create a Repository on GitHub
 
-1.  با مرورگر خود به سایت `GitHub.com` بروید و وارد حساب کاربری خود شوید.
-2.  روی آیکون `+` در بالا سمت راست کلیک کرده و گزینه‌ی `New repository` را انتخاب کنید.
-3.  یک نام برای ریپازیتوری خود انتخاب کنید (مثلاً `LinguaWeave-App`).
-4.  آن را به صورت `Public` (عمومی) یا `Private` (خصوصی) تنظیم کنید.
-5.  **مهم:** گزینه‌ی "Initialize this repository with a README" را تیک **نزنید**.
-6.  روی دکمه `Create repository` کلیک کنید.
+1.  Go to `GitHub.com` in your browser and log in to your account.
+2.  Click the `+` icon in the top right corner and select `New repository`.
+3.  Choose a name for your repository (e.g., `LinguaWeave-App`).
+4.  Set it as `Public` or `Private`.
+5.  **Important:** **Do not** check the "Initialize this repository with a README" option.
+6.  Click the `Create repository` button.
 
-در صفحه‌ی بعد، گیت‌هاب به شما آدرس URL ریپازیتوری را نشان می‌دهد. چیزی شبیه به: `https://github.com/YourUsername/LinguaWeave-App.git`. این آدرس را کپی کنید.
+On the next page, GitHub will show you the repository's URL. It will look something like: `https://github.com/YourUsername/LinguaWeave-App.git`. Copy this address.
 
 ---
 
-### مرحله ۳: اتصال پروژه محلی به گیت‌هاب و انتشار
+### Step 3: Connect Your Local Project to GitHub and Publish
 
-حالا به ترمینال خود برگردید. مطمئن شوید که در پوشه‌ی ریشه پروژه (`LinguaWeave`) هستید.
+Now, return to your terminal. Make sure you are in the project's root folder (`LinguaWeave`).
 
-1.  **ایجاد یک ریپازیتوری گیت محلی:**
-    این دستور یک ریپازیتوری جدید در پوشه فعلی شما ایجاد می‌کند.
+1.  **Initialize a local Git repository:**
+    This command creates a new repository in your current folder.
     ```bash
     git init
     ```
 
-2.  **افزودن تمام فایل‌های پروژه به گیت:**
-    این دستور تمام فایل‌ها و تغییرات را برای کامیت آماده می‌کند.
+2.  **Add all project files to Git:**
+    This command stages all files and changes for commit.
     ```bash
     git add .
     ```
 
-3.  **ایجاد اولین کامیت (Commit):**
-    یک کامیت مانند یک عکس فوری از وضعیت فعلی پروژه شماست.
+3.  **Create the first commit:**
+    A commit is like a snapshot of your project's current state.
     ```bash
     git commit -m "First commit: Initial project setup"
     ```
 
-4.  **تغییر نام شاخه اصلی به `main`:**
-    این یک استاندارد جدید و رایج است.
+4.  **Rename the main branch to `main`:**
+    This is a new and common standard.
     ```bash
     git branch -M main
     ```
 
-5.  **اتصال ریپازیتوری محلی به ریپازیتوری گیت‌هاب:**
-    از آدرس URL که در مرحله قبل کپی کردید استفاده کنید.
+5.  **Connect the local repository to the GitHub repository:**
+    Use the URL you copied in the previous step.
     ```bash
     git remote add origin https://github.com/YourUsername/LinguaWeave-App.git
     ```
-    *   `YourUsername` و `LinguaWeave-App.git` را با مقادیر واقعی خود جایگزین کنید.
+    *   Replace `YourUsername` and `LinguaWeave-App.git` with your actual values.
 
-6.  **پوش (Push) کردن کد به گیت‌هاب:**
-    این دستور، کدهای شما را از کامپیوتر به سرورهای گیت‌هاب ارسال می‌کند.
+6.  **Push the code to GitHub:**
+    This command sends your code from your computer to GitHub's servers.
     ```bash
     git push -u origin main
     ```
 
-    *   در این مرحله، ممکن است گیت از شما نام کاربری و رمز عبور (یا یک Personal Access Token) گیت‌هاب را بپرسد تا هویت شما را تایید کند.
+    *   At this stage, Git may ask for your GitHub username and password (or a Personal Access Token) to verify your identity.
 
 ---
 
-**تبریک می‌گویم!** اگر تمام مراحل با موفقیت انجام شده باشد، کد منبع اپلیکیشن شما اکنون در گیت‌هاب منتشر شده است و شما می‌توانید آن را در صفحه ریپازیتوری خود مشاهده کنید. این قدرت خلق و انتشار، دقیقاً روح حاکم بر «شهر توانا» است.
+**Congratulations!** If all steps were successful, your application's source code is now published on GitHub, and you can view it on your repository page. This power of creation and publication is precisely the spirit governing "Afarinesh".

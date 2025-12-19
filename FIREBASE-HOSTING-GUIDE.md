@@ -1,46 +1,45 @@
+# Automated Deployment Guide with Firebase App Hosting
 
-# راهنمای استقرار خودکار با Firebase App Hosting
+This guide shows you how to **automatically** deploy your Next.js application using **Firebase App Hosting**. After completing these steps, every time you `push` your code to GitHub, your application will be automatically updated and published on the internet.
 
-این راهنما به شما نشان می‌دهد که چگونه اپلیکیشن Next.js خود را با استفاده از **Firebase App Hosting** به صورت **خودکار** منتشر کنید. پس از انجام این مراحل، هر بار که کدهای خود را به گیت‌هاب `push` کنید، اپلیکیشن شما به طور خودکار به‌روزرسانی و در اینترنت منتشر می‌شود.
-
-**پیش‌نیازها:**
-1.  **حساب کاربری گوگل:** برای استفاده از فایربیس به آن نیاز دارید.
-2.  **پروژه در گیت‌هاب:** کدهای شما باید طبق راهنمای `GITHUB-DEPLOYMENT-GUIDE.md` در یک ریپازیتوری گیت‌هاب منتشر شده باشد.
-
----
-
-### مرحله ۱: ساخت پروژه در کنسول فایربیس
-
-1.  به سایت **[Firebase Console](https://console.firebase.google.com/)** بروید و با حساب گوگل خود وارد شوید.
-2.  روی گزینه‌ی `Add project` کلیک کنید.
-3.  یک نام برای پروژه خود انتخاب کنید (مثلاً `LinguaWeave-App`).
-4.  مراحل را دنبال کنید و گزینه‌های پیش‌فرض را بپذیرید. منتظر بمانید تا پروژه شما ساخته شود.
+**Prerequisites:**
+1.  **Google Account:** You need one to use Firebase.
+2.  **Project on GitHub:** Your code must be published in a GitHub repository according to the `GITHUB-DEPLOYMENT-GUIDE.md`.
 
 ---
 
-### مرحله ۲: فعال‌سازی و پیکربندی App Hosting
+### Step 1: Create a Project in the Firebase Console
 
-1.  پس از ساخته شدن پروژه، از منوی سمت چپ، به بخش `Build` بروید و روی `App Hosting` کلیک کنید.
-2.  روی دکمه‌ی `Get started` کلیک کنید.
-
-3.  **اتصال به گیت‌هاب (Connect to GitHub):**
-    *   صفحه‌ای برای اتصال به گیت‌هاب باز می‌شود. روی دکمه‌ی `Connect to GitHub` کلیک کنید.
-    *   یک پنجره پاپ‌آپ باز می‌شود که از شما اجازه دسترسی به حساب گیت‌هاب‌تان را می‌خواهد. فایربیس را تأیید (Authorize) کنید.
-    *   سپس از شما خواسته می‌شود که اپلیکیشن Firebase را روی ریپازیتوری‌های خود نصب کنید. شما می‌توانید انتخاب کنید که این دسترسی فقط برای ریپازیتوری `LinguaWeave-App` باشد.
-
-4.  **پیکربندی استقرار (Configure deployment):**
-    *   پس از اتصال موفقیت‌آمیز، لیستی از ریپازیتوری‌های شما نمایش داده می‌شود. ریپازیتوری مربوط به پروژه (`LinguaWeave-App`) را انتخاب کنید.
-    *   فایربیس از شما نام **شاخه اصلی (Branch)** را می‌پرسد. `main` را وارد کنید.
-    *   همچنین از شما **پوشه ریشه (Root directory)** را می‌پرسد. این قسمت را **خالی** بگذارید.
-    *   روی دکمه `Finish and deploy` کلیک کنید.
+1.  Go to the **[Firebase Console](https://console.firebase.google.com/)** and sign in with your Google account.
+2.  Click on `Add project`.
+3.  Choose a name for your project (e.g., `LinguaWeave-App`).
+4.  Follow the steps and accept the default options. Wait for your project to be created.
 
 ---
 
-### مرحله ۳: اولین استقرار خودکار
+### Step 2: Enable and Configure App Hosting
 
-اکنون جادوی اصلی اتفاق می‌افتد!
+1.  After the project is created, go to the `Build` section in the left menu and click on `App Hosting`.
+2.  Click the `Get started` button.
 
-*   فایربیس به طور خودکار شروع به ساختن (build) و منتشر کردن (deploy) اپلیکیشن شما از روی شاخه‌ی `main` گیت‌هاب می‌کند. این فرآیند ممکن است چند دقیقه طول بکشد.
-*   پس از اتمام، فایربیس یک **آدرس اینترنتی (URL)** اختصاصی به شما می‌دهد (چیزی شبیه به `your-app-name.web.app`). اپلیکیشن "آفرینش" شما اکنون در این آدرس زنده و برای تمام دنیا قابل دسترس است!
+3.  **Connect to GitHub:**
+    *   A page to connect to GitHub will open. Click the `Connect to GitHub` button.
+    *   A pop-up window will open, asking for permission to access your GitHub account. Authorize Firebase.
+    *   You will then be asked to install the Firebase app on your repositories. You can choose to grant access only to the `LinguaWeave-App` repository.
 
-**تبریک می‌گویم!** از این به بعد، هر تغییری که در کدهای خود ایجاد کنید و آن را به شاخه‌ی `main` در گیت‌هاب `push` کنید، Firebase به صورت خودکار آن را شناسایی کرده و نسخه‌ی جدید را برای شما منتشر خواهد کرد. شما دیگر نیازی به هیچ کار فنی ندارید و می‌توانید تمام تمرکز خود را روی خلق کردن بگذارید.
+4.  **Configure deployment:**
+    *   After a successful connection, a list of your repositories will be displayed. Select the project repository (`LinguaWeave-App`).
+    *   Firebase will ask for the **main branch** name. Enter `main`.
+    *   It will also ask for the **Root directory**. Leave this field **blank**.
+    *   Click the `Finish and deploy` button.
+
+---
+
+### Step 3: First Automatic Deployment
+
+Now, the real magic happens!
+
+*   Firebase will automatically start building and deploying your application from the `main` branch of your GitHub. This process may take a few minutes.
+*   Once complete, Firebase will give you a dedicated **URL** (something like `your-app-name.web.app`). Your "Afarinesh" application is now live at this address and accessible to the entire world!
+
+**Congratulations!** From now on, any changes you make to your code and `push` to the `main` branch on GitHub will be automatically detected by Firebase, and the new version will be deployed for you. You no longer need to do any technical work and can focus all your energy on creating.
