@@ -3,11 +3,10 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { UploadCloud, Copy, Terminal, Laptop, Smartphone, Shield, Building } from 'lucide-react';
+import { UploadCloud, Copy, Terminal, Laptop, Shield, Building } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -108,24 +107,19 @@ export default function DeploymentPage() {
           Publishing our code is not just a technical step; it is the act of breathing life into our philosophy. It is how we make our creation immortal and share the power of 'Tavana' with every corner of the world. Follow these steps to deploy our universe.
         </AlertDescription>
       </Alert>
-      <Tabs defaultValue="pc" className="w-full">
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="pc">
-            <Laptop className="mr-2" />
-            Standard Guide (PC/Mac)
-          </TabsTrigger>
-          <TabsTrigger value="android">
-            <Smartphone className="mr-2" />
-            Android Guide (Termux)
-          </TabsTrigger>
-        </TabsList>
-        <TabsContent value="pc" className="mt-6">
-          {renderSteps(deploymentSteps)}
-        </TabsContent>
-        <TabsContent value="android" className="mt-6">
-          {renderSteps(deploymentSteps)}
-        </TabsContent>
-      </Tabs>
+      
+      <Card>
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                 <Laptop className="w-5 h-5"/>
+                 Standard Deployment Guide (PC/Mac)
+            </CardTitle>
+            <CardDescription>Follow these steps to publish your application source code to GitHub.</CardDescription>
+        </CardHeader>
+        <CardContent>
+            {renderSteps(deploymentSteps)}
+        </CardContent>
+      </Card>
     </div>
   );
 }
