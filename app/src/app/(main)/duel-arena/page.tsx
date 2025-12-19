@@ -106,7 +106,7 @@ export default function DuelArenaPage() {
                                 <TableRow key={opponent.rank}>
                                     <TableCell className="flex items-center gap-4">
                                         <Avatar className="h-10 w-10 border">
-                                            <AvatarImage src={opponent.avatar} alt={opponent.name}/>
+                                            <AvatarImage src={opponent.avatar} alt={opponent.name} data-ai-hint="person portrait"/>
                                             <AvatarFallback>{opponent.name.substring(0,2)}</AvatarFallback>
                                         </Avatar>
                                         <div className="font-medium">{opponent.name}</div>
@@ -172,5 +172,3 @@ export default function DuelArenaPage() {
     </div>
   );
 }
-
-    

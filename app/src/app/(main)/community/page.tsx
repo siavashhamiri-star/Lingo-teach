@@ -96,7 +96,7 @@ export default function CommunityPage() {
                 <p className="text-sm text-muted-foreground mb-4">
                     This is the ultimate test of your knowledge and speed. Do you have what it takes to be the champion?
                 </p>
-                <Button variant="default" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                <Button variant="default" className="bg-accent text-accent-foreground hover:bg-accent/90" disabled>
                     <Sparkles className="mr-2 h-4 w-4" />
                     Join the Next Arena (Coming Soon!)
                 </Button>
@@ -128,9 +128,11 @@ export default function CommunityPage() {
                 <p className="text-sm text-muted-foreground mb-4">
                    This is where science takes a genetic leap. Witness the creation of knowledge in real-time.
                 </p>
-                <Button variant="default">
+                <Button asChild variant="default">
+                   <Link href="/duel-arena">
                     <Sparkles className="mr-2 h-4 w-4" />
-                    Watch the Next Duel (Coming Soon!)
+                    Enter the Duel Arena
+                   </Link>
                 </Button>
             </CardContent>
         </Card>
@@ -231,7 +233,3 @@ export default function CommunityPage() {
     </div>
   );
 }
-
-    
-
-    
