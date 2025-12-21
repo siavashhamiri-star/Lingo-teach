@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Logo from '@/components/icons/logo';
+import AfarineshLogo from '@/components/icons/afarinesh-logo';
+import TavanaLogo from '@/components/icons/tavana-logo';
 
 const featureCards = [
   {
@@ -109,7 +111,7 @@ export default function LandingPage() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                  <div className="text-center max-w-3xl mx-auto">
                     <h2 className="text-3xl sm:text-4xl font-bold font-headline flex items-center justify-center gap-3">
-                        <Sparkles className="w-8 h-8 text-accent" />
+                        <AfarineshLogo className="w-10 h-10 text-accent" />
                         More Than an App, A New World
                     </h2>
                     <p className="mt-4 text-lg text-muted-foreground">
@@ -119,7 +121,7 @@ export default function LandingPage() {
                 <div className="mt-16 max-w-4xl mx-auto">
                     <Card className="bg-gradient-to-br from-primary/5 via-background to-accent/5 shadow-xl">
                         <CardHeader className="text-center">
-                            <Building className="w-12 h-12 mx-auto text-primary mb-4" />
+                            <TavanaLogo className="w-12 h-12 mx-auto text-primary mb-4" />
                             <CardTitle className="text-2xl">Welcome to "Tavana" (The Empowered City)</CardTitle>
                             <CardDescription>The heart of the Afarinesh ecosystem.</CardDescription>
                         </CardHeader>
@@ -135,7 +137,7 @@ export default function LandingPage() {
                             </p>
                              <div className="pt-4">
                                 <Button asChild>
-                                  <Link href="/profile">
+                                  <Link href="/philosophy-gems">
                                     Read the Full Philosophy <ArrowRight className="ml-2 h-4 w-4" />
                                   </Link>
                                 </Button>
