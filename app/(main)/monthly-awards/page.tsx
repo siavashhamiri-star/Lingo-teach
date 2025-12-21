@@ -147,10 +147,10 @@ export default function MonthlyAwardsPage() {
             </CardHeader>
             <CardContent className="space-y-4">
                  <blockquote className="border-l-4 border-accent pl-4 text-lg italic text-foreground">
-                   "Here, the system must truly be based on meritocracy, positive thinking, sacrifice, patience, hope, belief, and effort. This is a place where those who genuinely strive and believe in the system will rise."
+                   "Afarinesh needs believing, capable, and tireless individuals who are not hesitant. It is by their grace that when we look at the system in the future and see it as successful, we will witness the sacrifices, perseverance, and valuable actions of the initial volunteers. They are the ones who have turned our small sapling into a mighty tree."
                 </blockquote>
                 <p className="text-muted-foreground" dir="rtl">
-                    "در اینجا سیستم واقعاً باید بر مبنای شایسته‌سالاری، مثبت‌اندیشی، فداکاری، صبر، امید، باور و تلاش باشد. اینجا جاییست که آن کسانی که واقعاً تلاش می‌کنند و سیستم را باور دارند، بالا خواهند رفت."
+                   "آفرینش به افراد باورمند، توانا و خستگی‌ناپذیر نیاز دارد که مردد نیستند. به لطف آن‌هاست که هرگاه در آینده به سیستم نگاه کنیم و آن را موفق ببینیم، شاهد فداکاری‌ها، ممارست‌ها و اقدامات ارزشمند داوطلبان اولیه خواهیم بود. آن‌ها بودند و هستند که نهال کوچک ما را به درختی تنومند تبدیل کرده‌اند."
                 </p>
                  <Separator className="my-6"/>
                 <Alert variant="destructive" className="bg-destructive/10 border-destructive/20 text-destructive-foreground">
@@ -169,3 +169,5 @@ export default function MonthlyAwardsPage() {
     </div>
   );
 }
+
+    
