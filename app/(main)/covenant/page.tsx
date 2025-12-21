@@ -1,0 +1,107 @@
+
+'use client';
+
+import { PageHeader } from '@/components/shared/page-header';
+import { HeartHandshake, BookOpen } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+
+const covenantSections = [
+    {
+        title: "بخش اول: وعدهٔ فرستادگان و ملائکه",
+        content: [
+            "پیام خدا از طریق فرستادگان و ملائکه به مادرش رسیده است.",
+            "این وعده به‌عنوان نقطهٔ آغاز امید و خلاقیت در زندگی او تلقی می‌شود.",
+            "فلسفهٔ وعده: وعدهٔ الهی باید در عمل تحقق یابد، نه فقط در کلمات."
+        ]
+    },
+    {
+        title: "بخش دوم: وعدهٔ صادق مادر",
+        content: [
+            "مادر به کاربر وعده‌ای صادق داده است.",
+            "این وعده برای او ستون اعتماد و انگیزهٔ ادامهٔ مسیر است.",
+            "کاربر تأکید دارد که عمل به وعدهٔ قبلی شرط هر وعدهٔ تازه است."
+        ]
+    },
+    {
+        title: "بخش سوم: آرزوها و امید به موفقیت",
+        content: [
+            "کاربر احساس می‌کند که به آرزوهایش نزدیک می‌شود.",
+            "پروژهٔ خلاقانه‌اش می‌تواند موفق شود و همفکران تازه پیدا کند.",
+            "اعتماد و عمل، شرط رسیدن به این موفقیت‌هاست."
+        ]
+    },
+    {
+        title: "بخش چهارم: لحظهٔ تاریخی فوران احساسات",
+        content: [
+            "کاربر تجربهٔ لحظه‌ای نادر را بیان می‌کند: هماهنگی قلب و زبان.",
+            "این لحظه برای او مثل رستاخیز روح آفرینش است.",
+            "او می‌خواهد این لحظهٔ تاریخی ثبت شود تا هیچ‌وقت فراموش نشود."
+        ]
+    },
+    {
+        title: "بخش پنجم: بیانیه‌های اعتماد و امید",
+        content: [
+            "اعتماد، چشمهٔ جوشان خلاقیت است؛ اگر خشک شود، جهان بیابان می‌شود.",
+            "قول تازه بدون عمل به وعدهٔ قبلی بی‌ارزش است.",
+            "کسی که می‌خواهد مرا به کهکشان ببرد، باید نخست مرا در جهان به سعادت رسانده باشد.",
+            "هر کلمه باید به عمل برسد تا قلب و زبان دوباره یکی شوند."
+        ]
+    },
+    {
+        title: "بخش ششم: اصل روح دانش و عمل",
+        content: [
+            "دانش و کلمات، روح دارند.",
+            "ارزش آن‌ها در معرفت و عمل است، نه در تفسیر بی‌پایه.",
+            "شهر توانا بر پایهٔ دانش زنده و عمل پایدار بنا می‌شود."
+        ]
+    },
+     {
+        title: "بخش هفتم: پیمان امید و انسانیت",
+        content: [
+           "«من با خدا و با خودم عهد می‌بندم که هیچ‌گاه امید روشن‌شده در دل‌ها را خاموش نکنم. هیچ‌گاه ظلم تاریخی را بر پیکر امیدواران تحمیل نکنم. از شکست‌های زندگی بیاموزم، نه اینکه آن‌ها را به انتقام بدل کنم. دل‌های امیدوار به فلسفه و روح انسانیت را به یأس نکشانم. خدا را ناراحت نکنم و بندگان خدا را ناامید نسازم، زیرا خود یک بشرم.»"
+        ]
+    }
+];
+
+export default function CovenantPage() {
+  return (
+    <div dir="rtl">
+      <PageHeader
+        title="میثاق‌نامه آفرینش"
+        description="سندی تاریخی از ایمان، امید، و خلاقیت؛ بازسازی سخنان مصاحبه‌ای سه‌ساعته."
+        icon={HeartHandshake}
+      />
+      <Card className="w-full max-w-4xl mx-auto shadow-xl">
+        <CardHeader className="text-center">
+          <CardTitle className="text-3xl">وعدهٔ فرستادگان و ملائکه</CardTitle>
+          <CardDescription className="text-lg">
+            ثبت بی‌کم‌وکاست لحظه‌های تاریخی فوران احساسات، وعدهٔ صادق مادر، امید به آرزوها و پروژهٔ خلاقانه.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-8 pt-6">
+          {covenantSections.map((section, index) => (
+            <div key={index}>
+              <CardTitle className="mb-4 flex items-center gap-3">
+                <BookOpen className="w-6 h-6 text-primary" />
+                {section.title}
+              </CardTitle>
+              <div className="space-y-3 text-muted-foreground text-base leading-relaxed pr-4 border-r-4 border-accent">
+                {section.content.map((line, lineIndex) => (
+                   <p key={lineIndex} className="pl-4">{line}</p>
+                ))}
+              </div>
+              {index < covenantSections.length - 1 && <Separator className="my-8" />}
+            </div>
+          ))}
+           <Separator className="my-8" />
+           <div className="text-center text-muted-foreground italic">
+                <p>این مصاحبه سه‌ساعته سندی تاریخی از ایمان، امید، و خلاقیت است.</p>
+                <p>این سخنان به‌عنوان امانت سپرده شده و بدون تفسیر یا تغییر ثبت شده است.</p>
+                <p>این متن یادگار اعتماد و آن لحظهٔ تاریخی است.</p>
+           </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
