@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { generateDailyChallenge } from '@/ai/flows/daily-language-challenge-generation';
-import { generateGeneralKnowledgeChallenge, type GeneralKnowledgeChallengeOutput } from '@/ai/flows/general-knowledge-challenge-generation';
+import { generateGeneralKnowledgeChallenge } from '@/ai/flows/general-knowledge-challenge-generation';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
