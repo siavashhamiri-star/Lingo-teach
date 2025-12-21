@@ -65,6 +65,10 @@ const philosophyGems = [
     {
         english: "A future where you are determinant and a shareholder.",
         persian: "آینده‌ای که شما در آن سرنوشت سازید و سهیم"
+    },
+    {
+        english: "Whoever believes in us sooner and strives to promote us will have a better material future in the city of Tavana. The system of rewards, leagues, and lotteries promises a material and spiritual future and is the engine of your efforts.",
+        persian: "هر کس که زودتر ما را باور کند و برای معرفی ما تلاش کند، از آینده مادی بهتری در شهر توانا برخوردار خواهد گشت. سیستم جوایز متعدد، تمام لیگ‌ها و قرعه‌کشی‌ها، نوید آینده مادی و معنوی و موتور محرک تلاش شماست."
     }
 ];
 
