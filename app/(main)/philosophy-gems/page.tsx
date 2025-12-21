@@ -73,6 +73,10 @@ const philosophyGems = [
     {
         english: "To be a successful leader in this ecosystem, explore all sections, be active in all of them, and focus on the parts that can bring you income and prosperity.",
         persian: "برای تبدیل شدن به یک رهبر موفق در این اکوسیستم، تمام بخش‌ها را مطالعه کنید، در همگی فعال باشید و به قسمت‌هایی که می‌تواند برای شما درآمدزایی و سعادت به همراه داشته باشد، دقت کنید."
+    },
+    {
+        english: "In the design of the Tavana ecosystem, there are no limits to material and spiritual prosperity. As much as you desire, there is room for growth and success.",
+        persian: "در طراحی اکوسیستم و شهر توانا، هیچ محدودیتی برای رشد و سعادت مادی و معنوی وجود ندارد. هر چقدر که خودتان بخواهید، جای رشد و موفقیت هست."
     }
 ];
 
