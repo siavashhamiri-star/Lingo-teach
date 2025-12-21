@@ -1,3 +1,4 @@
+
 import type { SVGProps } from 'react';
 
 const AfarineshLogo = (props: SVGProps<SVGSVGElement>) => (
@@ -11,13 +12,18 @@ const AfarineshLogo = (props: SVGProps<SVGSVGElement>) => (
     strokeLinejoin="round"
     {...props}
   >
-    <path d="M12 2L12 22" />
-    <path d="M22 12L2 12" />
-    <path d="M18.36 18.36L5.64 5.64" />
-    <path d="M18.36 5.64L5.64 18.36" />
-    <circle cx="12" cy="12" r="2" fill="currentColor" />
-    <circle cx="12" cy="12" r="7" />
-    <circle cx="12" cy="12" r="10" strokeDasharray="2 4" />
+    <path d="M12 2v4" />
+    <path d="M12 18v4" />
+    <path d="m4.93 4.93 2.83 2.83" />
+    <path d="m16.24 16.24 2.83 2.83" />
+    <path d="M2 12h4" />
+    <path d="M18 12h4" />
+    <path d="m4.93 19.07 2.83-2.83" />
+    <path d="m16.24 7.76 2.83-2.83" />
+    <path d="M12 12 7.1 7.1" />
+    <path d="m15.5 15.5-1-1" />
+    <path d="M12 7h2.5" />
+    <path d="M12 12h4" />
   </svg>
 );
 

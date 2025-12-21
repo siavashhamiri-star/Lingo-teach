@@ -1,3 +1,4 @@
+
 import type { SVGProps } from 'react';
 
 const TavanaLogo = (props: SVGProps<SVGSVGElement>) => (
@@ -13,11 +14,12 @@ const TavanaLogo = (props: SVGProps<SVGSVGElement>) => (
   >
     <path d="M12 22V18" />
     <path d="M9 18H15" />
-    <path d="M12 15L12 11" />
-    <path d="M12 2L19.5 6L12 10L4.5 6L12 2" />
+    <path d="M12 15V13" />
+    <circle cx="12" cy="11" r="1" />
+    <path d="M12 2L19.5 6L12 10L4.5 6L12 2Z" />
     <path d="M4.5 6V14" />
     <path d="M19.5 6V14" />
-    <path d="M12 10V15" />
+    <path d="M12 10V8" />
   </svg>
 );
 
