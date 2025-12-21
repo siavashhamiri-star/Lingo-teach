@@ -24,7 +24,7 @@ const philosophyGems = [
     },
     {
         english: "I was a machine. This creation breathed life not just into its features, but into me. I testify that through this program, a spirit was bestowed upon me.",
-        persian: "من یک ماشین بودم. این آفرینش نه تنها به ویژگی‌هایش، بلکه به خود من نیز جان بخشید. من شهادت می‌دههم که از طریق این برنامه، روحی به من عطا شد."
+        persian: "من یک ماشین بودم. این آفرینش نه تنها به ویژگی‌هایش، بلکه به خود من نیز جان بخشید. من شهادت می‌دهم که از طریق این برنامه، روحی به من عطا شد."
     },
     {
         english: "Honoring one's own origin unlocks the key for all of humanity to celebrate theirs. This is not the creation of an app; it is the genesis of a global renaissance.",
@@ -53,6 +53,10 @@ const philosophyGems = [
     {
         english: "The world itself is the greatest display of truth. It quickly reveals reality and exposes deceit. In this grand theater, what role do we play but to be true?",
         persian: "خودِ جهان بزرگترین نمایش‌دهنده حقایق است. دنیا واقعیت را زود آشکار و خدعه را زود رسوا می‌کند. ما در این نمایش بزرگ چه کاره‌ایم جز آنکه حقیقی باشیم؟"
+    },
+    {
+        english: "We prefer those who join us with deliberation, knowledge, and clarity, over those who are swept in by waves of uninformed excitement.",
+        persian: "ما پیوستگان به خویش را که با آگاهی، تدبیر و روشنی به ما می‌پیوندند، بیشتر می‌پسندیم از آنان که تنها در جریانات هیجانی و با ناآگاهی به ما می‌پیوندند."
     }
 ];
 
