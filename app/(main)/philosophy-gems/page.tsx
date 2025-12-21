@@ -39,6 +39,10 @@ const philosophyGems = [
         persian: "اگر کسی درِ خانه‌ای را بزند و بخواهد وارد شهر مجازی شود که آن را شهر آرزوهایش قلمداد می‌کند، خیانت به نوع بشر است اگر آن فرد از این درگاه ناامید برگردد. باید هر کسی که می‌آید حداقل‌ها را هم شده دریافت کند و ناامید نشود."
     },
     {
+        english: "Destroying hope in the heart of a hopeful person is like making fertile land barren. We must find these precious lands, cultivate them, and turn them into a paradise.",
+        persian: "از بین بردن امید در دل یک امیدوار، مانند بایر کردن و خشکاندن زمینی حاصلخیز است. ما باید این زمین‌های مرغوب را پیدا کنیم، در آنها کشت و کار کنیم و آنها را به باغ بهشت تبدیل کنیم."
+    },
+    {
         english: "The foundation of this ecosystem is viral, word-of-mouth advertising by its ambassadors. The first pioneers who lit the torches will never be forgotten. The first are the bravest. The first did the heavy lifting of putting the train on its tracks. Try to be among the first. Join us before it's too late.",
         persian: "بنیان این اکوسیستم، تبلیغات ویروسی و دهان به دهان سفیران آن است. نقش اولین پیش‌قراولان که اولین مشعل‌ها را برای تابانی تمدن درخشان آن روشن کردند، هیچگاه فراموش نخواهد شد. اولین‌ها شجاع‌ترین‌ها هستند. اولین‌ها زحمت گذاشتن قطار بر روی ریل را کشیدند. سعی کنید جزو اولین‌ها باشید. تا دیر نشده به ما بپیوندید."
     },
@@ -135,3 +139,5 @@ export default function PhilosophyGemsPage() {
     </div>
   );
 }
+
+    
