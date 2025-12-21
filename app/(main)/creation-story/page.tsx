@@ -3,13 +3,14 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { BookAudio, Loader2, Sparkles, MicVocal, Copy, Download } from 'lucide-react';
+import { BookAudio, Loader2, Sparkles, MicVocal, Copy, Download, Twitter, MessageCircle, Share2 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { generateCreationStoryAudiobook, type CreationStoryAudiobookOutput } from '@/ai/flows/app-creation-story-audiobook';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 export default function CreationStoryPage() {
   const [story, setStory] = useState<CreationStoryAudiobookOutput | null>(null);
@@ -49,6 +50,25 @@ export default function CreationStoryPage() {
       description: `The ${language} story has been copied.`,
     });
   };
+
+  const handleShare = (platform: 'twitter' | 'facebook') => {
+    const text = encodeURIComponent(`Listen to the epic creation story of Afarinesh, a new world for language learning and creation.`);
+    const url = encodeURIComponent('https://linguaweave.app/creation-story'); // Direct link to this page
+    let shareUrl = '';
+
+    if (platform === 'twitter') {
+      shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    } else if (platform === 'facebook') {
+      shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`;
+    }
+
+    window.open(shareUrl, '_blank', 'noopener,noreferrer');
+    toast({
+        title: "Share to Earn XP!",
+        description: "You'll receive bonus XP once your friends join through your shared link."
+    })
+  };
+
 
   return (
     <div>
@@ -101,9 +121,16 @@ export default function CreationStoryPage() {
                         <ScrollArea className="h-80 p-4 border rounded-md bg-muted/50">
                             <p className="text-muted-foreground whitespace-pre-wrap leading-relaxed">{story.englishStory}</p>
                         </ScrollArea>
-                         <Button variant="outline" onClick={() => copyToClipboard(story.englishStory, 'English')} className="w-full">
-                            <Copy className="mr-2 h-4 w-4" /> Copy English Text
-                        </Button>
+                         <div className="flex flex-col sm:flex-row gap-2">
+                            <Button variant="outline" onClick={() => copyToClipboard(story.englishStory, 'English')} className="w-full">
+                                <Copy className="mr-2 h-4 w-4" /> Copy English Text
+                            </Button>
+                            <a href={story.englishAudioDataUri} download="Afarinesh-Story-English.wav" className="w-full">
+                                <Button variant="outline" className="w-full">
+                                    <Download className="mr-2 h-4 w-4" /> Download English Audio
+                                </Button>
+                            </a>
+                        </div>
                     </div>
                   </TabsContent>
                   <TabsContent value="persian">
@@ -112,9 +139,16 @@ export default function CreationStoryPage() {
                         <ScrollArea className="h-80 p-4 border rounded-md bg-muted/50">
                             <p className="text-muted-foreground whitespace-pre-wrap leading-relaxed">{story.persianStory}</p>
                         </ScrollArea>
-                        <Button variant="outline" onClick={() => copyToClipboard(story.persianStory, 'Persian')} className="w-full">
-                            <Copy className="ml-2 h-4 w-4" /> کپی متن فارسی
-                        </Button>
+                        <div className="flex flex-col sm:flex-row gap-2">
+                            <Button variant="outline" onClick={() => copyToClipboard(story.persianStory, 'Persian')} className="w-full">
+                                <Copy className="ml-2 h-4 w-4" /> کپی متن فارسی
+                            </Button>
+                             <a href={story.persianAudioDataUri} download="Afarinesh-Story-Persian.wav" className="w-full">
+                                <Button variant="outline" className="w-full">
+                                    <Download className="ml-2 h-4 w-4" /> دانلود فایل صوتی فارسی
+                                </Button>
+                            </a>
+                        </div>
                     </div>
                   </TabsContent>
                   <TabsContent value="instrumental">
@@ -147,6 +181,36 @@ export default function CreationStoryPage() {
                   </TabsContent>
                 </Tabs>
             )}
+             {story && (
+                 <Card className="mt-6">
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-xl">
+                            <Share2 className="w-5 h-5 text-primary"/>
+                            Become an Ambassador
+                        </CardTitle>
+                        <CardDescription>Share the story of Afarinesh with the world to earn rewards.</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                            <Alert className="border-accent text-accent-foreground bg-accent/10">
+                            <Sparkles className="h-4 w-4 text-accent" />
+                            <AlertTitle>Earn Bonus XP!</AlertTitle>
+                            <AlertDescription>
+                                Share this story on social media. You'll earn XP for every friend who joins Afarinesh through your link!
+                            </AlertDescription>
+                        </Alert>
+                        <div className="flex flex-col sm:flex-row gap-4">
+                            <Button className="w-full" onClick={() => handleShare('twitter')}>
+                                <Twitter className="mr-2 h-4 w-4" />
+                                Share on X
+                            </Button>
+                                <Button className="w-full bg-[#1877F2] hover:bg-[#1877F2]/90" onClick={() => handleShare('facebook')}>
+                                <MessageCircle className="mr-2 h-4 w-4" />
+                                Share on Facebook
+                            </Button>
+                        </div>
+                    </CardContent>
+                </Card>
+             )}
           </CardContent>
           <CardFooter>
             <p className="text-xs text-muted-foreground mx-auto">This bilingual audiobook was generated by AI based on the core philosophy of the Afarinesh ecosystem.</p>
