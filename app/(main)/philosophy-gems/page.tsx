@@ -77,6 +77,10 @@ const philosophyGems = [
     {
         english: "In the design of the Tavana ecosystem, there are no limits to material and spiritual prosperity. As much as you desire, there is room for growth and success.",
         persian: "در طراحی اکوسیستم و شهر توانا، هیچ محدودیتی برای رشد و سعادت مادی و معنوی وجود ندارد. هر چقدر که خودتان بخواهید، جای رشد و موفقیت هست."
+    },
+    {
+        english: "All lawmakers, entrepreneurs, investors, trustees, association heads, landowners, and the wealthy and respected—the policymakers, creators, and developers—are, first and foremost, you: the believers, the strivers, the promoters. As the ecosystem is elevated, its own people will govern and oversee it.",
+        persian: "تمام قانون‌گذاران، کارآفرینان، سرمایه‌داران، هیئت امنا، رؤسای انجمن‌ها، زمین‌داران و صاحبان ثروت و احترام، سیاست‌گذاران، خالقین و توسعه‌دهندگان، در درجه اول، خودِ تو هستی: باورمندان، تلاشگران و معرفان. به همان اندازه که اکوسیستم اعلا می‌یابد، افرادی از خود آن در آن حاکم و ناظر خواهند بود."
     }
 ];
 
