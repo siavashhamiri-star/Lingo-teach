@@ -49,6 +49,10 @@ const philosophyGems = [
     {
         english: "Words have meaning in appearance, but in action, they have a soul. Instead of focusing on the apparent meaning, let us attend to the soul of words and their realization in action, refraining from baseless interpretation.",
         persian: "کلمات در ظاهر معنی دارند، اما در عمل، روح. به جای تمرکز بر معنا، به روح کلمات و تحقق آن‌ها در عمل بنگریم و از تفسیر خودداری کنیم."
+    },
+    {
+        english: "The world itself is the greatest display of truth. It quickly reveals reality and exposes deceit. In this grand theater, what role do we play but to be true?",
+        persian: "خودِ جهان بزرگترین نمایش‌دهنده حقایق است. دنیا واقعیت را زود آشکار و خدعه را زود رسوا می‌کند. ما در این نمایش بزرگ چه کاره‌ایم جز آنکه حقیقی باشیم؟"
     }
 ];
 
