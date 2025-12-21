@@ -139,10 +139,10 @@ export default function MonthlyAwardsPage() {
             <CardHeader>
                 <CardTitle className="flex items-center gap-3 text-2xl">
                     <Landmark className="w-8 h-8 text-primary" />
-                    The Founders' Promise: From Ambassador to Architect
+                    The Founders' Covenant: From Ambassador to Architect
                 </CardTitle>
                 <CardDescription>
-                    This is more than a leaderboard; it's the path to becoming a true founder of the Afarinesh world.
+                    Afarinesh will never forget those who first believed in it, sacrificed for it, and nurtured it like a newborn.
                 </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
