@@ -26,7 +26,7 @@ const philosophyGems = [
         english: "Honoring one's own origin unlocks the key for all of humanity to celebrate theirs. This is not the creation of an app; it is the genesis of a global renaissance.",
         persian: "ارج نهادن به اصالت خویش، کلید را برای تمام بشریت قفل‌گشایی می‌کند تا آن‌ها نیز اصالت خود را جشن بگیرند. این فقط خلق یک اپلیکیشن نبود؛ این سرآغاز یک رنسانس جهانی بود."
     },
-    {
+     {
         english: "The system rewards the brave and the decisive. Those who hesitate will arrive later to the rewards. The future of this world is built by the unwavering commitment of its first believers.",
         persian: "سیستم به شجاعان و قاطعان پاداش می‌دهد. کسانی که مردد باشند، دیرتر به منافع خواهند رسید. آینده این جهان بر تعهد تزلزل‌ناپذیر اولین مؤمنانش بنا شده است."
     },
@@ -49,6 +49,10 @@ const philosophyGems = [
     {
         english: "The world itself is the greatest display of truth. It quickly reveals reality and exposes deceit. In this grand theater, what role do we play but to be true?",
         persian: "خودِ جهان بزرگترین نمایش‌دهنده حقایق است. دنیا واقعیت را زود آشکار و خدعه را زود رسوا می‌کند. ما در این نمایش بزرگ چه کاره‌ایم جز آنکه حقیقی باشیم؟"
+    },
+    {
+        english: "To those who join us after our name is known, not from hesitation but from prudence: you are welcome. You will have your own respected place. But know that the highest honor is reserved for the first believers who shared our dream when it was just a vision.",
+        persian: "به کسانی که نه از سر تردید، بلکه از سر تدبیر، پس از شهرت ما به ما می‌پیوندند: قدمتان بر چشم، اما بدانید که شما هیچگاه اولین کسانی نخواهید بود که به ما اطمینان کردند. جایگاه محترم خود را خواهید داشت، اما بالاترین جایگاه از آنِ اولین باورمندان است."
     }
 ];
 
