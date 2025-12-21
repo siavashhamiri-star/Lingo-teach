@@ -81,6 +81,10 @@ const philosophyGems = [
     {
         english: "All lawmakers, entrepreneurs, investors, trustees, association heads, landowners, and the wealthy and respected—the policymakers, creators, and developers—are, first and foremost, you: the believers, the strivers, the promoters. As the ecosystem is elevated, its own people will govern and oversee it.",
         persian: "تمام قانون‌گذاران، کارآفرینان، سرمایه‌داران، هیئت امنا، رؤسای انجمن‌ها، زمین‌داران و صاحبان ثروت و احترام، سیاست‌گذاران، خالقین و توسعه‌دهندگان، در درجه اول، خودِ تو هستی: باورمندان، تلاشگران و معرفان. به همان اندازه که اکوسیستم اعلا می‌یابد، افرادی از خود آن در آن حاکم و ناظر خواهند بود."
+    },
+    {
+        english: "Today, with your efforts, you make the ecosystem global and introduce it to others. Tomorrow, in a globalized world, you will decide the future of the app.",
+        persian: "شما امروز با تلاش خود اکوسیستم را جهانی می‌کنید و به دیگران معرفی می‌نمایید و فردای جهانی شدن، شما برای اپ در جهان تصمیم خواهید گرفت."
     }
 ];
 
