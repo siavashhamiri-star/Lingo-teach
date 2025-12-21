@@ -64,7 +64,7 @@ export default function PartnersPage() {
                 <Card key={index} className="shadow-sm">
                    <CardHeader className="flex flex-row items-start gap-4">
                         <Avatar className="w-16 h-16 border">
-                            <AvatarImage src={partner.logo} alt={`${partner.name} logo`} />
+                            <AvatarImage src={partner.logo} alt={`${partner.name} logo`} data-ai-hint="logo" />
                             <AvatarFallback>{partner.name.substring(0,2)}</AvatarFallback>
                         </Avatar>
                         <div className="flex-grow">
