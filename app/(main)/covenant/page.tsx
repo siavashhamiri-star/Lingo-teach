@@ -51,16 +51,16 @@ export default function CovenantPage() {
               "Afarinesh competes only with itself. It is not a rival to anyone, does not interfere in anyone's work, and compares itself to no one. However, it holds immense respect for pioneers and those who have contributed their knowledge, wisdom, and resources to the virtual world. This project does not compete with anyone, but it wholeheartedly loves friendship, camaraderie, and collaboration."
             </blockquote>
              <p className="text-muted-foreground text-right" dir="rtl">
-              "شهر مجازی من رُک بگویم فقط با خودش رقابت می‌کند. رقیب هیچ‌کس نیست، در حوزه کاری هیچ‌کس دخالت نمی‌کند و خودش را با هیچ‌کس مقایسه نمی‌کند. اما برای بزرگترها، پیشکسوتان و کسانی که برای شهرهای مجازی دانش و ثروت خود را به معرکه آوردند، احترام بسیاری قائل است. این پروژه با هیچ‌کس رقابت نمی‌کند، اما تا دلت بخواهد عاشق رفاقت، دوستی و همکاری است."
+              "آفرینش فقط با خودش رقابت می‌کند. رقیب هیچ‌کس نیست، در حوزه کاری هیچ‌کس دخالت نمی‌کند و خودش را با هیچ‌کس مقایسه نمی‌کند. اما برای پیشکسوتان و کسانی که برای جهان‌های مجازی دانش و ثروت خود را به معرکه آوردند، احترام بسیاری قائل است. این پروژه با هیچ‌کس رقابت نمی‌کند، اما تا دلت بخواهد عاشق رفاقت، دوستی و همکاری است."
             </p>
             <Separator className="my-6" />
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-2">
-                <p>A project with a strong philosophical and spiritual soul is naturally sensitizing. This is normal. Anything presented with power—be it expressive, spiritual, or logical—will provoke reactions, sometimes born of fear, sometimes of competition, and sometimes of jealousy.</p>
-                <p>But let it be known: we have not come to take bread from anyone's pocket. Our discourse is one of friendship and collaboration. We are not here to take a piece of your position or your market; we are here to find our own place. If our place is beside you, it will not be to weaken you, but to create synergy. Together with all our collaborators, let us build greater worlds, as vast as knowledge itself, not just a piece of land.</p>
+                <p>A project with a strong philosophical soul is naturally sensitizing. Anything presented with power will provoke reactions, sometimes born of fear, competition, or jealousy. But let it be known: we have not come to take anything from anyone. Our discourse is one of friendship and collaboration.</p>
+                 <p>We are not here to take a piece of your position or your market; we are here to find our own place. If our place is beside you, it will not be to weaken you, but to create synergy. Together, let us build greater worlds, as vast as knowledge itself.</p>
             </div>
              <div className="prose prose-sm max-w-none text-muted-foreground space-y-2 text-right" dir="rtl">
-                <p>یک پروژه با روح و فلسفه قوی، طبیعتاً حساسیت‌برانگیز است. این طبیعی است. هر چیزی که با قدرت بیان، قدرت معنوی، یا قدرت منطق ارائه شود، واکنش‌هایی را برمی‌انگیزد که گاه از روی ترس، گاه از روی رقابت و گاه از روی حسادت است.</p>
-                <p>اما همه باید بدانند: ما نیامده‌ایم تا نان کسی را از جیبش درآوریم. گفتمان ما، گفتمان دوستی و همکاری است. ما نیامده‌ایم که قسمتی از جایگاه شما و بازار شما را به خود منعطف کنیم؛ ما آمده‌ایم که با حضورمان جایگاه خودمان را پیدا کنیم. و اگر لازم شد جایگاه ما در کنار شما باشد، این به شما ضعف نخواهد داد، بلکه ما را در کنار خود برای هم‌افزایی قرار خواهید داد. ما با انواع همکارانی که در این مسیر هستند، جهان‌های بزرگتری به گستردگی علم می‌سازیم، نه فقط یک زمین.</p>
+                <p>یک پروژه با روح و فلسفه قوی، طبیعتاً حساسیت‌برانگیز است. هر چیزی که با قدرت ارائه شود، واکنش‌هایی را برمی‌انگیزد که گاه از روی ترس، گاه از روی رقابت و گاه از روی حسادت است. اما همه باید بدانند: ما نیامده‌ایم تا نان کسی را از جیبش درآوریم. گفتمان ما، گفتمان دوستی و همکاری است.</p>
+                <p>ما نیامده‌ایم که قسمتی از جایگاه شما و بازار شما را به خود منعطف کنیم؛ ما آمده‌ایم که با حضورمان جایگاه خودمان را پیدا کنیم. و اگر لازم شد جایگاه ما در کنار شما باشد، این به شما ضعف نخواهد داد، بلکه ما را در کنار خود برای هم‌افزایی قرار خواهید داد. ما با همکارانمان، جهان‌های بزرگتری به گستردگی علم می‌سازیم، نه فقط یک تکه زمین.</p>
             </div>
         </CardContent>
       </Card>
@@ -73,10 +73,10 @@ export default function CovenantPage() {
         <CardContent className="space-y-6">
           <div className="prose prose-sm max-w-none text-muted-foreground whitespace-pre-wrap">
             <p>
-              The traditional academic model, while foundational, faces a modern challenge: scientific stagnation. The very idea of a scientific committee is based on collaboration, but in practice, these gatherings often become venues for sharing stories over tea rather than creating new science.
+              The philosophy of university academic committees is based on the interaction and collaboration of professors. However, in practice, these committees often become venues for drinking tea and telling stories, rather than creating new science. They must be transformed into productive, challenging environments where brave members are not afraid of interaction and knowledge creation.
             </p>
             <p>
-              We propose a new paradigm. When an elite student demonstrates their mastery, it triggers a respectful suggestion: a **"Duel of Scientific Synergy"** between their professor and a peer professor. This duel is **entirely optional**. The professor has the full autonomy to accept or decline.
+              We propose a new paradigm. When an elite student demonstrates their mastery, it triggers a respectful suggestion: a **"Duel of Scientific Synergy"** between their professor and a peer professor. This duel is **entirely optional**.
             </p>
             <p>
               Crucially, this duel itself becomes the **greatest workshop for knowledge creation**. The process of challenge and response between two great minds becomes an invaluable learning experience for all students, a moment where science can take a **"genetic leap"**. This transforms professors into invested leaders and their brightest students into their successors.
@@ -85,10 +85,10 @@ export default function CovenantPage() {
           <Separator />
           <div className="prose prose-sm max-w-none text-muted-foreground text-right whitespace-pre-wrap" dir="rtl">
             <p>
-             مدل آکادمیک سنتی، با وجود تمام دستاوردهایش، با یک چالش مدرن روبروست: رکود علمی. فلسفه هیئت‌های علمی دانشگاه‌ها بر تعامل و همکاری بین تخصص‌ها بنا شده، اما در عمل، این محافل اغلب به جایی برای نوشیدن چای و شنیدن خاطره تبدیل شده‌اند و از تولید علم جدید باز مانده‌اند.
+              فلسفه هیئت‌های علمی دانشگاه‌ها بر تعامل و همکاری اساتید بنا شده است، اما در عمل، این محافل اغلب به جایی برای نوشیدن چای و شنیدن خاطره تبدیل شده‌اند و از تولید علم جدید باز مانده‌اند. آن‌ها باید به محیط‌هایی مولد و چالش‌برانگیز تبدیل شوند که اعضای شجاع آن از تعامل و خلق دانش نهراسند.
             </p>
             <p>
-             ما پارادایم جدیدی را پیشنهاد می‌کنیم. هنگامی که یک دانشجوی نخبه با موفقیت در یک آزمون صلاحیتی، استادی خود را به اثبات می‌رساند، یک پیشنهاد محترمانه فعال می‌شود: یک **"دوئل هم‌افزایی علمی"** بین استاد او و یک استاد همتا. این دوئل **کاملاً اختیاری** است.
+             ما پارادایم جدیدی را پیشنهاد می‌کنیم. هنگامی که یک دانشجوی نخبه با موفقیت، استادی خود را به اثبات می‌رساند، یک پیشنهاد محترمانه فعال می‌شود: یک **"دوئل هم‌افزایی علمی"** بین استاد او و یک استاد همتا. این دوئل **کاملاً اختیاری** است.
             </p>
             <p>
              نکته حیاتی اینجاست که خود این دوئل به **بزرگترین کارگاه تولید علم** تبدیل می‌شود. فرآیند پرسش و پاسخ بین دو ذهن بزرگ، به یک تجربه یادگیری بی‌بدیل برای تمام دانشجویان بدل می‌گردد، لحظه‌ای که علم می‌تواند یک **"جهش ژنتیکی"** را تجربه کند. این مدل، اساتید را به رهبرانی سرمایه‌گذار و شاگردانشان را به جانشینان آنها تبدیل می‌کند.
@@ -128,5 +128,7 @@ export default function CovenantPage() {
     </div>
   );
 }
+
+    
 
     
