@@ -110,10 +110,15 @@ export default function LandingPage() {
         <section id="vision" className="py-20 md:py-28">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                  <div className="text-center max-w-3xl mx-auto">
-                    <h2 className="text-3xl sm:text-4xl font-bold font-headline flex items-center justify-center gap-3">
-                        <AfarineshLogo className="w-10 h-10 text-accent" />
-                        More Than an App, A New World
-                    </h2>
+                    <div className="flex items-center justify-center gap-3">
+                        <div className="flex flex-col items-center">
+                           <AfarineshLogo className="w-10 h-10 text-accent" />
+                           <p className="text-xs text-muted-foreground mt-1">Powered by GFBNewMeta</p>
+                        </div>
+                        <h2 className="text-3xl sm:text-4xl font-bold font-headline">
+                            More Than an App, A New World
+                        </h2>
+                    </div>
                     <p className="mt-4 text-lg text-muted-foreground">
                         LinguaWeave is your gateway into <span className="font-bold text-primary">"Afarinesh"</span> (Creation), a revolutionary ecosystem where learning leads to creation, and creation leads to empowerment.
                     </p>
@@ -121,7 +126,10 @@ export default function LandingPage() {
                 <div className="mt-16 max-w-4xl mx-auto">
                     <Card className="bg-gradient-to-br from-primary/5 via-background to-accent/5 shadow-xl">
                         <CardHeader className="text-center">
-                            <TavanaLogo className="w-12 h-12 mx-auto text-primary mb-4" />
+                            <div className='flex flex-col items-center mb-4'>
+                                <TavanaLogo className="w-12 h-12 mx-auto text-primary" />
+                                <p className='text-xs text-muted-foreground mt-1'>Powered by GFBNewMeta</p>
+                            </div>
                             <CardTitle className="text-2xl">Welcome to "Tavana" (The Empowered City)</CardTitle>
                             <CardDescription>The heart of the Afarinesh ecosystem.</CardDescription>
                         </CardHeader>
@@ -134,6 +142,9 @@ export default function LandingPage() {
                             </p>
                             <p className="font-semibold text-foreground">
                                 Here, learning is the currency, creativity is the industry, and community is the foundation. Join us, and build your dreams while building the city of dreams.
+                            </p>
+                            <p className="font-bold text-accent" dir="rtl">
+                                شهر توانایی که به امید حق با برآوردهایی که می‌شود در آینده نزدیک ارزش افزوده هر زمین آن بسیار بسیار زیاد خواهد بود.
                             </p>
                              <div className="pt-4">
                                 <Button asChild>

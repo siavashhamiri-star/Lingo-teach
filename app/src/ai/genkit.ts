@@ -1,4 +1,4 @@
-import { configureGenkit, ai } from 'genkit';
+import { ai, configureGenkit } from '@genkit-ai/core';
 import { googleAI } from '@genkit-ai/google-genai';
 
 configureGenkit({
