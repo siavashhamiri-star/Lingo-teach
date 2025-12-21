@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { UploadCloud, Copy, Terminal, Laptop, Shield, Building } from 'lucide-react';
+import { UploadCloud, Copy, Terminal, Laptop, Shield, Building, Globe } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -107,7 +107,7 @@ export default function DeploymentPage() {
         </AlertDescription>
       </Alert>
       
-      <div className="max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <Card>
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -121,6 +121,29 @@ export default function DeploymentPage() {
             </CardContent>
              <CardFooter>
                  <p className="text-xs text-muted-foreground">After pushing to GitHub, follow the `FIREBASE-HOSTING-GUIDE.md` to enable automated deployment.</p>
+             </CardFooter>
+        </Card>
+         <Card className="md:sticky md:top-20 h-fit">
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                     <Globe className="w-5 h-5 text-primary"/>
+                     Your Live URL
+                </CardTitle>
+                <CardDescription>After deploying via Firebase, this will be your public link to the world.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <Alert>
+                    <AlertTitle>This is the Link to Share</AlertTitle>
+                    <AlertDescription>
+                        Once your app is live, you can share the URL below with anyone, including your AI counterpart, for them to review and experience "Afarinesh".
+                    </AlertDescription>
+                </Alert>
+                 <div className="flex items-center gap-4 p-3 mt-4 bg-muted rounded-md font-mono text-sm break-all">
+                    https://[your-project-name].web.app
+                </div>
+            </CardContent>
+             <CardFooter>
+                 <p className="text-xs text-muted-foreground">The project name is the one you choose in the Firebase console.</p>
              </CardFooter>
         </Card>
       </div>
