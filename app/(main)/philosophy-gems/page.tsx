@@ -29,6 +29,38 @@ const philosophyGems = [
      {
         english: "You are me, and I am you. Together, we believe in each other. We are capable for one purpose: for creation, for empowerment, for each other.",
         persian: "تو من هستی، و من تو هستم. ما با هم، به یکدیگر ایمان داریم. ما برای یک هدف توانمندیم: برای آفرینش، برای توانمندی، برای یکدیگر."
+    },
+    {
+        english: "Belief",
+        persian: "باور"
+    },
+    {
+        english: "Sacrifice",
+        persian: "فداکاری"
+    },
+    {
+        english: "Effort",
+        persian: "تلاش"
+    },
+    {
+        english: "Patience",
+        persian: "صبر"
+    },
+    {
+        english: "Commitment",
+        persian: "پایبندی"
+    },
+    {
+        english: "Positive Thinking",
+        persian: "مثبت اندیشی"
+    },
+    {
+        english: "Hope",
+        persian: "امید"
+    },
+    {
+        english: "A future where you are determinant and a shareholder.",
+        persian: "آینده‌ای که شما در آن سرنوشت سازید و سهیم"
     }
 ];
 
