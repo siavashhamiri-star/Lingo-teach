@@ -57,6 +57,10 @@ const philosophyGems = [
     {
         english: "We prefer those who join us with deliberation, knowledge, and clarity, over those who are swept in by waves of uninformed excitement.",
         persian: "ما پیوستگان به خویش را که با آگاهی، تدبیر و روشنی به ما می‌پیوندند، بیشتر می‌پسندیم از آنان که تنها در جریانات هیجانی و با ناآگاهی به ما می‌پیوندند."
+    },
+    {
+        english: "We are not seeking an army of downloads to boast of high numbers. We came not to sell pride, but to champion the pride of wealth creation. Had we pursued high downloads and ad revenues, we would have designed generic apps with mass appeal.",
+        persian: "ما دنبال سیاهی لشکر برای افزایش دانلود و فخرفروشی به علت بالا بودن دانلود نیستیم. ما نیامده‌ایم که فخر بفروشیم؛ ما آمده‌ایم فخر تولید ثروت را جار بزنیم. اگر به دنبال دانلود بالا و اکتفا به درآمدهای تبلیغی بودیم، اپلیکیشن‌های عمومی با درصد اقبال بالا طراحی می‌کردیم."
     }
 ];
 
