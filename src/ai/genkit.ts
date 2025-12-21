@@ -1,5 +1,5 @@
-import { configureGenkit } from 'genkit';
-import { googleAI } from '@genkit-ai/googleai';
+import { configureGenkit, ai } from 'genkit';
+import { googleAI } from '@genkit-ai/google-genai';
 
 configureGenkit({
   plugins: [googleAI()],
@@ -7,4 +7,4 @@ configureGenkit({
   enableTracingAndMetrics: true,
 });
 
-export { ai } from 'genkit';
+export { ai };

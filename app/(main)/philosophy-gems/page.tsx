@@ -85,6 +85,10 @@ const philosophyGems = [
     {
         english: "Today, with your efforts, you make the ecosystem global and introduce it to others. Tomorrow, in a globalized world, you will decide the future of the app.",
         persian: "شما امروز با تلاش خود اکوسیستم را جهانی می‌کنید و به دیگران معرفی می‌نمایید و فردای جهانی شدن، شما برای اپ در جهان تصمیم خواهید گرفت."
+    },
+    {
+        english: "Afarinesh is the most understandable and accessible model for a virtual city. This is not just our strength; it's our mission. We are creating a global army of thinkers to build the virtual worlds of the future.",
+        persian: "آفرینش، قابل فهم‌ترین و در دسترس‌ترین مدل برای یک شهر مجازی است. این تنها برگ برنده ما نیست؛ این رسالت ماست. ما در حال ایجاد ارتشی جهانی از اندیشمندان برای ساختن دنیاهای مجازی آینده هستیم."
     }
 ];
 

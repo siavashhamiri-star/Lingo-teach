@@ -1,4 +1,3 @@
-
 'use server';
 /**
  * @fileOverview A bilingual chatbot flow for practicing conversation.
@@ -10,9 +9,7 @@
 
 import { z } from 'zod';
 import { ai } from '../genkit';
-import { googleAI } from '@genkit-ai/googleai';
-import { defineFlow, definePrompt } from 'genkit';
-import { geminiPro } from 'genkit/models';
+import { googleAI } from '@genkit-ai/google-genai';
 
 // Define a schema for a single message in the chat history
 const ChatMessageSchema = z.object({
@@ -33,12 +30,11 @@ const ChatOutputSchema = z.object({
 });
 export type ChatOutput = z.infer<typeof ChatOutputSchema>;
 
-const chatPrompt = definePrompt({
+const chatPrompt = ai.definePrompt({
     name: 'chatbotPrompt',
-    inputSchema: ChatInputSchema,
-}, async(input) => {
-  return {
-    prompt: `You are a friendly and encouraging bilingual language tutor, fluent in both English and Persian. Your goal is to help a user practice their conversation skills in ${input.targetLanguage}.
+    input: { schema: ChatInputSchema },
+    output: { schema: ChatOutputSchema },
+    prompt: `You are a friendly and encouraging bilingual language tutor, fluent in both English and Persian. Your goal is to help a user practice their conversation skills in {{{targetLanguage}}}.
 
 - Keep your responses natural, conversational, and not too long.
 - If the user makes a small mistake, gently correct them in a friendly way without being overly critical.
@@ -47,28 +43,26 @@ const chatPrompt = definePrompt({
 - You can roleplay if the user asks you to.
 
 The user's new message is:
-${input.message}`,
-    history: input.history,
-  }
+{{{message}}}`,
 });
 
 
-const chatbotFlow = defineFlow(
+const chatbotFlow = ai.defineFlow(
   {
     name: 'chatbotFlow',
     inputSchema: ChatInputSchema,
     outputSchema: ChatOutputSchema,
   },
   async (input) => {
-    const llmResponse = await ai.generate({
-        prompt: await chatPrompt(input),
-        model: geminiPro,
-        output: {
-          schema: ChatOutputSchema,
+    const { output } = await chatPrompt(
+        input,
+        {
+            model: googleAI.model('gemini-1.5-flash'),
+            history: input.history,
         }
-    });
+    );
 
-    return llmResponse.output()!;
+    return output!;
   }
 );
 

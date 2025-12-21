@@ -1,4 +1,3 @@
-
 'use server';
 
 /**
@@ -12,9 +11,7 @@
 import { z } from 'zod';
 import { ai } from '../genkit';
 import wav from 'wav';
-import { googleAI } from '@genkit-ai/googleai';
-import { defineFlow, definePrompt } from 'genkit';
-import { geminiPro } from 'genkit/models';
+import { googleAI } from '@genkit-ai/google-genai';
 
 const InterpretationScenarioInputSchema = z.object({
   topic: z.string().describe('The topic for the interpretation (e.g., "News Broadcast", "Business Meeting").'),
@@ -28,21 +25,19 @@ const InterpretationScenarioOutputSchema = z.object({
 });
 export type InterpretationScenarioOutput = z.infer<typeof InterpretationScenarioOutputSchema>;
 
-const textPrompt = definePrompt({
+const textPrompt = ai.definePrompt({
     name: 'interpretationTextPrompt',
-    inputSchema: InterpretationScenarioInputSchema,
-}, async (input) => {
-  return {
+    input: { schema: InterpretationScenarioInputSchema },
+    output: { schema: z.object({ sourceText: z.string() }) },
     prompt: `You are an expert content creator for language learners. Generate a short, clear, and informative text (about 100-150 words) on the given topic in the specified language. The text should be suitable for a simultaneous interpretation exercise.
 
-Topic: "${input.topic}"
-Language: ${input.language}
+Topic: "{{{topic}}}"
+Language: {{{language}}}
 
-Generate the text now.`
-  }
+Generate the text now.`,
 });
 
-const interpretationFlow = defineFlow(
+const interpretationFlow = ai.defineFlow(
   {
     name: 'interpretationFlow',
     inputSchema: InterpretationScenarioInputSchema,
@@ -50,36 +45,35 @@ const interpretationFlow = defineFlow(
   },
   async (input) => {
     // 1. Generate the source text
-    const llmResponse = await ai.generate({
-      prompt: await textPrompt(input),
-      model: geminiPro,
-      output: {
-        schema: z.object({ sourceText: z.string() }),
-      }
-    });
+    const { output: textOutput } = await textPrompt(input, { model: googleAI.model('gemini-1.5-flash') });
 
-    const textOutput = llmResponse.output();
     if (!textOutput?.sourceText) {
       throw new Error('Failed to generate source text for the scenario.');
     }
     const { sourceText } = textOutput;
 
     // 2. Generate the source audio using TTS
-    const ttsResponse = await ai.generate({
-      model: googleAI.textToSpeech(),
-      prompt: sourceText,
+    const { media } = await ai.generate({
+      model: googleAI.model('gemini-2.5-flash-preview-tts'),
       config: {
-        voice: input.language === 'Persian' ? 'Cursa' : 'Caelum',
-      }
+        responseModalities: ['AUDIO'],
+        speechConfig: {
+          voiceConfig: {
+            prebuiltVoiceConfig: { voiceName: input.language === 'Persian' ? 'Cursa' : 'Caelum' },
+          },
+        },
+      },
+      prompt: sourceText,
     });
     
-    const audio = ttsResponse.output();
-    if (!audio) {
+    if (!media) {
       throw new Error('Failed to generate source audio.');
     }
     
+    const audioBuffer = Buffer.from(media.url.substring(media.url.indexOf(',') + 1), 'base64');
+    
     // 3. Convert PCM audio to WAV
-    const audioDataUri = 'data:audio/wav;base64,' + (await toWav(audio));
+    const audioDataUri = 'data:audio/wav;base64,' + (await toWav(audioBuffer));
 
     // 4. Return the final output
     return {

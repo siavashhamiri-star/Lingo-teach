@@ -1,4 +1,3 @@
-
 'use server';
 
 /**
@@ -11,9 +10,7 @@
 
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
-import { googleAI } from '@genkit-ai/googleai';
-import { defineFlow } from 'genkit';
-import { geminiPro } from 'genkit/models';
+import { googleAI } from '@genkit-ai/google-genai';
 
 const KaraokeTrackInputSchema = z.object({
   songTitle: z.string().describe('The title of the song.'),
@@ -30,30 +27,30 @@ const KaraokeTrackOutputSchema = z.object({
 });
 export type KaraokeTrackOutput = z.infer<typeof KaraokeTrackOutputSchema>;
 
-const karaokeTrackFlow = defineFlow(
+const karaokeTrackFlow = ai.defineFlow(
   {
     name: 'karaokeTrackFlow',
     inputSchema: KaraokeTrackInputSchema,
     outputSchema: KaraokeTrackOutputSchema,
   },
   async (input) => {
+    const model = googleAI.model('gemini-1.5-flash');
     // Step 1: Get the lyrics.
-    const lyricsResponse = await ai.generate({
-        model: geminiPro,
+    const { text: lyricsText } = await ai.generate({
+        model,
         prompt: `You are a lyrics finder. Find the lyrics for the song "${input.songTitle}" by ${input.artist}.
       If you can't find them, say you couldn't. For demonstration, if the song is "Bohemian Rhapsody" by "Queen", return the first verse.
       Return only the lyrics, nothing else.
       `,
     });
-    const lyricsText = lyricsResponse.text();
 
     if (!lyricsText) {
       throw new Error('Could not retrieve lyrics for the song.');
     }
     
     // Step 2: Translate the lyrics using the prompt.
-    const translationResponse = await ai.generate({
-        model: geminiPro,
+    const { text: translationText } = await ai.generate({
+        model,
         prompt: `You are a professional translator specializing in song lyrics. Translate the following lyrics into ${input.targetLanguage === 'fa' ? 'Persian' : 'English'}. Maintain the poetic and emotional tone of the original lyrics as much as possible.
 
 Original Lyrics:
@@ -61,7 +58,6 @@ ${lyricsText}
 
 Translated Lyrics:`,
     });
-    const translationText = translationResponse.text();
 
     if (!translationText) {
       throw new Error('Could not translate lyrics.');

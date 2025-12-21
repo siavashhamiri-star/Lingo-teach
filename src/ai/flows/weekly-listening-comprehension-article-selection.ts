@@ -1,4 +1,3 @@
-
 'use server';
 
 /**
@@ -12,9 +11,7 @@
 
 import { z } from 'zod';
 import { ai } from '../genkit';
-import { googleAI } from '@genkit-ai/googleai';
-import { defineFlow, definePrompt } from 'genkit';
-import { geminiPro } from 'genkit/models';
+import { googleAI } from '@genkit-ai/google-genai';
 
 const SelectWeeklyArticleInputSchema = z.object({
   languageLevel: z
@@ -40,38 +37,30 @@ const SelectWeeklyArticleOutputSchema = z.object({
 });
 export type SelectWeeklyArticleOutput = z.infer<typeof SelectWeeklyArticleOutputSchema>;
 
-const weeklyArticlePrompt = definePrompt({
+const weeklyArticlePrompt = ai.definePrompt({
     name: 'weeklyArticlePrompt',
-    inputSchema: SelectWeeklyArticleInputSchema,
-}, async(input) => {
-  return {
+    input: { schema: SelectWeeklyArticleInputSchema },
+    output: { schema: SelectWeeklyArticleOutputSchema },
     prompt: `You are an AI that selects a relevant article, speech, or news segment for users to practice their listening comprehension skills in the target language.
 
-  The user's language level is: ${input.languageLevel}
-  The target language is: ${input.targetLanguage}
+  The user's language level is: {{{languageLevel}}}
+  The target language is: {{{targetLanguage}}}
 
   Please select an appropriate article, speech, or news segment based on the user's language level and target language. The article type should be suited for improving listening comprehension skills.
   Return the title, content, source, and the type of the selected article in the output schema format.
   Do not include any additional information other than what is specified in the output schema.`,
-  }
 });
 
-const selectWeeklyArticleFlow = defineFlow(
+const selectWeeklyArticleFlow = ai.defineFlow(
   {
     name: 'selectWeeklyArticleFlow',
     inputSchema: SelectWeeklyArticleInputSchema,
     outputSchema: SelectWeeklyArticleOutputSchema,
   },
   async (input) => {
-    const llmResponse = await ai.generate({
-      prompt: await weeklyArticlePrompt(input),
-      model: geminiPro,
-      output: {
-        schema: SelectWeeklyArticleOutputSchema
-      }
-    });
+    const { output } = await weeklyArticlePrompt(input, { model: googleAI.model('gemini-1.5-flash') });
 
-    return llmResponse.output()!;
+    return output!;
   }
 );
 

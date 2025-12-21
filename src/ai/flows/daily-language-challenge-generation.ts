@@ -1,4 +1,3 @@
-
 'use server';
 
 /**
@@ -11,9 +10,7 @@
 
 import { z } from 'zod';
 import { ai } from '../genkit';
-import { googleAI } from '@genkit-ai/googleai';
-import { defineFlow, definePrompt } from 'genkit';
-import { geminiPro } from 'genkit/models';
+import { googleAI } from '@genkit-ai/google-genai';
 
 const DailyChallengeInputSchema = z.object({
   languageLevel: z
@@ -35,31 +32,22 @@ const DailyChallengeOutputSchema = z.object({
 });
 export type DailyChallengeOutput = z.infer<typeof DailyChallengeOutputSchema>;
 
-const dailyChallengePrompt = definePrompt({
+const dailyChallengePrompt = ai.definePrompt({
     name: 'dailyChallengePrompt',
-    inputSchema: DailyChallengeInputSchema,
-}, async(input) => {
-  return {
-    prompt: `You are a language challenge generator for a user learning ${input.targetLanguage}. The user's language level is ${input.languageLevel}. Generate one challenging and engaging question appropriate for this level, along with its answer.`
-  }
+    input: { schema: DailyChallengeInputSchema },
+    output: { schema: DailyChallengeOutputSchema },
+    prompt: `You are a language challenge generator for a user learning {{{targetLanguage}}}. The user's language level is {{{languageLevel}}}. Generate one challenging and engaging question appropriate for this level, along with its answer.`,
 });
 
-const dailyChallengeFlow = defineFlow(
+const dailyChallengeFlow = ai.defineFlow(
   {
     name: 'dailyChallengeFlow',
     inputSchema: DailyChallengeInputSchema,
     outputSchema: DailyChallengeOutputSchema,
   },
   async (input) => {
-    const llmResponse = await ai.generate({
-      prompt: await dailyChallengePrompt(input),
-      model: geminiPro,
-      output: {
-        schema: DailyChallengeOutputSchema,
-      }
-    });
-
-    return llmResponse.output()!;
+    const { output } = await dailyChallengePrompt(input, { model: googleAI.model('gemini-1.5-flash') });
+    return output!;
   }
 );
 

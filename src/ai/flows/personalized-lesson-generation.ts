@@ -1,4 +1,3 @@
-
 'use server';
 
 /**
@@ -14,9 +13,7 @@
 
 import { z } from 'zod';
 import { ai } from '../genkit';
-import { googleAI } from '@genkit-ai/googleai';
-import { defineFlow, definePrompt } from 'genkit';
-import { geminiPro } from 'genkit/models';
+import { googleAI } from '@genkit-ai/google-genai';
 
 // Define the input schema for the personalized lesson generation.
 const PersonalizedLessonInputSchema = z.object({
@@ -45,11 +42,10 @@ const PersonalizedLessonOutputSchema = z.object({
 });
 export type PersonalizedLessonOutput = z.infer<typeof PersonalizedLessonOutputSchema>;
 
-const personalizedLessonPrompt = definePrompt({
+const personalizedLessonPrompt = ai.definePrompt({
     name: 'personalizedLessonPrompt',
-    inputSchema: PersonalizedLessonInputSchema,
-}, async(input) => {
-  return {
+    input: { schema: PersonalizedLessonInputSchema },
+    output: { schema: PersonalizedLessonOutputSchema },
     prompt: `You are an AI expert in pedagogy and curriculum design, with a unique ability to perform "invisible assessments." Your primary task is to analyze a user's request for a lesson plan to subtly determine their language proficiency, learning style, and teaching aptitude, all without them feeling like they are being tested.
 
 **The user is a fluent speaker who wants to learn how to teach.**
@@ -60,11 +56,11 @@ Based on the user's request below, you will first perform a silent analysis.
 - **PedagogICAL Awareness:** Do they use any teaching-related terms? Do they have a clear objective? This helps gauge their initial teaching aptitude.
 
 **User's Request:**
-"${input.lessonRequirements}"
+"{{{lessonRequirements}}}"
 
 **Context:**
-- **Language of Instruction:** The lesson should be delivered in ${input.userLanguage}.
-- **The Student's Native Language is:** ${input.nativeLanguage}. Keep this in mind for potential difficulties and comparisons.
+- **Language of Instruction:** The lesson should be delivered in {{{userLanguage}}}.
+- **The Student's Native Language is:** {{{nativeLanguage}}}. Keep this in mind for potential difficulties and comparisons.
 
 **Generation Phase (Your Public Task):**
 Now, generate a comprehensive lesson plan that empowers the user to teach effectively. The generated lesson must be **tailored to the proficiency level you secretly analyzed.**
@@ -79,26 +75,19 @@ The plan must include:
 
 The output must be a complete, stress-free, and empowering lesson plan, ready for the user to teach.
   `,
-  }
 });
 
 
-const personalizedLessonFlow = defineFlow(
+const personalizedLessonFlow = ai.defineFlow(
   {
     name: 'personalizedLessonFlow',
     inputSchema: PersonalizedLessonInputSchema,
     outputSchema: PersonalizedLessonOutputSchema,
   },
   async (input) => {
-    const llmResponse = await ai.generate({
-      prompt: await personalizedLessonPrompt(input),
-      model: geminiPro,
-      output: {
-        schema: PersonalizedLessonOutputSchema,
-      }
-    });
+    const { output } = await personalizedLessonPrompt(input, { model: googleAI.model('gemini-1.5-flash') });
 
-    return llmResponse.output()!;
+    return output!;
   }
 );
 

@@ -1,4 +1,3 @@
-
 'use server';
 
 /**
@@ -11,9 +10,7 @@
 
 import { z } from 'zod';
 import { ai } from '../genkit';
-import { googleAI } from '@genkit-ai/googleai';
-import { defineFlow, definePrompt } from 'genkit';
-import { geminiPro } from 'genkit/models';
+import { googleAI } from '@genkit-ai/google-genai';
 
 const GeneralKnowledgeChallengeInputSchema = z.object({
   difficulty: z
@@ -32,35 +29,27 @@ const GeneralKnowledgeChallengeOutputSchema = z.object({
 });
 export type GeneralKnowledgeChallengeOutput = z.infer<typeof GeneralKnowledgeChallengeOutputSchema>;
 
-const generalKnowledgeChallengePrompt = definePrompt({
+const generalKnowledgeChallengePrompt = ai.definePrompt({
     name: 'generalKnowledgeChallengePrompt',
-    inputSchema: GeneralKnowledgeChallengeInputSchema,
-}, async(input) => {
-  return {
+    input: { schema: GeneralKnowledgeChallengeInputSchema },
+    output: { schema: GeneralKnowledgeChallengeOutputSchema },
     prompt: `You are a quiz master. Generate one engaging general knowledge question (in any field like science, history, arts, etc.) appropriate for the specified difficulty level, along with its answer.
 
-Difficulty Level (1-10): ${input.difficulty}
+Difficulty Level (1-10): {{{difficulty}}}
 
 The question should be in English.
-Output should be a JSON object with 'question' and 'answer'.`
-  }
+Output should be a JSON object with 'question' and 'answer'.`,
 });
 
-const generalKnowledgeChallengeFlow = defineFlow(
+const generalKnowledgeChallengeFlow = ai.defineFlow(
   {
     name: 'generalKnowledgeChallengeFlow',
     inputSchema: GeneralKnowledgeChallengeInputSchema,
     outputSchema: GeneralKnowledgeChallengeOutputSchema,
   },
   async (input) => {
-    const llmResponse = await ai.generate({
-      prompt: await generalKnowledgeChallengePrompt(input),
-      model: geminiPro,
-      output: {
-        schema: GeneralKnowledgeChallengeOutputSchema
-      }
-    });
-    return llmResponse.output()!;
+    const { output } = await generalKnowledgeChallengePrompt(input, { model: googleAI.model('gemini-1.5-flash')});
+    return output!;
   }
 );
 

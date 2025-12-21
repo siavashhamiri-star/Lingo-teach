@@ -1,4 +1,3 @@
-
 'use server';
 /**
  * @fileOverview Generates a bilingual short story in Persian and English, with sentence-by-sentence audio.
@@ -11,9 +10,7 @@
 import { z } from 'zod';
 import { ai } from '../genkit';
 import wav from 'wav';
-import { googleAI } from '@genkit-ai/googleai';
-import { defineFlow, definePrompt } from 'genkit';
-import { geminiPro } from 'genkit/models';
+import { googleAI } from '@genkit-ai/google-genai';
 
 const BilingualShortStoryInputSchema = z.object({
   userLanguageLevel: z
@@ -47,7 +44,7 @@ const BilingualShortStoryOutputSchema = z.object({
 export type BilingualShortStoryOutput = z.infer<typeof BilingualShortStoryOutputSchema>;
 
 
-const textToSpeechFlow = defineFlow(
+const textToSpeechFlow = ai.defineFlow(
   {
     name: 'bilingualStoryTextToSpeechFlow',
     inputSchema: z.object({ text: z.string(), voiceName: z.string() }),
@@ -58,64 +55,55 @@ const textToSpeechFlow = defineFlow(
     if (!text.trim()) {
       return '';
     }
-    const ttsResponse = await ai.generate({
-      model: googleAI.textToSpeech(),
-      prompt: text,
+    const { media } = await ai.generate({
+      model: googleAI.model('gemini-2.5-flash-preview-tts'),
       config: {
-        voice: voiceName,
+        responseModalities: ['AUDIO'],
+        speechConfig: {
+          voiceConfig: {
+            prebuiltVoiceConfig: { voiceName },
+          },
+        },
       },
+      prompt: text,
     });
 
-    const audio = ttsResponse.output();
-    if (!audio) {
+    if (!media) {
       // Instead of throwing an error, we can return an empty string or handle it gracefully.
       console.warn(`TTS failed for text: "${text}"`);
       return '';
     }
 
-    return 'data:audio/wav;base64,' + (await toWav(audio));
+    const audioBuffer = Buffer.from(media.url.substring(media.url.indexOf(',') + 1), 'base64');
+    return 'data:audio/wav;base64,' + await toWav(audioBuffer);
   }
 );
 
-const storyPrompt = definePrompt({
+const storyPrompt = ai.definePrompt({
     name: 'bilingualStoryPrompt',
-    inputSchema: BilingualShortStoryInputSchema,
+    input: { schema: BilingualShortStoryInputSchema },
     output: {
         schema: z.object({
             title: z.string(),
             story: z.array(SentencePairSchema),
         })
     },
-}, async (input) => {
-  return {
     prompt: `You are a bilingual storyteller fluent in English and Persian.
 
-  Generate a short story with a title, appropriate for language level ${input.userLanguageLevel}.
+  Generate a short story with a title, appropriate for language level {{{userLanguageLevel}}}.
   The story should be broken down into individual sentences. For each English sentence, provide a corresponding Persian translation.
   The output should be a JSON object with a 'title' and a 'story' array, where each element in the array is an object with 'englishSentence' and 'persianSentence'.
-  The story should be between 5 to 8 sentences long.`
-  }
+  The story should be between 5 to 8 sentences long.`,
 });
 
-const bilingualShortStoryFlow = defineFlow(
+const bilingualShortStoryFlow = ai.defineFlow(
   {
     name: 'bilingualShortStoryFlow',
     inputSchema: BilingualShortStoryInputSchema,
     outputSchema: BilingualShortStoryOutputSchema,
   },
   async (input) => {
-    const llmResponse = await ai.generate({
-      prompt: await storyPrompt(input),
-      model: geminiPro,
-      output: {
-        schema: z.object({
-          title: z.string(),
-          story: z.array(SentencePairSchema),
-        })
-      }
-    });
-    
-    const storyOutput = llmResponse.output();
+    const { output: storyOutput } = await storyPrompt(input, { model: googleAI.model('gemini-1.5-flash') });
 
     if (!storyOutput?.story) {
       throw new Error('Failed to generate bilingual short story text.');

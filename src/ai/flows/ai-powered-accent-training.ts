@@ -1,4 +1,3 @@
-
 'use server';
 
 /**
@@ -11,9 +10,7 @@
 
 import { z } from 'zod';
 import { ai } from '../genkit';
-import { googleAI } from '@genkit-ai/googleai';
-import { defineFlow, definePrompt } from 'genkit';
-import { geminiPro } from 'genkit/models';
+import { googleAI } from '@genkit-ai/google-genai';
 
 const AnalyzePronunciationInputSchema = z.object({
   audioDataUri: z
@@ -43,21 +40,18 @@ const AnalyzePronunciationOutputSchema = z.object({
 });
 export type AnalyzePronunciationOutput = z.infer<typeof AnalyzePronunciationOutputSchema>;
 
-const analyzePronunciationPrompt = definePrompt(
+const analyzePronunciationPrompt = ai.definePrompt(
   {
     name: 'analyzePronunciationPrompt',
-    inputSchema: AnalyzePronunciationInputSchema,
-    outputSchema: AnalyzePronunciationOutputSchema,
-  },
-  async (input) => {
-    return {
-      prompt: `You are an AI-powered accent coach that specializes in analyzing pronunciation in real-time and providing feedback.
+    input: { schema: AnalyzePronunciationInputSchema },
+    output: { schema: AnalyzePronunciationOutputSchema },
+    prompt: `You are an AI-powered accent coach that specializes in analyzing pronunciation in real-time and providing feedback.
 
 You will analyze the user's pronunciation of the following text:
-${input.textToPronounce}
+{{{textToPronounce}}}
 
-The user's native language is: ${input.nativeLanguage}
-The target language is: ${input.targetLanguage}
+The user's native language is: {{{nativeLanguage}}}
+The target language is: {{{targetLanguage}}}
 
 You will provide a pronunciation score from 0 to 1, where 1 is perfect.
 
@@ -68,28 +62,27 @@ If possible, you will also provide a visual aid (image or video) that shows mout
 Consider the user's native language when providing feedback, and focus on the aspects of pronunciation that are most difficult for speakers of that language.
 
 User's audio is attached.`,
-      media: [{ url: input.audioDataUri }]
-    }
-  }
+  },
 );
 
 
-const analyzePronunciationFlow = defineFlow(
+const analyzePronunciationFlow = ai.defineFlow(
   {
     name: 'analyzePronunciationFlow',
     inputSchema: AnalyzePronunciationInputSchema,
     outputSchema: AnalyzePronunciationOutputSchema,
   },
   async (input) => {
-    const llmResponse = await ai.generate({
-      prompt: await analyzePronunciationPrompt(input),
-      model: geminiPro,
-      output: {
-        schema: AnalyzePronunciationOutputSchema,
-      }
+    const { output } = await analyzePronunciationPrompt({
+        ...input
+    }, {
+        model: googleAI.model('gemini-1.5-flash'),
+        prompt: [
+            {media: { url: input.audioDataUri }}
+        ]
     });
 
-    return llmResponse.output()!;
+    return output!;
   }
 );
 
