@@ -40,11 +40,18 @@ export default function LandingPage() {
           <Logo className="h-8 w-8 text-primary" />
           <span className="text-2xl font-bold">LinguaWeave</span>
         </Link>
-        <Button asChild>
-          <Link href="/dashboard">
-            Enter Afarinesh <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button asChild variant="ghost">
+            <Link href="/login">
+              Login
+            </Link>
+          </Button>
+          <Button asChild>
+            <Link href="/signup">
+              Sign Up <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
       </header>
 
       <main className="flex-grow">
@@ -61,7 +68,7 @@ export default function LandingPage() {
               </p>
               <div className="mt-8 flex justify-center gap-4">
                 <Button size="lg" asChild>
-                  <Link href="/dashboard">Start Your Journey</Link>
+                  <Link href="/signup">Start Your Journey</Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
                     <Link href="#vision">Our Grand Vision</Link>
