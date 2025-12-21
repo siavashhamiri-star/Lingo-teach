@@ -35,6 +35,10 @@ const philosophyGems = [
         persian: "قول تازه بدون عمل به وعدهٔ قبلی بی‌ارزش است. اگر نتوانم به یک قول عمل کنم، دیگر قولی نخواهم داد و از دیگران هم توقع باور نخواهم داشت."
     },
     {
+        english: "If someone knocks on the door of our virtual city, seeing it as the city of their dreams, it is a betrayal of humanity to turn them away disappointed. Everyone who comes must receive something, even if it's the minimum, and never leave with their hope extinguished.",
+        persian: "اگر کسی درِ خانه‌ای را بزند و بخواهد وارد شهر مجازی شود که آن را شهر آرزوهایش قلمداد می‌کند، خیانت به نوع بشر است اگر آن فرد از این درگاه ناامید برگردد. باید هر کسی که می‌آید حداقل‌ها را هم شده دریافت کند و ناامید نشود."
+    },
+    {
         english: "The foundation of this ecosystem is viral, word-of-mouth advertising by its ambassadors. The first pioneers who lit the torches will never be forgotten. The first are the bravest. The first did the heavy lifting of putting the train on its tracks. Try to be among the first. Join us before it's too late.",
         persian: "بنیان این اکوسیستم، تبلیغات ویروسی و دهان به دهان سفیران آن است. نقش اولین پیش‌قراولان که اولین مشعل‌ها را برای تابانی تمدن درخشان آن روشن کردند، هیچگاه فراموش نخواهد شد. اولین‌ها شجاع‌ترین‌ها هستند. اولین‌ها زحمت گذاشتن قطار بر روی ریل را کشیدند. سعی کنید جزو اولین‌ها باشید. تا دیر نشده به ما بپیوندید."
     },
