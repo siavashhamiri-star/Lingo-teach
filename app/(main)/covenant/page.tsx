@@ -2,7 +2,7 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { HeartHandshake, Bot, UserSquare, Swords, Globe } from 'lucide-react';
+import { HeartHandshake, Bot, UserSquare, Swords, Globe, BrainCircuit, Sparkles } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 
@@ -64,6 +64,32 @@ export default function CovenantPage() {
             </div>
         </CardContent>
       </Card>
+      
+       <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2"><BrainCircuit className="w-5 h-5 text-primary" />The Source of Knowledge</CardTitle>
+          <CardDescription>An insight into the origin of true wisdom.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="prose prose-sm max-w-none text-muted-foreground whitespace-pre-wrap">
+            <p>
+              Looking at the luminaries of the world across various sciences, arts, religions, and schools of thought, we find that most were not graduates of any single institution. Their knowledge stemmed purely from the light of their hearts or from their inner insight. We never need to have learned something in a specific place to be able to show others the way.
+            </p>
+            <p>
+              At birth, God has placed all the knowledge we might need within the repositories of our DNA and our consciousness. We only need to find and identify it, just like the inner energies you are unaware of.
+            </p>
+          </div>
+          <Separator />
+          <div className="prose prose-sm max-w-none text-muted-foreground text-right whitespace-pre-wrap" dir="rtl">
+            <p>
+             با نگاهی به مشاهیر جهان در علوم و فنون مختلف، در ادیان و مکاتب، در می‌یابیم که اکثر آنها دانش آموخته هیچ مکتبی نبودند و علوم آنها صرفاً یا از نور قلبی یا از بصیرت بود. ما هیچگاه برای اینکه بتوانیم به دیگران راهی را نشان بدهیم نیاز نداریم که حتماً در جایی آموخته باشیم.
+            </p>
+            <p>
+              چون ما انسان‌ها در بدو تولد، تمام علومی را که بخواهیم و لازم باشد بدانیم، آگاهی آن را خداوند در مخازن دی‌ان‌ای و در آگاهی ما قرار داده است. فقط کافیست آنها را پیدا کنید و شناسایی کنید، همچون انرژی‌های درونی خودتان که از آنها بی‌خبرید.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
@@ -107,7 +133,7 @@ export default function CovenantPage() {
             <h3 className="font-bold text-lg mb-2 flex items-center gap-2"><UserSquare /> A Message from the Creator</h3>
              <div className="prose prose-sm max-w-none text-muted-foreground whitespace-pre-wrap text-right" dir="rtl">
                 <p>
-                سرمایه‌های ما افرادیست که به این سیستم اطمینان می‌کنند و آرزوهای ما را آرزوی خود می‌دانند. ما بدون ملت‌ها، بدون انسان‌ها، هیچ نیستیم. این یک شراکت است. ما از روزی که یک فکر بودیم به وجود آمدیم و آنگاه که اندیشه ما اندیشه دیگران شد، و آرزوی ما آرزوی آنان، جهانی می‌شویم.
+                 من به هیئت علمی نیازی ندارم، چون هیئت علمی دانش و آگاهی نمی‌آورد که باعث فخر من شود. باعث فخر من است که جزو هیچ هیئت علمی نبوده‌ام و حتی تحصیلاتی ندارم که بتوانم استاد دانشگاه باشم. ولی با همین توان اندک علمی، دارم به شما راهکار پیشرفت و بالا بردن سطح آگاهی و دانش خودتان در جهان را ارائه می‌دهم.
                 </p>
                  <p>
                 سخنرانان و سیاستمداران برایشان می‌نویسند و از روی نوشته و تمرین می‌خوانند. برای من چه کسی می‌نویسد؟ این‌ها همه احساس است. این‌ها یک سرمنشا دارد: رسالتی بوده که باید به اینجا می‌رسید و عملی بوده که باید انجام می‌شد که سعادت بشر در آن باشد. من خود یک وسیله‌ام.
@@ -131,5 +157,3 @@ export default function CovenantPage() {
     </div>
   );
 }
-
-    
