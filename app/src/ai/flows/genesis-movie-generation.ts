@@ -2,15 +2,21 @@
 'use server';
 
 /**
- * @fileOverview A Genkit flow for generating a short, cinematic movie about the creation of Afarinesh.
+ * @fileOverview A Genkit flow for generating a short, cinematic movie based on user input.
  *
  * - generateGenesisMovie - Creates a short video using a text prompt.
+ * - GenesisMovieInput - The input type for the flow.
  * - GenesisMovieOutput - The return type for the flow.
  */
 
 import { z } from 'zod';
 import { ai } from '../genkit';
 import { googleAI } from '@genkit-ai/google-genai';
+
+const GenesisMovieInputSchema = z.object({
+  userQuote: z.string().describe('A meaningful sentence or idea provided by the user to inspire the video generation.'),
+});
+export type GenesisMovieInput = z.infer<typeof GenesisMovieInputSchema>;
 
 const GenesisMovieOutputSchema = z.object({
   videoDataUri: z.string().describe('A data URI for the generated MP4 video file.'),
@@ -47,13 +53,17 @@ const getVideoAsDataUriFlow = ai.defineFlow(
 const genesisMovieFlow = ai.defineFlow(
   {
     name: 'genesisMovieFlow',
+    inputSchema: GenesisMovieInputSchema,
     outputSchema: GenesisMovieOutputSchema,
   },
-  async () => {
+  async ({ userQuote }) => {
+    
+    const prompt = `Create a cinematic, epic, hopeful shot of a futuristic city of knowledge being built from rays of light. Show diverse people collaborating and looking up with wonder. The architecture is flowing and organic. The feeling is one of creation and empowerment.
+    Now, visually interpret this core idea provided by the user: "${userQuote}"`;
+
     let { operation } = await ai.generate({
       model: googleAI.model('veo-2.0-generate-001'),
-      prompt:
-        'A cinematic, epic, hopeful shot of a futuristic city of knowledge being built from rays of light. Show diverse people collaborating and looking up with wonder. The architecture is flowing and organic. The feeling is one of creation and empowerment.',
+      prompt: prompt,
       config: {
         durationSeconds: 8,
         aspectRatio: '16:9',
@@ -90,6 +100,8 @@ const genesisMovieFlow = ai.defineFlow(
 );
 
 // This is a long-running operation, so we need to define it as a flow.
-export async function generateGenesisMovie(): Promise<GenesisMovieOutput> {
-  return genesisMovieFlow();
+export async function generateGenesisMovie(input: GenesisMovieInput): Promise<GenesisMovieOutput> {
+  return genesisMovieFlow(input);
 }
+
+    
