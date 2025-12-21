@@ -168,6 +168,7 @@ export default function ProfilePage() {
                 <div className="space-y-2">
                     <h4 className="font-semibold text-foreground flex items-center gap-2"><Users className="w-4 h-4"/>Path to the Afarinesh Council</h4>
                     <p>Individuals who serve on the board of directors for more than two apps within the Afarinesh ecosystem are considered prime candidates for the central decision-making and supervisory council of Afarinesh and for citizenship in the city of Tavana.</p>
+                    <p className="pt-2">Furthermore, board members of one app have the privilege to be considered for transfer to board positions in other apps, fostering a dynamic and interconnected leadership across the entire ecosystem.</p>
                 </div>
             </CardContent>
             </Card>
