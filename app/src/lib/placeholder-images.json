@@ -9,7 +9,7 @@
     {
       "id": "profile-avatar",
       "description": "A default user profile avatar.",
-      "imageUrl": "https://images.unsplash.com/photo-1521119989659-a83eee488004?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjQwMzQxODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://picsum.photos/seed/1/300/300",
       "imageHint": "person portrait"
     },
     {
@@ -49,12 +49,6 @@
       "imageHint": "flashcards learning"
     },
     {
-      "id": "duel-arena-bg",
-      "description": "Two abstract glowing swords crossing each other on a dark background.",
-      "imageUrl": "https://picsum.photos/seed/duelbg/1200/800",
-      "imageHint": "swords clash"
-    },
-    {
       "id": "duel-opponent-1",
       "description": "Portrait of a confident woman.",
       "imageUrl": "https://picsum.photos/seed/student1/100/100",
@@ -77,6 +71,54 @@
       "description": "Portrait of a smiling person.",
       "imageUrl": "https://picsum.photos/seed/student4/100/100",
       "imageHint": "smiling person"
+    },
+    {
+      "id": "award-student-1",
+      "imageUrl": "https://picsum.photos/seed/student1/100/100",
+      "imageHint": "woman portrait",
+      "description": "Top student Elena"
+    },
+    {
+      "id": "award-student-2",
+      "imageUrl": "https://picsum.photos/seed/student2/100/100",
+      "imageHint": "man portrait",
+      "description": "Top student Kenji"
+    },
+    {
+      "id": "award-student-3",
+      "imageUrl": "https://picsum.photos/seed/student3/100/100",
+      "imageHint": "person portrait",
+      "description": "Top student Sara"
+    },
+    {
+      "id": "award-teacher-1",
+      "imageUrl": "https://picsum.photos/seed/tutor1/100/100",
+      "imageHint": "man professional",
+      "description": "Top teacher Dr. Reza Karimi"
+    },
+    {
+      "id": "award-teacher-2",
+      "imageUrl": "https://picsum.photos/seed/tutor2/100/100",
+      "imageHint": "woman professional",
+      "description": "Top teacher Ms. Maryam Hedayati"
+    },
+    {
+      "id": "ambassador-1",
+      "imageUrl": "https://picsum.photos/seed/student1/100/100",
+      "imageHint": "woman portrait",
+      "description": "Top ambassador Elena"
+    },
+    {
+      "id": "ambassador-2",
+      "imageUrl": "https://picsum.photos/seed/ambassador2/100/100",
+      "imageHint": "man headshot",
+      "description": "Top ambassador Kian"
+    },
+    {
+      "id": "ambassador-3",
+      "imageUrl": "https://picsum.photos/seed/1/100/100",
+      "imageHint": "person smiling",
+      "description": "Your ambassador profile"
     }
   ]
 }

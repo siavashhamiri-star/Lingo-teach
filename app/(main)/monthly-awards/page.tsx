@@ -8,34 +8,37 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const topSkillStudents = [
-    { name: 'Elena', avatar: 'https://picsum.photos/seed/student1/100/100', detail: 'Reached Level 155 (English)', imageHint: "woman portrait" },
-    { name: 'Kenji', avatar: 'https://picsum.photos/seed/student2/100/100', detail: 'Top Score in IELTS Writing', imageHint: "man portrait" },
-    { name: 'Sara', avatar: 'https://picsum.photos/seed/student3/100/100', detail: 'Mastered Advanced Persian Grammar', imageHint: "person portrait" },
+    { name: 'Elena', avatarId: 'award-student-1', detail: 'Reached Level 155 (English)' },
+    { name: 'Kenji', avatarId: 'award-student-2', detail: 'Top Score in IELTS Writing' },
+    { name: 'Sara', avatarId: 'award-student-3', detail: 'Mastered Advanced Persian Grammar' },
 ];
 
 const topSkillTeachers = [
-    { name: 'Dr. Reza Karimi', avatar: 'https://picsum.photos/seed/tutor1/100/100', detail: 'Highest Rated Konkur Tutor', imageHint: "man professional" },
-    { name: 'Ms. Maryam Hedayati', avatar: 'https://picsum.photos/seed/tutor2/100/100', detail: 'Most Successful Student Reviews', imageHint: "woman professional" },
+    { name: 'Dr. Reza Karimi', avatarId: 'award-teacher-1', detail: 'Highest Rated Konkur Tutor' },
+    { name: 'Ms. Maryam Hedayati', avatarId: 'award-teacher-2', detail: 'Most Successful Student Reviews' },
 ]
 
 const mostDedicatedLearners = [
-    { name: 'David', avatar: 'https://picsum.photos/seed/student4/100/100', detail: '40 hours of practice this month', imageHint: "smiling person" },
-    { name: 'Maria', avatar: 'https://picsum.photos/seed/student5/100/100', detail: 'Completed 50 lessons in a row', imageHint: "person headshot" },
-    { name: 'Hassan', avatar: 'https://picsum.photos/seed/student6/100/100', detail: 'Highest participation in community rooms', imageHint: "man smiling" },
+    { name: 'David', avatarId: 'duel-opponent-4', detail: '40 hours of practice this month' },
+    { name: 'Maria', avatarId: 'award-student-1', detail: 'Completed 50 lessons in a row' },
+    { name: 'Hassan', avatarId: 'award-student-2', detail: 'Highest participation in community rooms' },
 ];
 
 const topAmbassadors = [
-  { rank: 1, name: 'Elena', avatar: 'https://picsum.photos/seed/student1/100/100', metric: '25 Referrals, 5K Likes', imageHint: "woman portrait" },
-  { rank: 2, name: 'Kian', avatar: 'https://picsum.photos/seed/ambassador2/100/100', metric: '18 Referrals, 3.2K Likes', imageHint: "man headshot" },
-  { rank: 3, name: 'You', avatar: 'https://picsum.photos/seed/1/100/100', metric: '5 Referrals, 1.1K Likes', imageHint: "person smiling" },
+  { rank: 1, name: 'Elena', avatarId: 'ambassador-1', metric: '25 Referrals, 5K Likes' },
+  { rank: 2, name: 'Kian', avatarId: 'ambassador-2', metric: '18 Referrals, 3.2K Likes' },
+  { rank: 3, name: 'You', avatarId: 'ambassador-3', metric: '5 Referrals, 1.1K Likes' },
 ];
 
 
 export default function MonthlyAwardsPage() {
 
   const rankColors = ['text-yellow-500', 'text-slate-400', 'text-orange-500'];
+
+  const findImage = (id: string) => PlaceHolderImages.find(p => p.id === id);
 
   return (
     <div>
@@ -54,39 +57,45 @@ export default function MonthlyAwardsPage() {
                 <div>
                     <h3 className="font-bold text-lg mb-4 flex items-center gap-2"><GraduationCap />Top Teachers</h3>
                     <div className="space-y-4">
-                        {topSkillTeachers.map((user, index) => (
-                            <div key={index} className="flex items-center gap-4">
-                                <Avatar className="h-12 w-12 border-2 border-primary">
-                                    <AvatarImage src={user.avatar} data-ai-hint={user.imageHint} />
-                                    <AvatarFallback>{user.name.substring(0,2)}</AvatarFallback>
-                                </Avatar>
-                                <div>
-                                    <p className="font-semibold">{user.name}</p>
-                                    <p className="text-sm text-muted-foreground">{user.detail}</p>
+                        {topSkillTeachers.map((user, index) => {
+                            const avatar = findImage(user.avatarId);
+                            return (
+                                <div key={index} className="flex items-center gap-4">
+                                    <Avatar className="h-12 w-12 border-2 border-primary">
+                                        {avatar && <AvatarImage src={avatar.imageUrl} data-ai-hint={avatar.imageHint} />}
+                                        <AvatarFallback>{user.name.substring(0,2)}</AvatarFallback>
+                                    </Avatar>
+                                    <div>
+                                        <p className="font-semibold">{user.name}</p>
+                                        <p className="text-sm text-muted-foreground">{user.detail}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            )
+                        })}
                     </div>
                 </div>
                 <Separator />
                  <div>
                     <h3 className="font-bold text-lg mb-4 flex items-center gap-2"><User />Top Students</h3>
                     <div className="space-y-4">
-                        {topSkillStudents.map((user, index) => (
-                            <div key={index} className="flex items-center gap-4">
-                                <div className="flex items-center gap-2 w-8 justify-center">
-                                    <Medal className={`w-6 h-6 ${rankColors[index] || 'text-muted-foreground'}`} />
+                        {topSkillStudents.map((user, index) => {
+                             const avatar = findImage(user.avatarId);
+                             return (
+                                <div key={index} className="flex items-center gap-4">
+                                    <div className="flex items-center gap-2 w-8 justify-center">
+                                        <Medal className={`w-6 h-6 ${rankColors[index] || 'text-muted-foreground'}`} />
+                                    </div>
+                                    <Avatar className="h-12 w-12 border">
+                                        {avatar && <AvatarImage src={avatar.imageUrl} data-ai-hint={avatar.imageHint} />}
+                                        <AvatarFallback>{user.name.substring(0,2)}</AvatarFallback>
+                                    </Avatar>
+                                    <div>
+                                        <p className="font-semibold">{user.name}</p>
+                                        <p className="text-sm text-muted-foreground">{user.detail}</p>
+                                    </div>
                                 </div>
-                                <Avatar className="h-12 w-12 border">
-                                    <AvatarImage src={user.avatar} data-ai-hint={user.imageHint} />
-                                    <AvatarFallback>{user.name.substring(0,2)}</AvatarFallback>
-                                </Avatar>
-                                <div>
-                                    <p className="font-semibold">{user.name}</p>
-                                    <p className="text-sm text-muted-foreground">{user.detail}</p>
-                                </div>
-                            </div>
-                        ))}
+                            )
+                        })}
                     </div>
                 </div>
             </CardContent>
@@ -103,21 +112,24 @@ export default function MonthlyAwardsPage() {
                         Top ambassadors are selected based on a combination of successful user referrals via their unique code, and the social media impact (likes, shares, views) of their creations using the #Afarinesh hashtag.
                     </AlertDescription>
                 </Alert>
-                {topAmbassadors.map((user, index) => (
-                     <div key={index} className="flex items-center gap-4">
-                        <div className="flex items-center gap-2 w-8 justify-center">
-                            <span className={`font-bold text-xl ${rankColors[index] || 'text-primary'}`}>#{user.rank}</span>
+                {topAmbassadors.map((user, index) => {
+                     const avatar = findImage(user.avatarId);
+                     return (
+                         <div key={index} className="flex items-center gap-4">
+                            <div className="flex items-center gap-2 w-8 justify-center">
+                                <span className={`font-bold text-xl ${rankColors[index] || 'text-primary'}`}>#{user.rank}</span>
+                            </div>
+                            <Avatar className="h-12 w-12 border">
+                                {avatar && <AvatarImage src={avatar.imageUrl} data-ai-hint={avatar.imageHint}/>}
+                                <AvatarFallback>{user.name.substring(0,2)}</AvatarFallback>
+                            </Avatar>
+                            <div>
+                                <p className="font-semibold">{user.name}</p>
+                                <p className="text-sm text-muted-foreground">{user.metric}</p>
+                            </div>
                         </div>
-                        <Avatar className="h-12 w-12 border">
-                            <AvatarImage src={user.avatar} data-ai-hint={user.imageHint}/>
-                            <AvatarFallback>{user.name.substring(0,2)}</AvatarFallback>
-                        </Avatar>
-                        <div>
-                            <p className="font-semibold">{user.name}</p>
-                            <p className="text-sm text-muted-foreground">{user.metric}</p>
-                        </div>
-                    </div>
-                ))}
+                    )
+                })}
                  <p className="text-sm text-muted-foreground text-center pt-4">...and 7 other top ambassadors!</p>
             </CardContent>
         </Card>
