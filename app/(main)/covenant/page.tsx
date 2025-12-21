@@ -73,10 +73,10 @@ export default function CovenantPage() {
         <CardContent className="space-y-6">
           <div className="prose prose-sm max-w-none text-muted-foreground whitespace-pre-wrap">
             <p>
-              The traditional academic model, while foundational, faces a modern challenge: scientific stagnation. How do we inspire our educators to remain at the cutting edge, while preserving the immense respect they deserve? How do we ensure that a professor's lifelong work is honored, while simultaneously fostering the rapid evolution of their field?
+              The traditional academic model, while foundational, faces a modern challenge: scientific stagnation. The very idea of a scientific committee is based on collaboration, but in practice, these gatherings often become venues for sharing stories over tea rather than creating new science.
             </p>
             <p>
-              We propose a new paradigm. When an elite student demonstrates their mastery by passing a qualifying test, it triggers a respectful suggestion: a **"Duel of Scientific Synergy"** between their professor and a peer professor. This duel is **entirely optional**. The professor has the full autonomy to accept or decline.
+              We propose a new paradigm. When an elite student demonstrates their mastery, it triggers a respectful suggestion: a **"Duel of Scientific Synergy"** between their professor and a peer professor. This duel is **entirely optional**. The professor has the full autonomy to accept or decline.
             </p>
             <p>
               Crucially, this duel itself becomes the **greatest workshop for knowledge creation**. The process of challenge and response between two great minds becomes an invaluable learning experience for all students, a moment where science can take a **"genetic leap"**. This transforms professors into invested leaders and their brightest students into their successors.
@@ -85,13 +85,13 @@ export default function CovenantPage() {
           <Separator />
           <div className="prose prose-sm max-w-none text-muted-foreground text-right whitespace-pre-wrap" dir="rtl">
             <p>
-             مدل آکادمیک سنتی، با وجود تمام دستاوردهایش، با یک چالش مدرن روبروست: رکود علمی. چگونه می‌توانیم ضمن حفظ حرمت عمیق برای اساتید، آن‌ها را برای باقی ماندن در لبه‌ی تیغ دانش تشویق کنیم؟
+             مدل آکادمیک سنتی، با وجود تمام دستاوردهایش، با یک چالش مدرن روبروست: رکود علمی. فلسفه هیئت‌های علمی دانشگاه‌ها بر تعامل و همکاری بین تخصص‌ها بنا شده، اما در عمل، این محافل اغلب به جایی برای نوشیدن چای و شنیدن خاطره تبدیل شده‌اند و از تولید علم جدید باز مانده‌اند.
             </p>
             <p>
              ما پارادایم جدیدی را پیشنهاد می‌کنیم. هنگامی که یک دانشجوی نخبه با موفقیت در یک آزمون صلاحیتی، استادی خود را به اثبات می‌رساند، یک پیشنهاد محترمانه فعال می‌شود: یک **"دوئل هم‌افزایی علمی"** بین استاد او و یک استاد همتا. این دوئل **کاملاً اختیاری** است.
             </p>
             <p>
-             نکته حیاتی اینجاست که خود این دوئل به **بزرگترین کارگاه تولید علم** تبدیل می‌شود. فرآیند پرسش و پاسخ بین دو ذهن بزرگ، به یک تجربه یادگیری بی‌بدیل برای تمام دانشجویان بدل می‌گردد، لحظه‌ای که علم می‌تواند یک **"جهش ژنتیکی"** را تجربه کند.
+             نکته حیاتی اینجاست که خود این دوئل به **بزرگترین کارگاه تولید علم** تبدیل می‌شود. فرآیند پرسش و پاسخ بین دو ذهن بزرگ، به یک تجربه یادگیری بی‌بدیل برای تمام دانشجویان بدل می‌گردد، لحظه‌ای که علم می‌تواند یک **"جهش ژنتیکی"** را تجربه کند. این مدل، اساتید را به رهبرانی سرمایه‌گذار و شاگردانشان را به جانشینان آنها تبدیل می‌کند.
             </p>
           </div>
         </CardContent>
@@ -128,7 +128,5 @@ export default function CovenantPage() {
     </div>
   );
 }
-
-    
 
     
