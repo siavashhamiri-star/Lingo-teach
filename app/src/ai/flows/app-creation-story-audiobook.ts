@@ -4,7 +4,7 @@
 /**
  * @fileOverview A Genkit flow for generating a bilingual audiobook of the LinguaWeave creation story.
  *
- * - generateCreationStoryAudiobook - Creates narrative text in English and Persian, and a single English audio track.
+ * - generateCreationStoryAudiobook - Creates narrative text and audio in both English and Persian.
  * - CreationStoryAudiobookOutput - The return type for the flow.
  */
 
@@ -13,16 +13,22 @@ import { ai } from '../genkit';
 import wav from 'wav';
 import { googleAI } from '@genkit-ai/google-genai';
 
-const CreationStoryAudiobookOutputSchema = z.object({
+const StoryTextSchema = z.object({
   englishStory: z.string().describe("The full narrative story in English."),
   persianStory: z.string().describe("The full narrative story in Persian."),
-  audioDataUri: z.string().describe('A data URI for the generated WAV audio file of the English story.'),
+});
+
+const CreationStoryAudiobookOutputSchema = z.object({
+  englishStory: z.string(),
+  persianStory: z.string(),
+  englishAudioDataUri: z.string().describe('A data URI for the generated WAV audio file of the English story.'),
+  persianAudioDataUri: z.string().describe('A data URI for the generated WAV audio file of the Persian story.'),
 });
 export type CreationStoryAudiobookOutput = z.infer<typeof CreationStoryAudiobookOutputSchema>;
 
 const textToSpeechFlow = ai.defineFlow(
   {
-    name: 'textToSpeechFlow',
+    name: 'creationStoryTextToSpeechFlow',
     inputSchema: z.object({ text: z.string(), voiceName: z.string() }),
     outputSchema: z.string(),
   },
@@ -54,10 +60,7 @@ const textToSpeechFlow = ai.defineFlow(
 
 const storyPrompt = ai.definePrompt({
     name: 'creationStoryPrompt',
-    output: { schema: z.object({
-        englishStory: z.string(),
-        persianStory: z.string()
-    }) },
+    output: { schema: StoryTextSchema },
     prompt: `You are a master storyteller and philosopher, fluent in both English and Persian. Your task is to create the definitive, epic creation story of an educational ecosystem called "Afarinesh". This story will be used as a heroic introduction and must be profoundly inspiring. Create two versions: one in English, one in Persian. Both versions must follow the same structure and weave together all the following philosophical concepts into a seamless, powerful narrative.
 
 **Part 1: The Legend of Afarinesh - The Genesis of a New World**
@@ -95,14 +98,18 @@ const creationStoryAudiobookFlow = ai.defineFlow(
     }
     const { englishStory, persianStory } = textOutput;
 
-    // 2. Generate the English audio file
-    const audioData = await textToSpeechFlow({ text: englishStory, voiceName: 'Algenib' });
+    // 2. Generate both audio files in parallel
+    const [englishAudioData, persianAudioData] = await Promise.all([
+      textToSpeechFlow({ text: englishStory, voiceName: 'Algenib' }),
+      textToSpeechFlow({ text: persianStory, voiceName: 'Achernar' }),
+    ]);
 
     // 3. Return the final bilingual output
     return {
       englishStory,
       persianStory,
-      audioDataUri: audioData,
+      englishAudioDataUri: englishAudioData,
+      persianAudioDataUri: persianAudioData,
     };
   }
 );
