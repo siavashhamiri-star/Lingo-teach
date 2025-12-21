@@ -2,7 +2,7 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { User, Gift, Copy, Crown, ShieldCheck } from 'lucide-react';
+import { User, Gift, Copy, Crown, ShieldCheck, Sparkles } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Progress } from '@/components/ui/progress';
@@ -17,6 +17,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 
 // --- Pricing Model Simulation ---
 const IS_PREMIUM_USER = true;
@@ -97,6 +98,13 @@ export default function ProfilePage() {
             <CardDescription>Invite friends to climb the referrer league, win monthly prizes, and earn a bi-annual grand prize!</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
+            <Alert className="border-accent text-accent-foreground bg-accent/10">
+                <Sparkles className="h-4 w-4 text-accent" />
+                <AlertTitle>x10 XP Multiplier!</AlertTitle>
+                <AlertDescription>
+                    Refer 10 friends within your first month and we'll multiply all XP you've earned so far by 10! This is a one-time grand prize for our founding promoters.
+                </AlertDescription>
+            </Alert>
             <div>
                 <p className="text-sm font-medium mb-2">Your unique referral code:</p>
                 <div className="flex w-full max-w-sm items-center space-x-2">
