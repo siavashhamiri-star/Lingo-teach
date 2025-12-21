@@ -146,6 +146,13 @@ export default function MonthlyAwardsPage() {
                 </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
+                 <blockquote className="border-l-4 border-accent pl-4 text-lg italic text-foreground">
+                   "Here, the system must truly be based on meritocracy, positive thinking, sacrifice, patience, hope, belief, and effort. This is a place where those who genuinely strive and believe in the system will rise."
+                </blockquote>
+                <p className="text-muted-foreground" dir="rtl">
+                    "در اینجا سیستم واقعاً باید بر مبنای شایسته‌سالاری، مثبت‌اندیشی، فداکاری، صبر، امید، باور و تلاش باشد. اینجا جاییست که آن کسانی که واقعاً تلاش می‌کنند و سیستم را باور دارند، بالا خواهند رفت."
+                </p>
+                 <Separator className="my-6"/>
                 <Alert variant="destructive" className="bg-destructive/10 border-destructive/20 text-destructive-foreground">
                     <ShieldAlert className="h-4 w-4 text-destructive" />
                     <AlertTitle>The Grand Challenge for Founding Members</AlertTitle>
@@ -156,12 +163,7 @@ export default function MonthlyAwardsPage() {
                         </ul>
                     </AlertDescription>
                 </Alert>
-                <blockquote className="border-l-4 border-accent pl-4 italic text-foreground">
-                    "Rest assured that those who strive and sacrifice to introduce Afarinesh and the city of Tavana will be its founders, landowners, and most influential figures. They will be the ones who shape this city's identity and its decisions."
-                </blockquote>
-                 <p className="text-muted-foreground">
-                    The top ambassadors in our community are not just users; they are on a direct path to becoming the future leaders of this ecosystem. Your efforts today build your influence and stake in the world of tomorrow.
-                </p>
+                
             </CardContent>
         </Card>
     </div>
