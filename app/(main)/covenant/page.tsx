@@ -29,6 +29,13 @@ export default function CovenantPage() {
              <p className="text-muted-foreground text-right" dir="rtl">
               "بیایید یک هدف مشترک را دنبال کنیم. بسیاری از مردم در سراسر کیهان، در سراسر گیتی، در سراسر کره زمین، با مفهوم شهرهای مجازی و جهان مجازی آشنا نیستند. بیایید این مفهوم را به همه مردم جهان معرفی کنیم و به آنها بفهمانیم که واقعاً مجاز چگونه می‌تواند در خدمت زندگی حقیقی باشد. بیایید با همکاری، تعامل و همچنین فداکاری و ایثار مشترک، از طریق هم‌افزایی دانش و اندیشه و تجربه، جهان‌های موازی در خدمت حقیقت و رضایت بشر تا گستره کل گیتی و کائنات بسازیم."
             </p>
+            <Separator />
+            <div className="prose prose-sm max-w-none text-muted-foreground space-y-2">
+                <p>We must make the world understand that planet Earth has its limits—in energy, jobs, services, and wealth. We can overcome these limitations in one of two ways: either by creating virtual worlds to expand wealth, employment, and services, or by crossing the boundaries of Earth to access the resources of other celestial bodies and planets.</p>
+            </div>
+             <div className="prose prose-sm max-w-none text-muted-foreground space-y-2 text-right" dir="rtl">
+                <p>باید به مردم جهان فهماند که کره زمین کره‌ایست که دارای محدودیت انرژی، شغل، خدمات، ثروت و خیلی از مسائل دیگر است. و ما این محدودیت‌ها را در دو حالت می‌توانیم جبران کنیم: یکی اینکه یا باید بتوانیم شهرهای مجازی و جهان‌های مجازی درست کنیم که بتوانیم محدودیت ثروت و اشتغال و خدمات را در آنها بگسترانیم، یا اینکه باید بتوانیم از مرزهای زمین عبور کنیم و به اجرام و سیارات دیگر و منابع آنها دست پیدا کنیم.</p>
+            </div>
         </CardContent>
       </Card>
 
@@ -121,3 +128,5 @@ export default function CovenantPage() {
     </div>
   );
 }
+
+    
