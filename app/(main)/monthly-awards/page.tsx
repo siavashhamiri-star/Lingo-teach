@@ -2,7 +2,7 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { Award, Star, User, GraduationCap, Medal, Landmark, Users as UsersIcon } from 'lucide-react';
+import { Award, Star, User, GraduationCap, Medal, Landmark, Users as UsersIcon, ShieldAlert } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
@@ -146,7 +146,17 @@ export default function MonthlyAwardsPage() {
                 </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-                <blockquote className="border-l-4 border-accent pl-4 text-lg italic text-foreground">
+                <Alert variant="destructive" className="bg-destructive/10 border-destructive/20 text-destructive-foreground">
+                    <ShieldAlert className="h-4 w-4 text-destructive" />
+                    <AlertTitle>The Grand Challenge for Founding Members</AlertTitle>
+                    <AlertDescription>
+                         <ul className="list-disc pl-5 mt-2 space-y-2">
+                            <li>The **first person** to successfully refer **100 people** within the first month of launch will be awarded a **one-year seat** in the Hall of Fame.</li>
+                            <li>The **first person** to successfully refer **1,000 people** within the first six months of launch will be honored with a **five-year seat** on the "Emperor's Council" and will be recognized as a member of the chosen board.</li>
+                        </ul>
+                    </AlertDescription>
+                </Alert>
+                <blockquote className="border-l-4 border-accent pl-4 italic text-foreground">
                     "Rest assured that those who strive and sacrifice to introduce Afarinesh and the city of Tavana will be its founders, landowners, and most influential figures. They will be the ones who shape this city's identity and its decisions."
                 </blockquote>
                  <p className="text-muted-foreground">
