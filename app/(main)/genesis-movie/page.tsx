@@ -3,31 +3,43 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { Film, Loader2, Sparkles, Wand2 } from 'lucide-react';
+import { Film, Loader2, Sparkles, Wand2, Quote, Video } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { generateGenesisMovie, type GenesisMovieOutput } from '@/ai/flows/genesis-movie-generation';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Separator } from '@/components/ui/separator';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
 
 export default function GenesisMoviePage() {
-  const [movie, setMovie] = useState<GenesisMovieOutput | null>(null);
+  const [userQuote, setUserQuote] = useState('');
+  const [generatedMovie, setGeneratedMovie] = useState<GenesisMovieOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
   const handleGenerateMovie = async () => {
+    if (!userQuote.trim()) {
+      toast({
+        variant: 'destructive',
+        title: 'Quote is missing',
+        description: 'Please enter a sentence or idea to inspire your movie.',
+      });
+      return;
+    }
     setIsLoading(true);
-    setMovie(null);
+    setGeneratedMovie(null);
     toast({
       title: 'The Genesis Engine is Running...',
-      description: 'The AI is crafting a cinematic vision of our universe. This is a complex process and may take up to a minute. Please be patient.',
+      description: 'The AI is crafting a cinematic vision of your idea. This is a complex process and may take up to a minute. Please be patient.',
     });
     try {
-      const result = await generateGenesisMovie();
-      setMovie(result);
+      const result = await generateGenesisMovie({ userQuote });
+      setGeneratedMovie(result);
       toast({
-        title: 'The Genesis Movie is Ready!',
-        description: 'Witness the birth of Afarinesh.',
+        title: 'Your Personal Genesis Movie is Ready!',
+        description: 'Witness the birth of your vision within Afarinesh.',
       });
     } catch (error) {
       console.error('Error generating movie:', error);
@@ -45,59 +57,92 @@ export default function GenesisMoviePage() {
     <div>
       <PageHeader
         title="The Genesis Movie"
-        description="Generate a unique, AI-powered cinematic vision of the Afarinesh philosophy."
+        description="Co-create an AI-powered cinematic vision of the Afarinesh philosophy."
         icon={Film}
       />
-      <div className="flex justify-center">
-        <Card className="w-full max-w-4xl">
-          <CardHeader className="text-center">
-            <CardTitle className="text-2xl">The Cinematic Heart of Creation</CardTitle>
-            <CardDescription>
-              This is more than a video. It's a glimpse into our soul, generated in real-time by our creative AI.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            {isLoading && (
-              <div className="flex flex-col items-center justify-center h-full min-h-[400px] p-8 text-center">
-                <Loader2 className="w-12 h-12 animate-spin text-primary mb-4" />
-                <h2 className="text-xl font-semibold">Rendering the vision...</h2>
-                <p className="text-muted-foreground">This is an intensive creative process. Thank you for your patience.</p>
-              </div>
-            )}
-
-            {!isLoading && !movie && (
-              <div className="flex flex-col items-center justify-center h-full min-h-[400px] p-8 text-center space-y-6">
-                <Film className="w-12 h-12 text-muted-foreground" />
-                <div className="space-y-2">
-                    <h2 className="text-xl font-semibold">The Vision Awaits Your Command</h2>
-                    <p className="text-muted-foreground max-w-md mx-auto">Press the button below to command the AI to generate a short, cinematic film embodying the spirit of "Afarinesh".</p>
-                </div>
-                 <Button onClick={handleGenerateMovie} size="lg">
-                    <Wand2 className="mr-2 h-4 w-4" />
-                    Generate The Genesis Movie
-                </Button>
-              </div>
-            )}
-            
-            {movie && (
-                <div className="space-y-4">
-                    <video controls src={movie.videoDataUri} className="w-full rounded-lg border bg-muted" loop autoPlay>
-                        Your browser does not support the video tag.
-                    </video>
-                    <Alert>
-                        <Sparkles className="h-4 w-4" />
-                        <AlertTitle>A Unique Creation</AlertTitle>
-                        <AlertDescription>
-                            This video was generated by AI just for you. Each generation is unique. Feel free to generate it again to see a new vision.
-                        </AlertDescription>
-                    </Alert>
-                </div>
-            )}
-          </CardContent>
-          <CardFooter>
-            <p className="text-xs text-muted-foreground mx-auto">This feature uses Google's Veo model. Video generation is a complex task and may take up to a minute.</p>
-          </CardFooter>
+      
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <Card className="lg:col-span-2">
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                    <Video className="w-6 h-6 text-primary"/>
+                    The Creator's Vision (Sample)
+                </CardTitle>
+                <CardDescription>This is a sample film generated by the AI, representing the core spirit of "Afarinesh".</CardDescription>
+            </CardHeader>
+            <CardContent>
+                 <video src="/Afarinesh_Genesis_Sample.mp4" className="w-full rounded-lg border bg-muted" loop controls autoPlay muted>
+                    Your browser does not support the video tag.
+                </video>
+            </CardContent>
+            <CardFooter>
+                 <p className="text-xs text-muted-foreground">This video serves as an example of what the Genesis AI can create.</p>
+            </CardFooter>
         </Card>
+
+        <Card className="lg:col-span-2">
+            <CardHeader>
+                 <CardTitle className="flex items-center gap-2">
+                    <Sparkles className="w-6 h-6 text-accent"/>
+                    Your Personal Genesis
+                </CardTitle>
+                <CardDescription>
+                    Now, become a co-creator. Provide a meaningful sentence or idea, and the AI will weave it into a unique cinematic vision for you.
+                </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+                <div className="space-y-2">
+                    <Label htmlFor="user-quote">Your inspiring sentence or idea:</Label>
+                    <Textarea 
+                        id="user-quote"
+                        value={userQuote}
+                        onChange={(e) => setUserQuote(e.target.value)}
+                        placeholder="e.g., 'True learning is finding the music between the notes.' or 'یک رویا، آغازی برای خلق یک جهان است.'"
+                        rows={3}
+                        disabled={isLoading}
+                    />
+                </div>
+                 <Button onClick={handleGenerateMovie} size="lg" disabled={isLoading} className="w-full">
+                    <Wand2 className="mr-2 h-4 w-4" />
+                    {isLoading ? 'Creating Your Vision...' : 'Generate My Movie'}
+                </Button>
+            </CardContent>
+            <CardFooter>
+                 <p className="text-xs text-muted-foreground">This feature uses Google's Veo model. Video generation is a complex task and may take up to a minute.</p>
+            </CardFooter>
+        </Card>
+        
+        {(isLoading || generatedMovie) && (
+             <div className="lg:col-span-2">
+                 {isLoading && (
+                  <div className="flex flex-col items-center justify-center min-h-[400px] border-2 border-dashed rounded-lg p-8 text-center">
+                    <Loader2 className="w-12 h-12 animate-spin text-primary mb-4" />
+                    <h2 className="text-xl font-semibold">Rendering your vision...</h2>
+                    <p className="text-muted-foreground">This is an intensive creative process. Thank you for your patience.</p>
+                  </div>
+                )}
+                {generatedMovie && (
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Your Vision, Realized</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <video controls src={generatedMovie.videoDataUri} className="w-full rounded-lg border bg-muted" loop autoPlay>
+                                Your browser does not support the video tag.
+                            </video>
+                            <Alert className="mt-4">
+                                <Sparkles className="h-4 w-4" />
+                                <AlertTitle>A Unique Creation, Just For You</AlertTitle>
+                                <AlertDescription>
+                                    This film was generated by the AI based on your idea. Each creation is unique. Feel free to generate it again with a new idea.
+                                </AlertDescription>
+                            </Alert>
+                        </CardContent>
+                    </Card>
+                )}
+             </div>
+        )}
+
       </div>
     </div>
   );
