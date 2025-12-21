@@ -31,6 +31,10 @@ const philosophyGems = [
         persian: "تو من هستی، و من تو هستم. ما با هم، به یکدیگر ایمان داریم. ما برای یک هدف توانمندیم: برای آفرینش، برای توانمندی، برای یکدیگر."
     },
     {
+        english: "A new promise is worthless without fulfilling the previous one. If I cannot keep one promise, I will make no more, and I will not expect others to believe me.",
+        persian: "قول تازه بدون عمل به وعدهٔ قبلی بی‌ارزش است. اگر نتوانم به یک قول عمل کنم، دیگر قولی نخواهم داد و از دیگران هم توقع باور نخواهم داشت."
+    },
+    {
         english: "The foundation of this ecosystem is viral, word-of-mouth advertising by its ambassadors. The first pioneers who lit the torches will never be forgotten. The first are the bravest. The first did the heavy lifting of putting the train on its tracks. Try to be among the first. Join us before it's too late.",
         persian: "بنیان این اکوسیستم، تبلیغات ویروسی و دهان به دهان سفیران آن است. نقش اولین پیش‌قراولان که اولین مشعل‌ها را برای تابانی تمدن درخشان آن روشن کردند، هیچگاه فراموش نخواهد شد. اولین‌ها شجاع‌ترین‌ها هستند. اولین‌ها زحمت گذاشتن قطار بر روی ریل را کشیدند. سعی کنید جزو اولین‌ها باشید. تا دیر نشده به ما بپیوندید."
     },
@@ -127,5 +131,3 @@ export default function PhilosophyGemsPage() {
     </div>
   );
 }
-
-    
