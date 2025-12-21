@@ -153,9 +153,9 @@ export default function CommunityPage() {
             <CardContent>
                 <Alert variant="default" className="border-accent bg-accent/10 mb-4">
                   <Swords className="h-4 w-4 text-accent-foreground" />
-                  <AlertTitle className="text-accent-foreground">Synergy Bonus!</AlertTitle>
+                  <AlertTitle className="text-accent-foreground">The Synergy Bonus!</AlertTitle>
                   <AlertDescription className="text-accent-foreground/80">
-                    When you and your partner complete lessons together, you both earn bonus XP. Team up to climb the leaderboards faster!
+                    When you team up with a partner, your successes become intertwined. Completing lessons and challenges not only earns you XP but also grants a bonus to your partner, and vice-versa. Your joint effort accelerates your climb up the leaderboards.
                   </AlertDescription>
                 </Alert>
                 <Button onClick={handleFindPartner}>

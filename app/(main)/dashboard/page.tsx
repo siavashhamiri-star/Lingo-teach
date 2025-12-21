@@ -32,6 +32,7 @@ import { Badge } from '@/components/ui/badge';
 import { PageHeader } from '@/components/shared/page-header';
 import { LayoutDashboard } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const quickLinks = [
   {
@@ -175,10 +176,19 @@ export default function DashboardPage() {
                       <TableCell className="flex items-center gap-2">
                         {user.name}
                         {user.partner && (
-                           <Badge variant="outline" className="gap-1.5 border-accent text-accent-foreground">
-                             <Swords className="h-3 w-3" />
-                             Synergy
-                           </Badge>
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                 <Badge variant="outline" className="gap-1.5 border-accent text-accent-foreground">
+                                   <Swords className="h-3 w-3" />
+                                   Synergy
+                                 </Badge>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>You have a Synergy Bonus with {user.partner}!</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
                         )}
                         </TableCell>
                       <TableCell>
