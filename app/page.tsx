@@ -111,10 +111,7 @@ export default function LandingPage() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                  <div className="text-center max-w-3xl mx-auto">
                     <div className="flex items-center justify-center gap-3">
-                        <div className='flex flex-col items-center'>
-                           <AfarineshLogo className="w-10 h-10 text-accent" />
-                           <p className='text-xs text-muted-foreground mt-1'>FBNewMeta</p>
-                        </div>
+                        <AfarineshLogo className="w-10 h-10 text-accent" />
                         <h2 className="text-3xl sm:text-4xl font-bold font-headline">
                             More Than an App, A New World
                         </h2>
@@ -128,7 +125,7 @@ export default function LandingPage() {
                         <CardHeader className="text-center">
                             <div className='flex flex-col items-center mb-4'>
                                 <TavanaLogo className="w-12 h-12 mx-auto text-primary" />
-                                <p className='text-xs text-muted-foreground mt-1'>FBNewMeta</p>
+                                <p className='text-xs text-muted-foreground mt-1'>Powered by the FBNewMeta Initiative</p>
                             </div>
                             <CardTitle className="text-2xl">Welcome to "Tavana" (The Empowered City)</CardTitle>
                             <CardDescription>The heart of the Afarinesh ecosystem.</CardDescription>
