@@ -89,6 +89,10 @@ const philosophyGems = [
     {
         english: "Afarinesh is the most understandable and accessible model for a virtual city. This is not just our strength; it's our mission. We are creating a global army of thinkers to build the virtual worlds of the future.",
         persian: "آفرینش، قابل فهم‌ترین و در دسترس‌ترین مدل برای یک شهر مجازی است. این تنها برگ برنده ما نیست؛ این رسالت ماست. ما در حال ایجاد ارتشی جهانی از اندیشمندان برای ساختن دنیاهای مجازی آینده هستیم."
+    },
+    {
+        english: "Words have meaning in appearance, but in action, they have a soul. Instead of focusing on the apparent meaning, let us attend to the soul of words and their realization in action, refraining from baseless interpretation.",
+        persian: "کلمات در ظاهر معنی دارند، اما در عمل، روح. به جای تمرکز بر معنا، به روح کلمات و تحقق آن‌ها در عمل بنگریم و از تفسیر خودداری کنیم."
     }
 ];
 
@@ -123,3 +127,5 @@ export default function PhilosophyGemsPage() {
     </div>
   );
 }
+
+    
