@@ -11,6 +11,7 @@ import { generateGenesisMovie, type GenesisMovieOutput } from '@/ai/flows/genesi
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { Separator } from '@/components/ui/separator';
 
 export default function GenesisMoviePage() {
   const [userQuote, setUserQuote] = useState('');
@@ -186,6 +187,12 @@ export default function GenesisMoviePage() {
                                                 Share on Facebook
                                             </Button>
                                         </div>
+                                    </div>
+                                    <Separator className="my-4" />
+                                    <div className="text-center text-sm text-muted-foreground px-4">
+                                        <p className="italic">
+                                            Afarinesh is a newborn world, and you are its first ambassadors. Your creations and your voice will introduce our philosophy to the world. In the near future, your sacrifice and love will be honored and shared with all.
+                                        </p>
                                     </div>
                                 </CardContent>
                             </Card>
