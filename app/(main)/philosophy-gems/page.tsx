@@ -69,6 +69,10 @@ const philosophyGems = [
     {
         english: "Whoever believes in us sooner and strives to promote us will have a better material future in the city of Tavana. The system of rewards, leagues, and lotteries promises a material and spiritual future and is the engine of your efforts.",
         persian: "هر کس که زودتر ما را باور کند و برای معرفی ما تلاش کند، از آینده مادی بهتری در شهر توانا برخوردار خواهد گشت. سیستم جوایز متعدد، تمام لیگ‌ها و قرعه‌کشی‌ها، نوید آینده مادی و معنوی و موتور محرک تلاش شماست."
+    },
+    {
+        english: "To be a successful leader in this ecosystem, explore all sections, be active in all of them, and focus on the parts that can bring you income and prosperity.",
+        persian: "برای تبدیل شدن به یک رهبر موفق در این اکوسیستم، تمام بخش‌ها را مطالعه کنید، در همگی فعال باشید و به قسمت‌هایی که می‌تواند برای شما درآمدزایی و سعادت به همراه داشته باشد، دقت کنید."
     }
 ];
 
