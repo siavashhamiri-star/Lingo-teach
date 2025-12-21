@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { BookAudio, Loader2, Sparkles } from 'lucide-react';
+import { BookAudio, Loader2, Sparkles, MicVocal } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -80,9 +80,12 @@ export default function CreationStoryPage() {
             
             {story && (
                 <Tabs defaultValue="english" className="w-full">
-                  <TabsList className="grid w-full grid-cols-2">
+                  <TabsList className="grid w-full grid-cols-3">
                     <TabsTrigger value="english">English</TabsTrigger>
                     <TabsTrigger value="persian">فارسی (Persian)</TabsTrigger>
+                    <TabsTrigger value="instrumental" className="flex items-center gap-2">
+                        <MicVocal className="w-4 h-4"/> Your Voice
+                    </TabsTrigger>
                   </TabsList>
                   <TabsContent value="english">
                     <div className="space-y-4 pt-4">
@@ -98,6 +101,29 @@ export default function CreationStoryPage() {
                         <ScrollArea className="h-80 p-4 border rounded-md bg-muted/50">
                             <p className="text-muted-foreground whitespace-pre-wrap leading-relaxed">{story.persianStory}</p>
                         </ScrollArea>
+                    </div>
+                  </TabsContent>
+                  <TabsContent value="instrumental">
+                     <div className="space-y-4 pt-4">
+                        <video src="/Afarinesh_Instrumental.mp4" className="w-full rounded-lg border bg-muted" controls loop>
+                            Your browser does not support the video tag.
+                        </video>
+                        <Tabs defaultValue="sub-english" className="w-full">
+                            <TabsList className="grid w-full grid-cols-2">
+                                <TabsTrigger value="sub-english">English Subtitles</TabsTrigger>
+                                <TabsTrigger value="sub-persian">زیرنویس فارسی</TabsTrigger>
+                            </TabsList>
+                            <TabsContent value="sub-english">
+                                <ScrollArea className="h-60 p-4 border rounded-md bg-muted/50">
+                                    <p className="text-muted-foreground whitespace-pre-wrap leading-relaxed">{story.englishStory}</p>
+                                </ScrollArea>
+                            </TabsContent>
+                            <TabsContent value="sub-persian">
+                                <ScrollArea className="h-60 p-4 border rounded-md bg-muted/50 text-right" dir="rtl">
+                                    <p className="text-muted-foreground whitespace-pre-wrap leading-relaxed">{story.persianStory}</p>
+                                </ScrollArea>
+                            </TabsContent>
+                        </Tabs>
                     </div>
                   </TabsContent>
                 </Tabs>
