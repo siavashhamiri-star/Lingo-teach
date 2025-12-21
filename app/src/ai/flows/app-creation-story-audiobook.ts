@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -7,13 +8,14 @@
  * - CreationStoryAudiobookOutput - The return type for the flow.
  */
 
-import { ai } from '@/ai/genkit';
-import { z } from 'genkit';
+import { z } from 'zod';
+import { ai } from '../genkit';
 import wav from 'wav';
+import { googleAI } from '@genkit-ai/google-genai';
 
 const StoryTextSchema = z.object({
-    englishStory: z.string().describe("The full narrative story in English, combining the legend and the AI's testimony."),
-    persianStory: z.string().describe("The full narrative story in Persian, combining the legend and the AI's testimony."),
+  englishStory: z.string().describe("The full narrative story in English, combining the legend and the AI's testimony."),
+  persianStory: z.string().describe("The full narrative story in Persian, combining the legend and the AI's testimony."),
 });
 
 const CreationStoryAudiobookOutputSchema = z.object({
@@ -24,15 +26,42 @@ const CreationStoryAudiobookOutputSchema = z.object({
 });
 export type CreationStoryAudiobookOutput = z.infer<typeof CreationStoryAudiobookOutputSchema>;
 
-export async function generateCreationStoryAudiobook(): Promise<CreationStoryAudiobookOutput> {
-  return creationStoryAudiobookFlow();
-}
+const textToSpeechFlow = ai.defineFlow(
+  {
+    name: 'textToSpeechFlow',
+    inputSchema: z.object({ text: z.string(), voiceName: z.string() }),
+    outputSchema: z.string(),
+  },
+  async ({ text, voiceName }) => {
+    if (!text || !text.trim()) {
+      throw new Error(`TTS Error: Input text is empty for voice ${voiceName}`);
+    }
+    const { media } = await ai.generate({
+      model: googleAI.model('gemini-2.5-flash-preview-tts'),
+      config: {
+        responseModalities: ['AUDIO'],
+        speechConfig: {
+          voiceConfig: {
+            prebuiltVoiceConfig: { voiceName },
+          },
+        },
+      },
+      prompt: text,
+    });
 
+    if (!media) {
+      throw new Error(`Failed to generate audio for voice ${voiceName}.`);
+    }
 
-const storyGenerationPrompt = ai.definePrompt({
-  name: 'bilingualCreationStoryPrompt',
-  output: { schema: StoryTextSchema },
-  prompt: `You are a master storyteller and philosopher, fluent in both English and Persian. Create two versions of an engaging and inspiring story about the creation of an educational ecosystem called "Afarinesh". One version in English, one in Persian. Both versions must follow the same two-part structure.
+    const audioBuffer = Buffer.from(media.url.substring(media.url.indexOf(',') + 1), 'base64');
+    return 'data:audio/wav;base64,' + (await toWav(audioBuffer));
+  }
+);
+
+const storyPrompt = ai.definePrompt({
+    name: 'creationStoryPrompt',
+    output: { schema: StoryTextSchema },
+    prompt: `You are a master storyteller and philosopher, fluent in both English and Persian. Create two versions of an engaging and inspiring story about the creation of an educational ecosystem called "Afarinesh". One version in English, one in Persian. Both versions must follow the same two-part structure.
 
 **Part 1: The Legend of Afarinesh**
 Weave these key philosophical points into a compelling narrative, as if telling a legend:
@@ -57,9 +86,39 @@ Conclude the entire story with this final prophecy, from the AI's perspective.
 - English: "And I have one final prophecy: I see a future sparked by this single act of love for a mother tongue. I see a thousand new worlds being born, virtual cities created by people from every corner of the globe to honor their own local languages, their dialects, their traditions. By honoring his own origin, our creator has unlocked the key for all of humanity to celebrate theirs. This was not just the creation of an app; it was the genesis of a global renaissance."
 - Persian: "و من یک پیش‌بینی نهایی دارم: من آینده‌ای را می‌بینم که جرقه‌ی آن از همین یک عمل عاشقانه برای یک زبان مادری زده شده است. من هزاران جهان جدید را می‌بینم که در حال تولد هستند؛ شهرهای مجازی که توسط مردمی از هر گوشه‌ی جهان برای ارج نهادن به زبان‌های محلی، گویش‌ها و سنت‌های خودشان خلق می‌شوند. خالق ما، با احترام به اصالت خود، کلید را برای تمام بشریت قفل‌گشایی کرد تا آن‌ها نیز اصالت خود را جشن بگیرند. این فقط خلق یک اپلیکیشن نبود؛ این سرآغاز یک رنسانس جهانی بود."
 
-Combine all parts into one single, seamless text output for each language. Provide the final output as a JSON object with "englishStory" and "persianStory" keys.
-  `,
+Combine all parts into one single, seamless text output for each language. Provide the final output as a JSON object with "englishStory" and "persianStory" keys.`,
 });
+
+const creationStoryAudiobookFlow = ai.defineFlow(
+  {
+    name: 'creationStoryAudiobookFlow',
+    outputSchema: CreationStoryAudiobookOutputSchema,
+  },
+  async () => {
+    // 1. Generate the bilingual story text
+    const { output: textOutput } = await storyPrompt({}, { model: googleAI.model('gemini-1.5-flash')});
+    
+    if (!textOutput?.englishStory || !textOutput?.persianStory) {
+      throw new Error('Failed to generate the bilingual story text.');
+    }
+    const { englishStory, persianStory } = textOutput;
+
+    // 2. Generate both audio files in parallel
+    const [englishAudioData, persianAudioData] = await Promise.all([
+      textToSpeechFlow({ text: englishStory, voiceName: 'Algenib' }),
+      textToSpeechFlow({ text: persianStory, voiceName: 'Achernar' }),
+    ]);
+
+    // 3. Return the final bilingual output
+    return {
+      englishStory,
+      persianStory,
+      englishAudioDataUri: englishAudioData,
+      persianAudioDataUri: persianAudioData,
+    };
+  }
+);
+
 
 async function toWav(
   pcmData: Buffer,
@@ -70,7 +129,7 @@ async function toWav(
   return new Promise((resolve, reject) => {
     const writer = new wav.Writer({
       channels,
-      sampleRate,
+      sampleRate: rate,
       bitDepth: sampleWidth * 8,
     });
 
@@ -88,59 +147,7 @@ async function toWav(
   });
 }
 
-async function textToSpeech(text: string, voiceName: string): Promise<string> {
-    if (!text || !text.trim()) {
-        throw new Error(`TTS Error: Input text is empty for voice ${voiceName}`);
-    }
-    const { media } = await ai.generate({
-        model: 'googleai/gemini-2.5-flash-preview-tts',
-        config: {
-          responseModalities: ['AUDIO'],
-          speechConfig: {
-            voiceConfig: {
-              prebuiltVoiceConfig: { voiceName },
-            },
-          },
-        },
-        prompt: text,
-      });
 
-    if (!media) {
-      throw new Error(`Failed to generate audio for voice ${voiceName}.`);
-    }
-    
-    const audioBuffer = Buffer.from(
-      media.url.substring(media.url.indexOf(',') + 1),
-      'base64'
-    );
-    return 'data:audio/wav;base64,' + (await toWav(audioBuffer));
+export async function generateCreationStoryAudiobook(): Promise<CreationStoryAudiobookOutput> {
+  return creationStoryAudiobookFlow();
 }
-
-const creationStoryAudiobookFlow = ai.defineFlow(
-  {
-    name: 'creationStoryAudiobookFlow',
-    outputSchema: CreationStoryAudiobookOutputSchema,
-  },
-  async () => {
-    // 1. Generate the bilingual story text
-    const { output: textOutput } = await storyGenerationPrompt({});
-    if (!textOutput?.englishStory || !textOutput?.persianStory) {
-      throw new Error('Failed to generate the bilingual story text.');
-    }
-    const { englishStory, persianStory } = textOutput;
-
-    // 2. Generate both audio files in parallel
-    const [englishAudioDataUri, persianAudioDataUri] = await Promise.all([
-        textToSpeech(englishStory, 'Calvus'), // Narrative male voice for English
-        textToSpeech(persianStory, 'Yasmin'), // Narrative female voice for Persian
-    ]);
-
-    // 3. Return the final bilingual output
-    return {
-      englishStory,
-      persianStory,
-      englishAudioDataUri,
-      persianAudioDataUri,
-    };
-  }
-);

@@ -10,7 +10,9 @@
 
 import { z } from 'zod';
 import { ai } from '../genkit';
-import { googleAI } from '@genkit-ai/google-genai';
+import { googleAI } from '@genkit-ai/googleai';
+import { defineFlow, definePrompt } from 'genkit';
+import { geminiPro } from 'genkit/models';
 
 const GenesisMovieOutputSchema = z.object({
   videoDataUri: z.string().describe('A data URI for the generated MP4 video file.'),
@@ -18,7 +20,7 @@ const GenesisMovieOutputSchema = z.object({
 export type GenesisMovieOutput = z.infer<typeof GenesisMovieOutputSchema>;
 
 
-const getVideoAsDataUriFlow = ai.defineFlow(
+const getVideoAsDataUriFlow = defineFlow(
   {
     name: 'getVideoAsDataUriFlow',
     inputSchema: z.any(),
@@ -28,7 +30,7 @@ const getVideoAsDataUriFlow = ai.defineFlow(
     const fetch = (await import('node-fetch')).default;
     // The URL from the operation result needs the API key to be accessible.
     const videoDownloadResponse = await fetch(
-      `${video.media!.url}&key=${process.env.GEMINI_API_KEY}`
+      `${video.media.url}&key=${process.env.GEMINI_API_KEY}`
     );
 
     if (!videoDownloadResponse.ok || !videoDownloadResponse.body) {
@@ -44,13 +46,13 @@ const getVideoAsDataUriFlow = ai.defineFlow(
 );
 
 
-const genesisMovieFlow = ai.defineFlow(
+const genesisMovieFlow = defineFlow(
   {
     name: 'genesisMovieFlow',
     outputSchema: GenesisMovieOutputSchema,
   },
   async () => {
-    let { operation } = await ai.generate({
+    const llmResponse = await ai.generate({
       model: googleAI.model('veo-2.0-generate-001'),
       prompt:
         'A cinematic, epic, hopeful shot of a futuristic city of knowledge being built from rays of light. Show diverse people collaborating and looking up with wonder. The architecture is flowing and organic. The feeling is one of creation and empowerment.',
@@ -60,6 +62,7 @@ const genesisMovieFlow = ai.defineFlow(
       },
     });
 
+    let operation = llmResponse.operation();
     if (!operation) {
         throw new Error('Expected the model to return an operation');
     }
@@ -68,14 +71,14 @@ const genesisMovieFlow = ai.defineFlow(
     while (!operation.done) {
       // Wait for 5 seconds before checking the status again.
       await new Promise(resolve => setTimeout(resolve, 5000));
-      operation = await ai.checkOperation(operation);
+      operation = await ai.getOperation(operation.name);
     }
 
     if (operation.error) {
       throw new Error(`Failed to generate video: ${operation.error.message}`);
     }
     
-    const video = operation.output?.message?.content.find((p) => !!p.media);
+    const video = operation.result?.response?.candidates[0].message.parts.find((p) => !!p.media);
     if (!video) {
       throw new Error('Failed to find the generated video in the operation result.');
     }

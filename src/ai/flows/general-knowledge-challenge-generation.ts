@@ -11,7 +11,9 @@
 
 import { z } from 'zod';
 import { ai } from '../genkit';
-import { googleAI } from '@genkit-ai/google-genai';
+import { googleAI } from '@genkit-ai/googleai';
+import { defineFlow, definePrompt } from 'genkit';
+import { geminiPro } from 'genkit/models';
 
 const GeneralKnowledgeChallengeInputSchema = z.object({
   difficulty: z
@@ -30,27 +32,35 @@ const GeneralKnowledgeChallengeOutputSchema = z.object({
 });
 export type GeneralKnowledgeChallengeOutput = z.infer<typeof GeneralKnowledgeChallengeOutputSchema>;
 
-const generalKnowledgeChallengePrompt = ai.definePrompt({
+const generalKnowledgeChallengePrompt = definePrompt({
     name: 'generalKnowledgeChallengePrompt',
-    input: { schema: GeneralKnowledgeChallengeInputSchema },
-    output: { schema: GeneralKnowledgeChallengeOutputSchema },
+    inputSchema: GeneralKnowledgeChallengeInputSchema,
+}, async(input) => {
+  return {
     prompt: `You are a quiz master. Generate one engaging general knowledge question (in any field like science, history, arts, etc.) appropriate for the specified difficulty level, along with its answer.
 
-Difficulty Level (1-10): {{{difficulty}}}
+Difficulty Level (1-10): ${input.difficulty}
 
 The question should be in English.
-Output should be a JSON object with 'question' and 'answer'.`,
+Output should be a JSON object with 'question' and 'answer'.`
+  }
 });
 
-const generalKnowledgeChallengeFlow = ai.defineFlow(
+const generalKnowledgeChallengeFlow = defineFlow(
   {
     name: 'generalKnowledgeChallengeFlow',
     inputSchema: GeneralKnowledgeChallengeInputSchema,
     outputSchema: GeneralKnowledgeChallengeOutputSchema,
   },
   async (input) => {
-    const { output } = await generalKnowledgeChallengePrompt(input, { model: googleAI.model('gemini-1.5-flash')});
-    return output!;
+    const llmResponse = await ai.generate({
+      prompt: await generalKnowledgeChallengePrompt(input),
+      model: geminiPro,
+      output: {
+        schema: GeneralKnowledgeChallengeOutputSchema
+      }
+    });
+    return llmResponse.output()!;
   }
 );
 

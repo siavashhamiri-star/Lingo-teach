@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -9,7 +10,8 @@
  */
 
 import { ai } from '@/ai/genkit';
-import { z } from 'genkit';
+import { z } from 'zod';
+import { googleAI } from '@genkit-ai/google-genai';
 
 const KaraokeTrackInputSchema = z.object({
   songTitle: z.string().describe('The title of the song.'),
@@ -26,92 +28,54 @@ const KaraokeTrackOutputSchema = z.object({
 });
 export type KaraokeTrackOutput = z.infer<typeof KaraokeTrackOutputSchema>;
 
-export async function generateKaraokeTrack(
-  input: KaraokeTrackInput
-): Promise<KaraokeTrackOutput> {
-  return karaokeTrackFlow(input);
-}
-
-// A placeholder tool to simulate finding lyrics. In a real app, this would use an external API.
-const getLyricsTool = ai.defineTool(
-  {
-    name: 'getLyrics',
-    description: 'Gets the lyrics for a given song title and artist.',
-    inputSchema: z.object({
-      songTitle: z.string(),
-      artist: z.string(),
-    }),
-    outputSchema: z.string(),
-  },
-  async ({ songTitle, artist }) => {
-    // This is a placeholder. A real implementation would call a lyrics API.
-    // To make the demo work, we'll return a known song's lyrics.
-    if (songTitle.toLowerCase().includes('bohemian rhapsody') && artist.toLowerCase().includes('queen')) {
-        return `Is this the real life? Is this just fantasy?
-Caught in a landslide, no escape from reality
-Open your eyes, look up to the skies and see
-I'm just a poor boy, I need no sympathy
-Because I'm easy come, easy go, little high, little low
-Any way the wind blows doesn't really matter to me, to me`;
-    }
-    // You can add more placeholder songs here for testing.
-    throw new Error(`Lyrics for "${songTitle}" by ${artist} not found. Please try another song.`);
-  }
-);
-
-
-const translationPrompt = ai.definePrompt({
-  name: 'karaokeTranslationPrompt',
-  input: {
-    schema: z.object({
-      lyrics: z.string(),
-      targetLanguage: z.string(),
-    }),
-  },
-  output: {
-    schema: z.object({
-      translatedLyrics: z.string(),
-    }),
-  },
-  prompt: `You are a professional translator specializing in song lyrics. Translate the following lyrics into {{targetLanguage}}. Maintain the poetic and emotional tone of the original lyrics as much as possible.
-
-Original Lyrics:
-{{{lyrics}}}
-
-Translated Lyrics:`,
-});
-
-
 const karaokeTrackFlow = ai.defineFlow(
   {
     name: 'karaokeTrackFlow',
     inputSchema: KaraokeTrackInputSchema,
     outputSchema: KaraokeTrackOutputSchema,
-    tools: [getLyricsTool],
   },
   async (input) => {
-    // Step 1: Get the lyrics using the tool.
-    const lyrics = await getLyricsTool(input);
+    const model = googleAI.model('gemini-1.5-flash');
+    // Step 1: Get the lyrics.
+    const { text: lyricsText } = await ai.generate({
+        model,
+        prompt: `You are a lyrics finder. Find the lyrics for the song "${input.songTitle}" by ${input.artist}.
+      If you can't find them, say you couldn't. For demonstration, if the song is "Bohemian Rhapsody" by "Queen", return the first verse.
+      Return only the lyrics, nothing else.
+      `,
+    });
 
-    if (!lyrics) {
+    if (!lyricsText) {
       throw new Error('Could not retrieve lyrics for the song.');
     }
     
     // Step 2: Translate the lyrics using the prompt.
-    const translationResult = await translationPrompt({
-        lyrics: lyrics,
-        targetLanguage: input.targetLanguage === 'fa' ? 'Persian' : 'English',
+    const { text: translationText } = await ai.generate({
+        model,
+        prompt: `You are a professional translator specializing in song lyrics. Translate the following lyrics into ${input.targetLanguage === 'fa' ? 'Persian' : 'English'}. Maintain the poetic and emotional tone of the original lyrics as much as possible.
+
+Original Lyrics:
+${lyricsText}
+
+Translated Lyrics:`,
     });
 
-    if(!translationResult.output) {
-        throw new Error('Could not translate lyrics.');
+    if (!translationText) {
+      throw new Error('Could not translate lyrics.');
     }
 
     return {
       songTitle: input.songTitle,
       artist: input.artist,
-      originalLyrics: lyrics,
-      translatedLyrics: translationResult.output.translatedLyrics,
+      originalLyrics: lyricsText,
+      translatedLyrics: translationText,
     };
   }
 );
+
+
+export async function generateKaraokeTrack(
+  input: KaraokeTrackInput
+): Promise<KaraokeTrackOutput> {
+  return karaokeTrackFlow(input);
+}

@@ -11,9 +11,7 @@
 import { z } from 'zod';
 import { ai } from '../genkit';
 import wav from 'wav';
-import { googleAI } from '@genkit-ai/googleai';
-import { defineFlow, definePrompt } from 'genkit';
-import { geminiPro } from 'genkit/models';
+import { googleAI } from '@genkit-ai/google-genai';
 
 const IdentifyObjectInputSchema = z.object({
   imageDataUri: z
@@ -32,30 +30,35 @@ const IdentifyObjectOutputSchema = z.object({
 });
 export type IdentifyObjectOutput = z.infer<typeof IdentifyObjectOutputSchema>;
 
-const textToSpeechFlow = defineFlow(
+const textToSpeechFlow = ai.defineFlow(
   {
     name: 'objectTextToSpeechFlow',
     inputSchema: z.object({ text: z.string(), voiceName: z.string() }),
     outputSchema: z.string(),
   },
   async ({ text, voiceName }) => {
-    const ttsResponse = await ai.generate({
-      model: googleAI.textToSpeech(),
-      prompt: text,
+    const { media } = await ai.generate({
+      model: googleAI.model('gemini-2.5-flash-preview-tts'),
       config: {
-        voice: voiceName,
+        responseModalities: ['AUDIO'],
+        speechConfig: {
+          voiceConfig: {
+            prebuiltVoiceConfig: { voiceName },
+          },
+        },
       },
+      prompt: text,
     });
-
-    const audio = ttsResponse.output();
-    if (!audio) {
+    
+    if (!media) {
       throw new Error('no media returned');
     }
-    return 'data:audio/wav;base64,' + (await toWav(audio));
+    const audioBuffer = Buffer.from(media.url.substring(media.url.indexOf(',') + 1), 'base64');
+    return 'data:audio/wav;base64,' + (await toWav(audioBuffer));
   }
 );
 
-const identificationPrompt = definePrompt({
+const identificationPrompt = ai.definePrompt({
     name: 'identificationPrompt',
     output: {
         schema: z.object({
@@ -63,33 +66,24 @@ const identificationPrompt = definePrompt({
             persianName: z.string(),
         })
     },
-}, async(input) => {
-  return {
     prompt: `You are an expert at identifying objects in images. Analyze the image provided and identify the main object. Provide the name of the object in both English and Persian.
         Output only the JSON object with the identified names.`
-  }
 });
 
-const identifyObjectFlow = defineFlow(
+const identifyObjectFlow = ai.defineFlow(
   {
     name: 'identifyObjectFlow',
     inputSchema: IdentifyObjectInputSchema,
     outputSchema: IdentifyObjectOutputSchema,
   },
   async (input) => {
-    const llmResponse = await ai.generate({
-      prompt: await identificationPrompt(null),
-      model: geminiPro,
-      media: [{url: input.imageDataUri}],
-      output: {
-        schema: z.object({
-          englishName: z.string(),
-          persianName: z.string(),
-        }),
-      }
+    const { output } = await identificationPrompt({}, {
+        model: googleAI.model('gemini-1.5-flash'),
+        prompt: [{
+            media: { url: input.imageDataUri }
+        }]
     });
 
-    const output = llmResponse.output();
     if (!output) {
       throw new Error('Failed to identify object in the image.');
     }

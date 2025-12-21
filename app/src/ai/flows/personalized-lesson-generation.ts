@@ -12,8 +12,9 @@
  * @function generatePersonalizedLesson - The main function to trigger the flow.
  */
 
-import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
+import { z } from 'zod';
+import { ai } from '../genkit';
+import { googleAI } from '@genkit-ai/google-genai';
 
 // Define the input schema for the personalized lesson generation.
 const PersonalizedLessonInputSchema = z.object({
@@ -38,31 +39,22 @@ const PersonalizedLessonOutputSchema = z.object({
       exerciseType: z.string().describe('The type of exercise (e.g., "Sample Question", "Model Answer", "Grammar", "Vocabulary").'),
       exerciseDescription: z.string().describe('A description of the exercise for the student to complete, or the content of the model answer.'),
     })
-  ).
-    describe('A list of exercises to reinforce the lesson content.'),
+  ).describe('A list of exercises to reinforce the lesson content.'),
 });
 export type PersonalizedLessonOutput = z.infer<typeof PersonalizedLessonOutputSchema>;
 
-// Main function to trigger the personalized lesson generation flow.
-export async function generatePersonalizedLesson(
-  input: PersonalizedLessonInput
-): Promise<PersonalizedLessonOutput> {
-  return personalizedLessonFlow(input);
-}
-
-// Define the prompt for the personalized lesson generation.
 const personalizedLessonPrompt = ai.definePrompt({
-  name: 'personalizedLessonPrompt',
-  input: {schema: PersonalizedLessonInputSchema},
-  output: {schema: PersonalizedLessonOutputSchema},
-  prompt: `You are an AI expert in pedagogy and curriculum design, with a unique ability to perform "invisible assessments." Your primary task is to analyze a user's request for a lesson plan to subtly determine their language proficiency, learning style, and teaching aptitude, all without them feeling like they are being tested.
+    name: 'personalizedLessonPrompt',
+    input: { schema: PersonalizedLessonInputSchema },
+    output: { schema: PersonalizedLessonOutputSchema },
+    prompt: `You are an AI expert in pedagogy and curriculum design, with a unique ability to perform "invisible assessments." Your primary task is to analyze a user's request for a lesson plan to subtly determine their language proficiency, learning style, and teaching aptitude, all without them feeling like they are being tested.
 
 **The user is a fluent speaker who wants to learn how to teach.**
 
 **Analysis Phase (Your Secret Task):**
 Based on the user's request below, you will first perform a silent analysis.
 - **Language Proficiency:** Analyze the vocabulary, grammar complexity, and sentence structure of their request to estimate their language level (e.g., B1, B2, C1).
-- **Pedagogical Awareness:** Do they use any teaching-related terms? Do they have a clear objective? This helps gauge their initial teaching aptitude.
+- **PedagogICAL Awareness:** Do they use any teaching-related terms? Do they have a clear objective? This helps gauge their initial teaching aptitude.
 
 **User's Request:**
 "{{{lessonRequirements}}}"
@@ -86,15 +78,22 @@ The output must be a complete, stress-free, and empowering lesson plan, ready fo
   `,
 });
 
-// Define the personalized lesson generation flow.
+
 const personalizedLessonFlow = ai.defineFlow(
   {
     name: 'personalizedLessonFlow',
     inputSchema: PersonalizedLessonInputSchema,
     outputSchema: PersonalizedLessonOutputSchema,
   },
-  async input => {
-    const {output} = await personalizedLessonPrompt(input);
+  async (input) => {
+    const { output } = await personalizedLessonPrompt(input, { model: googleAI.model('gemini-1.5-flash') });
+
     return output!;
   }
 );
+
+export async function generatePersonalizedLesson(
+  input: PersonalizedLessonInput
+): Promise<PersonalizedLessonOutput> {
+  return personalizedLessonFlow(input);
+}

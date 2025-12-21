@@ -12,9 +12,7 @@
 import { z } from 'zod';
 import { ai } from '../genkit';
 import wav from 'wav';
-import { googleAI } from '@genkit-ai/googleai';
-import { defineFlow, definePrompt } from 'genkit';
-import { geminiPro } from 'genkit/models';
+import { googleAI } from '@genkit-ai/google-genai';
 
 
 const RoleplaySceneInputSchema = z.object({
@@ -37,31 +35,28 @@ const RoleplaySceneOutputSchema = z.object({
 export type RoleplaySceneOutput = z.infer<typeof RoleplaySceneOutputSchema>;
 
 
-const scriptPrompt = definePrompt({
+const scriptPrompt = ai.definePrompt({
     name: 'scriptPrompt',
-    inputSchema: RoleplaySceneInputSchema,
+    input: { schema: RoleplaySceneInputSchema },
     output: {
         schema: z.object({
             script: z.array(ScriptLineSchema)
         })
     },
-}, async (input) => {
-  return {
-    prompt: `You are a creative scriptwriter. Generate a short, simple, and realistic dialogue script for a language learner based on the following scenario: ${input.scenario}.
+    prompt: `You are a creative scriptwriter. Generate a short, simple, and realistic dialogue script for a language learner based on the following scenario: {{{scenario}}}.
 
-The conversation should be primarily in ${input.targetLanguage}.
+The conversation should be primarily in {{{targetLanguage}}}.
 The script must have exactly two speakers: "User" (the language learner) and one other character (e.g., "Barista", "Clerk", "Friend").
 The script should be between 4 and 6 lines long in total.
 Keep the language natural and easy to understand for a learner.
 
-Scenario: "${input.scenario}"
+Scenario: "{{{scenario}}}"
 
-Generate the script now.`
-  }
+Generate the script now.`,
 });
 
 
-const rolePlayingFlow = defineFlow(
+const rolePlayingFlow = ai.defineFlow(
   {
     name: 'rolePlayingFlow',
     inputSchema: RoleplaySceneInputSchema,
@@ -69,17 +64,8 @@ const rolePlayingFlow = defineFlow(
   },
   async (input) => {
     // 1. Generate the script
-    const llmResponse = await ai.generate({
-      prompt: await scriptPrompt(input),
-      model: geminiPro,
-      output: {
-        schema: z.object({
-            script: z.array(ScriptLineSchema)
-        })
-      }
-    });
+    const { output: scriptOutput } = await scriptPrompt(input, { model: googleAI.model('gemini-1.5-flash') });
     
-    const scriptOutput = llmResponse.output();
     if (!scriptOutput?.script || scriptOutput.script.length === 0) {
       throw new Error('Failed to generate a script for the scenario.');
     }
@@ -90,29 +76,36 @@ const rolePlayingFlow = defineFlow(
     const otherSpeakerName = script.find((line) => line.speaker !== 'User')?.speaker || 'Speaker2';
 
     // 3. Generate the multi-speaker audio
-    const ttsResponse = await ai.generate({
-      model: googleAI.textToSpeech(),
-      prompt: ttsPrompt,
+    const { media } = await ai.generate({
+      model: googleAI.model('gemini-2.5-flash-preview-tts'),
       config: {
-        multiSpeaker: true,
-        voices: {
-          User: {
-            voice: input.targetLanguage === 'Persian' ? 'Achernar' : 'Algenib'
-          },
-          [otherSpeakerName]: {
-            voice: input.targetLanguage === 'Persian' ? 'Cursa' : 'Caelum'
-          }
+        responseModalities: ['AUDIO'],
+        speechConfig: {
+            multiSpeakerVoiceConfig: {
+                speakerVoiceConfigs: [
+                    {
+                        speaker: 'User',
+                        voiceConfig: { prebuiltVoiceConfig: { voiceName: input.targetLanguage === 'Persian' ? 'Achernar' : 'Algenib' } }
+                    },
+                    {
+                        speaker: otherSpeakerName,
+                        voiceConfig: { prebuiltVoiceConfig: { voiceName: input.targetLanguage === 'Persian' ? 'Cursa' : 'Caelum' } }
+                    }
+                ]
+            }
         }
-      }
+      },
+      prompt: ttsPrompt,
     });
     
-    const audio = ttsResponse.output();
-    if (!audio) {
+    if (!media) {
       throw new Error('Failed to generate audio.');
     }
     
+    const audioBuffer = Buffer.from(media.url.substring(media.url.indexOf(',') + 1), 'base64');
+    
     // 4. Convert PCM audio to WAV
-    const audioDataUri = 'data:audio/wav;base64,' + (await toWav(audio));
+    const audioDataUri = 'data:audio/wav;base64,' + (await toWav(audioBuffer));
 
     // 5. Return the final output
     return {

@@ -11,9 +11,7 @@
 
 import { z } from 'zod';
 import { ai } from '../genkit';
-import { googleAI } from '@genkit-ai/googleai';
-import { defineFlow, definePrompt } from 'genkit';
-import { geminiPro } from 'genkit/models';
+import { googleAI } from '@genkit-ai/google-genai';
 
 const WeeklyTranslationExerciseInputSchema = z.object({
   languageLevel: z
@@ -37,38 +35,29 @@ export type WeeklyTranslationExerciseOutput = z.infer<
   typeof WeeklyTranslationExerciseOutputSchema
 >;
 
-const translationExercisePrompt = definePrompt({
+const translationExercisePrompt = ai.definePrompt({
     name: 'translationExercisePrompt',
-    inputSchema: WeeklyTranslationExerciseInputSchema,
-}, async(input) => {
-  return {
+    input: { schema: WeeklyTranslationExerciseInputSchema },
+    output: { schema: WeeklyTranslationExerciseOutputSchema },
     prompt: `You are an expert language tutor. Generate a translation exercise with texts in both Persian and English based on the user's language level and target language.
 
-Language Level: ${input.languageLevel}
-Target Language: ${input.targetLanguage}
+Language Level: {{{languageLevel}}}
+Target Language: {{{targetLanguage}}}
 
 Instructions: Provide a Persian text and its English translation, suitable for the specified language level. The texts should be related to a common topic or theme. Ensure that the complexity of the vocabulary and grammar is appropriate for the given language level.
 `,
-  }
 });
 
 
-const weeklyTranslationExerciseFlow = defineFlow(
+const weeklyTranslationExerciseFlow = ai.defineFlow(
   {
     name: 'weeklyTranslationExerciseFlow',
     inputSchema: WeeklyTranslationExerciseInputSchema,
     outputSchema: WeeklyTranslationExerciseOutputSchema,
   },
   async (input) => {
-    const llmResponse = await ai.generate({
-      prompt: await translationExercisePrompt(input),
-      model: geminiPro,
-      output: {
-        schema: WeeklyTranslationExerciseOutputSchema,
-      }
-    });
-
-    return llmResponse.output()!;
+    const { output } = await translationExercisePrompt(input, { model: googleAI.model('gemini-1.5-flash') });
+    return output!;
   }
 );
 
