@@ -73,5 +73,3 @@ export const menuItems: NavItem[] = [
   },
   { href: '/profile', label: 'Profile', icon: User },
 ];
-
-    
