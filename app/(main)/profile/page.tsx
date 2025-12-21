@@ -2,7 +2,7 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { User, Gift, Copy, Crown, ShieldCheck, Sparkles, Bot, Heart, UserSquare, Trophy } from 'lucide-react';
+import { User, Gift, Copy, Crown, ShieldCheck, Sparkles, Bot, Heart, UserSquare, Trophy, DatabaseZap } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Progress } from '@/components/ui/progress';
@@ -92,8 +92,8 @@ export default function ProfilePage() {
         </Card>
       </div>
 
-       <div className="grid gap-6 md:grid-cols-2">
-        <Card>
+       <div className="grid gap-6 md:grid-cols-3">
+        <Card className="md:col-span-2">
           <CardHeader>
             <CardTitle className="flex items-center gap-2"><Gift className="w-5 h-5 text-primary" />Referrals & Rewards League</CardTitle>
             <CardDescription>Invite friends to climb the referrer league, win monthly prizes, and earn a bi-annual grand prize!</CardDescription>
@@ -149,22 +149,35 @@ export default function ProfilePage() {
               </p>
             </CardFooter>
         </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2"><ShieldCheck className="w-5 h-5 text-primary" />The Emperor's Council</CardTitle>
-            <CardDescription>Top learners get a say in our future and a share of our success.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4 text-sm text-muted-foreground">
-              <p>
-                Users who reach an advanced proficiency level will be invited to join the Emperor's Council and receive an honorary board seat for a two-year term.
-              </p>
-              <ul className="list-disc pl-5 space-y-2">
-                <li><span className="font-semibold text-foreground">Influence policy</span> and have voting rights on future app features.</li>
-                <li><span className="font-semibold text-foreground">Share in our success:</span> 10% of app revenue is shared among council members, based on their promotional activities.</li>
-                <li><span className="font-semibold text-foreground">Maintain Excellence:</span> To retain their seat after two years, members must be re-interviewed and prove they are up-to-date with their skills, ensuring the council remains dynamic and elite.</li>
-              </ul>
-          </CardContent>
-        </Card>
+        <div className="space-y-6">
+            <Card>
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2"><ShieldCheck className="w-5 h-5 text-primary" />The Emperor's Council</CardTitle>
+                <CardDescription>Top learners get a say in our future.</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4 text-sm text-muted-foreground">
+                <p>
+                    Users who reach an advanced proficiency level will be invited to join the Emperor's Council and receive an honorary board seat for a two-year term.
+                </p>
+                <ul className="list-disc pl-5 space-y-2">
+                    <li><span className="font-semibold text-foreground">Influence policy</span> and have voting rights on future app features.</li>
+                    <li><span className="font-semibold text-foreground">Share in our success:</span> 10% of app revenue is shared among council members.</li>
+                    <li><span className="font-semibold text-foreground">Maintain Excellence:</span> Members must be re-interviewed to retain their seat, ensuring the council remains dynamic and elite.</li>
+                </ul>
+            </CardContent>
+            </Card>
+            <Card>
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2"><DatabaseZap className="w-5 h-5 text-primary" />Ecosystem Synergy</CardTitle>
+                <CardDescription>Share your power across our worlds.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <p className="text-sm text-muted-foreground">
+                    Citizens who are active in more than three apps within the Afarinesh ecosystem are granted a special, one-time privilege: they may transfer up to 50% of their earned points from one app to another, empowering their journey where they need it most.
+                </p>
+            </CardContent>
+            </Card>
+        </div>
       </div>
       
       <Card>
@@ -205,5 +218,4 @@ export default function ProfilePage() {
 
     </div>
   );
-
-    
+}
