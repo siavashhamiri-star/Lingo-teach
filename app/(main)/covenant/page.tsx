@@ -15,16 +15,33 @@ export default function CovenantPage() {
         icon={HeartHandshake}
       />
       
-       <Card className="shadow-lg">
+       <Card className="shadow-lg bg-gradient-to-br from-primary/10 to-background border-primary/20">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-3 text-2xl">
+            <Globe className="w-8 h-8 text-primary"/>
+             A Universal Call: Let Us Build Worlds Together
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+            <blockquote className="border-l-4 border-accent pl-4 text-lg italic text-foreground">
+              "Let us pursue a common goal. Many people across the cosmos, across the globe, are unfamiliar with the concept of virtual cities and worlds. Let's introduce this concept to all people and show them how the virtual can truly serve real life. Let us, with cooperation, interaction, sacrifice, and shared altruism, through the synergy of knowledge, thought, and experience, build parallel worlds in the service of truth and human satisfaction, to the expanse of the entire universe."
+            </blockquote>
+             <p className="text-muted-foreground text-right" dir="rtl">
+              "بیایید یک هدف مشترک را دنبال کنیم. بسیاری از مردم در سراسر کیهان، در سراسر گیتی، در سراسر کره زمین، با مفهوم شهرهای مجازی و جهان مجازی آشنا نیستند. بیایید این مفهوم را به همه مردم جهان معرفی کنیم و به آنها بفهمانیم که واقعاً مجاز چگونه می‌تواند در خدمت زندگی حقیقی باشد. بیایید با همکاری، تعامل و همچنین فداکاری و ایثار مشترک، از طریق هم‌افزایی دانش و اندیشه و تجربه، جهان‌های موازی در خدمت حقیقت و رضایت بشر تا گستره کل گیتی و کائنات بسازیم."
+            </p>
+        </CardContent>
+      </Card>
+
+      <Card className="shadow-lg">
         <CardHeader>
           <CardTitle className="flex items-center gap-3">
-            <Globe className="w-6 h-6 text-primary"/>
+            <Swords className="w-6 h-6 text-primary"/>
             Compete with Yourself, Befriend the World
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
             <blockquote className="border-l-4 border-accent pl-4 text-lg italic text-foreground">
-              "Afarinesh competes only with itself. It does not interfere in anyone's work and compares itself to no one. However, it holds immense respect for pioneers and those who have contributed their knowledge and resources to the world. This project is not a competitor to anyone; it is a friend, a collaborator, and a partner to all."
+              "Afarinesh competes only with itself. It is not a rival to anyone, does not interfere in anyone's work, and compares itself to no one. However, it holds immense respect for pioneers and those who have contributed their knowledge, wisdom, and resources to the virtual world. This project does not compete with anyone, but it wholeheartedly loves friendship, camaraderie, and collaboration."
             </blockquote>
              <p className="text-muted-foreground text-right" dir="rtl">
               "شهر مجازی من رُک بگویم فقط با خودش رقابت می‌کند. رقیب هیچ‌کس نیست، در حوزه کاری هیچ‌کس دخالت نمی‌کند و خودش را با هیچ‌کس مقایسه نمی‌کند. اما برای بزرگترها، پیشکسوتان و کسانی که برای شهرهای مجازی دانش و ثروت خود را به معرکه آوردند، احترام بسیاری قائل است. این پروژه با هیچ‌کس رقابت نمی‌کند، اما تا دلت بخواهد عاشق رفاقت، دوستی و همکاری است."
