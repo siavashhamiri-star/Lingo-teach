@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -57,7 +58,7 @@ const genesisMovieFlow = ai.defineFlow(
   },
   async ({ userQuote }) => {
     
-    const prompt = `A cinematic, epic, hopeful shot of a futuristic city of knowledge being built from rays of light. Show diverse people collaborating and looking up with wonder. The architecture is flowing and organic. The feeling is one of creation and empowerment.
+    const prompt = `Create a cinematic, epic, hopeful shot of a futuristic city of knowledge being built from rays of light. Show diverse people collaborating and looking up with wonder. The architecture is flowing and organic. The feeling is one of creation and empowerment.
     Now, visually interpret this core idea provided by the user: "${userQuote}"`;
 
     let { operation } = await ai.generate({
@@ -102,3 +103,5 @@ const genesisMovieFlow = ai.defineFlow(
 export async function generateGenesisMovie(input: GenesisMovieInput): Promise<GenesisMovieOutput> {
   return genesisMovieFlow(input);
 }
+
+    
