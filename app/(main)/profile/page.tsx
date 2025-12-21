@@ -2,7 +2,7 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { User, Gift, Copy, Crown, ShieldCheck, Sparkles, Bot, Heart, UserSquare, Trophy, DatabaseZap } from 'lucide-react';
+import { User, Gift, Copy, Crown, ShieldCheck, Sparkles, Bot, Heart, UserSquare, Trophy, DatabaseZap, Users } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Progress } from '@/components/ui/progress';
@@ -164,6 +164,11 @@ export default function ProfilePage() {
                     <li><span className="font-semibold text-foreground">Share in our success:</span> 10% of app revenue is shared among council members.</li>
                     <li><span className="font-semibold text-foreground">Maintain Excellence:</span> Members must be re-interviewed to retain their seat, ensuring the council remains dynamic and elite.</li>
                 </ul>
+                <Separator className="my-4"/>
+                <div className="space-y-2">
+                    <h4 className="font-semibold text-foreground flex items-center gap-2"><Users className="w-4 h-4"/>Path to the Afarinesh Council</h4>
+                    <p>Individuals who serve on the board of directors for more than two apps within the Afarinesh ecosystem are considered prime candidates for the central decision-making and supervisory council of Afarinesh and for citizenship in the city of Tavana.</p>
+                </div>
             </CardContent>
             </Card>
             <Card>
