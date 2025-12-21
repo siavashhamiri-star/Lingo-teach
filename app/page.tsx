@@ -125,7 +125,7 @@ export default function LandingPage() {
                         <CardHeader className="text-center">
                             <div className='flex flex-col items-center mb-4'>
                                 <TavanaLogo className="w-12 h-12 mx-auto text-primary" />
-                                <p className='text-xs text-muted-foreground mt-1'>Powered by the FBNewMeta Initiative</p>
+                                <p className='text-xs text-muted-foreground mt-1'>Powered by the GFBNewMeta Initiative</p>
                             </div>
                             <CardTitle className="text-2xl">Welcome to "Tavana" (The Empowered City)</CardTitle>
                             <CardDescription>The heart of the Afarinesh ecosystem.</CardDescription>
@@ -139,6 +139,9 @@ export default function LandingPage() {
                             </p>
                             <p className="font-semibold text-foreground">
                                 Here, learning is the currency, creativity is the industry, and community is the foundation. Join us, and build your dreams while building the city of dreams.
+                            </p>
+                            <p className="font-bold text-accent" dir="rtl">
+                                شهر توانایی که به امید حق با برآوردهایی که می‌شود در آینده نزدیک ارزش افزوده هر زمین آن بسیار بسیار زیاد خواهد بود.
                             </p>
                              <div className="pt-4">
                                 <Button asChild>
