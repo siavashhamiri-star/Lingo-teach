@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { Film, Loader2, Sparkles, Wand2, Quote, Video, Download, Share2, Twitter, MessageCircle } from 'lucide-react';
+import { Film, Loader2, Sparkles, Wand2, Quote, Video, Download, Share2, Twitter, MessageCircle, Trophy } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -152,16 +152,21 @@ export default function GenesisMoviePage() {
                                 <CardHeader>
                                     <CardTitle className="flex items-center gap-2 text-xl">
                                         <Share2 className="w-5 h-5"/>
-                                        Share Your Creation
+                                        Become an Ambassador, Win Prizes!
                                     </CardTitle>
-                                    <CardDescription>Download your movie or share it with the world to earn rewards.</CardDescription>
+                                    <CardDescription>Download your movie and share it with the world to earn XP, recognition, and rewards.</CardDescription>
                                 </CardHeader>
                                 <CardContent className="space-y-4">
                                      <Alert className="border-accent text-accent-foreground bg-accent/10">
-                                        <Sparkles className="h-4 w-4 text-accent" />
-                                        <AlertTitle>Earn Bonus XP!</AlertTitle>
+                                        <Trophy className="h-4 w-4 text-accent" />
+                                        <AlertTitle>Compete for Glory!</AlertTitle>
                                         <AlertDescription>
-                                            Share your creation on social media. You'll earn XP for every friend who joins Afarinesh through your link!
+                                            <ul className="list-disc pl-5 mt-2 space-y-1">
+                                                <li>The **Top 10 Ambassadors** will have their names featured in the app.</li>
+                                                <li>Their created clips will be showcased for **one full month**.</li>
+                                                <li>The **Top 3** will receive special prizes!</li>
+                                                <li>You also earn bonus XP for every friend who joins through your shared link.</li>
+                                            </ul>
                                         </AlertDescription>
                                     </Alert>
                                     <div className="flex flex-col sm:flex-row gap-4">
