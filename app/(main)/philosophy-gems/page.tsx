@@ -53,10 +53,6 @@ const philosophyGems = [
     {
         english: "The world itself is the greatest display of truth. It quickly reveals reality and exposes deceit. In this grand theater, what role do we play but to be true?",
         persian: "خودِ جهان بزرگترین نمایش‌دهنده حقایق است. دنیا واقعیت را زود آشکار و خدعه را زود رسوا می‌کند. ما در این نمایش بزرگ چه کاره‌ایم جز آنکه حقیقی باشیم؟"
-    },
-    {
-        english: "Believe me, this is a true promise. This ecosystem is designed to become one of the wealthiest, a great reservoir of the world's wealth. You, too, can benefit from this reservoir, as long as you help create it.",
-        persian: "باور کنید، این وعده صادق است. این اکوسیستم برای تبدیل شدن به یکی از ثروتمندترین‌ها طراحی شده است، مخزن بزرگی از ثروت عالم. شما هم می‌توانید از این مخزن بهره‌مند شوید، به شرط آنکه خودتان آن را ایجاد کنید."
     }
 ];
 
