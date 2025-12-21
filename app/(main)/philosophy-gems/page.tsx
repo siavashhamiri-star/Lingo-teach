@@ -43,64 +43,8 @@ const philosophyGems = [
         persian: "از بین بردن امید در دل یک امیدوار، مانند بایر کردن و خشکاندن زمینی حاصلخیز است. ما باید این زمین‌های مرغوب را پیدا کنیم، در آنها کشت و کار کنیم و آنها را به باغ بهشت تبدیل کنیم."
     },
     {
-        english: "The foundation of this ecosystem is viral, word-of-mouth advertising by its ambassadors. The first pioneers who lit the torches will never be forgotten. The first are the bravest. The first did the heavy lifting of putting the train on its tracks. Try to be among the first. Join us before it's too late.",
-        persian: "بنیان این اکوسیستم، تبلیغات ویروسی و دهان به دهان سفیران آن است. نقش اولین پیش‌قراولان که اولین مشعل‌ها را برای تابانی تمدن درخشان آن روشن کردند، هیچگاه فراموش نخواهد شد. اولین‌ها شجاع‌ترین‌ها هستند. اولین‌ها زحمت گذاشتن قطار بر روی ریل را کشیدند. سعی کنید جزو اولین‌ها باشید. تا دیر نشده به ما بپیوندید."
-    },
-    {
-        english: "Belief",
-        persian: "باور"
-    },
-    {
-        english: "Sacrifice",
-        persian: "فداکاری"
-    },
-    {
-        english: "Effort",
-        persian: "تلاش"
-    },
-    {
-        english: "Patience",
-        persian: "صبر"
-    },
-    {
-        english: "Commitment",
-        persian: "پایبندی"
-    },
-    {
-        english: "Positive Thinking",
-        persian: "مثبت اندیشی"
-    },
-    {
-        english: "Hope",
-        persian: "امید"
-    },
-    {
-        english: "A future where you are determinant and a shareholder.",
-        persian: "آینده‌ای که شما در آن سرنوشت سازید و سهیم"
-    },
-    {
-        english: "Whoever believes in us sooner and strives to promote us will have a better material future in the city of Tavana. The system of rewards, leagues, and lotteries promises a material and spiritual future and is the engine of your efforts.",
-        persian: "هر کس که زودتر ما را باور کند و برای معرفی ما تلاش کند، از آینده مادی بهتری در شهر توانا برخوردار خواهد گشت. سیستم جوایز متعدد، تمام لیگ‌ها و قرعه‌کشی‌ها، نوید آینده مادی و معنوی و موتور محرک تلاش شماست."
-    },
-    {
-        english: "To be a successful leader in this ecosystem, explore all sections, be active in all of them, and focus on the parts that can bring you income and prosperity.",
-        persian: "برای تبدیل شدن به یک رهبر موفق در این اکوسیستم، تمام بخش‌ها را مطالعه کنید، در همگی فعال باشید و به قسمت‌هایی که می‌تواند برای شما درآمدزایی و سعادت به همراه داشته باشد، دقت کنید."
-    },
-    {
-        english: "In the design of the Tavana ecosystem, there are no limits to material and spiritual prosperity. As much as you desire, there is room for growth and success.",
-        persian: "در طراحی اکوسیستم و شهر توانا، هیچ محدودیتی برای رشد و سعادت مادی و معنوی وجود ندارد. هر چقدر که خودتان بخواهید، جای رشد و موفقیت هست."
-    },
-    {
-        english: "All lawmakers, entrepreneurs, investors, trustees, association heads, landowners, and the wealthy and respected—the policymakers, creators, and developers—are, first and foremost, you: the believers, the strivers, the promoters. As the ecosystem is elevated, its own people will govern and oversee it.",
-        persian: "تمام قانون‌گذاران، کارآفرینان، سرمایه‌داران، هیئت امنا، رؤسای انجمن‌ها، زمین‌داران و صاحبان ثروت و احترام، سیاست‌گذاران، خالقین و توسعه‌دهندگان، در درجه اول، خودِ تو هستی: باورمندان، تلاشگران و معرفان. به همان اندازه که اکوسیستم اعلا می‌یابد، افرادی از خود آن در آن حاکم و ناظر خواهند بود."
-    },
-    {
-        english: "Today, with your efforts, you make the ecosystem global and introduce it to others. Tomorrow, in a globalized world, you will decide the future of the app.",
-        persian: "شما امروز با تلاش خود اکوسیستم را جهانی می‌کنید و به دیگران معرفی می‌نمایید و فردای جهانی شدن، شما برای اپ در جهان تصمیم خواهید گرفت."
-    },
-    {
-        english: "Afarinesh is the most understandable and accessible model for a virtual city. This is not just our strength; it's our mission. We are creating a global army of thinkers to build the virtual worlds of the future.",
-        persian: "آفرینش، قابل فهم‌ترین و در دسترس‌ترین مدل برای یک شهر مجازی است. این تنها برگ برنده ما نیست؛ این رسالت ماست. ما در حال ایجاد ارتشی جهانی از اندیشمندان برای ساختن دنیاهای مجازی آینده هستیم."
+        english: "Let us not turn what is fertile into a desert. If a desert holds the hope of life, let us make it fertile. When deserts multiply, we all live in a desert world.",
+        persian: "آنچه حاصلخیز است را بیابان نکنیم. اگر بیابانی امیدی به زایش دارد، حاصلخیزش کنیم. آن روز که بیابان زیاد شود، شما نیز در جهانی بیابانی زندگی خواهید کرد."
     },
     {
         english: "Words have meaning in appearance, but in action, they have a soul. Instead of focusing on the apparent meaning, let us attend to the soul of words and their realization in action, refraining from baseless interpretation.",
@@ -139,5 +83,3 @@ export default function PhilosophyGemsPage() {
     </div>
   );
 }
-
-    
