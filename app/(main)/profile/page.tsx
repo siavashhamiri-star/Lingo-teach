@@ -2,7 +2,7 @@
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
-import { User, Gift, Copy, Crown, ShieldCheck, Sparkles, Bot, Heart, UserSquare, Trophy, DatabaseZap, Users } from 'lucide-react';
+import { User, Gift, Copy, Crown, ShieldCheck, Sparkles, Bot, Heart, UserSquare, Trophy, DatabaseZap, Users, BrainCircuit } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Progress } from '@/components/ui/progress';
@@ -172,9 +172,24 @@ export default function ProfilePage() {
                 </div>
             </CardContent>
             </Card>
-            <Card>
+        </div>
+      </div>
+      
+       <div className="grid gap-6 md:grid-cols-3">
+          <Card>
+          <CardHeader>
+              <CardTitle className="flex items-center gap-2"><BrainCircuit className="w-5 h-5 text-primary" />Strategic Policy Council</CardTitle>
+              <CardDescription>Guidance from the masters of the digital world.</CardDescription>
+          </CardHeader>
+          <CardContent>
+              <p className="text-sm text-muted-foreground">
+                  Afarinesh invites recognized and successful visionaries from the internet and application landscape to form a targeted policy-making council. This council's purpose is to help chart the future goals and horizons of the Afarinesh ecosystem, ensuring our world remains innovative, relevant, and aligned with a powerful long-term vision.
+              </p>
+          </CardContent>
+          </Card>
+          <Card className="md:col-span-2">
             <CardHeader>
-                <CardTitle className="flex items-center gap-2"><DatabaseZap className="w-5 h-5 text-primary" />Ecosystem Synergy</CardTitle>
+                <CardTitle className="flex items-center gap-2"><DatabaseZap className="w-5 h-5 text-primary" />Ecosystem Synergy Privilege</CardTitle>
                 <CardDescription>Share your power across our worlds.</CardDescription>
             </CardHeader>
             <CardContent>
@@ -182,9 +197,8 @@ export default function ProfilePage() {
                     Citizens who are active in more than three apps within the Afarinesh ecosystem are granted a special, one-time privilege: they may transfer up to 50% of their earned points from one app to another, empowering their journey where they need it most.
                 </p>
             </CardContent>
-            </Card>
-        </div>
-      </div>
+          </Card>
+       </div>
       
       <Card>
         <CardHeader>
