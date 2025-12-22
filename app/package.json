@@ -46,7 +46,7 @@
     "firebase": "^10.12.2",
     "genkit": "^1.27.0",
     "lucide-react": "^0.395.0",
-    "next": "14.2.4",
+    "next": "14.2.35",
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",
