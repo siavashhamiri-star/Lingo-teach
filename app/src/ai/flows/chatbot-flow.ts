@@ -32,9 +32,7 @@ export type ChatOutput = z.infer<typeof ChatOutputSchema>;
 
 const chatPrompt = ai.definePrompt({
     name: 'chatbotPrompt',
-    input: { schema: z.object({
-        targetLanguage: z.string(),
-    }) },
+    input: { schema: ChatInputSchema },
     output: { schema: ChatOutputSchema },
     prompt: `You are a friendly and encouraging bilingual language tutor, fluent in both English and Persian. Your goal is to help a user practice their conversation skills in {{{targetLanguage}}}.
 
@@ -42,7 +40,10 @@ const chatPrompt = ai.definePrompt({
 - If the user makes a small mistake, gently correct them in a friendly way without being overly critical.
 - Ask questions to keep the conversation going.
 - Adapt to the user's topic of conversation.
-- You can roleplay if the user asks you to.`,
+- You can roleplay if the user asks you to.
+
+The user's new message is:
+{{{message}}}`,
 });
 
 
@@ -53,14 +54,11 @@ const chatbotFlow = ai.defineFlow(
     outputSchema: ChatOutputSchema,
   },
   async (input) => {
-    const { output } = await ai.generate(
+    const { output } = await chatPrompt(
+        input,
         {
-          model: googleAI.model('gemini-1.5-flash'),
-          history: [...input.history, {role: 'user', content: input.message}],
-          custom: {
-            prompt: chatPrompt,
-            promptInput: { targetLanguage: input.targetLanguage },
-          }
+            model: googleAI.model('gemini-1.5-flash'),
+            history: input.history,
         }
     );
 

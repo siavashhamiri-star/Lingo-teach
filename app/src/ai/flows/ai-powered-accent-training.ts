@@ -73,16 +73,12 @@ const analyzePronunciationFlow = ai.defineFlow(
     outputSchema: AnalyzePronunciationOutputSchema,
   },
   async (input) => {
-    const { output } = await ai.generate(
-      {
+    const { output } = await analyzePronunciationPrompt(input, {
         model: googleAI.model('gemini-1.5-flash'),
-        prompt: [{ media: { url: input.audioDataUri } }],
-        custom: {
-          prompt: analyzePronunciationPrompt,
-          promptInput: input,
-        }
-      }
-    );
+        prompt: [
+            {media: { url: input.audioDataUri }}
+        ]
+    });
 
     return output!;
   }
