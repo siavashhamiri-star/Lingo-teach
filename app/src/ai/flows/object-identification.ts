@@ -76,12 +76,15 @@ const identifyObjectFlow = ai.defineFlow(
     outputSchema: IdentifyObjectOutputSchema,
   },
   async (input) => {
-    const { output } = await identificationPrompt(
-        {}, 
+    const { output } = await ai.generate(
         {
             model: googleAI.model('gemini-1.5-flash'),
-            prompt: {
+            prompt: [{
                 media: { url: input.imageDataUri }
+            }],
+            custom: {
+                prompt: identificationPrompt,
+                promptInput: {}
             }
         }
     );

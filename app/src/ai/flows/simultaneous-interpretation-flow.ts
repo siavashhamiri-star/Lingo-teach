@@ -45,7 +45,13 @@ const interpretationFlow = ai.defineFlow(
   },
   async (input) => {
     // 1. Generate the source text
-    const { output: textOutput } = await textPrompt(input, { model: googleAI.model('gemini-1.5-flash') });
+    const { output: textOutput } = await ai.generate({
+      model: googleAI.model('gemini-1.5-flash'),
+      custom: {
+        prompt: textPrompt,
+        promptInput: input
+      }
+    });
 
     if (!textOutput?.sourceText) {
       throw new Error('Failed to generate source text for the scenario.');

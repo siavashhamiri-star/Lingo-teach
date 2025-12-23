@@ -63,7 +63,13 @@ const rolePlayingFlow = ai.defineFlow(
   },
   async (input) => {
     // 1. Generate the script
-    const { output: scriptOutput } = await scriptPrompt(input, { model: googleAI.model('gemini-1.5-flash') });
+    const { output: scriptOutput } = await ai.generate({
+      model: googleAI.model('gemini-1.5-flash'),
+      custom: {
+        prompt: scriptPrompt,
+        promptInput: input
+      }
+    });
     
     if (!scriptOutput?.script || scriptOutput.script.length === 0) {
       throw new Error('Failed to generate a script for the scenario.');

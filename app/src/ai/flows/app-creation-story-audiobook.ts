@@ -91,7 +91,13 @@ const creationStoryAudiobookFlow = ai.defineFlow(
   },
   async () => {
     // 1. Generate the bilingual story text
-    const { output: textOutput } = await storyPrompt({}, { model: googleAI.model('gemini-1.5-flash')});
+    const { output: textOutput } = await ai.generate({
+      model: googleAI.model('gemini-1.5-flash'),
+      custom: {
+        prompt: storyPrompt,
+        promptInput: {}
+      }
+    });
     
     if (!textOutput?.englishStory || !textOutput?.persianStory) {
       throw new Error('Failed to generate the bilingual story text.');

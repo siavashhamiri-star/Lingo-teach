@@ -103,7 +103,13 @@ const bilingualShortStoryFlow = ai.defineFlow(
     outputSchema: BilingualShortStoryOutputSchema,
   },
   async (input) => {
-    const { output: storyOutput } = await storyPrompt(input, { model: googleAI.model('gemini-1.5-flash') });
+    const { output: storyOutput } = await ai.generate({
+      model: googleAI.model('gemini-1.5-flash'),
+      custom: {
+        prompt: storyPrompt,
+        promptInput: input
+      }
+    });
 
     if (!storyOutput?.story) {
       throw new Error('Failed to generate bilingual short story text.');

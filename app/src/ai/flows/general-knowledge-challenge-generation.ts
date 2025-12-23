@@ -48,7 +48,13 @@ const generalKnowledgeChallengeFlow = ai.defineFlow(
     outputSchema: GeneralKnowledgeChallengeOutputSchema,
   },
   async (input) => {
-    const { output } = await generalKnowledgeChallengePrompt(input, { model: googleAI.model('gemini-1.5-flash')});
+    const { output } = await ai.generate({
+      model: googleAI.model('gemini-1.5-flash'),
+      custom: {
+        prompt: generalKnowledgeChallengePrompt,
+        promptInput: input
+      }
+    });
     return output!;
   }
 );

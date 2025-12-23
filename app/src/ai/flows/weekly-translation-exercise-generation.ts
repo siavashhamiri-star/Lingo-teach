@@ -55,7 +55,13 @@ const weeklyTranslationExerciseFlow = ai.defineFlow(
     outputSchema: WeeklyTranslationExerciseOutputSchema,
   },
   async (input) => {
-    const { output } = await translationExercisePrompt(input, { model: googleAI.model('gemini-1.5-flash') });
+    const { output } = await ai.generate({
+      model: googleAI.model('gemini-1.5-flash'),
+      custom: {
+        prompt: translationExercisePrompt,
+        promptInput: input
+      }
+    });
     return output!;
   }
 );

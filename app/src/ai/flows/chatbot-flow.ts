@@ -53,11 +53,14 @@ const chatbotFlow = ai.defineFlow(
     outputSchema: ChatOutputSchema,
   },
   async (input) => {
-    const { output } = await chatPrompt(
-        { targetLanguage: input.targetLanguage },
+    const { output } = await ai.generate(
         {
           model: googleAI.model('gemini-1.5-flash'),
           history: [...input.history, {role: 'user', content: input.message}],
+          custom: {
+            prompt: chatPrompt,
+            promptInput: { targetLanguage: input.targetLanguage },
+          }
         }
     );
 
