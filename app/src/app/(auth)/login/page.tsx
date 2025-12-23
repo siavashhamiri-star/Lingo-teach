@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, BotMessageSquare, BrainCircuit, Users, Building, Sparkles, Globe } from 'lucide-react';
