@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview A bilingual chatbot flow for practicing conversation.
@@ -32,10 +33,7 @@ export type ChatOutput = z.infer<typeof ChatOutputSchema>;
 
 const chatPrompt = ai.definePrompt({
     name: 'chatbotPrompt',
-    input: { schema: z.object({
-      message: z.string(),
-      targetLanguage: z.string(),
-    }) },
+    input: { schema: ChatInputSchema },
     output: { schema: ChatOutputSchema },
     prompt: `You are a friendly and encouraging bilingual language tutor, fluent in both English and Persian. Your goal is to help a user practice their conversation skills in {{{targetLanguage}}}.
 
@@ -58,10 +56,7 @@ const chatbotFlow = ai.defineFlow(
   },
   async (input) => {
     const { output } = await chatPrompt(
-        {
-            message: input.message,
-            targetLanguage: input.targetLanguage,
-        },
+        input,
         {
             model: googleAI.model('gemini-1.5-flash'),
             history: input.history,
