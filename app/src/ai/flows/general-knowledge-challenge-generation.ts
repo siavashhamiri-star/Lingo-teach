@@ -10,6 +10,7 @@
 
 import { z } from 'zod';
 import { ai } from '../genkit';
+import { googleAI } from '@genkit-ai/google-genai';
 
 const GeneralKnowledgeChallengeInputSchema = z.object({
   difficulty: z
@@ -32,7 +33,6 @@ const generalKnowledgeChallengePrompt = ai.definePrompt({
     name: 'generalKnowledgeChallengePrompt',
     input: { schema: GeneralKnowledgeChallengeInputSchema },
     output: { schema: GeneralKnowledgeChallengeOutputSchema },
-    model: 'gemini-1.5-flash',
     prompt: `You are a quiz master. Generate one engaging general knowledge question (in any field like science, history, arts, etc.) appropriate for the specified difficulty level, along with its answer.
 
 Difficulty Level (1-10): {{{difficulty}}}
@@ -48,7 +48,7 @@ const generalKnowledgeChallengeFlow = ai.defineFlow(
     outputSchema: GeneralKnowledgeChallengeOutputSchema,
   },
   async (input) => {
-    const { output } = await generalKnowledgeChallengePrompt(input);
+    const { output } = await generalKnowledgeChallengePrompt(input, { model: googleAI.model('gemini-1.5-flash')});
     return output!;
   }
 );

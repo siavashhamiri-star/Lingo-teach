@@ -11,6 +11,7 @@
 import { z } from 'zod';
 import { ai } from '../genkit';
 import wav from 'wav';
+import { googleAI } from '@genkit-ai/google-genai';
 
 
 const RoleplaySceneInputSchema = z.object({
@@ -41,7 +42,6 @@ const scriptPrompt = ai.definePrompt({
             script: z.array(ScriptLineSchema)
         })
     },
-    model: 'gemini-1.5-flash',
     prompt: `You are a creative scriptwriter. Generate a short, simple, and realistic dialogue script for a language learner based on the following scenario: {{{scenario}}}.
 
 The conversation should be primarily in {{{targetLanguage}}}.
@@ -63,7 +63,7 @@ const rolePlayingFlow = ai.defineFlow(
   },
   async (input) => {
     // 1. Generate the script
-    const { output: scriptOutput } = await scriptPrompt(input);
+    const { output: scriptOutput } = await scriptPrompt(input, { model: googleAI.model('gemini-1.5-flash') });
     
     if (!scriptOutput?.script || scriptOutput.script.length === 0) {
       throw new Error('Failed to generate a script for the scenario.');
@@ -76,7 +76,7 @@ const rolePlayingFlow = ai.defineFlow(
 
     // 3. Generate the multi-speaker audio
     const { media } = await ai.generate({
-      model: 'gemini-2.5-flash-preview-tts',
+      model: googleAI.model('gemini-2.5-flash-preview-tts'),
       config: {
         responseModalities: ['AUDIO'],
         speechConfig: {

@@ -11,6 +11,7 @@
 
 import { z } from 'zod';
 import { ai } from '../genkit';
+import { googleAI } from '@genkit-ai/google-genai';
 
 const SelectWeeklyArticleInputSchema = z.object({
   languageLevel: z
@@ -40,7 +41,6 @@ const weeklyArticlePrompt = ai.definePrompt({
     name: 'weeklyArticlePrompt',
     input: { schema: SelectWeeklyArticleInputSchema },
     output: { schema: SelectWeeklyArticleOutputSchema },
-    model: 'gemini-1.5-flash',
     prompt: `You are an AI that selects a relevant article, speech, or news segment for users to practice their listening comprehension skills in the target language.
 
   The user's language level is: {{{languageLevel}}}
@@ -58,7 +58,8 @@ const selectWeeklyArticleFlow = ai.defineFlow(
     outputSchema: SelectWeeklyArticleOutputSchema,
   },
   async (input) => {
-    const { output } = await weeklyArticlePrompt(input);
+    const { output } = await weeklyArticlePrompt(input, { model: googleAI.model('gemini-1.5-flash') });
+
     return output!;
   }
 );

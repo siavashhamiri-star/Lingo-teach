@@ -11,6 +11,7 @@
 
 import { z } from 'zod';
 import { ai } from '../genkit';
+import { googleAI } from '@genkit-ai/google-genai';
 
 const GenesisMovieInputSchema = z.object({
   userQuote: z.string().describe('A meaningful sentence or idea provided by the user to inspire the video generation.'),
@@ -61,7 +62,7 @@ const genesisMovieFlow = ai.defineFlow(
     Now, visually interpret this core idea provided by the user: "${userQuote}"`;
 
     let { operation } = await ai.generate({
-      model: 'veo-2.0-generate-001',
+      model: googleAI.model('veo-2.0-generate-001'),
       prompt: prompt,
       config: {
         durationSeconds: 8,

@@ -10,6 +10,7 @@
 
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
+import { googleAI } from '@genkit-ai/google-genai';
 
 const KaraokeTrackInputSchema = z.object({
   songTitle: z.string().describe('The title of the song.'),
@@ -33,7 +34,7 @@ const karaokeTrackFlow = ai.defineFlow(
     outputSchema: KaraokeTrackOutputSchema,
   },
   async (input) => {
-    const model = 'gemini-1.5-flash';
+    const model = googleAI.model('gemini-1.5-flash');
     // Step 1: Get the lyrics.
     const { text: lyricsText } = await ai.generate({
         model,

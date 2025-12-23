@@ -18,7 +18,6 @@ import {
   Gem,
   GraduationCap,
   Handshake,
-  HeartHandshake,
   Headset,
   Languages,
   LayoutDashboard,

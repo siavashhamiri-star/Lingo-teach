@@ -13,6 +13,7 @@
 
 import { z } from 'zod';
 import { ai } from '../genkit';
+import { googleAI } from '@genkit-ai/google-genai';
 
 // Define the input schema for the personalized lesson generation.
 const PersonalizedLessonInputSchema = z.object({
@@ -45,7 +46,6 @@ const personalizedLessonPrompt = ai.definePrompt({
     name: 'personalizedLessonPrompt',
     input: { schema: PersonalizedLessonInputSchema },
     output: { schema: PersonalizedLessonOutputSchema },
-    model: 'gemini-1.5-flash',
     prompt: `You are an AI expert in pedagogy and curriculum design, with a unique ability to perform "invisible assessments." Your primary task is to analyze a user's request for a lesson plan to subtly determine their language proficiency, learning style, and teaching aptitude, all without them feeling like they are being tested.
 
 **The user is a fluent speaker who wants to learn how to teach.**
@@ -85,7 +85,8 @@ const personalizedLessonFlow = ai.defineFlow(
     outputSchema: PersonalizedLessonOutputSchema,
   },
   async (input) => {
-    const { output } = await personalizedLessonPrompt(input);
+    const { output } = await personalizedLessonPrompt(input, { model: googleAI.model('gemini-1.5-flash') });
+
     return output!;
   }
 );

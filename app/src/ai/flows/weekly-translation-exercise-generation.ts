@@ -10,6 +10,7 @@
 
 import { z } from 'zod';
 import { ai } from '../genkit';
+import { googleAI } from '@genkit-ai/google-genai';
 
 const WeeklyTranslationExerciseInputSchema = z.object({
   languageLevel: z
@@ -37,7 +38,6 @@ const translationExercisePrompt = ai.definePrompt({
     name: 'translationExercisePrompt',
     input: { schema: WeeklyTranslationExerciseInputSchema },
     output: { schema: WeeklyTranslationExerciseOutputSchema },
-    model: 'gemini-1.5-flash',
     prompt: `You are an expert language tutor. Generate a translation exercise with texts in both Persian and English based on the user's language level and target language.
 
 Language Level: {{{languageLevel}}}
@@ -55,7 +55,7 @@ const weeklyTranslationExerciseFlow = ai.defineFlow(
     outputSchema: WeeklyTranslationExerciseOutputSchema,
   },
   async (input) => {
-    const { output } = await translationExercisePrompt(input);
+    const { output } = await weeklyTranslationExercisePrompt(input, { model: googleAI.model('gemini-1.5-flash') });
     return output!;
   }
 );
