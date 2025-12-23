@@ -85,7 +85,7 @@ const personalizedLessonFlow = ai.defineFlow(
     outputSchema: PersonalizedLessonOutputSchema,
   },
   async (input) => {
-    const { output } = await personalizedLessonPrompt.generate({ input, model: googleAI.model('gemini-1.5-flash') });
+    const { output } = await personalizedLessonPrompt(input, { model: googleAI.model('gemini-1.5-flash') });
 
     return output!;
   }

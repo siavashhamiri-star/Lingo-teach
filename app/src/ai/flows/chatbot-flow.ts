@@ -33,7 +33,6 @@ export type ChatOutput = z.infer<typeof ChatOutputSchema>;
 const chatPrompt = ai.definePrompt({
     name: 'chatbotPrompt',
     input: { schema: z.object({
-        message: z.string(),
         targetLanguage: z.string(),
     }) },
     output: { schema: ChatOutputSchema },
@@ -54,14 +53,11 @@ const chatbotFlow = ai.defineFlow(
     outputSchema: ChatOutputSchema,
   },
   async (input) => {
-    const { output } = await chatPrompt.generate(
+    const { output } = await chatPrompt(
+        { targetLanguage: input.targetLanguage },
         {
-          input: {
-            message: input.message,
-            targetLanguage: input.targetLanguage,
-          },
           model: googleAI.model('gemini-1.5-flash'),
-          history: input.history,
+          history: [...input.history, {role: 'user', content: input.message}],
         }
     );
 

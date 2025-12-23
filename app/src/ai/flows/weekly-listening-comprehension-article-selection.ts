@@ -58,7 +58,7 @@ const selectWeeklyArticleFlow = ai.defineFlow(
     outputSchema: SelectWeeklyArticleOutputSchema,
   },
   async (input) => {
-    const { output } = await weeklyArticlePrompt.generate({ input, model: googleAI.model('gemini-1.5-flash') });
+    const { output } = await weeklyArticlePrompt(input, { model: googleAI.model('gemini-1.5-flash') });
 
     return output!;
   }

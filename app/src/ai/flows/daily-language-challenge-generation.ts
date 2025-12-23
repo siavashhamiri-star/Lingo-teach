@@ -46,7 +46,7 @@ const dailyChallengeFlow = ai.defineFlow(
     outputSchema: DailyChallengeOutputSchema,
   },
   async (input) => {
-    const { output } = await dailyChallengePrompt.generate({ input, model: googleAI.model('gemini-1.5-flash') });
+    const { output } = await dailyChallengePrompt(input, { model: googleAI.model('gemini-1.5-flash') });
     return output!;
   }
 );
