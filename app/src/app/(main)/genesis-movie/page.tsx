@@ -12,6 +12,8 @@ import { useToast } from '@/hooks/use-toast';
 import { generateGenesisMovie, type GenesisMovieOutput } from '@/ai/flows/genesis-movie-generation';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
+import { nextTick } from 'process';
+import { NEXT_BODY_SUFFIX } from 'next/dist/lib/constants';
 
 // --- Pricing Model Simulation ---
 const IS_PREMIUM_USER = false;
@@ -44,7 +46,7 @@ export default function GenesisMoviePage() {
     setMovie(null);
     toast({
       title: 'Rendering Your Genesis Movie...',
-      description: 'The AI is directing, filming, and rendering your vision. This is a very advanced feature and may take up to a minute.',
+      description: 'The AI is directing, filming, and rendering your vision. This is a very advanced feature and may take up to 2 minutes.',
     });
     try {
       const result = await generateGenesisMovie({ userQuote });
@@ -122,7 +124,7 @@ export default function GenesisMoviePage() {
             <div className="flex flex-col items-center justify-center h-full min-h-[400px] border-2 border-dashed rounded-lg p-8 text-center">
               <Loader2 className="w-12 h-12 animate-spin text-primary mb-4" />
               <h2 className="text-xl font-semibold">AI is Rendering Your Vision...</h2>
-              <p className="text-muted-foreground">This is our most powerful feature and requires significant processing. Please be patient, this can take up to a minute.</p>
+              <p className="text-muted-foreground">This is our most powerful feature and requires significant processing. Please be patient, this can take up to 2 minutes.</p>
             </div>
           )}
 

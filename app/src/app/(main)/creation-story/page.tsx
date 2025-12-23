@@ -21,14 +21,14 @@ export default function CreationStoryPage() {
     setStory(null);
     toast({
       title: 'Weaving the Grand Tale...',
-      description: 'The AI is crafting the epic story of our universe. This is a special one-time generation and might take a moment.',
+      description: 'The AI is crafting the epic story of our universe. This is a special one-time generation and might take up to a minute.',
     });
     try {
       const result = await generateCreationStoryAudiobook();
       setStory(result);
       toast({
         title: 'The Story is Ready!',
-        description: 'Press play to hear the legend of LinguaWeave.',
+        description: 'Press play to hear the legend of Afarinesh.',
       });
     } catch (error) {
       console.error('Error generating story:', error);

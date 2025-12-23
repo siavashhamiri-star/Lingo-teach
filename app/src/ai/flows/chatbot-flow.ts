@@ -40,10 +40,7 @@ const chatPrompt = ai.definePrompt({
 - If the user makes a small mistake, gently correct them in a friendly way without being overly critical.
 - Ask questions to keep the conversation going.
 - Adapt to the user's topic of conversation.
-- You can roleplay if the user asks you to.
-
-The user's new message is:
-{{{message}}}`,
+- You can roleplay if the user asks you to.`,
 });
 
 
@@ -56,7 +53,10 @@ const chatbotFlow = ai.defineFlow(
   async (input) => {
     const { output } = await chatPrompt.generate(
         {
-          input,
+          input: {
+            message: input.message,
+            targetLanguage: input.targetLanguage,
+          },
           model: googleAI.model('gemini-1.5-flash'),
           history: input.history,
         }

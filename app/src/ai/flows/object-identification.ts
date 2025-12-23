@@ -78,9 +78,9 @@ const identifyObjectFlow = ai.defineFlow(
   async (input) => {
     const { output } = await identificationPrompt.generate({
         model: googleAI.model('gemini-1.5-flash'),
-        input: {
-          prompt: [{ media: { url: input.imageDataUri }}]
-        }
+        prompt: [{
+            media: { url: input.imageDataUri }
+        }]
     });
 
     if (!output) {
