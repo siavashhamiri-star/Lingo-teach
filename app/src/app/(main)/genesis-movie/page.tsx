@@ -12,8 +12,6 @@ import { useToast } from '@/hooks/use-toast';
 import { generateGenesisMovie, type GenesisMovieOutput } from '@/ai/flows/genesis-movie-generation';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
-import { nextTick } from 'process';
-import { NEXT_BODY_SUFFIX } from 'next/dist/lib/constants';
 
 // --- Pricing Model Simulation ---
 const IS_PREMIUM_USER = false;
