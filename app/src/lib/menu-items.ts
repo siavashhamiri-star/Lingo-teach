@@ -57,7 +57,6 @@ export const menuItems: NavItem[] = [
   { href: '/live-classes', label: 'Live Classes', icon: School },
   { href: '/creation-story', label: 'Creation Story', icon: BookAudio },
   { href: '/philosophy-gems', label: 'Philosophy Gems', icon: Gem },
-  { href: '/covenant', label: 'The Covenant', icon: HeartHandshake },
   { href: '/deployment', label: 'Headquarters', icon: Building },
   { href: '/genesis-movie', label: 'Genesis Movie', icon: Film, premium: true },
   { href: '/karaoke', label: 'Karaoke', icon: Music, premium: true },
