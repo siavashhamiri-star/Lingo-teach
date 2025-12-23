@@ -1,10 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverActions: {
-      bodySizeLimit: '4.5mb',
-    },
-  },
   images: {
     remotePatterns: [
       {
@@ -26,6 +21,11 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
+  },
+  experimental: {
+    serverActions: {
+      timeout: 125, // Increase timeout for long-running AI operations like video generation
+    },
   },
 };
 
