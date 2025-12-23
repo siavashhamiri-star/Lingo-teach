@@ -32,7 +32,10 @@ export type ChatOutput = z.infer<typeof ChatOutputSchema>;
 
 const chatPrompt = ai.definePrompt({
     name: 'chatbotPrompt',
-    input: { schema: ChatInputSchema },
+    input: { schema: z.object({
+        message: z.string(),
+        targetLanguage: z.string(),
+    }) },
     output: { schema: ChatOutputSchema },
     prompt: `You are a friendly and encouraging bilingual language tutor, fluent in both English and Persian. Your goal is to help a user practice their conversation skills in {{{targetLanguage}}}.
 
