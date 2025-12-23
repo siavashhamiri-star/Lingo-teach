@@ -50,7 +50,7 @@ export default function CreationStoryPage() {
         icon={BookAudio}
       />
       <div className="flex justify-center">
-        <Card className="w-full max-w-3xl">
+        <Card className="w-full max-w-4xl">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl">The Audiobook of Afarinesh</CardTitle>
             <CardDescription>
@@ -62,7 +62,7 @@ export default function CreationStoryPage() {
               <div className="flex flex-col items-center justify-center h-full min-h-[300px] p-8 text-center">
                 <Loader2 className="w-12 h-12 animate-spin text-primary mb-4" />
                 <h2 className="text-xl font-semibold">The AI is composing the epic...</h2>
-                <p className="text-muted-foreground">Gathering philosophies and weaving narratives.</p>
+                <p className="text-muted-foreground">Gathering philosophies, weaving narratives, and generating voices. This may take up to a minute.</p>
               </div>
             )}
 
@@ -93,9 +93,9 @@ export default function CreationStoryPage() {
                       </div>
                   </TabsContent>
                    <TabsContent value="persian" className="mt-4">
-                       <div className="space-y-4">
+                       <div className="space-y-4" dir="rtl">
                           <audio controls src={story.persianAudioDataUri} className="w-full" />
-                          <ScrollArea className="h-72 p-4 border rounded-md bg-muted/50" dir="rtl">
+                          <ScrollArea className="h-72 p-4 border rounded-md bg-muted/50">
                               <p className="text-muted-foreground whitespace-pre-wrap leading-relaxed">{story.persianStory}</p>
                           </ScrollArea>
                       </div>
