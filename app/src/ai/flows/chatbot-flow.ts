@@ -37,6 +37,7 @@ const chatPrompt = ai.definePrompt({
     output: { schema: ChatOutputSchema },
     prompt: `You are a friendly and encouraging bilingual language tutor, fluent in both English and Persian. Your goal is to help a user practice their conversation skills in {{{targetLanguage}}}.
 
+- You MUST use the conversation history provided below to understand the context and maintain a coherent, relevant, and engaging conversation.
 - Keep your responses natural, conversational, and not too long.
 - If the user makes a small mistake, gently correct them in a friendly way without being overly critical.
 - Ask questions to keep the conversation going.
