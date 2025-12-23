@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { Crown, Film, Loader2, Sparkles, Wand2 } from 'lucide-react';
+import { Crown, Film, Loader2, Sparkles, Wand2, Download } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -12,6 +12,7 @@ import { useToast } from '@/hooks/use-toast';
 import { generateGenesisMovie, type GenesisMovieOutput } from '@/ai/flows/genesis-movie-generation';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
+import Link from 'next/link';
 
 // --- Pricing Model Simulation ---
 const IS_PREMIUM_USER = false;
@@ -165,8 +166,16 @@ export default function GenesisMoviePage() {
               <CardContent>
                 <video controls src={movie.videoDataUri} className="w-full rounded-md" />
               </CardContent>
-              <CardFooter>
-                <p className="text-xs text-muted-foreground">You can download and share your creation. As an Ambassador of Creation, you earn XP for sharing.</p>
+              <CardFooter className="flex-col sm:flex-row items-center gap-4">
+                 <Button asChild>
+                    <a href={movie.videoDataUri} download={`genesis-movie-${Date.now()}.mp4`}>
+                        <Download className="mr-2 h-4 w-4"/>
+                        Download Movie
+                    </a>
+                 </Button>
+                 <p className="text-xs text-muted-foreground text-center sm:text-left">
+                    As an Ambassador of Creation, you earn XP for downloading and sharing your creation.
+                </p>
               </CardFooter>
             </Card>
           )}
