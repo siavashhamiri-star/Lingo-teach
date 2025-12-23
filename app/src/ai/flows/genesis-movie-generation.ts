@@ -13,8 +13,6 @@ import { z } from 'zod';
 import { ai } from '../genkit';
 import { googleAI } from '@genkit-ai/google-genai';
 
-export const maxDuration = 125; // Server action timeout is 2 mins (120s), giving a 5s buffer.
-
 const GenesisMovieInputSchema = z.object({
   userQuote: z.string().describe('A meaningful sentence or idea provided by the user to inspire the video generation.'),
 });
@@ -77,11 +75,7 @@ const genesisMovieFlow = ai.defineFlow(
     }
 
     // Video generation can take a while. We need to poll the operation status.
-    const startTime = Date.now();
     while (!operation.done) {
-      if (Date.now() - startTime > maxDuration * 1000) {
-        throw new Error('Video generation timed out.');
-      }
       // Wait for 5 seconds before checking the status again.
       await new Promise(resolve => setTimeout(resolve, 5000));
       operation = await ai.checkOperation(operation);
