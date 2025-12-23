@@ -34,23 +34,23 @@ const karaokeTrackFlow = ai.defineFlow(
     outputSchema: KaraokeTrackOutputSchema,
   },
   async (input) => {
-    const model = googleAI.model('gemini-1.5-flash');
     // Step 1: Get the lyrics.
     const { text: lyricsText } = await ai.generate({
-        model,
+        model: googleAI.model('gemini-1.5-flash'),
         prompt: `You are a lyrics finder. Find the lyrics for the song "${input.songTitle}" by ${input.artist}.
-      If you can't find them, say you couldn't. For demonstration, if the song is "Bohemian Rhapsody" by "Queen", return the first verse.
+      If you can't find them, return the exact phrase "Lyrics not found for this song.".
+      For demonstration, if the song is "Bohemian Rhapsody" by "Queen", return the first verse.
       Return only the lyrics, nothing else.
       `,
     });
 
-    if (!lyricsText) {
-      throw new Error('Could not retrieve lyrics for the song.');
+    if (!lyricsText || lyricsText.includes("Lyrics not found for this song.")) {
+      throw new Error('Could not retrieve lyrics for the song. Please check the title and artist.');
     }
     
     // Step 2: Translate the lyrics using the prompt.
     const { text: translationText } = await ai.generate({
-        model,
+        model: googleAI.model('gemini-1.5-flash'),
         prompt: `You are a professional translator specializing in song lyrics. Translate the following lyrics into ${input.targetLanguage === 'fa' ? 'Persian' : 'English'}. Maintain the poetic and emotional tone of the original lyrics as much as possible.
 
 Original Lyrics:

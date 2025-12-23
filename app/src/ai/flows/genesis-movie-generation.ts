@@ -58,12 +58,12 @@ const genesisMovieFlow = ai.defineFlow(
   },
   async ({ userQuote }) => {
     
-    const prompt = `Create a cinematic, epic, hopeful shot of a futuristic city of knowledge being built from rays of light. Show diverse people collaborating and looking up with wonder. The architecture is flowing and organic. The feeling is one of creation and empowerment.
-    Now, visually interpret this core idea provided by the user: "${userQuote}"`;
-
     let { operation } = await ai.generate({
       model: googleAI.model('veo-2.0-generate-001'),
-      prompt: prompt,
+      prompt: [
+        {text: "Create a cinematic, epic, hopeful shot of a futuristic city of knowledge being built from rays of light. Show diverse people collaborating and looking up with wonder. The architecture is flowing and organic. The feeling is one of creation and empowerment. Now, visually interpret this core idea provided by the user."},
+        {text: userQuote}
+      ],
       config: {
         durationSeconds: 8,
         aspectRatio: '16:9',
