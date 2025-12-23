@@ -1,9 +1,9 @@
 
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { PageHeader } from '@/components/shared/page-header';
-import { BookAudio, Loader2, PlayCircle, Sparkles, Volume2, PauseCircle } from 'lucide-react';
+import { BookAudio, Loader2, Sparkles } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';

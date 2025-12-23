@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -90,7 +91,7 @@ const creationStoryAudiobookFlow = ai.defineFlow(
   },
   async () => {
     // 1. Generate the bilingual story text
-    const { output: textOutput } = await storyPrompt({}, { model: googleAI.model('gemini-1.5-flash')});
+    const { output: textOutput } = await storyPrompt(undefined, { model: googleAI.model('gemini-1.5-flash')});
     
     if (!textOutput?.englishStory || !textOutput?.persianStory) {
       throw new Error('Failed to generate the bilingual story text.');
