@@ -10,7 +10,6 @@
 
 import { z } from 'zod';
 import { ai } from '../genkit';
-import { googleAI } from '@genkit-ai/google-genai';
 
 const AnalyzePronunciationInputSchema = z.object({
   audioDataUri: z
@@ -45,6 +44,7 @@ const analyzePronunciationPrompt = ai.definePrompt(
     name: 'analyzePronunciationPrompt',
     input: { schema: AnalyzePronunciationInputSchema },
     output: { schema: AnalyzePronunciationOutputSchema },
+    model: 'gemini-1.5-flash',
     prompt: `You are an AI-powered accent coach that specializes in analyzing pronunciation in real-time and providing feedback.
 
 You will analyze the user's pronunciation of the following text:
@@ -61,7 +61,7 @@ If possible, you will also provide a visual aid (image or video) that shows mout
 
 Consider the user's native language when providing feedback, and focus on the aspects of pronunciation that are most difficult for speakers of that language.
 
-User's audio is attached.`,
+User's audio: {{media url=audioDataUri}}`,
   },
 );
 
@@ -73,13 +73,7 @@ const analyzePronunciationFlow = ai.defineFlow(
     outputSchema: AnalyzePronunciationOutputSchema,
   },
   async (input) => {
-    const { output } = await analyzePronunciationPrompt(input, {
-        model: googleAI.model('gemini-1.5-flash'),
-        prompt: [
-            {media: { url: input.audioDataUri }}
-        ]
-    });
-
+    const { output } = await analyzePronunciationPrompt(input);
     return output!;
   }
 );

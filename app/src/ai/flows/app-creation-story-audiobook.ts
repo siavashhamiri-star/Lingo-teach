@@ -11,7 +11,6 @@
 import { z } from 'zod';
 import { ai } from '../genkit';
 import wav from 'wav';
-import { googleAI } from '@genkit-ai/google-genai';
 
 const StoryTextSchema = z.object({
   englishStory: z.string().describe("The full narrative story in English."),
@@ -37,7 +36,7 @@ const textToSpeechFlow = ai.defineFlow(
       throw new Error(`TTS Error: Input text is empty for voice ${voiceName}`);
     }
     const { media } = await ai.generate({
-      model: googleAI.model('gemini-2.5-flash-preview-tts'),
+      model: 'gemini-2.5-flash-preview-tts',
       config: {
         responseModalities: ['AUDIO'],
         speechConfig: {
@@ -61,6 +60,7 @@ const textToSpeechFlow = ai.defineFlow(
 const storyPrompt = ai.definePrompt({
     name: 'creationStoryPrompt',
     output: { schema: StoryTextSchema },
+    model: 'gemini-1.5-flash',
     prompt: `You are a master storyteller and philosopher, fluent in both English and Persian. Your task is to create the definitive, epic creation story of an educational ecosystem called "Afarinesh". This story will be used as a heroic introduction and must be profoundly inspiring. Create two versions: one in English, one in Persian. Both versions must follow the same structure and weave together all the following philosophical concepts into a seamless, powerful narrative.
 
 **Part 1: The Legend of Afarinesh - The Genesis of a New World**
@@ -91,13 +91,7 @@ const creationStoryAudiobookFlow = ai.defineFlow(
   },
   async () => {
     // 1. Generate the bilingual story text
-    const { output: textOutput } = await ai.generate({
-      model: googleAI.model('gemini-1.5-flash'),
-      custom: {
-        prompt: storyPrompt,
-        promptInput: {}
-      }
-    });
+    const { output: textOutput } = await storyPrompt();
     
     if (!textOutput?.englishStory || !textOutput?.persianStory) {
       throw new Error('Failed to generate the bilingual story text.');

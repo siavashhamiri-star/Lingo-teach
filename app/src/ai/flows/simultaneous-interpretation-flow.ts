@@ -11,7 +11,6 @@
 import { z } from 'zod';
 import { ai } from '../genkit';
 import wav from 'wav';
-import { googleAI } from '@genkit-ai/google-genai';
 
 const InterpretationScenarioInputSchema = z.object({
   topic: z.string().describe('The topic for the interpretation (e.g., "News Broadcast", "Business Meeting").'),
@@ -29,6 +28,7 @@ const textPrompt = ai.definePrompt({
     name: 'interpretationTextPrompt',
     input: { schema: InterpretationScenarioInputSchema },
     output: { schema: z.object({ sourceText: z.string() }) },
+    model: 'gemini-1.5-flash',
     prompt: `You are an expert content creator for language learners. Generate a short, clear, and informative text (about 100-150 words) on the given topic in the specified language. The text should be suitable for a simultaneous interpretation exercise.
 
 Topic: "{{{topic}}}"
@@ -45,13 +45,7 @@ const interpretationFlow = ai.defineFlow(
   },
   async (input) => {
     // 1. Generate the source text
-    const { output: textOutput } = await ai.generate({
-      model: googleAI.model('gemini-1.5-flash'),
-      custom: {
-        prompt: textPrompt,
-        promptInput: input
-      }
-    });
+    const { output: textOutput } = await textPrompt(input);
 
     if (!textOutput?.sourceText) {
       throw new Error('Failed to generate source text for the scenario.');
@@ -60,7 +54,7 @@ const interpretationFlow = ai.defineFlow(
 
     // 2. Generate the source audio using TTS
     const { media } = await ai.generate({
-      model: googleAI.model('gemini-2.5-flash-preview-tts'),
+      model: 'gemini-2.5-flash-preview-tts',
       config: {
         responseModalities: ['AUDIO'],
         speechConfig: {

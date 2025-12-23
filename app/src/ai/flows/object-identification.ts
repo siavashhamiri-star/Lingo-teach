@@ -10,7 +10,6 @@
 import { z } from 'zod';
 import { ai } from '../genkit';
 import wav from 'wav';
-import { googleAI } from '@genkit-ai/google-genai';
 
 const IdentifyObjectInputSchema = z.object({
   imageDataUri: z
@@ -37,7 +36,7 @@ const textToSpeechFlow = ai.defineFlow(
   },
   async ({ text, voiceName }) => {
     const { media } = await ai.generate({
-      model: googleAI.model('gemini-2.5-flash-preview-tts'),
+      model: 'gemini-2.5-flash-preview-tts',
       config: {
         responseModalities: ['AUDIO'],
         speechConfig: {
@@ -59,14 +58,17 @@ const textToSpeechFlow = ai.defineFlow(
 
 const identificationPrompt = ai.definePrompt({
     name: 'identificationPrompt',
+    input: { schema: IdentifyObjectInputSchema },
     output: {
         schema: z.object({
             englishName: z.string(),
             persianName: z.string(),
         })
     },
+    model: 'gemini-1.5-flash',
     prompt: `You are an expert at identifying objects in images. Analyze the image provided and identify the main object. Provide the name of the object in both English and Persian.
-        Output only the JSON object with the identified names.`
+        Output only the JSON object with the identified names.
+        Image: {{media url=imageDataUri}}`
 });
 
 const identifyObjectFlow = ai.defineFlow(
@@ -76,12 +78,7 @@ const identifyObjectFlow = ai.defineFlow(
     outputSchema: IdentifyObjectOutputSchema,
   },
   async (input) => {
-    const { output } = await identificationPrompt({}, {
-        model: googleAI.model('gemini-1.5-flash'),
-        prompt: [{
-            media: { url: input.imageDataUri }
-        }]
-    });
+    const { output } = await identificationPrompt(input);
 
     if (!output) {
       throw new Error('Failed to identify object in the image.');

@@ -10,7 +10,6 @@
 import { z } from 'zod';
 import { ai } from '../genkit';
 import wav from 'wav';
-import { googleAI } from '@genkit-ai/google-genai';
 
 const BilingualShortStoryInputSchema = z.object({
   userLanguageLevel: z
@@ -56,7 +55,7 @@ const textToSpeechFlow = ai.defineFlow(
       return '';
     }
     const { media } = await ai.generate({
-      model: googleAI.model('gemini-2.5-flash-preview-tts'),
+      model: 'gemini-2.5-flash-preview-tts',
       config: {
         responseModalities: ['AUDIO'],
         speechConfig: {
@@ -88,6 +87,7 @@ const storyPrompt = ai.definePrompt({
             story: z.array(SentencePairSchema),
         })
     },
+    model: 'gemini-1.5-flash',
     prompt: `You are a bilingual storyteller fluent in English and Persian.
 
   Generate a short story with a title, appropriate for language level {{{userLanguageLevel}}}.
@@ -103,13 +103,7 @@ const bilingualShortStoryFlow = ai.defineFlow(
     outputSchema: BilingualShortStoryOutputSchema,
   },
   async (input) => {
-    const { output: storyOutput } = await ai.generate({
-      model: googleAI.model('gemini-1.5-flash'),
-      custom: {
-        prompt: storyPrompt,
-        promptInput: input
-      }
-    });
+    const { output: storyOutput } = await storyPrompt(input);
 
     if (!storyOutput?.story) {
       throw new Error('Failed to generate bilingual short story text.');

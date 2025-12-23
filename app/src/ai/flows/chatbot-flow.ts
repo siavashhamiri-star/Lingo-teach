@@ -9,7 +9,6 @@
 
 import { z } from 'zod';
 import { ai } from '../genkit';
-import { googleAI } from '@genkit-ai/google-genai';
 
 // Define a schema for a single message in the chat history
 const ChatMessageSchema = z.object({
@@ -32,8 +31,12 @@ export type ChatOutput = z.infer<typeof ChatOutputSchema>;
 
 const chatPrompt = ai.definePrompt({
     name: 'chatbotPrompt',
-    input: { schema: ChatInputSchema },
+    input: { schema: z.object({
+        targetLanguage: z.enum(['English', 'Persian']),
+        message: z.string(),
+    }) },
     output: { schema: ChatOutputSchema },
+    model: 'gemini-1.5-flash',
     prompt: `You are a friendly and encouraging bilingual language tutor, fluent in both English and Persian. Your goal is to help a user practice their conversation skills in {{{targetLanguage}}}.
 
 - Keep your responses natural, conversational, and not too long.
@@ -55,9 +58,11 @@ const chatbotFlow = ai.defineFlow(
   },
   async (input) => {
     const { output } = await chatPrompt(
-        input,
         {
-            model: googleAI.model('gemini-1.5-flash'),
+            message: input.message,
+            targetLanguage: input.targetLanguage,
+        },
+        {
             history: input.history,
         }
     );

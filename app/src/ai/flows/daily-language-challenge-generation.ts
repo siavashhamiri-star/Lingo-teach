@@ -10,7 +10,6 @@
 
 import { z } from 'zod';
 import { ai } from '../genkit';
-import { googleAI } from '@genkit-ai/google-genai';
 
 const DailyChallengeInputSchema = z.object({
   languageLevel: z
@@ -36,6 +35,7 @@ const dailyChallengePrompt = ai.definePrompt({
     name: 'dailyChallengePrompt',
     input: { schema: DailyChallengeInputSchema },
     output: { schema: DailyChallengeOutputSchema },
+    model: 'gemini-1.5-flash',
     prompt: `You are a language challenge generator for a user learning {{{targetLanguage}}}. The user's language level is {{{languageLevel}}}. Generate one challenging and engaging question appropriate for this level, along with its answer.`,
 });
 
@@ -46,13 +46,7 @@ const dailyChallengeFlow = ai.defineFlow(
     outputSchema: DailyChallengeOutputSchema,
   },
   async (input) => {
-    const { output } = await ai.generate({
-      model: googleAI.model('gemini-1.5-flash'),
-      custom: {
-        prompt: dailyChallengePrompt,
-        promptInput: input
-      }
-    });
+    const { output } = await dailyChallengePrompt(input);
     return output!;
   }
 );
