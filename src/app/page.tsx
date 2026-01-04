@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowRight, BotMessageSquare, BrainCircuit, Users, Building, Sparkles, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Logo from '@/components/icons/logo';
 import AfarineshLogo from '@/components/icons/afarinesh-logo';
 import TavanaLogo from '@/components/icons/tavana-logo';
@@ -13,27 +14,24 @@ const featureCards = [
     icon: <BotMessageSquare className="h-8 w-8 text-primary" />,
     title: 'Bilingual Chatbot',
     description: 'Practice Persian-to-English or English-to-Persian. Converse with our AI, learning from real film and speech snippets.',
-    imageUrl: "https://images.unsplash.com/photo-1758417787428-45a2071c9740?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGNvbnZlcnNhdGlvbnxlbnwwfHx8fDE3NjQwNDcxODN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    imageHint: "abstract conversation"
+    image: PlaceHolderImages.find((img) => img.id === 'chatbot-roleplay'),
   },
   {
     icon: <BrainCircuit className="h-8 w-8 text-primary" />,
     title: 'Personalized Learning',
     description: 'AI-driven analysis of your skills to create tailored lessons and exercises just for you.',
-    imageUrl: "https://images.unsplash.com/photo-1686644472323-d10892d43f8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxsZWFybmluZyUyMGdhbWV8ZW58MHx8fHwxNzY0MDQ3MTgzfDA&ixlib=rb-4.1.0&q=80&w=1080",
-    imageHint: "learning game"
+    image: PlaceHolderImages.find((img) => img.id === 'interactive-exercise'),
   },
   {
     icon: <Users className="h-8 w-8 text-primary" />,
     title: 'Vibrant Community',
     description: 'Connect with fellow learners, form teams, and compete in monthly championships.',
-    imageUrl: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzb2NpYWwlMjBuZXR3b3JrfGVufDB8fHx8MTc2Mzk4OTI2MHww&ixlib=rb-4.1.0&q=80&w=1080",
-    imageHint: "social network"
+    image: PlaceHolderImages.find((img) => img.id === 'community-connect'),
   },
 ];
 
 export default function LandingPage() {
-  const heroImageUrl = "https://images.unsplash.com/photo-1758270704787-615782711641?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y29udmVyc2F0aW9uJTIwbGVhcm5pbmd8ZW58MHx8fHwxNzY0MDQ3MTgzfDA&ixlib=rb-4.1.0&q=80&w=1080";
+  const heroImage = PlaceHolderImages.find((img) => img.id === 'landing-hero');
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -71,16 +69,18 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
+          {heroImage && (
             <div className="absolute inset-0 -z-10 h-full w-full">
               <Image
-                src={heroImageUrl}
-                alt="Two people having a conversation in a bright, modern setting."
+                src={heroImage.imageUrl}
+                alt={heroImage.description}
                 fill
                 className="object-cover opacity-10"
-                data-ai-hint="conversation learning"
+                data-ai-hint={heroImage.imageHint}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
             </div>
+          )}
         </section>
 
         <section id="features" className="py-20 md:py-28 bg-secondary/50">

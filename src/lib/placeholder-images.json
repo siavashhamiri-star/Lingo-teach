@@ -9,7 +9,7 @@
     {
       "id": "profile-avatar",
       "description": "A default user profile avatar.",
-      "imageUrl": "https://images.unsplash.com/photo-1521119989659-a83eee488004?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjQwMzQxODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3Njc1MTExMDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "person portrait"
     },
     {
@@ -31,22 +31,52 @@
       "imageHint": "social network"
     },
     {
-      "id": "accent-training",
-      "description": "A visual representation of a sound wave.",
-      "imageUrl": "https://images.unsplash.com/photo-1692838952665-a7a9577fde9e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzb3VuZCUyMHdhdmV8ZW58MHx8fHwxNzYzOTc0NjkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "sound wave"
+      "id": "portrait-woman-1",
+      "description": "Portrait of a confident woman, Elena.",
+      "imageUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NzQ1MDI2MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
     },
     {
-      "id": "karaoke-singing",
-      "description": "A silhouette of a person singing into a vintage microphone.",
-      "imageUrl": "https://images.unsplash.com/photo-1669181339677-0f646762be03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzaW5naW5nJTIwbWljcm9waG9uZXxlbnwwfHx8fDE3NjQwNDcxODN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "singing microphone"
+      "id": "portrait-man-1",
+      "description": "Portrait of a man, Kenji.",
+      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3Njc0NDgzMDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man portrait"
     },
     {
-      "id": "leitner-box-cards",
-      "description": "A stack of colorful flashcards.",
-      "imageUrl": "https://images.unsplash.com/photo-1601431252174-4a3894078ba0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmbGFzaGNhcmRzJTIwbGVhcm5pbmd8ZW58MHx8fHwxNzY0MDQ3MTgzfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "flashcards learning"
+      "id": "portrait-person-1",
+      "description": "Portrait of a person, Sara.",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3Njc1MTExMDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "portrait-person-2",
+      "description": "Portrait of a smiling person, David.",
+      "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzbWlsaW5nJTIwcGVyc29ufGVufDB8fHx8MTc2NzQzMDI4NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "smiling person"
+    },
+    {
+      "id": "portrait-man-2",
+      "description": "Top teacher Dr. Reza Karimi.",
+      "imageUrl": "https://images.unsplash.com/photo-1537511446984-935f663eb1f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtYW4lMjBwcm9mZXNzaW9uYWx8ZW58MHx8fHwxNzY3NDYxMDUwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man professional"
+    },
+    {
+      "id": "portrait-woman-2",
+      "description": "Top teacher Ms. Maryam Hedayati.",
+      "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3b21hbiUyMHByb2Zlc3Npb25hbHxlbnwwfHx8fDE3Njc1MTA2MDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman professional"
+    },
+    {
+      "id": "portrait-woman-3",
+      "description": "Dedicated learner Maria.",
+      "imageUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NzQ1MDI2MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "portrait-man-3",
+      "description": "Dedicated learner Hassan.",
+      "imageUrl": "https://images.unsplash.com/photo-1549473448-b0acc73629dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtYW4lMjBoZWFkc2hvdHxlbnwwfHx8fDE3Njc0NjIwMjh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man headshot"
     }
   ]
 }
