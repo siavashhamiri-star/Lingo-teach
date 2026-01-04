@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
@@ -19,6 +18,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 // --- Pricing Model Simulation ---
 const IS_PREMIUM_USER = true;
@@ -33,6 +33,7 @@ const referralLeaderboard = [
 
 export default function ProfilePage() {
   const { toast } = useToast();
+  const profileAvatar = PlaceHolderImages.find(p => p.id === 'profile-avatar')?.imageUrl;
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -54,7 +55,7 @@ export default function ProfilePage() {
           <CardContent className="pt-6 flex flex-col items-center text-center">
             <div className="relative">
               <Avatar className="w-24 h-24 mb-4">
-                <AvatarImage src="https://picsum.photos/seed/1/300/300" alt="User Avatar" />
+                {profileAvatar && <AvatarImage src={profileAvatar} alt="User Avatar" />}
                 <AvatarFallback>JD</AvatarFallback>
               </Avatar>
                {IS_PREMIUM_USER && (

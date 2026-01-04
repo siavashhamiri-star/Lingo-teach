@@ -10,7 +10,7 @@
     {
       "id": "profile-avatar",
       "description": "A default user profile avatar.",
-      "imageUrl": "https://picsum.photos/seed/1/300/300",
+      "imageUrl": "https://picsum.photos/seed/avatar1/300/300",
       "imageHint": "person portrait"
     },
     {
@@ -32,94 +32,52 @@
       "imageHint": "social network"
     },
     {
-      "id": "accent-training",
-      "description": "A visual representation of a sound wave.",
-      "imageUrl": "https://images.unsplash.com/photo-1692838952665-a7a9577fde9e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzb3VuZCUyMHdhdmV8ZW58MHx8fHwxNzYzOTc0NjkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "sound wave"
-    },
-    {
-      "id": "karaoke-singing",
-      "description": "A silhouette of a person singing into a vintage microphone.",
-      "imageUrl": "https://images.unsplash.com/photo-1669181339677-0f646762be03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzaW5naW5nJTIwbWljcm9waG9uZXxlbnwwfHx8fDE3NjQwNDcxODN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "singing microphone"
-    },
-    {
-      "id": "leitner-box-cards",
-      "description": "A stack of colorful flashcards.",
-      "imageUrl": "https://images.unsplash.com/photo-1601431252174-4a3894078ba0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmbGFzaGNhcmRzJTIwbGVhcm5pbmd8ZW58MHx8fHwxNzY0MDQ3MTgzfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "flashcards learning"
-    },
-    {
-      "id": "duel-opponent-1",
+      "id": "portrait-woman-1",
       "description": "Portrait of a confident woman.",
-      "imageUrl": "https://picsum.photos/seed/student1/100/100",
+      "imageUrl": "https://picsum.photos/seed/woman1/100/100",
       "imageHint": "woman portrait"
     },
     {
-      "id": "duel-opponent-2",
+      "id": "portrait-man-1",
       "description": "Portrait of a man.",
-      "imageUrl": "https://picsum.photos/seed/student2/100/100",
+      "imageUrl": "https://picsum.photos/seed/man1/100/100",
       "imageHint": "man portrait"
     },
     {
-      "id": "duel-opponent-3",
+      "id": "portrait-person-1",
       "description": "Portrait of a person.",
-      "imageUrl": "https://picsum.photos/seed/student3/100/100",
+      "imageUrl": "https://picsum.photos/seed/person1/100/100",
       "imageHint": "person portrait"
     },
     {
-      "id": "duel-opponent-4",
+      "id": "portrait-person-2",
       "description": "Portrait of a smiling person.",
-      "imageUrl": "https://picsum.photos/seed/student4/100/100",
+      "imageUrl": "https://picsum.photos/seed/person2/100/100",
       "imageHint": "smiling person"
     },
     {
-      "id": "award-student-1",
-      "imageUrl": "https://picsum.photos/seed/student1/100/100",
-      "imageHint": "woman portrait",
-      "description": "Top student Elena"
-    },
-    {
-      "id": "award-student-2",
-      "imageUrl": "https://picsum.photos/seed/student2/100/100",
-      "imageHint": "man portrait",
-      "description": "Top student Kenji"
-    },
-    {
-      "id": "award-student-3",
-      "imageUrl": "https://picsum.photos/seed/student3/100/100",
-      "imageHint": "person portrait",
-      "description": "Top student Sara"
-    },
-    {
-      "id": "award-teacher-1",
-      "imageUrl": "https://picsum.photos/seed/tutor1/100/100",
+      "id": "portrait-man-2",
+      "imageUrl": "https://picsum.photos/seed/man2/100/100",
       "imageHint": "man professional",
       "description": "Top teacher Dr. Reza Karimi"
     },
     {
-      "id": "award-teacher-2",
-      "imageUrl": "https://picsum.photos/seed/tutor2/100/100",
+      "id": "portrait-woman-2",
+      "imageUrl": "https://picsum.photos/seed/woman2/100/100",
       "imageHint": "woman professional",
       "description": "Top teacher Ms. Maryam Hedayati"
     },
     {
-      "id": "ambassador-1",
-      "imageUrl": "https://picsum.photos/seed/student1/100/100",
+      "id": "portrait-woman-3",
+      "imageUrl": "https://picsum.photos/seed/woman3/100/100",
       "imageHint": "woman portrait",
-      "description": "Top ambassador Elena"
+      "description": "Dedicated learner Maria"
     },
     {
-      "id": "ambassador-2",
-      "imageUrl": "https://picsum.photos/seed/ambassador2/100/100",
+      "id": "portrait-man-3",
+      "imageUrl": "https://picsum.photos/seed/man3/100/100",
       "imageHint": "man headshot",
-      "description": "Top ambassador Kian"
-    },
-    {
-      "id": "ambassador-3",
-      "imageUrl": "https://picsum.photos/seed/1/100/100",
-      "imageHint": "person smiling",
-      "description": "Your ambassador profile"
+      "description": "Dedicated learner Hassan"
     }
   ]
 }

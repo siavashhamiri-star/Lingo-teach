@@ -26,6 +26,11 @@ const SentencePairSchema = z.object({
   persianSentence: z.string().describe('The direct translation of that sentence in Persian.'),
 });
 
+const StoryTextSchema = z.object({
+  title: z.string().describe('The title of the story in English.'),
+  story: z.array(SentencePairSchema).describe('The story, broken down into sentence pairs.'),
+});
+
 const BilingualShortStoryOutputSchema = z.object({
   title: z.string().describe('The title of the story in English.'),
   story: z
@@ -80,12 +85,7 @@ const textToSpeechFlow = ai.defineFlow(
 const storyPrompt = ai.definePrompt({
     name: 'bilingualStoryPrompt',
     input: { schema: BilingualShortStoryInputSchema },
-    output: {
-        schema: z.object({
-            title: z.string(),
-            story: z.array(SentencePairSchema),
-        })
-    },
+    output: { schema: StoryTextSchema },
     prompt: `You are a bilingual storyteller fluent in English and Persian.
 
   Generate a short story with a title, appropriate for language level {{{userLanguageLevel}}}.

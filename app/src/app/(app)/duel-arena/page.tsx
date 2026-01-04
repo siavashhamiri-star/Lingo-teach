@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
@@ -17,21 +16,21 @@ const opponents = [
         name: "Kenji",
         level: 158,
         specialty: "English Literature",
-        avatar: PlaceHolderImages.find(img => img.id === 'duel-opponent-2')?.imageUrl,
+        avatar: PlaceHolderImages.find(img => img.id === 'portrait-man-1')?.imageUrl,
         isProfessor: true
     },
     {
         name: "Sara",
         level: 145,
         specialty: "IELTS Speaking",
-        avatar: PlaceHolderImages.find(img => img.id === 'duel-opponent-3')?.imageUrl,
+        avatar: PlaceHolderImages.find(img => img.id === 'portrait-person-1')?.imageUrl,
         isProfessor: false
     },
     {
         name: "David",
         level: 130,
         specialty: "Business English",
-        avatar: PlaceHolderImages.find(img => img.id === 'duel-opponent-4')?.imageUrl,
+        avatar: PlaceHolderImages.find(img => img.id === 'portrait-person-2')?.imageUrl,
         isProfessor: false
     }
 ]

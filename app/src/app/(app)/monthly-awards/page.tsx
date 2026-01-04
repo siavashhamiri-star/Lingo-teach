@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { PageHeader } from '@/components/shared/page-header';
@@ -8,22 +7,23 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const topSkillStudents = [
-    { name: 'Elena', avatar: 'https://picsum.photos/seed/student1/100/100', detail: 'Reached Level 155 (English)'},
-    { name: 'Kenji', avatar: 'https://picsum.photos/seed/student2/100/100', detail: 'Top Score in IELTS Writing'},
-    { name: 'Sara', avatar: 'https://picsum.photos/seed/student3/100/100', detail: 'Mastered Advanced Persian Grammar'},
+    { name: 'Elena', avatar: PlaceHolderImages.find(p => p.id === 'portrait-woman-1')?.imageUrl, detail: 'Reached Level 155 (English)'},
+    { name: 'Kenji', avatar: PlaceHolderImages.find(p => p.id === 'portrait-man-1')?.imageUrl, detail: 'Top Score in IELTS Writing'},
+    { name: 'Sara', avatar: PlaceHolderImages.find(p => p.id === 'portrait-person-1')?.imageUrl, detail: 'Mastered Advanced Persian Grammar'},
 ];
 
 const topSkillTeachers = [
-    { name: 'Dr. Reza Karimi', avatar: 'https://picsum.photos/seed/tutor1/100/100', detail: 'Highest Rated Konkur Tutor'},
-    { name: 'Ms. Maryam Hedayati', avatar: 'https://picsum.photos/seed/tutor2/100/100', detail: 'Most Successful Student Reviews'},
+    { name: 'Dr. Reza Karimi', avatar: PlaceHolderImages.find(p => p.id === 'portrait-man-2')?.imageUrl, detail: 'Highest Rated Konkur Tutor'},
+    { name: 'Ms. Maryam Hedayati', avatar: PlaceHolderImages.find(p => p.id === 'portrait-woman-2')?.imageUrl, detail: 'Most Successful Student Reviews'},
 ]
 
 const mostDedicatedLearners = [
-    { name: 'David', avatar: 'https://picsum.photos/seed/student4/100/100', detail: '40 hours of practice this month'},
-    { name: 'Maria', avatar: 'https://picsum.photos/seed/student5/100/100', detail: 'Completed 50 lessons in a row'},
-    { name: 'Hassan', avatar: 'https://picsum.photos/seed/student6/100/100', detail: 'Highest participation in community rooms'},
+    { name: 'David', avatar: PlaceHolderImages.find(p => p.id === 'portrait-person-2')?.imageUrl, detail: '40 hours of practice this month'},
+    { name: 'Maria', avatar: PlaceHolderImages.find(p => p.id === 'portrait-woman-3')?.imageUrl, detail: 'Completed 50 lessons in a row'},
+    { name: 'Hassan', avatar: PlaceHolderImages.find(p => p.id === 'portrait-man-3')?.imageUrl, detail: 'Highest participation in community rooms'},
 ];
 
 
@@ -51,7 +51,7 @@ export default function MonthlyAwardsPage() {
                         {topSkillTeachers.map((user, index) => (
                             <div key={index} className="flex items-center gap-4">
                                 <Avatar className="h-12 w-12 border-2 border-primary">
-                                    <AvatarImage src={user.avatar} />
+                                    {user.avatar && <AvatarImage src={user.avatar} />}
                                     <AvatarFallback>{user.name.substring(0,2)}</AvatarFallback>
                                 </Avatar>
                                 <div>
@@ -72,7 +72,7 @@ export default function MonthlyAwardsPage() {
                                     <Medal className={`w-6 h-6 ${rankColors[index] || 'text-muted-foreground'}`} />
                                 </div>
                                 <Avatar className="h-12 w-12 border">
-                                    <AvatarImage src={user.avatar} />
+                                    {user.avatar && <AvatarImage src={user.avatar} />}
                                     <AvatarFallback>{user.name.substring(0,2)}</AvatarFallback>
                                 </Avatar>
                                 <div>
@@ -97,7 +97,7 @@ export default function MonthlyAwardsPage() {
                             <span className="font-bold text-xl text-primary">#{index + 1}</span>
                         </div>
                         <Avatar className="h-12 w-12 border">
-                            <AvatarImage src={user.avatar} />
+                            {user.avatar && <AvatarImage src={user.avatar} />}
                             <AvatarFallback>{user.name.substring(0,2)}</AvatarFallback>
                         </Avatar>
                         <div>
