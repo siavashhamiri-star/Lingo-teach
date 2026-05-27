@@ -1,5 +1,3 @@
-
-import type { NavItem } from '@/lib/types';
 import {
   Award,
   BookAudio,
@@ -10,7 +8,6 @@ import {
   BrainCircuit,
   Building,
   Camera,
-  Crown,
   Ear,
   FileText,
   Film,
@@ -18,7 +15,6 @@ import {
   Gem,
   GraduationCap,
   Handshake,
-  HeartHandshake,
   Headset,
   Languages,
   LayoutDashboard,
@@ -34,7 +30,7 @@ import {
   Users,
 } from 'lucide-react';
 
-export const menuItems: NavItem[] = [
+export const menuItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/learning-path', label: 'Learning Path', icon: BrainCircuit },
   { href: '/chatbot', label: 'Chatbot', icon: BotMessageSquare },
@@ -57,21 +53,10 @@ export const menuItems: NavItem[] = [
   { href: '/live-classes', label: 'Live Classes', icon: School },
   { href: '/creation-story', label: 'Creation Story', icon: BookAudio },
   { href: '/philosophy-gems', label: 'Philosophy Gems', icon: Gem },
-  { href: '/covenant', label: 'The Covenant', icon: HeartHandshake },
   { href: '/deployment', label: 'Headquarters', icon: Building },
   { href: '/genesis-movie', label: 'Genesis Movie', icon: Film, premium: true },
   { href: '/karaoke', label: 'Karaoke', icon: Music, premium: true },
-  {
-    href: '/ielts-toefl-prep',
-    label: 'IELTS/TOEFL Prep',
-    icon: GraduationCap,
-    premium: true,
-  },
-  {
-    href: '/simultaneous-interpretation',
-    label: 'Simultaneous Interpretation',
-    icon: Headset,
-    premium: true,
-  },
+  { href: '/ielts-toefl-prep', label: 'IELTS/TOEFL Prep', icon: GraduationCap, premium: true },
+  { href: '/simultaneous-interpretation', label: 'Simultaneous Interpretation', icon: Headset, premium: true },
   { href: '/profile', label: 'Profile', icon: User },
 ];

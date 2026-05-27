@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, BotMessageSquare, BrainCircuit, Users, Building, Sparkles, Globe } from 'lucide-react';
@@ -14,19 +13,19 @@ const featureCards = [
     icon: <BotMessageSquare className="h-8 w-8 text-primary" />,
     title: 'Bilingual Chatbot',
     description: 'Practice Persian-to-English or English-to-Persian. Converse with our AI, learning from real film and speech snippets.',
-    image: PlaceHolderImages.find((img) => img.id === 'chatbot-roleplay'),
+    image: 'chatbot-roleplay',
   },
   {
     icon: <BrainCircuit className="h-8 w-8 text-primary" />,
     title: 'Personalized Learning',
     description: 'AI-driven analysis of your skills to create tailored lessons and exercises just for you.',
-    image: PlaceHolderImages.find((img) => img.id === 'interactive-exercise'),
+    image: 'interactive-exercise',
   },
   {
     icon: <Users className="h-8 w-8 text-primary" />,
     title: 'Vibrant Community',
     description: 'Connect with fellow learners, form teams, and compete in monthly championships.',
-    image: PlaceHolderImages.find((img) => img.id === 'community-connect'),
+    image: 'community-connect',
   },
 ];
 
@@ -143,9 +142,6 @@ export default function LandingPage() {
                             <p className="font-semibold text-foreground">
                                 Here, learning is the currency, creativity is the industry, and community is the foundation. Join us, and build your dreams while building the city of dreams.
                             </p>
-                            <p className="font-bold text-accent" dir="rtl">
-                                شهر توانایی که به امید حق با برآوردهایی که می‌شود در آینده نزدیک ارزش افزوده هر زمین آن بسیار بسیار زیاد خواهد بود.
-                            </p>
                              <div className="pt-4">
                                 <Button asChild>
                                   <Link href="/philosophy-gems">
@@ -158,51 +154,11 @@ export default function LandingPage() {
                 </div>
             </div>
         </section>
-
-        <section id="global-vision" className="py-20 md:py-28 bg-secondary/50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl sm:text-4xl font-bold font-headline flex items-center justify-center gap-3">
-                <Globe className="w-8 h-8 text-primary" />
-                Our Global Vision
-              </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                Our journey begins with a clear mission, but our ambition knows no borders.
-              </p>
-            </div>
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <Card className="bg-background/80">
-                <CardHeader>
-                  <CardTitle>A Universal Model</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    Should this innovative language learning methodology be embraced by enthusiasts, we are committed to adapting it for other major world languages. Our vision is to build a global infrastructure for a new era of language education, inspired by this foundational model.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="bg-background/80">
-                <CardHeader>
-                  <CardTitle>An Invitation to Learn Persian</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    We extend a warm invitation to all English speakers who are passionate about learning the rich Persian language. Join our community and become part of this creative and empowering journey.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
       </main>
 
       <footer className="py-8 bg-background border-t">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} LinguaWeave. All rights reserved.</p>
-           <p className="text-xs mt-2 italic">
-            "We are capable for one purpose: for creation, for ability, for each other."
-          </p>
         </div>
       </footer>
     </div>

@@ -2,81 +2,39 @@
   "placeholderImages": [
     {
       "id": "landing-hero",
-      "description": "Two people having a conversation in a bright, modern setting.",
-      "imageUrl": "https://images.unsplash.com/photo-1758270704787-615782711641?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y29udmVyc2F0aW9uJTIwbGVhcm5pbmd8ZW58MHx8fHwxNzY0MDQ3MTgzfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "conversation learning"
+      "description": "A high-tech digital city representing knowledge and connection.",
+      "imageUrl": "https://picsum.photos/seed/afarinesh-hero/1200/600",
+      "imageHint": "digital city"
     },
     {
       "id": "profile-avatar",
-      "description": "A default user profile avatar.",
-      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3Njc1MTExMDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Default profile avatar.",
+      "imageUrl": "https://picsum.photos/seed/user-avatar/300/300",
       "imageHint": "person portrait"
     },
     {
-      "id": "chatbot-roleplay",
-      "description": "An abstract representation of a conversation flow between a user and an AI.",
-      "imageUrl": "https://images.unsplash.com/photo-1758417787428-45a2071c9740?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGNvbnZlcnNhdGlvbnxlbnwwfHx8fDE3NjQwNDcxODN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract conversation"
-    },
-    {
-      "id": "interactive-exercise",
-      "description": "Colorful blocks and shapes representing an interactive game.",
-      "imageUrl": "https://images.unsplash.com/photo-1686644472323-d10892d43f8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxsZWFybmluZyUyMGdhbWV8ZW58MHx8fHwxNzY0MDQ3MTgzfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "learning game"
-    },
-    {
-      "id": "community-connect",
-      "description": "A network of connected profile icons.",
-      "imageUrl": "https://images.unsplash.com/photo-1611926653458-09294b3142bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzb2NpYWwlMjBuZXR3b3JrfGVufDB8fHx8MTc2Mzk4OTI2MHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "social network"
-    },
-    {
       "id": "portrait-woman-1",
-      "description": "Portrait of a confident woman, Elena.",
-      "imageUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NzQ1MDI2MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Student Elena profile portrait.",
+      "imageUrl": "https://picsum.photos/seed/elena/100/100",
       "imageHint": "woman portrait"
     },
     {
       "id": "portrait-man-1",
-      "description": "Portrait of a man, Kenji.",
-      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3Njc0NDgzMDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Tutor Kenji profile portrait.",
+      "imageUrl": "https://picsum.photos/seed/kenji/100/100",
       "imageHint": "man portrait"
     },
     {
       "id": "portrait-person-1",
-      "description": "Portrait of a person, Sara.",
-      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3Njc1MTExMDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Student Sara profile portrait.",
+      "imageUrl": "https://picsum.photos/seed/sara/100/100",
       "imageHint": "person portrait"
     },
     {
       "id": "portrait-person-2",
-      "description": "Portrait of a smiling person, David.",
-      "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzbWlsaW5nJTIwcGVyc29ufGVufDB8fHx8MTc2NzQzMDI4NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Student David profile portrait.",
+      "imageUrl": "https://picsum.photos/seed/david/100/100",
       "imageHint": "smiling person"
-    },
-    {
-      "id": "portrait-man-2",
-      "description": "Top teacher Dr. Reza Karimi.",
-      "imageUrl": "https://images.unsplash.com/photo-1537511446984-935f663eb1f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtYW4lMjBwcm9mZXNzaW9uYWx8ZW58MHx8fHwxNzY3NDYxMDUwfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "man professional"
-    },
-    {
-      "id": "portrait-woman-2",
-      "description": "Top teacher Ms. Maryam Hedayati.",
-      "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3b21hbiUyMHByb2Zlc3Npb25hbHxlbnwwfHx8fDE3Njc1MTA2MDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "woman professional"
-    },
-    {
-      "id": "portrait-woman-3",
-      "description": "Dedicated learner Maria.",
-      "imageUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NzQ1MDI2MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "woman portrait"
-    },
-    {
-      "id": "portrait-man-3",
-      "description": "Dedicated learner Hassan.",
-      "imageUrl": "https://images.unsplash.com/photo-1549473448-b0acc73629dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtYW4lMjBoZWFkc2hvdHxlbnwwfHx8fDE3Njc0NjIwMjh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "man headshot"
     }
   ]
 }
