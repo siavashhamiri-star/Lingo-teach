@@ -13,27 +13,45 @@
       "imageHint": "person portrait"
     },
     {
-      "id": "portrait-woman-1",
-      "description": "Student Elena profile portrait.",
-      "imageUrl": "https://picsum.photos/seed/elena/100/100",
-      "imageHint": "woman portrait"
-    },
-    {
-      "id": "portrait-man-1",
-      "description": "Tutor Kenji profile portrait.",
+      "id": "duel-opponent-2",
+      "description": "Portrait of Kenji",
       "imageUrl": "https://picsum.photos/seed/kenji/100/100",
       "imageHint": "man portrait"
     },
     {
-      "id": "portrait-person-1",
-      "description": "Student Sara profile portrait.",
+      "id": "duel-opponent-3",
+      "description": "Portrait of Sara",
       "imageUrl": "https://picsum.photos/seed/sara/100/100",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "duel-opponent-4",
+      "description": "Portrait of David",
+      "imageUrl": "https://picsum.photos/seed/david/100/100",
+      "imageHint": "smiling person"
+    },
+    {
+      "id": "portrait-woman-1",
+      "description": "Elena",
+      "imageUrl": "https://picsum.photos/seed/woman1/100/100",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "portrait-man-1",
+      "description": "Kenji",
+      "imageUrl": "https://picsum.photos/seed/man1/100/100",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "portrait-person-1",
+      "description": "Sara",
+      "imageUrl": "https://picsum.photos/seed/person1/100/100",
       "imageHint": "person portrait"
     },
     {
       "id": "portrait-person-2",
-      "description": "Student David profile portrait.",
-      "imageUrl": "https://picsum.photos/seed/david/100/100",
+      "description": "David",
+      "imageUrl": "https://picsum.photos/seed/person2/100/100",
       "imageHint": "smiling person"
     }
   ]

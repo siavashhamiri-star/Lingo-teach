@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview Generates a bilingual short story in Persian and English, with sentence-by-sentence audio.
@@ -35,7 +36,9 @@ const BilingualShortStoryOutputSchema = z.object({
   title: z.string().describe('The title of the story in English.'),
   story: z
     .array(
-      SentencePairSchema.extend({
+      z.object({
+        englishSentence: z.string(),
+        persianSentence: z.string(),
         englishAudio: z.string().describe('A data URI for the WAV audio of the English sentence.'),
         persianAudio: z.string().describe('A data URI for the WAV audio of the Persian sentence.'),
       })
@@ -54,8 +57,7 @@ const textToSpeechFlow = ai.defineFlow(
     outputSchema: z.string(),
   },
   async ({ text, voiceName }) => {
-    // Return empty string if text is empty to avoid API errors.
-    if (!text.trim()) {
+    if (!text || !text.trim()) {
       return '';
     }
     const { media } = await ai.generate({
@@ -72,13 +74,11 @@ const textToSpeechFlow = ai.defineFlow(
     });
 
     if (!media) {
-      // Instead of throwing an error, we can return an empty string or handle it gracefully.
-      console.warn(`TTS failed for text: "${text}"`);
       return '';
     }
 
     const audioBuffer = Buffer.from(media.url.substring(media.url.indexOf(',') + 1), 'base64');
-    return 'data:audio/wav;base64,' + await toWav(audioBuffer);
+    return 'data:audio/wav;base64,' + (await toWav(audioBuffer));
   }
 );
 

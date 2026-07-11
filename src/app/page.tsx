@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, BotMessageSquare, BrainCircuit, Users, Building, Sparkles, Globe } from 'lucide-react';
@@ -13,19 +14,16 @@ const featureCards = [
     icon: <BotMessageSquare className="h-8 w-8 text-primary" />,
     title: 'Bilingual Chatbot',
     description: 'Practice Persian-to-English or English-to-Persian. Converse with our AI, learning from real film and speech snippets.',
-    image: 'chatbot-roleplay',
   },
   {
     icon: <BrainCircuit className="h-8 w-8 text-primary" />,
     title: 'Personalized Learning',
     description: 'AI-driven analysis of your skills to create tailored lessons and exercises just for you.',
-    image: 'interactive-exercise',
   },
   {
     icon: <Users className="h-8 w-8 text-primary" />,
     title: 'Vibrant Community',
     description: 'Connect with fellow learners, form teams, and compete in monthly championships.',
-    image: 'community-connect',
   },
 ];
 
@@ -63,7 +61,7 @@ export default function LandingPage() {
                   <Link href="/dashboard">Start Your Journey</Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
-                    <Link href="#vision">Our Grand Vision</Link>
+                    <Link href="/philosophy-gems">Our Grand Vision</Link>
                 </Button>
               </div>
             </div>
@@ -138,9 +136,6 @@ export default function LandingPage() {
                             </blockquote>
                             <p>
                                 In Tavana, you are not just a user; you are a citizen. Every lesson you learn, every skill you master, and every creation you build contributes to the growth of this virtual city. Your effort doesn't just build your future; it builds a new civilization.
-                            </p>
-                            <p className="font-semibold text-foreground">
-                                Here, learning is the currency, creativity is the industry, and community is the foundation. Join us, and build your dreams while building the city of dreams.
                             </p>
                              <div className="pt-4">
                                 <Button asChild>
