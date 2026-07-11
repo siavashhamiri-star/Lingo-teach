@@ -1,7 +1,6 @@
-
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, BotMessageSquare, BrainCircuit, Users, Building, Sparkles, Globe } from 'lucide-react';
+import { ArrowRight, BotMessageSquare, BrainCircuit, Users, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
