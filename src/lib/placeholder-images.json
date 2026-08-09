@@ -29,30 +29,6 @@
       "description": "Portrait of David",
       "imageUrl": "https://picsum.photos/seed/david/100/100",
       "imageHint": "smiling person"
-    },
-    {
-      "id": "portrait-woman-1",
-      "description": "Elena",
-      "imageUrl": "https://picsum.photos/seed/woman1/100/100",
-      "imageHint": "woman portrait"
-    },
-    {
-      "id": "portrait-man-1",
-      "description": "Kenji",
-      "imageUrl": "https://picsum.photos/seed/man1/100/100",
-      "imageHint": "man portrait"
-    },
-    {
-      "id": "portrait-person-1",
-      "description": "Sara",
-      "imageUrl": "https://picsum.photos/seed/person1/100/100",
-      "imageHint": "person portrait"
-    },
-    {
-      "id": "portrait-person-2",
-      "description": "David",
-      "imageUrl": "https://picsum.photos/seed/person2/100/100",
-      "imageHint": "smiling person"
     }
   ]
 }

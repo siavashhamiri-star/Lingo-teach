@@ -12,17 +12,17 @@ const featureCards = [
   {
     icon: <BotMessageSquare className="h-8 w-8 text-primary" />,
     title: 'Bilingual Chatbot',
-    description: 'Practice Persian-to-English or English-to-Persian. Converse with our AI, learning from real film and speech snippets.',
+    description: 'Practice Persian-to-English or English-to-Persian. Converse with our AI tutor.',
   },
   {
     icon: <BrainCircuit className="h-8 w-8 text-primary" />,
     title: 'Personalized Learning',
-    description: 'AI-driven analysis of your skills to create tailored lessons and exercises just for you.',
+    description: 'AI-driven analysis of your skills to create tailored lessons and exercises.',
   },
   {
     icon: <Users className="h-8 w-8 text-primary" />,
     title: 'Vibrant Community',
-    description: 'Connect with fellow learners, form teams, and compete in monthly championships.',
+    description: 'Connect with fellow learners, form teams, and compete in Tavana.',
   },
 ];
 
@@ -43,9 +43,9 @@ export default function LandingPage() {
         </Button>
       </header>
 
-      <main className="flex-grow">
+      <main className="flex-grow text-center">
         <section className="relative w-full py-20 md:py-32 lg:py-40">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight font-headline text-foreground">
                 The Art of Persian,
@@ -53,7 +53,7 @@ export default function LandingPage() {
                 <span className="text-primary">Mastered with AI.</span>
               </h1>
               <p className="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground">
-                Welcome to Afarinesh (Creation). Our primary mission is to teach the rich and beautiful Persian language to English speakers through an innovative, AI-powered ecosystem.
+                Welcome to Afarinesh (Creation). Join the innovative, AI-powered ecosystem to honor and learn the beautiful Persian language.
               </p>
               <div className="mt-8 flex justify-center gap-4">
                 <Button size="lg" asChild>
@@ -72,24 +72,20 @@ export default function LandingPage() {
                 alt={heroImage.description}
                 fill
                 className="object-cover opacity-10"
-                data-ai-hint={heroImage.imageHint}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
             </div>
           )}
         </section>
 
-        <section id="features" className="py-20 md:py-28 bg-secondary/50">
+        <section id="features" className="py-20 md:py-28 bg-secondary/30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-3xl sm:text-4xl font-bold font-headline">A Smarter Way to Learn</h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                LinguaWeave combines cutting-edge AI with proven learning methods to create an unparalleled language learning experience.
-              </p>
             </div>
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
               {featureCards.map((feature, index) => (
-                <Card key={index} className="bg-background/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                <Card key={index} className="bg-background/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow">
                   <CardHeader className="items-center text-center">
                     {feature.icon}
                     <CardTitle className="mt-4 font-headline">{feature.title}</CardTitle>
@@ -105,45 +101,28 @@ export default function LandingPage() {
         
         <section id="vision" className="py-20 md:py-28">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                 <div className="text-center max-w-3xl mx-auto">
-                    <div className="flex items-center justify-center gap-3">
-                        <div className="flex flex-col items-center">
-                           <AfarineshLogo className="w-10 h-10 text-accent" />
-                           <p className="text-xs text-muted-foreground mt-1">Powered by GFBNewMeta</p>
-                        </div>
-                        <h2 className="text-3xl sm:text-4xl font-bold font-headline">
-                            More Than an App, A New World
-                        </h2>
-                    </div>
-                    <p className="mt-4 text-lg text-muted-foreground">
-                        LinguaWeave is your gateway into <span className="font-bold text-primary">"Afarinesh"</span> (Creation), a revolutionary ecosystem where learning leads to creation, and creation leads to empowerment.
-                    </p>
-                </div>
                 <div className="mt-16 max-w-4xl mx-auto">
-                    <Card className="bg-gradient-to-br from-primary/5 via-background to-accent/5 shadow-xl">
-                        <CardHeader className="text-center">
-                            <div className='flex flex-col items-center mb-4'>
-                                <TavanaLogo className="w-12 h-12 mx-auto text-primary" />
-                                <p className='text-xs text-muted-foreground mt-1'>Powered by GFBNewMeta</p>
-                            </div>
-                            <CardTitle className="text-2xl">Welcome to "Tavana" (The Empowered City)</CardTitle>
-                            <CardDescription>The heart of the Afarinesh ecosystem.</CardDescription>
-                        </CardHeader>
-                        <CardContent className="text-center text-muted-foreground space-y-4">
-                            <blockquote className="border-l-4 border-accent pl-4 italic text-foreground">
+                    <Card className="bg-gradient-to-br from-primary/5 via-background to-accent/5 shadow-xl p-8">
+                        <div className="flex flex-col items-center mb-8">
+                             <TavanaLogo className="w-16 h-16 text-primary mb-2" />
+                             <h2 className="text-3xl font-bold font-headline">Welcome to "Tavana"</h2>
+                             <p className="text-muted-foreground">The Empowered City of Afarinesh</p>
+                        </div>
+                        <div className="text-center text-muted-foreground space-y-6">
+                            <blockquote className="border-l-4 border-accent pl-4 italic text-foreground text-xl">
                                 "You are me, and I am you. Together, we believe in each other. We are capable for one purpose: for creation, for empowerment, for each other."
                             </blockquote>
-                            <p>
-                                In Tavana, you are not just a user; you are a citizen. Every lesson you learn, every skill you master, and every creation you build contributes to the growth of this virtual city. Your effort doesn't just build your future; it builds a new civilization.
+                            <p className="text-lg">
+                                In Tavana, you are a citizen. Master skills to build a new civilization. Learning is the currency, and creativity is the industry.
                             </p>
-                             <div className="pt-4">
-                                <Button asChild>
+                             <div className="pt-6">
+                                <Button asChild size="lg">
                                   <Link href="/philosophy-gems">
                                     Read the Full Philosophy <ArrowRight className="ml-2 h-4 w-4" />
                                   </Link>
                                 </Button>
                             </div>
-                        </CardContent>
+                        </div>
                     </Card>
                 </div>
             </div>
