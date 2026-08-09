@@ -2,27 +2,26 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, BotMessageSquare, BrainCircuit, Users, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Logo from '@/components/icons/logo';
-import AfarineshLogo from '@/components/icons/afarinesh-logo';
 import TavanaLogo from '@/components/icons/tavana-logo';
 
 const featureCards = [
   {
     icon: <BotMessageSquare className="h-8 w-8 text-primary" />,
-    title: 'Bilingual Chatbot',
-    description: 'Practice Persian-to-English or English-to-Persian. Converse with our AI tutor.',
+    title: 'بنیان دوزبانه',
+    description: 'آموزش زبان فارسی به انگلیسی‌زبانان با استفاده از پیشرفته‌ترین متدهای هوش مصنوعی.',
   },
   {
     icon: <BrainCircuit className="h-8 w-8 text-primary" />,
-    title: 'Personalized Learning',
-    description: 'AI-driven analysis of your skills to create tailored lessons and exercises.',
+    title: 'شایسته‌سالاری پویا',
+    description: 'در شهر توانا، هر گام آموزشی شما به معنای ساختن آجری از یک تمدن جدید است.',
   },
   {
     icon: <Users className="h-8 w-8 text-primary" />,
-    title: 'Vibrant Community',
-    description: 'Connect with fellow learners, form teams, and compete in Tavana.',
+    title: 'جامعه شهروندان',
+    description: 'اتصال به یادگیرندگان جهانی و تبدیل شدن به "سفیر آفرینش".',
   },
 ];
 
@@ -31,108 +30,74 @@ export default function LandingPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <header className="container mx-auto px-4 py-4 flex items-center justify-between border-b">
         <Link href="/" className="flex items-center gap-2">
           <Logo className="h-8 w-8 text-primary" />
-          <span className="text-2xl font-bold">LinguaWeave</span>
+          <span className="text-2xl font-bold font-headline">LinguaWeave</span>
         </Link>
         <Button asChild>
           <Link href="/dashboard">
-            Enter Afarinesh <ArrowRight className="ml-2 h-4 w-4" />
+            ورود به آفرینش <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
       </header>
 
       <main className="flex-grow text-center">
-        <section className="relative w-full py-20 md:py-32 lg:py-40">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight font-headline text-foreground">
-                The Art of Persian,
-                <br />
-                <span className="text-primary">Mastered with AI.</span>
-              </h1>
-              <p className="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground">
-                Welcome to Afarinesh (Creation). Join the innovative, AI-powered ecosystem to honor and learn the beautiful Persian language.
-              </p>
-              <div className="mt-8 flex justify-center gap-4">
-                <Button size="lg" asChild>
-                  <Link href="/dashboard">Start Your Journey</Link>
-                </Button>
-                <Button size="lg" variant="outline" asChild>
-                    <Link href="/philosophy-gems">Our Grand Vision</Link>
-                </Button>
-              </div>
+        <section className="relative w-full py-20 bg-gradient-to-b from-primary/5 to-background">
+          <div className="container mx-auto px-4">
+            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight font-headline mb-6">
+              آفرینش: هنر پارسی،
+              <br />
+              <span className="text-primary">با جادوی هوش مصنوعی.</span>
+            </h1>
+            <p className="max-w-2xl mx-auto text-xl text-muted-foreground mb-8">
+              به اکوسیستم "توانا" خوش آمدید. جایی که یادگیری منجر به خلق می‌شود و خلق، منجر به قدرت.
+            </p>
+            <div className="flex justify-center gap-4">
+              <Button size="lg" asChild>
+                <Link href="/dashboard">آغاز سفر شهروندی</Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/philosophy-gems">چشم‌انداز بزرگ</Link>
+              </Button>
             </div>
           </div>
           {heroImage && (
-            <div className="absolute inset-0 -z-10 h-full w-full">
-              <Image
-                src={heroImage.imageUrl}
-                alt={heroImage.description}
-                fill
-                className="object-cover opacity-10"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+            <div className="absolute inset-0 -z-10 opacity-10">
+              <Image src={heroImage.imageUrl} alt="Background" fill className="object-cover" />
             </div>
           )}
         </section>
 
-        <section id="features" className="py-20 md:py-28 bg-secondary/30">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl sm:text-4xl font-bold font-headline">A Smarter Way to Learn</h2>
-            </div>
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-              {featureCards.map((feature, index) => (
-                <Card key={index} className="bg-background/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow">
-                  <CardHeader className="items-center text-center">
-                    {feature.icon}
-                    <CardTitle className="mt-4 font-headline">{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-center">
-                    <p className="text-muted-foreground">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+        <section className="py-20 bg-secondary/20">
+          <div className="container mx-auto grid md:grid-cols-3 gap-8">
+            {featureCards.map((f, i) => (
+              <Card key={i} className="hover:shadow-lg transition-all border-primary/10">
+                <CardHeader className="items-center">{f.icon}<CardTitle className="mt-4">{f.title}</CardTitle></CardHeader>
+                <CardContent><p className="text-muted-foreground">{f.description}</p></CardContent>
+              </Card>
+            ))}
           </div>
         </section>
-        
-        <section id="vision" className="py-20 md:py-28">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="mt-16 max-w-4xl mx-auto">
-                    <Card className="bg-gradient-to-br from-primary/5 via-background to-accent/5 shadow-xl p-8">
-                        <div className="flex flex-col items-center mb-8">
-                             <TavanaLogo className="w-16 h-16 text-primary mb-2" />
-                             <h2 className="text-3xl font-bold font-headline">Welcome to "Tavana"</h2>
-                             <p className="text-muted-foreground">The Empowered City of Afarinesh</p>
-                        </div>
-                        <div className="text-center text-muted-foreground space-y-6">
-                            <blockquote className="border-l-4 border-accent pl-4 italic text-foreground text-xl">
-                                "You are me, and I am you. Together, we believe in each other. We are capable for one purpose: for creation, for empowerment, for each other."
-                            </blockquote>
-                            <p className="text-lg">
-                                In Tavana, you are a citizen. Master skills to build a new civilization. Learning is the currency, and creativity is the industry.
-                            </p>
-                             <div className="pt-6">
-                                <Button asChild size="lg">
-                                  <Link href="/philosophy-gems">
-                                    Read the Full Philosophy <ArrowRight className="ml-2 h-4 w-4" />
-                                  </Link>
-                                </Button>
-                            </div>
-                        </div>
-                    </Card>
-                </div>
-            </div>
+
+        <section className="py-20">
+          <div className="container mx-auto max-w-4xl">
+            <Card className="bg-primary/5 p-8 border-dashed border-2 border-primary/20">
+              <TavanaLogo className="w-16 h-16 mx-auto text-primary mb-4" />
+              <h2 className="text-3xl font-bold mb-6">به "توانا" خوش آمدید</h2>
+              <blockquote className="text-2xl italic border-l-4 border-accent pl-6 mb-6 text-left">
+                "تو منی و من توام. ما با هم به یکدیگر ایمان داریم. ما برای یک هدف توانمندیم: برای آفرینش، برای توانایی، برای یکدیگر."
+              </blockquote>
+              <p className="text-lg text-muted-foreground">
+                در اینجا یادگیری واحد پول، خلاقیت صنعت، و جامعه شالوده است. شما یک کاربر نیستید، شما معمار این شهر هستید.
+              </p>
+            </Card>
+          </div>
         </section>
       </main>
 
-      <footer className="py-8 bg-background border-t">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} LinguaWeave. All rights reserved.</p>
-        </div>
+      <footer className="py-8 border-t text-center text-muted-foreground">
+        <p>&copy; {new Date().getFullYear()} LinguaWeave: Afarinesh Ecosystem. All rights reserved.</p>
       </footer>
     </div>
   );
