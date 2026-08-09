@@ -4,11 +4,6 @@ import {
   BookOpenCheck,
   BotMessageSquare,
   Trophy,
-  Award,
-  Shield,
-  Star,
-  Crown,
-  Swords,
   LayoutDashboard,
 } from 'lucide-react';
 import {
@@ -28,9 +23,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Badge } from '@/components/ui/badge';
 import { PageHeader } from '@/components/shared/page-header';
-import { cn } from '@/lib/utils';
 
 const quickLinks = [
   {
@@ -60,21 +53,11 @@ const weeklyGoals = [
 ];
 
 const leaderboard = [
-  { rank: 1, name: 'Elena', stars: 2150, league: "Emperor's Council" },
-  { rank: 2, name: 'Kenji', stars: 1980, league: 'Champion of Champions', partner: 'You' },
-  { rank: 3, name: 'You', stars: 1810, league: 'Champion of Champions', partner: 'Kenji' },
-  { rank: 4, name: 'Sara', stars: 1750, league: 'Award League' },
+  { rank: 1, name: 'Elena', stars: 2150 },
+  { rank: 2, name: 'Kenji', stars: 1980 },
+  { rank: 3, name: 'You', stars: 1810 },
+  { rank: 4, name: 'Sara', stars: 1750 },
 ];
-
-type League = "Emperor's Council" | "Champion of Champions" | "Award League" | "Shield League" | "Star League";
-
-const leagueConfig: Record<League, { icon: any; className: string }> = {
-  "Emperor's Council": { icon: Crown, className: 'bg-destructive/20 border-destructive/50 text-destructive-foreground' },
-  "Champion of Champions": { icon: Swords, className: 'bg-sky-500/20 border-sky-500/50 text-sky-200' },
-  "Award League": { icon: Award, className: 'bg-yellow-500/20 border-yellow-500/50 text-yellow-200' },
-  "Shield League": { icon: Shield, className: 'bg-slate-500/20 border-slate-500/50 text-slate-300' },
-  "Star League": { icon: Star, className: 'bg-orange-600/20 border-orange-600/50 text-orange-300' },
-};
 
 export default function DashboardPage() {
   return (
@@ -136,7 +119,7 @@ export default function DashboardPage() {
               </TableHeader>
               <TableBody>
                 {leaderboard.map((user) => (
-                  <TableRow key={user.rank} className={cn(user.name === 'You' ? 'bg-primary/10' : '')}>
+                  <TableRow key={user.rank}>
                     <TableCell className="font-medium">{user.rank}</TableCell>
                     <TableCell>{user.name}</TableCell>
                     <TableCell className="text-right font-semibold">{user.stars}</TableCell>
