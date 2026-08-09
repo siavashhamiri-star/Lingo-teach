@@ -8,6 +8,7 @@ import {
   BrainCircuit,
   Building,
   Camera,
+  Crown,
   Ear,
   FileText,
   Film,

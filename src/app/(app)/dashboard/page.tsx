@@ -5,6 +5,9 @@ import {
   BotMessageSquare,
   Trophy,
   LayoutDashboard,
+  TrendingUp,
+  Target,
+  Zap
 } from 'lucide-react';
 import {
   Card,
@@ -52,6 +55,12 @@ const weeklyGoals = [
   { title: 'Win a Daily Challenge', current: 0, total: 1 },
 ];
 
+const stats = [
+  { label: 'Total Stars', value: '1,810', icon: Zap, color: 'text-yellow-500' },
+  { label: 'Words Learned', value: '452', icon: Target, color: 'text-blue-500' },
+  { label: 'Fluency Rank', value: 'Elite', icon: TrendingUp, color: 'text-green-500' },
+];
+
 const leaderboard = [
   { rank: 1, name: 'Elena', stars: 2150 },
   { rank: 2, name: 'Kenji', stars: 1980 },
@@ -63,10 +72,26 @@ export default function DashboardPage() {
   return (
     <div className="grid gap-8">
       <PageHeader
-        title="Dashboard"
-        description="Welcome to Afarinesh! Here's your learning snapshot."
+        title="Citizen Dashboard"
+        description="Welcome to Afarinesh! Here's your contribution to the city of Tavana."
         icon={LayoutDashboard}
       />
+
+      {/* New Stats Row */}
+      <div className="grid gap-4 md:grid-cols-3">
+        {stats.map((stat) => (
+          <Card key={stat.label} className="bg-card/50 backdrop-blur-sm">
+            <CardContent className="p-6 flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-muted-foreground">{stat.label}</p>
+                <p className="text-2xl font-bold">{stat.value}</p>
+              </div>
+              <stat.icon className={cn("w-8 h-8", stat.color)} />
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {quickLinks.map((link) => (
           <Card key={link.title} className="shadow-md hover:shadow-lg transition-shadow">
@@ -89,7 +114,8 @@ export default function DashboardPage() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
         <Card className="lg:col-span-3 shadow-md">
           <CardHeader>
-            <CardTitle>Weekly Goals</CardTitle>
+            <CardTitle>Weekly Progress</CardTitle>
+            <CardDescription>Stay consistent to build Tavana faster.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             {weeklyGoals.map((goal) => (
@@ -106,22 +132,22 @@ export default function DashboardPage() {
 
         <Card className="lg:col-span-2 shadow-md">
           <CardHeader>
-            <CardTitle>Weekly Leaderboard</CardTitle>
+            <CardTitle>Global Rankings</CardTitle>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
                   <TableHead className="w-[50px]">Rank</TableHead>
-                  <TableHead>User</TableHead>
+                  <TableHead>Citizen</TableHead>
                   <TableHead className="text-right">XP</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {leaderboard.map((user) => (
-                  <TableRow key={user.rank}>
+                  <TableRow key={user.rank} className={user.name === 'You' ? 'bg-primary/5' : ''}>
                     <TableCell className="font-medium">{user.rank}</TableCell>
-                    <TableCell>{user.name}</TableCell>
+                    <TableCell className={user.name === 'You' ? 'font-bold' : ''}>{user.name}</TableCell>
                     <TableCell className="text-right font-semibold">{user.stars}</TableCell>
                   </TableRow>
                 ))}
@@ -133,3 +159,5 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+import { cn } from '@/lib/utils';
