@@ -2,31 +2,31 @@
   "placeholderImages": [
     {
       "id": "landing-hero",
-      "description": "A high-tech digital city representing knowledge and connection.",
+      "description": "نمایی از یک شهر دیجیتال مدرن و درخشان که نماد دانش و ارتباط است.",
       "imageUrl": "https://picsum.photos/seed/afarinesh-hero/1200/600",
-      "imageHint": "digital city"
+      "imageHint": "digital city knowledge"
     },
     {
       "id": "profile-avatar",
-      "description": "Default profile avatar.",
+      "description": "تصویر پیش‌فرض پروفایل شهروندان.",
       "imageUrl": "https://picsum.photos/seed/user-avatar/300/300",
       "imageHint": "person portrait"
     },
     {
       "id": "duel-opponent-2",
-      "description": "Portrait of Kenji",
+      "description": "پرتره استاد کنجی.",
       "imageUrl": "https://picsum.photos/seed/kenji/100/100",
-      "imageHint": "man portrait"
+      "imageHint": "man professional"
     },
     {
       "id": "duel-opponent-3",
-      "description": "Portrait of Sara",
+      "description": "پرتره شهروند سارا.",
       "imageUrl": "https://picsum.photos/seed/sara/100/100",
-      "imageHint": "woman portrait"
+      "imageHint": "woman professional"
     },
     {
       "id": "duel-opponent-4",
-      "description": "Portrait of David",
+      "description": "پرتره شهروند دیوید.",
       "imageUrl": "https://picsum.photos/seed/david/100/100",
       "imageHint": "smiling person"
     }

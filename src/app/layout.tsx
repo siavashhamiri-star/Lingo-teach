@@ -4,8 +4,8 @@ import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Afarinesh by LinguaWeave',
-  description: 'Weaving Languages, Connecting Worlds. An ecosystem for learning and creation.',
+  title: 'آفرینش - شهر توانا',
+  description: 'اکوسیستم نوین آموزش و خلق دانش پارسی با قدرت هوش مصنوعی.',
 };
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="fa" dir="rtl" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
