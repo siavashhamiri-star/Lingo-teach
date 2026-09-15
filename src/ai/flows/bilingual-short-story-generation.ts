@@ -1,11 +1,6 @@
-
 'use server';
 /**
  * @fileOverview Generates a bilingual short story in Persian and English, with sentence-by-sentence audio.
- *
- * - generateBilingualShortStory - A function that generates and reads aloud a bilingual short story.
- * - BilingualShortStoryInput - The input type for the generateBilingualShortStory function.
- * - BilingualShortStoryOutput - The return type for the generateBilingualShortStory function.
  */
 
 import { z } from 'zod';

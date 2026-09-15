@@ -61,7 +61,7 @@ const citizenActions = [
 
 export default function DashboardPage() {
   return (
-    <div className="grid gap-8">
+    <div className="grid gap-8" dir="rtl">
       <PageHeader
         title="داشبورد شهروند"
         description="به شهر توانا خوش آمدید. امروز چه دانشی خلق می‌کنید؟"
